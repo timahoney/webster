@@ -11,14 +11,15 @@
 .class-page .content {
   position: absolute;
   top: 0;
-  left: 8.5em;
+  left: 50%;
   right: 0;
   bottom: 0;
+  margin-left: -8.5em;
   overflow: auto;
 }
 
 .class-page .interface-description {
-  margin: 2em 0.5em 1em 0.5em;
+  margin: 2.5em 0.5em 1em 0.5em;
 }
 
 .class-page .content > p {
@@ -27,14 +28,14 @@
 }
 
 .class-page .content h2 {
-  font-size: 2.5em;
+  font-size: 4.5em;
   font-weight: 200;
-  color: #bbb;
-  margin: 0.1em 0.08em;
+  color: #ddd;
+  margin: 0.1em 0.03em;
 }
 
 .class-page .content h2.attributes {
-  margin-left: 0.14em;
+  margin-left: 0.13em;
 }
 
 .class-page .member-list, .class-page .interface-description {
@@ -51,79 +52,58 @@
   top: 0;
   left: 0;
   bottom: 0;
-  width: 8.5em;
-  margin: 0;
-  padding: 0;
+  right: 50%;
+  margin-right: 8.5em;
   overflow: hidden;
-  background-color: #f3f3f3;
+  border-right: 1px solid #e3e3e3;
 }
 
 .class-page header {
-  height: 4.2em;
   position: relative;
+  max-width: 9.05em;
+  margin-left: auto;
 }
 
 .class-page header h1 {
   position: absolute;
-  left: 0;
+  top: 2.5em;
   right: 0;
-  bottom: 0;
+  left: 0;
   font-size: 1em;
-  padding: 0 0 0 0.5em;
+  padding: 0 0 0 0.76em;
   margin: 0;
   line-height: 1.5em;
   color: #555;
-  border-left: 0.2em solid #EED776;
+  border-left: 0.45em solid #EED776;
 }
 
 .class-page .search-button {
-  display: block;
   position: absolute;
-  font-size: 1em;
-  top: 0.57em;
-  right: 0.55em;
-  left: 0.55em;
+  top: 0;
+  right: 0;
+  left: 0;
+  text-align: right;
+  padding-right: 0.4em;
   height: 1.55em;
   line-height: 1.55em;
-  color: #777;
-  background: #f7f7f7;
-  box-shadow: 0.1em 0.1em 0.3em rgba(0, 0, 0, 0.15);
-  font-weight: 300;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  text-align: center;
-}
-
-.class-page .search-button:hover {
-  background: #fcfcfc;
-  box-shadow: 0.1em 0.1em 0.4em rgba(0, 0, 0, 0.2);
-}
-
-.class-page .search-button:active {
-  background: #f5f5f5;
-  box-shadow: 0.1em 0.1em 0.1em rgba(0, 0, 0, 0.1);
-}
-
-.class-page .search-button:before {
-  padding-right: 0.5em;
 }
 
 .class-page .sidebar h2 {
-  font-size: 1em;
-  margin: 0;
+  font-size: 1.5em;
+  width: 5.26em;
+  margin: 0 0 0 auto;
   padding-left: 0.5em;
-  color: #777;
-  font-weight: 400;
-  border-left: 0.2em solid;
+  color: #bbb;
+  font-weight: 200;
+  border-left: 0.3em solid;
 }
 
 .class-page .sidebar h2.attributes {
-  border-left-color: #5577AA;
+  border-color: #5577AA;
 }
 
 .class-page .sidebar h2.methods {
-  border-left-color: #C45E5A;
+  border-color: #C45E5A;
 }
 
 .class-page .sidebar-list-container {
@@ -136,9 +116,14 @@
   overflow: auto;
 }
 
+.class-page .sidebar-list-container > * {
+  max-width: 8.5em;
+  margin-left: auto;
+}
+
 .class-page .sidebar-list {
   padding: 0;
-  margin: 0.5em 0 1.5em 0;
+  margin: 0.5em 0 1.5em auto;
   overflow: hidden;
   list-style: none;
 }
@@ -147,7 +132,7 @@
   font-size: 0.8em;
   padding: 0.1em 0.57em;
   margin: 0 0.2em;
-  color: #777;
+  color: #555;
 }
 
 .class-page .sidebar-list li:hover {
@@ -170,9 +155,8 @@
 .class-page .sidebar-list-container .place-marker {
   position: absolute;
   top: 0;
-  right: 0.2em;
-  left: 0.2em;
-  border: 0.1em solid rgba(255, 255, 255, 0.03);
+  right: 0;
+  left: 0;
   background-color: rgba(0, 0, 0, 0.05);
   transition-duration: 0.2s;
   -webkit-transition-duration: 0.2s;
@@ -188,8 +172,18 @@
 
   .class-page .content {
     left: 7em;
+    margin-left: 0;
   }
 
+  .class-page .sidebar h2 {
+    padding-left: 0.2em;
+    border-left: 0.2em solid;
+  }
+
+  .class-page header h1 {
+    border-left-width: 0.31em;
+    padding-left: 0.35em;
+  }
 }
 
 @media screen and (max-width:320px) {

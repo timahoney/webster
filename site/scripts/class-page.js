@@ -183,12 +183,6 @@ ClassPage.prototype._onScrollContent = function(event) {
 };
 
 ClassPage.prototype._updatePlacemarker = function() {
-  // // Don't update the placemarker position too often. Otherwise, it's slow.
-  // now = Time.now.to_f
-  // time_since_last_update = now - (@last_placemarker_update || 0)
-  // return if time_since_last_update < PLACEMARKER_UPDATE_INTERVAL
-  // @last_placemarker_update = now.to_f
-
   // Find the top and bottom visible elements, then move the marker to cover those.
   var minimumTop = this._contentContainer.scrollTop;
   var maximumBottom = this._contentContainer.scrollTop + this._contentContainer.offsetHeight;
@@ -204,8 +198,8 @@ ClassPage.prototype._updatePlacemarker = function() {
   var firstSidebarItem = allSidebarChildren[firstVisibleIndex];
   var lastSidebarItem = allSidebarChildren[lastVisibleIndex];
 
-  var firstSidebarTop = firstSidebarItem.offsetTop + 1;
-  var lastSidebarBottom = lastSidebarItem.offsetTop + lastSidebarItem.offsetHeight - 2;
+  var firstSidebarTop = firstSidebarItem.offsetTop;
+  var lastSidebarBottom = lastSidebarItem.offsetTop + lastSidebarItem.offsetHeight;
   var height = lastSidebarBottom - firstSidebarTop;
 
   this._placemarker.style.top = firstSidebarTop + 'px';

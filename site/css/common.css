@@ -136,6 +136,27 @@ a:visited:active {
   color: #4F5D73;
 }
 
+a.symbol-button {
+  font-size: 1.5em;
+  color: #fff;
+  text-shadow: 0 0.05em 0.15em #999;
+  text-decoration: none;
+  cursor: pointer;
+  transition-duration: 0.1s;
+  -webkit-transition-duration: 0.1s;
+}
+
+a.symbol-button:hover {
+  color: #fff;
+  text-shadow: 0 0.05em 0.2em rgba(0, 0, 0, 0.5);
+  
+}
+
+a.symbol-button:active {
+  color: #fff;
+  text-shadow: 0 0.05em 0.1em rgba(0, 0, 0, 0.3);
+}
+
 [class*="entypo-"]:before {
   font-family: 'entypo', sans-serif;
 }

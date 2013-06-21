@@ -50,26 +50,10 @@
   top: 0;
   right: 0;
   bottom: 0;
-  font-size: 1.5em;
   width: 2em;
   text-align: right;
   padding-right: 0.2em;
   font-weight: 600;
-  color: #fff;
-  text-shadow: 0 0.05em 0.1em #999;
-  text-decoration: none;
-  transition-duration: 0.1s;
-  -webkit-transition-duration: 0.1s;
-}
-
-.search-page header .text .info-button:hover {
-  text-shadow: 0 0.05em 0.2em #888;
-  cursor: pointer;
-}
-
-.search-page header .text .info-button:active {
-  color: #f7f7f7;
-  text-shadow: 0 0.05em 0.1em #888;
 }
 
 .search-page .input-row {
