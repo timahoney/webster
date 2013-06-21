@@ -60,8 +60,20 @@
 
 .class-page header {
   position: relative;
-  max-width: 9.05em;
+  max-width: 9.07em;
+  height: 4em;
   margin-left: auto;
+  z-index: 3;
+}
+
+.class-page .header-shadow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 4em;
+  box-shadow: 0 0.5em 1em #fafafa;
+  z-index: 2;
 }
 
 .class-page header h1 {
@@ -108,7 +120,7 @@
 
 .class-page .sidebar-list-container {
   position: absolute;
-  top: 4.2em;
+  top: 4em;
   right: 0;
   bottom: 0;
   left: 0;
