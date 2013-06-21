@@ -214,16 +214,17 @@ InterfaceListItem.prototype._updateMethodInfo = function() {
 };
 
 InterfaceListItem.prototype._onClickInterface = function(event) {
-  if (!this.isHeaderClickable) {
-    return;
-  }
-
   // Allow them to open the link in a new window or tab.
   if (event.metaKey || event.ctrlKey) {
     return;
   }
 
   event.preventDefault();
+
+  if (!this.isHeaderClickable) {
+    return;
+  }
+
   var clickInterfaceEvent = new CustomEvent(InterfaceListItem.CLICKED_INTERFACE, { detail: this });
   this.element.dispatchEvent(clickInterfaceEvent);
 };
