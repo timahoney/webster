@@ -245,7 +245,7 @@ ClassPage.prototype._addMemberElements = function(member, list, sidebarList) {
   var showClass = (member.ownerId != this.interfaceData.id);
   listItem.isHeaderClickable = showClass;
   listItem.showOwnerClass = showClass;
-  listItem.element.addEventListener(InterfaceListItem.CLICKED_INTERFACE, this._onClickMember.bind(this));
+  listItem.onClickInterface = this._onClickMember.bind(this);
   list.appendChild(listItem.element);
 
   var sidebarItem = document.createElement('li');
@@ -264,8 +264,7 @@ ClassPage.prototype._addMemberElements = function(member, list, sidebarList) {
   }.bind(this);
 };
 
-ClassPage.prototype._onClickMember = function(event) {
-  member = event.detail.interfaceData;
+ClassPage.prototype._onClickMember = function(member) {
   var classPage = new ClassPage();
   classPage.interfaceData = member.owner;
   classPage.currentMember = member;

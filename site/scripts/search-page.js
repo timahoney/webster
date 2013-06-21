@@ -47,7 +47,7 @@ Object.defineProperty(SearchPage.prototype, 'interfaces', {
       if (!item) {
         item = new InterfaceListItem();
         item.showOwnerClass = true;
-        item.element.addEventListener(InterfaceListItem.CLICKED_INTERFACE, this._onClickInterface);
+        item.onClickInterface = this._onClickInterface;
         this._interfaceListItems.push(item);
         this._resultList.appendChild(item.element);
       }
@@ -127,8 +127,7 @@ SearchPage.prototype._onSearchChange = function(event) {
   }.bind(this));
 };
 
-SearchPage.prototype._onClickInterface = function(event) {
-  var interfaceData = event.detail.interfaceData;
+SearchPage.prototype._onClickInterface = function(interfaceData) {
   var classPage = new ClassPage();
   if (interfaceData.interfaceType == 'class') {
     classPage.interfaceData = interfaceData;
