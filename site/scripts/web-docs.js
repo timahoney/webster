@@ -18,6 +18,9 @@ window.WebDocs = {
         var path = window.location.pathname;
         path = path.substr(1);
         var page = URLHandler.pageForUrl(path);
+        if (page.prototype != SearchPage) {
+          WebDocs.pageStack.push(new SearchPage(), false);
+        }
         WebDocs.pageStack.push(page, false);
 
         LoadingScreen.hide();
