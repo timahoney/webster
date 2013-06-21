@@ -169,7 +169,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  left: 0;
+  width: 8.5em;
   background-color: rgba(0, 0, 0, 0.05);
   transition-duration: 0.2s;
   -webkit-transition-duration: 0.2s;
@@ -180,6 +180,10 @@
 @media screen and (max-width:555px) {
 
   .class-page .sidebar {
+    width: 7em;
+  }
+
+  .class-page .sidebar-list-container .place-marker {
     width: 7em;
   }
 
