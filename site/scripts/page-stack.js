@@ -35,24 +35,16 @@ PageStack.prototype.push = function(page, animated) {
 };
 
 PageStack.prototype.updateLocationBarUrl = function() {
-  var currentState = window.history.state;
-  if (currentState && currentState.pageStack) {
-    var page = this._idToPage[currentState.pageId];
-    if (!page) {
-      return;
-    }
-    window.history.replaceState(this._stateObjectForPage(page), null, page.locationBarUrl());
+  var page = this._currentPage;
+  if (!page) {
+    return;
   }
-
+  window.history.replaceState(this._stateObjectForPage(page), null, page.locationBarUrl());
   window.postMessage({ type: 'pageview' }, '*');
 };
 
 PageStack.prototype.updatePageTitle = function() {
-  var currentState = window.history.state;
-  if (!currentState || !currentState.pageStack) {
-    return;
-  }
-  var page = this._idToPage[currentState.pageId];
+  var page = this._currentPage;
   if (!page) {
     return;
   }
