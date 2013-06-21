@@ -41,6 +41,7 @@ def read_json(filename: 'file.json')
 end
 
 def request_methods
+  p 'Requesting methods...'
   limit = 100
   threads = []
   (0...7).each do |i|
@@ -52,7 +53,6 @@ def request_methods
 end
 
 def request_methods_internal(limit: 100, offset: 0)
-  p "Requesting methods #{offset} through #{offset + limit}..."
   results = request_results_for_query("[[Method_applies_to::~*]]|?Summary|?API_name|?Javascript_data_type|?Method_applies_to|?Return_value_description|limit=#{limit}|offset=#{offset}")
   methods = results.map do |id, data|
     printouts = data['printouts']
@@ -70,6 +70,7 @@ def request_methods_internal(limit: 100, offset: 0)
 end
 
 def request_method_parameters
+  p 'Requesting method parameters...'
   threads = []
   limit = 100
   (0...15).each do |i|
@@ -81,7 +82,6 @@ def request_method_parameters
 end
 
 def request_method_parameters_internal(limit: 100, offset: 0)
-  p "Requesting parameters #{offset} through #{offset + limit}..."
   results = request_results_for_query("[[Parameter_for_method::~*]]|?Javascript_data_type|?Parameter_description|?Parameter_name|?Parameter_optional|?Parameter_for_method|limit=#{limit}|offset=#{offset}")
   parameters = results.map do |id, data|
     printouts = data['printouts']
@@ -99,6 +99,7 @@ def request_method_parameters_internal(limit: 100, offset: 0)
 end
 
 def request_properties
+  p 'Requesting properties...'
   threads = []
   limit = 100
   (0...15).each do |i|
@@ -110,7 +111,6 @@ def request_properties
 end
 
 def request_properties_internal(limit: 100, offset: 0)
-  p "Requesting properties #{offset} through #{offset + limit}..."
   results = request_results_for_query("[[Property_applies_to::~*]]|?Javascript_data_type|?Summary|?API_name|?Read_only|?Property_applies_to|limit=#{limit}|offset=#{offset}")
   properties = results.map do |id, data|
     printouts = data['printouts']
@@ -136,7 +136,7 @@ def request_results_for_query(query)
   results
 end
 
-def request_and_write_all(output_dir)
+def request_and_save_interfaces(output_dir)
   interfaces = request_interfaces
   write_json(hash: { :interfaces => interfaces }, filename: "#{output_dir}/interfaces.json")
 
