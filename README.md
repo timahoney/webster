@@ -1,6 +1,8 @@
-EasyDocs
+Webster
 ========
 
-EasyDocs lets you quickly explore the open web platform API. The application was built using [Ruby in the browser](http://trydecaf.org), and the data comes from the [WebPlatform API](http://docs.webplatform.org/wiki/WPD:API).
+Webster lets you quickly explore the web platform API.
 
+The data comes from [WebPlatform.org](http://webplatform.org). Since WebPlatform is still in beta, some of the data may be incomplete, incorrect, or just plain strange.
 
+[http://webster.io](http://webster.io)
