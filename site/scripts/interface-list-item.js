@@ -8,8 +8,10 @@ window.InterfaceListItem = function() {
   this._title.classList.add('interface-name');
   this._titleContainer.appendChild(this._title);
   this._titleContainer.onclick = this._onClickInterface.bind(this);
-  this._ownerClass = document.createElement('span');
+  this._ownerClass = document.createElement('a');
   this._ownerClass.classList.add('owner-class');
+  this._ownerClass.classList.add('transition-short');
+  this._ownerClass.onclick = this._onClickParent.bind(this);
   this._titleContainer.appendChild(this._ownerClass);
   this.element.appendChild(this._titleContainer);
 
@@ -91,16 +93,21 @@ InterfaceListItem.prototype._updateHeader = function() {
   this._title.innerHTML = this._interface.name;
 
   var websterUrl = '/class/';
+  var parentUrl = '';
 
   if (this._interface.owner) {
     websterUrl += this._interface.owner.name + '/';
     this._ownerClass.innerHTML = this._interface.owner.name;
+  } else if (this._interface.parent) {
+    this._ownerClass.innerHTML = this._interface.parent.name;
+    parentUrl = '/class/' + this._interface.parent.name;
   } else {
     this._ownerClass.innerHTML = '';
   }
 
   websterUrl += this._interface.name;
   this._titleContainer.href = websterUrl;
+  this._ownerClass.href = parentUrl;
 };
 
 InterfaceListItem.prototype._updateDeclaration = function() {
@@ -226,4 +233,20 @@ InterfaceListItem.prototype._onClickInterface = function(event) {
   if (this.onClickInterface) {
     this.onClickInterface(this.interfaceData);
   }
+};
+
+InterfaceListItem.prototype._onClickParent = function(event) {
+  if (this._interface.interfaceType == 'class') {
+    event.stopPropagation();
+  }
+
+  if (event.metaKey || event.ctrlKey) {
+    return;
+  }
+
+  var parentClassPage = new ClassPage();
+  parentClassPage.interfaceData = this._interface.parent;
+  WebDocs.pageStack.push(parentClassPage, true);
+
+  event.preventDefault();
 };

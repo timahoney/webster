@@ -108,6 +108,7 @@ ClassPage.prototype._didLoad = function() {
   this._interfaceDescriptionElement = this.element.querySelector('.interface-description');
   this._interfaceListItem = new InterfaceListItem();
   this._interfaceListItem.isHeaderClickable = false;
+  this._interfaceListItem.showOwnerClass = true;
   this._interfaceDescriptionElement.appendChild(this._interfaceListItem.element);
   this._placemarker = this.element.querySelector('.place-marker');
   this._sidebarListContainer = this.element.querySelector('.sidebar-list-container');
