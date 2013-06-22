@@ -6,7 +6,7 @@ require 'nokogiri'
 API_BASE_URL = 'http://docs.webplatform.org/w/api.php?format=json&action=ask&query='
 
 def request_interfaces
-  p 'Requesting interfaces...'
+  puts 'Requesting interfaces...'
   results = request_results_for_query('[[Category:API Objects]]|?Summary|?API_name|?Subclass_of|limit=1000')
 
   interfaces = results.map do |id, data|
@@ -41,7 +41,7 @@ def read_json(filename: 'file.json')
 end
 
 def request_methods
-  p 'Requesting methods...'
+  puts 'Requesting methods...'
   limit = 100
   threads = []
   (0...7).each do |i|
@@ -70,7 +70,7 @@ def request_methods_internal(limit: 100, offset: 0)
 end
 
 def request_method_parameters
-  p 'Requesting method parameters...'
+  puts 'Requesting method parameters...'
   threads = []
   limit = 100
   (0...15).each do |i|
@@ -99,7 +99,7 @@ def request_method_parameters_internal(limit: 100, offset: 0)
 end
 
 def request_properties
-  p 'Requesting properties...'
+  puts 'Requesting properties...'
   threads = []
   limit = 100
   (0...15).each do |i|
@@ -191,7 +191,7 @@ def load_interfaces_with_attached_members(output_dir)
   parameters = read_json(filename: "#{output_dir}/parameters.json")[:parameters]
   properties = read_json(filename: "#{output_dir}/properties.json")[:properties]
 
-  p 'Mapping interfaces to IDs...'
+  puts 'Mapping interfaces to IDs...'
   id_to_interface = {}
   interfaces.each do |interface|
     interface[:methods] = []
@@ -201,7 +201,7 @@ def load_interfaces_with_attached_members(output_dir)
   end
 
 
-  p 'Attaching properties to interfaces...'
+  puts 'Attaching properties to interfaces...'
   properties.each do |property|
     property[:description] = convert_to_html(property[:description])
     property[:type] = replace_type_name_if_needed(property[:type])
@@ -217,7 +217,7 @@ def load_interfaces_with_attached_members(output_dir)
   end
 
 
-  p 'Mapping methods to IDs...'
+  puts 'Mapping methods to IDs...'
   id_to_method = {}
   methods.each do |method|
     method[:description] = convert_to_html(method[:description])
@@ -228,7 +228,7 @@ def load_interfaces_with_attached_members(output_dir)
   end
 
 
-  p 'Attaching parameters to methods...'
+  puts 'Attaching parameters to methods...'
   parameters.each do |parameter|
     parameter[:description] = convert_to_html(parameter[:description])
     parameter[:type] = replace_type_name_if_needed(parameter[:type])
@@ -237,7 +237,7 @@ def load_interfaces_with_attached_members(output_dir)
   end
 
 
-  p 'Attaching methods to interfaces...'
+  puts 'Attaching methods to interfaces...'
   id_to_method = {}
   methods.each do |method|
     # Some methods have multiple owners.
@@ -265,7 +265,7 @@ def check_for_duplicates(interfaces)
 end
 
 def build_xml(interfaces)
-  p 'Building XML...'
+  puts 'Building XML...'
   builder = Nokogiri::XML::Builder.new do |xml|
     xml.interfaces {
       interfaces.each do |interface|
