@@ -15,7 +15,7 @@ request_and_save_interfaces(output_dir)
 interfaces = load_interfaces_with_attached_members(output_dir)
 builder = build_xml(interfaces)
 
-p 'Outputting XML...'
+puts 'Outputting XML...'
 File.open("#{output_dir}/interfaces.xml", 'w') do |file|
   file.write(builder.to_xml)
 end
