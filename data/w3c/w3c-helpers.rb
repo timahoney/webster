@@ -52,6 +52,7 @@ def parse_interface(xml_interface)
   interface[:name] = xml_interface['name']
   interface[:id] = interface[:name]
   interface[:parent_id] = xml_interface['parent'] || xml_interface['inherits']
+  interface[:parent_id] = 'EventTarget' if interface[:name] == 'Node'
   interface[:description] = xml_interface.css('descr')[0].inner_html
   interface[:attributes] = {}
   interface[:methods] = {}
