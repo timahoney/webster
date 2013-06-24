@@ -42,7 +42,7 @@ def complete_interface_data(interface)
   html = Nokogiri::HTML(content)
 
   properties = parse_properties(html)
-  interface[:properties] = properties || []
+  # interface[:properties] = properties || []
   methods = parse_methods(html)
   interface[:methods] = methods || []
 end
@@ -74,26 +74,28 @@ def parse_methods(html)
     return nil
   end
 
-  # methods = try_parse_methods_standard_table(html)
-  # # methods = try_parse_methods_definition_list(html) if !methods
-  # methods
+  methods = try_parse_methods_standard_table(html)
+  # methods = try_parse_methods_definition_list(html) if !methods
+  methods
 end
 
 def try_parse_methods_standard_table(html)
-  # methods_header = get_methods_header(html)
-  # table = methods_header.next_element
-  # table = table.next_element if table.name != 'table'
-  # return nil if table.name != 'table'
+  methods_header = get_methods_header(html)
+  table = methods_header.next_element
+  table = table.next_element if table.name != 'table'
+  return nil if table.name != 'table'
 
-  # method_rows = properties_table.css('tbody')[0].element_children
-  # table_header = properties_table.css('thead tr')[0] || method_rows.shift
+  p "HAS METHODS TABLE"
 
-  # method_rows.each_with_index.map do |method_row, i|
-  #   method = {}
+  method_rows = table.css('tbody')[0].element_children
+  table_header = table.css('thead tr')[0] || method_rows.shift
 
-
-  #   method
-  # end.compact
+  method_rows.each_with_index.map do |method_row, i|
+    cells = method_row.css('td')
+    method = {}
+    method[:name] = cells[0].content
+    method
+  end.compact
 end
 
 def try_parse_properties_standard_table(html)
