@@ -1,0 +1,3180 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<!-- $Id: xml-source.xml,v 1.7 2004/01/26 22:31:28 plehegar Exp $ --><!DOCTYPE spec PUBLIC "-//W3C//DTD Specification V2.2-Based DOM//EN" "http://www.w3.org/2002/08/xmlspec-v22-dom.dtd">
+<spec w3c-doctype="rec" role="public">
+  <!--
+  *************************************************************************
+  * FRONT MATTER                                                          *
+  *************************************************************************
+  -->
+<!-- 
+  ****************************************************** 
+  | filenames to be used for each section              |
+  ******************************************************
+-->
+<?command-options --map Copyright-Notice copyright-notice
+--map Introduction     introduction
+--map TOC expanded-toc
+--map Core core
+--map Events events
+--map idl idl-definitions
+--map ecma-binding ecma-script-binding
+--map java-binding java-binding
+--map Index def-index
+--map Objects object-index
+--map References references
+--map Errors errors
+--map Level-3-AS abstract-schemas
+--map Load-Save load-save
+--map XPath xpath
+--map KeySet keyset
+?>
+
+<?command-options --map -IndexFile-      def-index
+--map -OjbectIndexFile-      object-index
+--strip-references
+--strip-glossary
+?>
+
+<?command-options --map-type ECMAScript void void
+--map-type ECMAScript "unsigned short" Number
+--map-type ECMAScript "unsigned int" Number
+--map-type ECMAScript "unsigned long" Number
+--map-type ECMAScript short Number
+--map-type ECMAScript long Number
+--map-type ECMAScript float Number
+--map-type ECMAScript double Number
+--map-type ECMAScript boolean Boolean
+--map-type ECMAScript Object Object
+--map-type ECMAScript DOMString String
+--map-type ECMAScript DOMTimeStamp Date
+--map-type ECMAScript DOMObject Object
+--map-type ECMAScript DOMUserData "any type"
+--map-type ECMAScript LSInputStream Object
+--map-type ECMAScript LSOutputStream Object
+--map-type ECMAScript LSReader "this is an error and shouldn't be used."
+--map-type ECMAScript LSWriter "this is an error and shouldn't be used."
+--map-type ECMAScript DOMSystemException Object
+
+--map-type Java void void
+--map-type Java Object Object
+--map-type Java DOMString String
+--map-type Java "unsigned short" short
+--map-type Java "unsigned int" int
+--map-type Java "unsigned long" int
+--map-type Java long int
+--map-type Java short short
+--map-type Java float float
+--map-type Java double double
+--map-type Java boolean boolean
+--map-type Java DOMTimeStamp long
+--map-type Java DOMObject Object
+--map-type Java DOMUserData Object
+--map-type Java LSInputStream java.io.InputStream
+--map-type Java LSOutputStream java.io.OutputStream
+--map-type Java LSReader java.io.Reader
+--map-type Java LSWriter java.io.Writer
+--map-type Java DOMSystemException Exception
+?>
+
+<header> 
+<title>Document Object Model (DOM) Level 3 Validation Specification</title>
+<version>1.0</version> <w3c-designation>REC-DOM-Level-3-Val-20040127
+</w3c-designation> <w3c-doctype>W3C Recommendation</w3c-doctype> <pubdate> 
+<day>27</day> <month>January</month> <year>2004</year> 
+</pubdate> 
+<publoc> <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/2004/REC-DOM-Level-3-Val-20040127" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">http://www.w3.org/TR/2004/REC-DOM-Level-3-Val-20040127</loc>
+</publoc>
+<altlocs>
+<loc xmlns:xlink="http://www.w3.org/1999/xlink" role="html" href="http://www.w3.org/TR/2004/REC-DOM-Level-3-Val-20040127/xml-source.xml" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">XML file</loc>
+<loc xmlns:xlink="http://www.w3.org/1999/xlink" role="plain" href="http://www.w3.org/TR/2004/REC-DOM-Level-3-Val-20040127/DOM3-Val.txt" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">plain text</loc>
+<loc xmlns:xlink="http://www.w3.org/1999/xlink" role="postscript" href="http://www.w3.org/TR/2004/REC-DOM-Level-3-Val-20040127/DOM3-Val.ps" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">PostScript file</loc>
+<loc xmlns:xlink="http://www.w3.org/1999/xlink" role="pdf" href="http://www.w3.org/TR/2004/REC-DOM-Level-3-Val-20040127/DOM3-Val.pdf" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">PDF file</loc>
+<loc xmlns:xlink="http://www.w3.org/1999/xlink" role="html" href="http://www.w3.org/TR/2004/REC-DOM-Level-3-Val-20040127/DOM3-Val.html" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">single HTML file</loc>
+<loc xmlns:xlink="http://www.w3.org/1999/xlink" role="zip" href="http://www.w3.org/TR/2004/REC-DOM-Level-3-Val-20040127/DOM3-Val.zip" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">ZIP file</loc>
+    </altlocs>
+<latestloc> <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/DOM-Level-3-Val" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">http://www.w3.org/TR/DOM-Level-3-Val</loc> </latestloc> 
+<prevlocs>
+<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/2003/PR-DOM-Level-3-Val-20031215" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">http://www.w3.org/TR/2003/PR-DOM-Level-3-Val-20031215</loc>
+</prevlocs> 
+<authlist> 
+<author role="editor"> <name>Ben Chang</name>
+<affiliation>Oracle</affiliation> </author>
+<author role="editor"> <name>Joe Kesselman</name>
+<affiliation>IBM  (until September 2001)</affiliation> </author>
+<author role="editor"><name>Rezaur Rahman</name> 
+<affiliation>Intel Corporation (until July 2001)</affiliation> 
+</author> 
+</authlist>
+    <!--
+    ******************************************************
+    * DOCUMENT ABSTRACT                                  *
+    ******************************************************
+    -->
+<abstract id="id-abstract"> 
+
+      <p>
+	This specification defines the Document Object Model Validation
+	Level 3, a platform- and language-neutral interface. This module
+	provides the guidance to programs and scripts to dynamically
+	update the content and the structure of documents while ensuring
+	that the document remains valid, or to ensure that the document
+	becomes valid.
+      </p>
+
+</abstract>
+
+    <status>
+      <p>
+	<emph>This section describes the status of this document at the
+	time of its publication. Other documents may supersede this
+	document. A list of current W3C publications and the latest
+	revision of this technical report can be found in the <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">W3C technical reports index</loc>
+	at http://www.w3.org/TR/.</emph>
+      </p>
+      <p>
+	This is the <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/2003/06/Process-20030618/tr.html#maturity-levels" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">Recommendation</loc>
+	of "DOM Level 3 Validation". No changes were done to this
+	specification since the Proposed Recommendation version.
+      </p>
+      <p>
+	Comments on this document should be sent to the public mailing
+	list <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="mailto:www-dom@w3.org" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">www-dom@w3.org</loc>. An <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://lists.w3.org/Archives/Public/www-dom/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">archive</loc> is available at
+	http://lists.w3.org/Archives/Public/www-dom/.
+      </p>
+      <p>
+	An <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/2003/07/DOM-Level-3-Val-implementations.html" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">implementation
+	report</loc>, along with the test suite, is also available.
+      </p>
+      <p>
+	This is a stable document and has been endorsed by the W3C
+	Membership and the participants of the DOM working group. The
+	English version of this specification is the only normative
+	version. Information about <loc xmlns:xlink="http://www.w3.org/1999/xlink" role="translation" href="http://www.w3.org/2004/01/DOM-Level-3-translations" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">translations</loc>
+	of this document is available at
+	http://www.w3.org/2004/01/DOM-Level-3-translations.
+      </p>
+      <p>
+	The <loc xmlns:xlink="http://www.w3.org/1999/xlink" role="errata" href="http://www.w3.org/2004/01/DOM-Level-3-errata" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">list of known
+	errors</loc> in this document is available at http://www.w3.org/2004/01/DOM-Level-3-errata.
+      </p>
+      <p>
+	This document has been produced as part of the <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/DOM/Activity.html" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">W3C DOM
+	Activity</loc>. The authors of this document are the DOM Working
+	Group participants.
+      </p>
+      <p>
+        Patent disclosures relevant to this specification may be found
+        on the Working Group's <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/2002/08/02-DOM-Disclosures.html" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">patent
+        disclosure page</loc>.
+      </p>
+    </status>
+
+<sourcedesc>
+<p>Created in electronic form.</p>
+</sourcedesc>
+<langusage>
+<language id="en">English</language>
+</langusage>
+<revisiondesc>
+<p>$Revision: 1.7 $</p>
+</revisiondesc>
+<?GENERATE-TOC?>
+</header>
+<front>
+  
+<!-- $Id: xml-source.xml,v 1.7 2004/01/26 22:31:28 plehegar Exp $ -->
+<div1 id="TOC">
+  <head>Expanded Table of Contents</head>
+  <?GENERATE-EXPANDED-TOC?>	
+</div1>
+
+  
+<!-- $Id: xml-source.xml,v 1.7 2004/01/26 22:31:28 plehegar Exp $ -->
+<!--
+ *************************************************************************
+ * BEGINNING OF COPYRIGHT NOTICE                                         *
+ *************************************************************************
+-->
+<div1 id="Copyright-Notice">
+  <head>W3C Copyright Notices and Licenses</head>
+
+  <p role="important">
+    Copyright &#169; 2004 <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">World
+    Wide Web Consortium</loc>, (<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.lcs.mit.edu/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">Massachusetts Institute of
+    Technology</loc>, <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.ercim.org/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">European
+    Research Consortium for Informatics and Mathematics</loc>, <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.keio.ac.jp/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">Keio University</loc>). All Rights
+    Reserved.
+  </p>
+  <p>
+    This document is published under the <specref ref="Copyright-notice-document"/>. The bindings within this document
+    are published under the <specref ref="Copyright-notice-software"/>.
+    The software license requires "Notice of any changes or
+    modifications to the W3C files, including the date changes were
+    made." Consequently, modified versions of the DOM bindings must
+    document that they do not conform to the W3C standard; in the case
+    of the IDL definitions, the pragma prefix can no longer be
+    'w3c.org'; in the case of the Java language binding, the package
+    names can no longer be in the 'org.w3c' package.
+  </p>
+  <div2 id="Copyright-notice-document">
+    <head>W3C<sup>&#174;</sup> Document Copyright Notice and License</head>
+    <note>
+      <p>
+	This section is a copy of the W3C<sup>&#174;</sup> Document
+	Notice and License and could be found at <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/Consortium/Legal/2002/copyright-documents-20021231" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">http://www.w3.org/Consortium/Legal/2002/copyright-documents-20021231</loc>.
+      </p>
+    </note>
+    <p role="important">
+      Copyright &#169; 2004 <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">World Wide Web Consortium</loc>, (<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.lcs.mit.edu/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">Massachusetts Institute of
+      Technology</loc>, <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.ercim.org/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">European
+      Research Consortium for Informatics and Mathematics</loc>, <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.keio.ac.jp/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">Keio University</loc>). All Rights
+      Reserved.
+    </p>
+    <p role="important">      
+      http://www.w3.org/Consortium/Legal/2002/copyright-documents-20021231
+    </p>
+    <p>
+      Public documents on the W3C site are provided by the copyright
+      holders under the following license. By using and/or copying this
+      document, or the W3C document from which this statement is linked,
+      you (the licensee) agree that you have read, understood, and will
+      comply with the following terms and conditions:
+    </p>
+    <p>
+      Permission to copy, and distribute the contents of this document,
+      or the W3C document from which this statement is linked, in any
+      medium for any purpose and without fee or royalty is hereby
+      granted, provided that you include the following on
+      <emph>ALL</emph> copies of the document, or portions thereof, that
+      you use:
+    </p>
+    <olist>
+      <item>
+	<p>
+	  A link or URL to the original W3C document.
+	</p>
+      </item>
+      <item>
+	<p>
+	  The pre-existing copyright notice of the original author, or
+	  if it doesn't exist, a notice (hypertext is preferred, but a
+	  textual representation is permitted) of the form:
+	  "Copyright &#169; [$date-of-document] <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">World Wide Web Consortium</loc>,
+	  (<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.lcs.mit.edu/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">Massachusetts Institute
+	  of Technology</loc>, <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.ercim.org/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">European Research Consortium for
+	  Informatics and Mathematics</loc>, <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.keio.ac.jp/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">Keio University</loc>). All
+	  Rights Reserved.  <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/Consortium/Legal/2002/copyright-documents-20021231" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">http://www.w3.org/Consortium/Legal/2002/copyright-documents-20021231</loc>"
+	</p>
+      </item>
+      <item>
+	<p>
+	  <emph>If it exists</emph>, the STATUS of the W3C document.
+	</p>
+      </item>
+    </olist>
+    <p>
+      When space permits, inclusion of the full text of this <emph role="important">NOTICE</emph> should be provided. We request that
+      authorship attribution be provided in any software, documents, or other
+      items or products that you create pursuant to the implementation of the
+      contents of this document, or any portion thereof.
+    </p>
+    <p>
+      No right to create modifications or derivatives of W3C documents is
+      granted pursuant to this license. However, if additional requirements
+      (documented in the <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/Consortium/Legal/IPR-FAQ" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">Copyright
+      FAQ</loc>) are satisfied, the right to create modifications or
+      derivatives is sometimes granted by the W3C to individuals complying with
+      those requirements.
+    </p>
+    <p>
+      THIS DOCUMENT IS PROVIDED "AS IS," AND COPYRIGHT HOLDERS MAKE
+      NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED, INCLUDING, BUT NOT
+      LIMITED TO, WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+      PURPOSE, NON-INFRINGEMENT, OR TITLE; THAT THE CONTENTS OF THE DOCUMENT
+      ARE SUITABLE FOR ANY PURPOSE; NOR THAT THE IMPLEMENTATION OF SUCH
+      CONTENTS WILL NOT INFRINGE ANY THIRD PARTY PATENTS, COPYRIGHTS,
+      TRADEMARKS OR OTHER RIGHTS.
+    </p>
+    <p>
+      COPYRIGHT HOLDERS WILL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL OR
+      CONSEQUENTIAL DAMAGES ARISING OUT OF ANY USE OF THE DOCUMENT OR THE
+      PERFORMANCE OR IMPLEMENTATION OF THE CONTENTS THEREOF.
+    </p>
+    <p>
+      The name and trademarks of copyright holders may NOT be used in
+      advertising or publicity pertaining to this document or its contents
+      without specific, written prior permission. Title to copyright in this
+      document will at all times remain with copyright holders.
+    </p>
+  </div2>
+  <div2 id="Copyright-notice-software">
+    <head>W3C<sup>&#174;</sup> Software Copyright Notice and License</head>
+    <note>
+      <p>
+	This section is a copy of the W3C<sup>&#174;</sup> Software
+	Copyright Notice and License and could be found at <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231</loc>
+      </p>
+    </note>
+    <p role="important">
+      Copyright &#169; 2004 <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">World Wide Web Consortium</loc>, (<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.lcs.mit.edu/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">Massachusetts Institute of
+      Technology</loc>, <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.ercim.org/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">European
+      Research Consortium for Informatics and Mathematics</loc>, <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.keio.ac.jp/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">Keio University</loc>). All Rights
+      Reserved.
+    </p>
+    <p role="important">      
+      http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
+    </p>
+    <p>
+      This work (and included software, documentation such as READMEs,
+      or other related items) is being provided by the copyright holders
+      under the following license. By obtaining, using and/or copying
+      this work, you (the licensee) agree that you have read,
+      understood, and will comply with the following terms and
+      conditions.
+    </p>
+    <p>
+      Permission to copy, modify, and distribute this software and its
+      documentation, with or without modification, for any purpose and
+      without fee or royalty is hereby granted, provided that you
+      include the following on ALL copies of the software and
+      documentation or portions thereof, including modifications:
+    </p>
+    <olist>
+      <item>
+	<p>The full text of this NOTICE in a location viewable to users of the
+	redistributed or derivative work.</p>
+      </item>
+      <item>
+	<p>
+	  Any pre-existing intellectual property disclaimers, notices,
+	  or terms and conditions. If none exist, the <specref ref="Copyright-short-notice"/> should be included (hypertext
+	  is preferred, text is permitted) within the body of any
+	  redistributed or derivative code.
+	</p>
+      </item>
+      <item>
+	<p>
+	  Notice of any changes or modifications to the files, including
+	  the date changes were made. (We recommend you provide URIs to
+	  the location from which the code is derived.)
+	</p>
+      </item>
+    </olist>
+    <p>
+      THIS SOFTWARE AND DOCUMENTATION IS PROVIDED "AS IS," AND COPYRIGHT
+      HOLDERS MAKE NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED,
+      INCLUDING BUT NOT LIMITED TO, WARRANTIES OF MERCHANTABILITY OR FITNESS
+      FOR ANY PARTICULAR PURPOSE OR THAT THE USE OF THE SOFTWARE OR
+      DOCUMENTATION WILL NOT INFRINGE ANY THIRD PARTY PATENTS, COPYRIGHTS,
+      TRADEMARKS OR OTHER RIGHTS.
+    </p>
+    <p>
+      COPYRIGHT HOLDERS WILL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL OR
+      CONSEQUENTIAL DAMAGES ARISING OUT OF ANY USE OF THE SOFTWARE OR
+      DOCUMENTATION.
+    </p>
+    <p>
+      The name and trademarks of copyright holders may NOT be used in
+      advertising or publicity pertaining to the software without specific,
+      written prior permission. Title to copyright in this software and any
+      associated documentation will at all times remain with copyright holders.
+    </p>
+  </div2>
+  <div2 id="Copyright-short-notice">
+    <head>W3C<sup>&#174;</sup> Short Software Notice</head>
+
+    <note>
+      <p>
+	This section is a copy of the W3C<sup>&#174;</sup> Short Software
+	Notice and could be found at <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/Consortium/Legal/2002/copyright-software-short-notice-20021231" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">http://www.w3.org/Consortium/Legal/2002/copyright-software-short-notice-20021231</loc>
+      </p>
+    </note>
+    <p role="important">
+      Copyright &#169; 2004 <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">World
+      Wide Web Consortium</loc>, (<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.lcs.mit.edu/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">Massachusetts Institute of
+      Technology</loc>, <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.ercim.org/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">European
+      Research Consortium for Informatics and Mathematics</loc>, <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.keio.ac.jp/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">Keio University</loc>). All Rights
+      Reserved.
+    </p>
+    <p>
+      Copyright &#169; [$date-of-software] <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">World Wide Web Consortium</loc>, (<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.lcs.mit.edu/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">Massachusetts Institute of
+      Technology</loc>, <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.ercim.org/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">European
+      Research Consortium for Informatics and Mathematics</loc>, <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.keio.ac.jp/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">Keio University</loc>). All Rights
+      Reserved. This work is distributed under the W3C<sup>&#174;</sup>
+      Software License [1] in the hope that it will be useful, but
+      WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+    </p>
+    <p>
+      [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
+    </p>
+  </div2>
+</div1>
+<!--
+ *************************************************************************
+ * END OF COPYRIGHT NOTICE                                               *
+ *************************************************************************
+-->
+
+</front> 
+ 
+<body>
+  
+<!-- $Id: xml-source.xml,v 1.7 2004/01/26 22:31:28 plehegar Exp $ -->
+<!--
+ *************************************************************************
+ * BEGINNING OF VALIDATION
+ *************************************************************************
+-->
+<div1 id="Level-3-Validation"> 
+  <head>Validation</head> 
+  <orglist role="editors"> 
+    <member> 
+      <name>Ben Chang</name> 
+      <affiliation>Oracle</affiliation> 
+    </member> 
+    <member> 
+      <name>Joe Kesselman</name> 
+      <affiliation>IBM (until September 2001)</affiliation> 
+    </member> 
+    <member> 
+      <name>Rezaur Rahman</name> 
+      <affiliation>Intel Corporation (until July 2001)</affiliation> 
+    </member>     
+
+  </orglist><?GENERATE-MINI-TOC?>
+  <!--
+  ******************************************************
+  Last known edit 12/03/2003
+  Suggestions welcome, especially if accompanied by
+  proposed revisions already marked up as per spec.dtd! 
+  ******************************************************
+  -->
+  <!--
+  ******************************************************
+  | OVERVIEW                                            |
+  ******************************************************
+  -->
+  <div2 id="VAL-overview"> 
+    <head>Overview</head> 
+    <p>This chapter describes the optional DOM Level 3 Validation
+       feature. This module provides Application Programming Interfaces
+       (APIs) to guide construction and editing
+       of XML documents.  Examples of such guided editing are queries like
+       those that combine questions like "what does
+       the schema allow me to insert/delete here" and "if I insert/delete
+       here, will the document still be valid."
+    </p>
+    <p>
+       To aid users in the editing and creation of XML documents, other
+       queries may expose different levels of details, e.g., 
+       all the possible children, those which would be valid given
+       what precedes this point, lists of defined symbols of a given
+       kind.
+       Some of these queries would prompt checks and warn users if they're
+       about to conflict with or overwrite such data.
+    </p>
+    <p>
+       Finally, users would like to validate an edited or newly 
+       constructed document before serializing it or passing it to other
+       users.  They may edit, come up with an invalid document,
+       then edit again to result in a valid document.  During this process,
+       these APIs can allow the user to check the validity of the document
+       or subtree on demand. If necessary, these APIs can also require that the 
+       document or subtree remain valid during this editing process via
+       the <code>DocumentEditVal.continuousValidityChecking</code> flag.
+    </p>
+
+    <p>
+       A DOM application can use the <code>hasFeature(feature, version)</code> 
+       method of the <code>DOMImplementation</code> interface to determine 
+       with parameter values <code>"Validation"</code> and <code>"3.0"</code>, 
+       respectively, whether or not these interfaces are 
+       supported by the implementation.  This implementation is dependent
+       on <bibref ref="DOM2Core"/> and the
+       <bibref ref="DOMCore"/> <code>DOMConfiguration</code> interface.
+    </p>       
+    <p>
+       This chapter focuses on the editing aspects used in the XML 
+       document editing world and usage of such information.  The 
+       appendix describes in detail all the possible outcomes of 
+       the validation operations on the different node types.
+    </p>
+
+<!--
+  ******************************************************
+  | ISSUES                                             |
+  ******************************************************
+<div2 id="Level-3-VAL-Issue-List">
+  <head>Issue List</head>
+
+  <div3 id="VAL-Issues-List-Resolved">
+    <head>Resolved Issues</head>
+
+    <issue id="VAL-Issue-8" status="open">
+      <p>For Validation interfaces there should be no dependency on DOM Core. 
+      </p>
+      <p>The <code>NodeEditVAL</code> interface will not extend DOM Core.  It is simply an object that expresses similar interfaces.</p>
+    </issue>
+
+  </div3>
+
+-->
+
+</div2>
+  
+  <div2 id="Exception"><head>Exceptions</head> 
+    <p>This section describes the "VAL-DOC-EDIT" exceptions. </p> 
+    <definitions> 
+
+<exception id="ExceptionVAL" name="ExceptionVAL">
+  <descr>
+    <p>
+      Some Validation operations may throw an <code>ExceptionVAL</code> as 
+      described in their descriptions.
+    </p>
+  </descr> 
+
+  <component id="ExceptionVAL-code" name="code">
+    <typename>unsigned short</typename>
+  </component>
+
+</exception>
+
+<group id="ExceptionVAL-codes" name="ExceptionVALCode"><descr>
+    <p>
+      An integer indicating the type of error generated.
+    </p>
+  </descr> 
+
+<constant id="ExceptionVAL-NO_SCHEMA_AVAILABLE_ERR" name="NO_SCHEMA_AVAILABLE_ERR" type="unsigned short" value="71">
+    <descr>
+      <p>
+          This error occurs when the operation cannot complete due to an
+          unavailable <termref def="dt-schema">schema</termref>.
+      </p>
+    </descr></constant>
+
+</group>
+
+      
+    </definitions> 
+  </div2> 
+
+  <div2 id="DocumentEditing"><head>Document Editing Interfaces</head> 
+    <p>This section contains "Document Editing" methods as described in the
+       <code>DocumentEditVAL</code>, <code>NodeEditVAL</code>, 
+       <code>ElementEditVAL</code>, and <code>CharacterDataEditVAL</code>
+       interfaces.  References to new <bibref ref="DOMCore"/> interfaces
+       such as <code>DOMStringList</code> and <code>NameList</code> also
+       exist.  With the latter interface, if the schema is a DTD, the 
+       element information item names are simply local names; if the schema
+       is a W3C XML schema, the names are qualified names, which may contain
+       namespace prefixes.
+    </p>
+
+    <definitions> 
+      <!--=====================================================================
+      =                                                                       =
+      =      DocumentEditVAL
+      =                                                                       =
+      ======================================================================-->
+      <interface name="DocumentEditVAL" inherits="NodeEditVAL" id="VAL-Interfaces-DocumentEditVAL"> 
+	<descr> 
+	  <p>This interface extends the <code>NodeEditVAL</code> interface with additional methods for document editing.  An object implementing this interface must also implement the <code>Document</code> interface.</p>
+	  
+	</descr> 
+	<attribute name="continuousValidityChecking" type="boolean" id="DocumentEditVAL-continuousValidityChecking" readonly="no"> 
+	  <descr> 
+	    <p>An attribute specifying whether the validity of the document
+	      is continuously enforced.  When the attribute is set to 
+              <code>true</code>, the implementation may raise certain 
+              exceptions, depending on the situation (see the following).  
+              This attribute is <code>false</code> by default.
+            </p> 
+          </descr>
+            <setraises>
+            <exception name="DOMException">
+               <descr>
+                  <p>NOT_SUPPORTED_ERR: Raised if the implementation 
+                     does not support setting this attribute to
+		     <code>true</code>.
+                  </p> 
+               </descr>
+            </exception>
+            <exception name="ExceptionVAL">
+               <descr>
+                   <p>NO_SCHEMA_AVAILABLE_ERR: Raised if this 
+                      attribute is set to <code>true</code>
+		      and a schema is unavailable.
+                   </p>
+               </descr>
+            </exception>
+            <exception name="DOMException">
+               <descr>
+                   <p>VALIDATION_ERR: Raised if an operation makes
+		      this document not compliant with the 
+		      <code>VAL_INCOMPLETE</code> validity type
+		      or the document is invalid, and this 
+                      attribute is set to <code>true</code>.
+                   </p>
+               </descr>
+            </exception>
+            </setraises> 
+        </attribute> 
+
+	<attribute name="domConfig" type="DOMConfiguration" readonly="yes" id="DocumentEditVAL-domConfig"> 
+	  <descr>
+            <p>
+	      This allows the setting of the error handler, as described in the
+              <bibref ref="DOMCore"/> <code>DOMConfiguration</code> interface.
+	      An object implementing this <code>DocumentEditVAL</code> interface
+              and the <bibref ref="DOMCore"/> 
+	      <code>Document</code> interface, which also has a <code>domConfig</code> attribute, needs to only implement this attribute once.
+            </p>
+	  </descr>
+        </attribute> 	
+
+        <method name="getDefinedElements" id="DocumentEditVAL-getDefinedElements"> 
+	  <descr> 
+	    <p>
+               Returns list of all element information item names of 
+               <termref def="dt-global-declaration">global declaration</termref>,
+               belonging to the specified namespace.
+            </p>
+	  </descr>
+	  <parameters> 
+	    <param attr="in" type="DOMString" name="namespaceURI"> 
+	      <descr> 
+		<p><code>namespaceURI</code> of namespace.  For DTDs,
+		   this is <code>null</code>.</p> 
+	      </descr> 
+	    </param> 
+	  </parameters> 
+	  <returns type="NameList"> 
+	    <descr> 
+	      <p>List of all element information item names belonging to the
+		 specified namespace or <code>null</code> if no schema is 
+                 available.  
+              </p>
+	    </descr> 
+	  </returns> 
+	  <raises> 
+	  </raises> 
+        </method> 	
+
+        <method name="validateDocument" id="VAL-Interfaces-DocumentEditVAL-validateDocument">
+          <descr>
+            <p>Validates the document against the schema, e.g., a DTD or an
+               W3C XML schema or another.  Any attempt to modify any part of the 
+	       document while validating results in implementation-dependent 
+               behavior.  In addition, the validation operation itself cannot
+	       modify the document, e.g., for default attributes.
+               This method makes use of the error handler, as
+               described in the <bibref ref="DOMCore"/> 
+	       <code>DOMConfiguration</code> interface, with all errors
+               being <code>SEVERITY_ERROR</code> as defined in the 
+               <code>DOMError</code> interface.
+
+            </p>
+          </descr>
+          <parameters>
+          </parameters>
+          <returns type="unsigned short">
+            <descr>
+               <p>
+                  A <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#NodeEditVAL-validationState" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">validation state</loc> constant.
+               </p>
+            </descr>
+          </returns>
+          <raises>
+          </raises>
+        </method>
+
+      </interface>   	 
+      <!--=====================================================================
+      =                                                                       =
+      =      NodeEditVAL
+      =                                                                       =
+      ======================================================================-->
+      <interface name="NodeEditVAL" id="VAL-Interfaces-NodeEditVAL"> 
+	<descr> 
+	  <p>This interface is similar to the <bibref ref="DOMCore"/> <code>Node</code> interface, with methods for guided document editing.</p> 
+	</descr> 
+
+        <group name="validationType" id="NodeEditVAL-validationType">
+          <descr>
+            <p>An integer indicating the validation type.
+	       Other specifications can define stricter 
+	       validation types/constants by extending 
+	       the <code>NodeEditVAL</code> interface.
+            </p>
+          </descr>
+
+	  <constant id="VAL-Interfaces-NodeEditVAL-VAL_WF" name="VAL_WF" type="unsigned short" value="1"> 
+	    <descr> 
+              <p>Check if the node is <termref def="dt-well-formed">
+                 well-formed</termref>.</p>
+	    </descr></constant>
+
+          <constant id="VAL-Interfaces-NodeEditVAL-VAL_NS_WF" name="VAL_NS_WF" type="unsigned short" value="2"> 
+	    <descr> 
+               <p>Check if the node is 
+	          <termref def="dt-namespace-well-formed">namespace
+                   well-formed</termref>.
+	       </p>
+	    </descr></constant>
+
+          <constant id="VAL-Interfaces-NodeEditVAL-VAL_INCOMPLETE" name="VAL_INCOMPLETE" type="unsigned short" value="3"> 
+	    <descr> 
+	      <p>Check if the node's immediate children are those
+                 expected by the content model. This node's trailing 
+                 required children could be missing.
+		 It includes <code>VAL_NS_WF</code>. 
+              </p> 
+	    </descr></constant>
+
+          <constant id="VAL-Interfaces-NodeEditVAL-VAL_SCHEMA" name="VAL_SCHEMA" type="unsigned short" value="4"> 
+	    <descr> 
+	      <p>
+              Check if the node's entire subtree are those expected
+              by the content model.  It includes <code>VAL_NS_WF</code>.
+              </p>
+	    </descr></constant>
+
+          </group>
+
+          <group name="validationState" id="NodeEditVAL-validationState">
+          <descr>
+            <p>An integer indicating the validation state,
+               or whether the operation can or cannot be done.</p>
+          </descr>
+
+          <constant id="VAL-Interfaces-NodeEditVAL-VAL_TRUE" name="VAL_TRUE" type="unsigned short" value="5"> 
+	    <descr> 
+	      <p>
+		True if the node is valid with regards to the operation, 
+                or if the operation can be done.
+              </p>
+	    </descr></constant>
+
+          <constant id="VAL-Interfaces-NodeEditVAL-VAL_FALSE" name="VAL_FALSE" type="unsigned short" value="6"> 
+	    <descr> 
+	      <p>
+                False if the node is invalid with regards to the
+		operation, or if the operation cannot be done.
+              </p>
+	    </descr></constant>
+
+          <constant id="VAL-Interfaces-NodeEditVAL-VAL_UNKNOWN" name="VAL_UNKNOWN" type="unsigned short" value="7"> 
+	    <descr> 
+	      <p>
+                The validity of the node is unknown.
+              </p>
+	    </descr></constant>
+        </group>
+
+	<attribute name="defaultValue" type="DOMString" readonly="yes" id="NodeEditVAL-defaultValue"> 
+	  <descr> 
+	    <p>
+              The default value specified in an attribute or an element declaration or <code>null</code> if unspecified.  If the schema is a W3C XML schema,
+              this is the canonical lexical representation of the default value.
+            </p>
+	  </descr>
+        </attribute> 	
+
+	<attribute name="enumeratedValues" type="DOMStringList" readonly="yes" id="NodeEditVAL-enumeratedValues"> 
+	  <descr> 
+	    <p>
+                A <code>DOMStringList</code>, as 
+	        described in <bibref ref="DOMCore"/>, 
+                of distinct values for an attribute 
+                or an element declaration or <code>null</code>
+		if unspecified.  If the schema is a W3C XML schema, this is a 
+		list of strings which are lexical representations corresponding
+                to the values in the [value] property of the enumeration 
+		component for the type of the attribute or element.  It is
+		recommended that the canonical lexical representations of the
+		values be used.
+            </p>
+	  </descr>
+        </attribute> 	
+	
+	<method name="canInsertBefore" id="VAL-Interfaces-NodeEditVAL-canInsertBefore"> 
+	  <descr> 
+	    <p>Determines whether the <code>Node.insertBefore</code> operation 
+	      would make this document not compliant with the <code>VAL_INCOMPLETE</code>
+	      validity type. </p> 
+	  </descr> 
+	  <parameters> 
+	    <param attr="in" type="Node" name="newChild"> 
+	      <descr> 
+		<p><code>Node</code> to be inserted.</p> 
+	      </descr> 
+	    </param> 
+	    <param attr="in" type="Node" name="refChild"> 
+	      <descr> 
+		<p>Reference <code>Node</code>.</p> 
+	      </descr> 
+	    </param> 
+	  </parameters> 
+	  <returns type="unsigned short"> 
+            <descr>
+               <p>
+                  A <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#NodeEditVAL-validationState" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">validation state</loc> constant.
+               </p>
+            </descr>
+	  </returns> 
+	  <raises> 
+	  </raises> 
+	</method> 
+
+	<method name="canRemoveChild" id="VAL-Interfaces-NodeEditVAL-canRemoveChild">	  
+	  <descr> 
+	    <p>
+	    Determines whether the <code>Node.removeChild</code> operation 
+	      would make this document not compliant with the <code>VAL_INCOMPLETE</code>
+	      validity type. </p> 
+	  </descr> 
+	  <parameters> 
+	    <param attr="in" type="Node" name="oldChild"> 
+	      <descr> 
+		<p><code>Node</code> to be removed.</p> 
+	      </descr> 
+	    </param> 
+	  </parameters> 
+	  <returns type="unsigned short"> 
+            <descr>
+               <p>
+                  A <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#NodeEditVAL-validationState" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">validation state</loc> constant.
+               </p>
+            </descr>
+	  </returns> 
+	  <raises> 
+	  </raises> 
+	</method> 
+
+	<method name="canReplaceChild" id="VAL-Interfaces-NodeEditVAL-canReplaceChild"> 
+	  <descr> 
+	    <p>
+	    Determines whether the <code>Node.replaceChild</code> operation 
+	      would make this document not compliant with the <code>VAL_INCOMPLETE</code> 
+	      validity type. </p> 
+	  </descr> 
+	  <parameters> 
+	    <param attr="in" type="Node" name="newChild"> 
+	      <descr> 
+		<p>New <code>Node</code>.</p> 
+	      </descr> 
+	    </param> 
+	    <param attr="in" type="Node" name="oldChild"> 
+	      <descr> 
+		<p><code>Node</code> to be replaced.</p> 
+	      </descr> 
+	    </param> 
+	  </parameters> 
+	  <returns type="unsigned short"> 
+            <descr>
+               <p>
+                  A <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#NodeEditVAL-validationState" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">validation state</loc> constant.
+               </p>
+            </descr>
+          </returns>
+	  <raises> 
+	  </raises> 
+	</method> 
+
+	<method name="canAppendChild" id="VAL-Interfaces-NodeEditVAL-canAppendChild">	  
+	  <descr> 
+	    <p>
+	    Determines whether the <code>Node.appendChild</code> operation 
+	      would make this document not compliant with the <code>VAL_INCOMPLETE</code> 
+	      validity type. </p> 
+	  </descr> 
+	  <parameters> 
+	    <param attr="in" type="Node" name="newChild"> 
+	      <descr> 
+		<p><code>Node</code> to be appended.</p> 
+	      </descr> 
+	    </param> 
+	  </parameters> 
+	  <returns type="unsigned short"> 
+            <descr>
+               <p>
+                  A <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#NodeEditVAL-validationState" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">validation state</loc> constant.
+               </p>
+            </descr>
+	  </returns> 
+	  <raises> 
+	  </raises> 
+	</method> 
+
+	<method name="nodeValidity" id="NodeEditVAL-nodeValidity"> 
+	  <descr> 
+	    <p>Determines if the node is valid relative to the 
+            <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#NodeEditVAL-validationType" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">validation type</loc>
+            specified in <code>valType</code>. This operation 
+            doesn't normalize before checking if it is valid.
+	    To do so, one would need to explicitly call a normalize
+	    method.  The difference between this method and the 
+	    <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#VAL-Interfaces-DocumentEditVAL-validateDocument" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">DocumentEditVAL.validateDocument</loc> method 
+            is that the latter method only checks to 
+            determine whether the entire document is valid.
+            </p> 
+	  </descr> 
+	  <parameters> 
+	    <param name="valType" type="unsigned short" attr="in">
+	      <descr>
+		<p>Flag to indicate the 
+                   <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#NodeEditVAL-validationType" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">validation type</loc>
+                   checking to be done.
+		</p>
+	      </descr>
+	    </param>
+	  </parameters> 
+	  <returns type="unsigned short"> 
+            <descr>
+               <p>
+                  A <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#NodeEditVAL-validationState" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">validation state</loc> constant.
+               </p>
+            </descr>
+          </returns>
+	  <raises> 
+	  </raises> 
+	</method> 
+
+      </interface>                    
+ 
+     <!--=====================================================================
+      =                                                                       =
+      =      ElementEditVAL
+      =                                                                       =
+      ======================================================================-->
+      <interface name="ElementEditVAL" inherits="NodeEditVAL" id="VAL-Interfaces-ElementEditVAL"> 
+	<descr> 
+	  <p>This interface extends the <code>NodeEditVAL</code> interface 
+             with additional methods for guided document editing. An
+	     object implementing this interface must also implement the
+             <code>Element</code> interface.
+          </p> 
+
+          <p id="Level-3-VAL-Wildcards">
+             This interface also has attributes that are a
+             <code>NameList</code> of elements or attributes which can
+             appear in the specified context.  Some schema languages,
+             i.e., <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/xmlschema-1/#Wildcards" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">W3C XML
+             schema</loc>, define wildcards which provide for validation
+             of attribute and element information items dependent on
+             their namespace names but independent of their local names.
+          </p>
+  
+          <p>To expose wildcards, the <code>NameList</code> returns the values 
+             that represent the
+             <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/xmlschema-1/#namespace_constraint" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+             namespace constraint</loc>:
+          </p>
+ 
+         <ulist>
+         <item><p>
+             <code>{namespaceURI, name}</code>
+             is <code>{null, ##any}</code> if <emph>any</emph>;
+         </p></item>
+
+         <item><p>
+             <code>{namespaceURI, name}</code> 
+             is <code>{namespace_a, ##other}</code> if 
+             <emph>not and a namespace name (namespace_a)</emph>;
+         </p></item>
+  
+         <item><p>
+             <code>{namespaceURI, name}</code> 
+             is <code>{null, ##other}</code> if
+             <emph>not and absent</emph>;
+         </p></item>
+
+         <item><p>
+             Pairs of <code>{namespaceURI, name}</code> with values
+             <code>{a_namespaceURI | null, null}</code> if 
+             <emph>a set whose members are either namespace
+             names or absent</emph>.
+         </p></item>
+         </ulist>
+
+       </descr> 
+
+        <group name="ContentTypeVAL" id="ElementEditVAL-ContentTypeVAL">
+          <descr>
+            <p>
+               An integer indicating the content type of an element.
+            </p>
+          </descr>
+
+	  <constant id="VAL-Interfaces-ElementEditVAL-VAL_EMPTY_CONTENTTYPE" name="VAL_EMPTY_CONTENTTYPE" type="unsigned short" value="1"> 
+	    <descr> 
+              <p>The content model does not allow any 
+                 <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/REC-xml#dt-content" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">content</loc>.
+              If the schema is a W3C XML schema, this corresponds 
+              to the <code>empty</code> content type; and if the schema is a DTD,
+              this corresponds to the <code>EMPTY</code> content model.
+              </p>      
+	    </descr></constant>
+
+          <constant id="VAL-Interfaces-ElementEditVAL-VAL_ANY_CONTENTTYPE" name="VAL_ANY_CONTENTTYPE" type="unsigned short" value="2"> 
+	    <descr> 
+              <p>The content model contains unordered child information 
+                 item(s), i.e., 
+                 element, processing instruction, unexpanded entity reference, 
+                 character, and comment information items as defined in the
+                 <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/xml-infoset/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">XML Information Set</loc>.
+                 If the schema is a DTD, this corresponds to the 
+                 <code>ANY</code> content model.            
+              </p> 
+	    </descr></constant>
+
+          <constant id="VAL-Interfaces-ElementEditVAL-VAL_MIXED_CONTENTTYPE" name="VAL_MIXED_CONTENTTYPE" type="unsigned short" value="3"> 
+	    <descr> 
+              <p>The content model contains a sequence of ordered
+              <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/xml-infoset/#infoitem.element" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">element information items</loc>
+              optionally interspersed with character data. If the schema
+              is a W3C XML schema, this corresponds to the <code>mixed</code>
+              content type.       
+              </p> 
+	    </descr></constant>
+
+        
+          <constant id="VAL-Interfaces-ElementEditVAL-VAL_ELEMENTS_CONTENTTYPE" name="VAL_ELEMENTS_CONTENTTYPE" type="unsigned short" value="4">
+            <descr>
+              <p>The content model contains a sequence of
+              <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/xml-infoset/#infoitem.element" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">element information items</loc>
+              optionally separated by whitespace. If the schema is a DTD, this 
+              is the <code>element content</code> content model; and if the schema
+              is a W3C XML schema, this is the
+              <code>element-only</code> content type.
+              </p>
+	    </descr></constant>
+
+
+          <constant id="VAL-Interfaces-ElementEditVAL-VAL_SIMPLE_CONTENTTYPE" name="VAL_SIMPLE_CONTENTTYPE" type="unsigned short" value="5"> 
+	    <descr> 
+            <p>The content model contains 
+            <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/xml-infoset/#infoitem.character" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+            character information items</loc>. If the schema is a W3C XML schema,
+	    then the element has a content type of <code>VAL_SIMPLE_CONTENTTYPE</code>
+	    if the type of the element is a <code>simple type definition</code>,
+	    or the type of the element is a <code>complexType</code> whose
+	    <code>{content type}</code> is a <code>simple type definition</code>.
+            </p>
+	    </descr></constant>
+        </group>
+
+	<attribute name="allowedChildren" type="NameList" readonly="yes" id="ElementEditVAL-allowedChildren"> 
+	  <descr>
+            <p>A <code>NameList</code>, as described in <bibref ref="DOMCore"/>,
+           of all possible element information items or
+           <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#VAL-Interfaces-ElementEditVAL" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">wildcards</loc>
+           that can appear as children of this element, or <code>null</code>
+           if this element has no context or schema.
+           Duplicate pairs of {namespaceURI, name} are eliminated.             
+            </p>
+
+	  </descr>
+        </attribute> 	
+
+	<attribute name="allowedFirstChildren" type="NameList" readonly="yes" id="ElementEditVAL-allowedFirstChildren"> 
+	  <descr>
+            <p>A <code>NameList</code>, as described in <bibref ref="DOMCore"/>,
+           of all possible element information items or
+           <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#VAL-Interfaces-ElementEditVAL" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">wildcards</loc>
+           that can appear as a first child of this element, or <code>null</code>
+           if this element has no context or schema.
+           Duplicate pairs of {namespaceURI, name} are eliminated.
+            </p>
+	  </descr>
+        </attribute> 	
+
+	<attribute name="allowedParents" type="NameList" readonly="yes" id="ElementEditVAL-allowedParents"> 
+	  <descr> 
+            <p>A <code>NameList</code>, as described in <bibref ref="DOMCore"/>,
+           of all possible element information items
+           that can appear as a parent this element, or <code>null</code>
+           if this element has no context or schema.
+            </p>
+	  </descr>
+        </attribute> 	
+
+	<attribute name="allowedNextSiblings" type="NameList" readonly="yes" id="ElementEditVAL-allowedNextSiblings"> 
+	  <descr> 
+            <p>A <code>NameList</code>, as described in <bibref ref="DOMCore"/>,
+           of all element information items
+           or <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#VAL-Interfaces-ElementEditVAL" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">wildcards</loc>
+           that can be inserted as a next sibling of this element, or <code>null</code>
+           if this element has no context or schema.
+           Duplicate pairs of {namespaceURI, name} are eliminated.             
+            </p>
+	  </descr>
+        </attribute> 	
+
+	<attribute name="allowedPreviousSiblings" type="NameList" readonly="yes" id="ElementEditVAL-allowedPreviousSiblings"> 
+	  <descr> 
+            <p>A <code>NameList</code>, as described in <bibref ref="DOMCore"/>,
+           of all element information items
+           or <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#VAL-Interfaces-ElementEditVAL" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">wildcards</loc>
+           that can be inserted as a previous sibling of this element, or <code>null</code>
+           if this element has no context or schema.
+            </p>
+	  </descr>
+        </attribute> 	
+
+	<attribute name="allowedAttributes" type="NameList" readonly="yes" id="ElementEditVAL-allowedAttributes"> 
+	  <descr> 
+            <p>A <code>NameList</code>, as described in <bibref ref="DOMCore"/>,
+           of all possible attribute information items
+           or <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#VAL-Interfaces-ElementEditVAL" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">wildcards</loc>
+           that can appear as attributes of this element, or <code>null</code>
+           if this element has no context or schema.
+           Duplicate pairs of {namespaceURI, name} are eliminated.             
+            </p>
+	  </descr>
+        </attribute> 	
+
+	<attribute name="requiredAttributes" type="NameList" readonly="yes" id="ElementEditVAL-requiredAttributes"> 
+	  <descr> 
+            <p>A <code>NameList</code>, as described in <bibref ref="DOMCore"/>,
+           of required attribute information items
+           that must appear on this element, or <code>null</code>
+           if this element has no context or schema.
+            </p>
+	  </descr>
+        </attribute> 	
+	
+        <attribute name="contentType" type="unsigned short" readonly="yes" id="VAL-Interfaces-ElementEditVAL-ElementEditVAL-contentType"> 
+	  <descr> 
+            <p>The content type of an element as defined <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#ElementEditVAL-ContentTypeVAL" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">above</loc>.                                               
+            </p> 
+	  </descr> 
+	</attribute>
+
+	<method name="canSetTextContent" id="VAL-Interfaces-ElementEditVAL-canSetTextContent"> 
+	  <descr> 
+	    <p>
+	      Determines if the text content of this node and its descendants
+              can be set to the string passed in.
+            </p> 
+	  </descr> 
+	  <parameters> 
+	    <param attr="in" type="DOMString" name="possibleTextContent"> 
+	      <descr> 
+		<p>Possible text content string.</p> 
+	      </descr> 
+	    </param> 
+	  </parameters> 
+          <returns type="unsigned short">
+            <descr>
+               <p>
+                  A <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#NodeEditVAL-validationState" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">validation state</loc> constant.
+               </p>
+            </descr>
+          </returns>
+	  <raises> 
+	  </raises> 
+	</method> 
+
+	<method name="canSetAttribute" id="VAL-Interfaces-ElementEditVAL-ElementEditVAL-canSetAttribute"> 
+	  <descr> 
+	    <p>Determines if the value for specified attribute can be set.</p> 
+	  </descr> 
+	  <parameters> 
+	    <param attr="in" type="DOMString" name="attrname"> 
+	      <descr> 
+		<p>Name of attribute.</p> 
+	      </descr> 
+	    </param> 
+	    <param attr="in" type="DOMString" name="attrval"> 
+	      <descr> 
+		<p>Value to be assigned to the attribute.</p> 
+	      </descr> 
+	    </param> 
+	  </parameters> 
+          <returns type="unsigned short">
+            <descr>
+               <p>
+                  A <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#NodeEditVAL-validationState" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">validation state</loc> constant.
+               </p>
+            </descr>
+          </returns>
+	  <raises> 
+	  </raises> 
+	</method> 
+
+	<method name="canSetAttributeNode" id="VAL-Interfaces-ElementEditVAL-canSetAttributeNode"> 
+	  <descr> 
+	    <p>Determines if an attribute node can be added. </p>
+	  </descr> 
+	  <parameters> 
+	    <param attr="in" type="Attr" name="attrNode"> 
+	      <descr> 
+		<p><code>Node</code> in which the attribute can possibly be set.</p> 
+	      </descr> 
+	    </param> 
+	  </parameters> 
+          <returns type="unsigned short">
+            <descr>
+               <p>
+                  A <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#NodeEditVAL-validationState" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">validation state</loc> constant.
+               </p>
+            </descr>
+          </returns>
+	  <raises> 
+	  </raises> 
+	</method> 
+
+	<method name="canSetAttributeNS" id="VAL-Interfaces-ElementEditVAL-canSetAttributeNS"> 
+	  <descr> 
+	    <p>Determines if the attribute with given namespace and qualified name
+	      can be created if not already present in the attribute list of the element. If
+	      the attribute with the same qualified name and namespaceURI is already present in the
+	      element's attribute list, it tests whether the value of the attribute and its prefix can be set to 
+	      the new value. </p> 
+	  </descr> 
+	  <parameters> 
+	    <param attr="in" type="DOMString" name="namespaceURI"> 
+	      <descr> 
+		<p><code>namespaceURI</code> of namespace.</p> 
+	      </descr> 
+	    </param> 
+	    <param attr="in" type="DOMString" name="qualifiedName"> 
+	      <descr> 
+		<p>Qualified name of attribute.</p> 
+	      </descr> 
+	    </param> 
+	    <param attr="in" type="DOMString" name="value"> 
+	      <descr> 
+		<p>Value to be assigned to the attribute.</p> 
+	      </descr> 
+	    </param> 
+	  </parameters> 
+          <returns type="unsigned short">
+            <descr>
+               <p>
+                  A <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#NodeEditVAL-validationState" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">validation state</loc> constant.
+               </p>
+            </descr>
+          </returns>
+	  <raises> 
+	  </raises> 
+	</method> 
+
+	<method name="canRemoveAttribute" id="VAL-Interfaces-ElementEditVAL-canRemoveAttribute"> 
+	  <descr> 
+	    <p>Verifies if an attribute by the given name can be removed.</p> 
+	  </descr> 
+	  <parameters> 
+	    <param attr="in" type="DOMString" name="attrname"> 
+	      <descr> 
+		<p>Name of attribute.</p> 
+	      </descr> 
+	    </param> 
+	  </parameters> 
+          <returns type="unsigned short">
+            <descr>
+               <p>
+                  A <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#NodeEditVAL-validationState" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">validation state</loc> constant.
+               </p>
+            </descr>
+          </returns>
+	  <raises> 
+	  </raises> 
+	</method> 
+
+	<method name="canRemoveAttributeNS" id="VAL-Interfaces-ElementEditVAL-canRemoveAttributeNS"> 
+	  <descr> 
+	    <p>Verifies if an attribute by the given local name and namespace can be
+	      removed.</p> 
+	  </descr> 
+	  <parameters> 
+	    <param name="namespaceURI" type="DOMString" attr="in"> 
+	      <descr> 
+		<p>The namespace URI of the attribute to remove.</p> 
+	      </descr> 
+	    </param> 
+	    <param attr="in" type="DOMString" name="localName"> 
+	      <descr> 
+		<p>Local name of the attribute to be removed.</p> 
+	      </descr> 
+	    </param> 
+	  </parameters> 
+          <returns type="unsigned short">
+            <descr>
+               <p>
+                  A <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#NodeEditVAL-validationState" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">validation state</loc> constant.
+               </p>
+            </descr>
+          </returns>
+	  <raises> 
+	  </raises> 
+	</method> 
+
+	<method name="canRemoveAttributeNode" id="VAL-Interfaces-ElementEditVAL-canRemoveAttributeNode"> 
+	  <descr> 
+	    <p>Determines if an attribute node can be removed.</p> 
+	  </descr> 
+	  <parameters> 
+	    <param attr="in" type="Node" name="attrNode"> 
+	      <descr> 
+		<p>The <code>Attr</code> node to remove from the attribute list.</p> 
+	      </descr> 
+	    </param> 
+	  </parameters> 
+          <returns type="unsigned short">
+            <descr>
+               <p>
+                  A <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#NodeEditVAL-validationState" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">validation state</loc> constant.
+               </p>
+            </descr>
+          </returns>
+	  <raises> 
+	  </raises> 
+	</method> 
+
+	<method name="isElementDefined" id="VAL-Interfaces-ElementEditVAL-isElementDefined"> 
+	  <descr> 
+	    <p>Determines if <code>name</code> is defined in the schema.
+               This only applies to <termref def="dt-global-declaration">global declarations</termref>.  This method is for non-namespace aware schemas.
+            </p>
+	  </descr> 
+	  <parameters> 
+	    <param attr="in" type="DOMString" name="name"> 
+	      <descr> 
+		<p>Name of element.</p> 
+	      </descr> 
+	    </param> 
+	  </parameters> 
+          <returns type="unsigned short">
+            <descr>
+               <p>
+                  A <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#NodeEditVAL-validationState" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">validation state</loc> constant.
+               </p>
+            </descr>
+          </returns>
+	  <raises> 
+	  </raises> 
+	</method> 
+
+	<method name="isElementDefinedNS" id="VAL-Interfaces-ElementEditVAL-isElementDefinedNS"> 
+	  <descr> 
+	    <p>Determines if <code>name</code> in this namespace is defined in the
+	      current context.  Thus not only does this apply to <termref def="dt-global-declaration">global declarations</termref>.
+              but depending on the content, this may also apply to local 
+              definitions.  This method is for namespace aware schemas.
+            </p> 
+	  </descr> 
+	  <parameters> 
+	    <param attr="in" type="DOMString" name="namespaceURI"> 
+	      <descr> 
+		<p><code>namespaceURI</code> of namespace.</p> 
+	      </descr> 
+	    </param> 
+	    <param attr="in" type="DOMString" name="name"> 
+	      <descr> 
+		<p>Name of element.</p> 
+	      </descr> 
+	    </param> 
+	  </parameters> 
+          <returns type="unsigned short">
+            <descr>
+               <p>
+                  A <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#NodeEditVAL-validationState" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">validation state</loc> constant.
+               </p>
+            </descr>
+          </returns>
+	  <raises> 
+	  </raises> 
+	</method> 	
+      </interface>                    
+
+      <!--=====================================================================
+      =                                                                       =
+      =      CharacterDataEditVAL
+      =                                                                       =
+      ======================================================================-->
+      <interface name="CharacterDataEditVAL" inherits="NodeEditVAL" id="VAL-Interfaces-CharacterDataEditVAL"> 
+	<descr> 
+	  <p>This interface extends the <code>NodeEditVAL</code> interface with additional methods for document editing. An object
+	    implementing this interface must also implement <code>CharacterData</code> interface.
+	    When validating <code>CharacterData</code> nodes, the 
+            <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#NodeEditVAL-nodeValidity" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">NodeEditVAL.nodeValidity</loc>
+            operation must find the nearest parent node in order to do this; if
+            no parent node is found, 
+            <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#VAL-Interfaces-NodeEditVAL-VAL_UNKNOWN" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">VAL_UNKNOWN 
+            </loc> is returned.  In addition, when 
+            <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#VAL-Interfaces-NodeEditVAL-VAL_INCOMPLETE" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">VAL_INCOMPLETE
+	    </loc> is passed in as an argument to the <code>NodeEditVAL.nodeValidity</code> 
+            operation to operate on such nodes, the operation considers all the text and not just some of it.
+          </p> 
+	</descr> 
+
+	<method name="isWhitespaceOnly" id="VAL-Interfaces-CharacterDataEditVAL-isWhitespaceOnly"> 
+	  <descr> 
+            <p>Determines if character data is only whitespace.</p>
+	  </descr> 
+          <parameters/>
+          <returns type="unsigned short">
+            <descr>
+               <p>
+                  A <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#NodeEditVAL-validationState" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">validation state</loc> constant.
+               </p>
+            </descr>
+          </returns>
+	  <raises>  
+	  </raises> 
+	</method> 
+
+	<method name="canSetData" id="VAL-Interfaces-CharacterDataEditVAL-canSetData"> 
+	  <descr> 
+	    <p>Determines if character data can be set.</p> 
+	  </descr> 
+	  <parameters> 
+	    <param attr="in" type="DOMString" name="arg"> 
+	      <descr> 
+		<p>Argument to be set.</p> 
+	      </descr> 
+	    </param> 
+	  </parameters> 
+          <returns type="unsigned short">
+            <descr>
+               <p>
+                  A <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#NodeEditVAL-validationState" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">validation state</loc> constant.
+               </p>
+            </descr>
+          </returns>
+	  <raises>  
+	  </raises> 
+	</method> 
+
+	<method name="canAppendData" id="VAL-Interfaces-CharacterDataEditVAL-canAppendData"> 
+	  <descr> 
+	    <p>Determines if character data can be appended.</p> 
+	  </descr> 
+	  <parameters> 
+	    <param attr="in" type="DOMString" name="arg"> 
+	      <descr> 
+		<p>Data to be appended.</p> 
+	      </descr> 
+	    </param> 
+	  </parameters> 
+          <returns type="unsigned short">
+            <descr>
+               <p>
+                  A <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#NodeEditVAL-validationState" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">validation state</loc> constant.
+               </p>
+            </descr>
+          </returns>
+	  <raises>  
+	  </raises> 
+	</method> 
+	<method name="canReplaceData" id="VAL-Interfaces-CharacterDataEditVAL-canReplaceData"> 
+	  <descr> 
+	    <p>Determines if character data can be replaced.</p> 
+	  </descr> 
+	  <parameters> 
+	    <param attr="in" type="unsigned long" name="offset"> 
+	      <descr> 
+		<p>Offset.</p> 
+	      </descr> 
+	    </param> 
+	    <param attr="in" type="unsigned long" name="count"> 
+	      <descr> 
+		<p>Replacement.</p> 
+	      </descr> 
+	    </param> 
+	    <param attr="in" type="DOMString" name="arg"> 
+	      <descr> 
+		<p>Argument to be set.</p> 
+	      </descr> 
+	    </param> 
+	  </parameters> 
+          <returns type="unsigned short">
+            <descr>
+               <p>
+                  A <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#NodeEditVAL-validationState" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">validation state</loc> constant.
+               </p>
+            </descr>
+          </returns>
+	  <raises> 
+            <exception name="DOMException">
+              <descr>
+                <p>INDEX_SIZE_ERR: Raised if the specified offset 
+                   is negative or greater than the number of 16-bit 
+		   units in data, or if the specified count is negative.
+                </p>
+              </descr>
+            </exception>
+	  </raises> 
+	</method> 
+
+	<method name="canInsertData" id="VAL-Interfaces-CharacterDataEditVAL-canInsertData"> 
+	  <descr> 
+	    <p>Determines if character data can be inserted.</p> 
+	  </descr> 
+	  <parameters> 
+	    <param attr="in" type="unsigned long" name="offset"> 
+	      <descr> 
+		<p>Offset.</p> 
+	      </descr> 
+	    </param> 
+	    <param attr="in" type="DOMString" name="arg"> 
+	      <descr> 
+		<p>Argument to be set.</p> 
+	      </descr> 
+	    </param> 
+	  </parameters> 
+          <returns type="unsigned short">
+            <descr>
+               <p>
+                  A <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#NodeEditVAL-validationState" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">validation state</loc> constant.
+               </p>
+            </descr>
+          </returns>
+	  <raises> 
+            <exception name="DOMException">
+              <descr>
+                <p>INDEX_SIZE_ERR: Raised if the specified offset 
+                   is negative or greater than the number of 16-bit 
+		   units in data.
+                </p>
+              </descr>
+            </exception>
+	  </raises> 
+	</method> 
+
+	<method name="canDeleteData" id="VAL-Interfaces-CharacterDataEditVAL-canDeleteData"> 
+	  <descr> 
+	    <p>Determines if character data can be deleted.</p> 
+	  </descr> 
+	  <parameters> 
+	    <param attr="in" type="unsigned long" name="offset"> 
+	      <descr> 
+		<p>Offset.</p> 
+	      </descr> 
+	    </param> 
+	    <param attr="in" type="unsigned long" name="count"> 
+	      <descr> 
+		<p>Number of 16-bit units to delete.</p> 
+	      </descr> 
+	    </param> 
+	  </parameters> 
+          <returns type="unsigned short">
+            <descr>
+               <p>
+                  A <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#NodeEditVAL-validationState" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">validation state</loc> constant.
+               </p>
+            </descr>
+          </returns>
+	  <raises> 
+            <exception name="DOMException">
+              <descr>
+                <p>INDEX_SIZE_ERR: Raised if the specified offset 
+                   is negative or greater than the number of 16-bit 
+		   units in data, or if the specified count is negative.
+                </p>
+              </descr>
+            </exception>
+	  </raises> 
+	</method> 
+      </interface>                    
+      
+    </definitions> 
+  </div2> 
+
+
+</div1><!--
+ *************************************************************************
+ * END OF VALIDATION                                                    *
+ *************************************************************************
+-->
+
+</body>
+  <!--
+  *************************************************************************
+  * BACK MATTER                                                           *
+  *************************************************************************
+  -->
+<back> 
+  <div1 role="Appendix_A" id="Appendix_A">
+  <head>Validation Outcomes</head>
+  
+  <orglist role="editors">
+    <member>
+      <name>Ben Chang</name>
+      <affiliation>Oracle</affiliation>
+    </member>
+  </orglist>
+  <?GENERATE-MINI-TOC?>
+  
+  <div2 id="Section_1">
+    <head>The nodeValidity and validateDocument methods</head>
+    <p> 
+      The following table describes all possible validation outcomes of
+      the <code>NodeEditVAL.nodeValidity(valType)</code> method.
+    </p>
+    
+    <table summary="This table describes the different validation outcomes." cellpadding="5" cellspacing="0">
+      <tbody>
+	<tr>
+	  <th rowspan="2" colspan="1">Validation Type</th>
+	  <th colspan="3" rowspan="1">Validity outcome</th>
+	</tr>
+	<tr>
+	  <th rowspan="1" colspan="1">VAL_TRUE</th>
+	  <th rowspan="1" colspan="1">VAL_FALSE</th>
+	  <th rowspan="1" colspan="1">VAL_UNKNOWN</th>
+	</tr>
+	<tr>
+	  <td rowspan="1" colspan="1"><code>VAL_WF</code></td>
+	  <td rowspan="1" colspan="1">The node is well-formed.</td>
+	  <td rowspan="1" colspan="1">The node is not well-formed.</td>
+	  <td rowspan="1" colspan="1">Not applicable.</td>
+	</tr>
+	<tr>
+	  <td rowspan="1" colspan="1"><code>VAL_NS_WF</code></td>
+	  <td rowspan="1" colspan="1">The node is well-formed.
+	    Processor must take into account all 
+	    the in-scope namespace declarations.
+	  </td>
+	  <td rowspan="1" colspan="1">The node is not namespace well-formed.
+	    Processor must take into account all 
+	    the in-scope namespace declarations.
+	  </td>
+	  <td rowspan="1" colspan="1">Not applicable.</td>
+	</tr>
+	<tr>
+	  <td rowspan="1" colspan="1"><code>VAL_NS_WF</code></td>
+	  <td rowspan="1" colspan="1">The node is well-formed.
+	    Processor must take into account all 
+	    namespace declarations in scope.
+	  </td>
+	  <td rowspan="1" colspan="1">The node is not namespace well-formed.
+	    Processor must take into account all 
+	    the in-scope namespace declarations.
+	  </td>
+	  <td rowspan="1" colspan="1">Not applicable.</td>
+	</tr>
+	<tr>
+	  <td rowspan="1" colspan="1"><code>VAL_SCHEMA</code></td>
+	  <td rowspan="1" colspan="1">The node is valid: it complies with all
+	    the constraints expressed in the schema.
+	  </td>
+	  <td rowspan="1" colspan="1">The node fails to comply to all the 
+	    constraints expressed in the schema.
+	  </td>
+	  <td rowspan="1" colspan="1">If the schema is an XML Schema, PSVI 
+	    <b>[validity]</b> property value is unknown.
+	  </td>
+	</tr>
+	<tr>
+	  <td rowspan="1" colspan="1"><code>VAL_INCOMPLETE</code></td>
+	  <td rowspan="1" colspan="1">The node is valid: it complies with the
+	    <code>VAL_INCOMPLETE</code> definition.
+	  </td>
+	  <td rowspan="1" colspan="1">The node is invalid with regard to the 
+	    <code>VAL_INCOMPLETE</code> definition.
+	  </td>
+	  <td rowspan="1" colspan="1">If the schema is an XML Schema, PSVI 
+	    <b>[validity]</b> property value is unknown.
+	  </td>
+	</tr>
+      </tbody>
+    </table>
+    
+    <p>
+      The following table describes the outcome of the
+      <code>DocumentEditVAL.validateDocument()</code> and
+      <code>NodeEditVAL.nodeValidity(valType)</code> methods, with the
+      latter called on the <code>DocumentEditVAL</code> node with
+      validationType <code>NodeEditVAL.VAL_SCHEMA</code>.
+    </p>
+    
+    <table summary="This table describes the validation outcomes with VAL_SCHEMA." cellpadding="5" cellspacing="0">
+      
+      <tbody>
+	<tr>
+	  <th rowspan="2" colspan="1">Methods</th>
+	  <th colspan="3" rowspan="1">Validity outcome</th>
+	</tr>
+	<tr>
+	  <th rowspan="1" colspan="1">VAL_TRUE</th>
+	  <th rowspan="1" colspan="1">VAL_FALSE</th>
+	  <th rowspan="1" colspan="1">VAL_UNKNOWN</th>
+	</tr>
+	<tr>
+	  <td rowspan="1" colspan="1">
+	    <code>validateDocument</code> and <code>nodeValidity</code>,
+	    called on the <code>Document</code> node with validationType
+	    <code>VAL_SCHEMA</code>.
+	  </td>
+	  <td rowspan="1" colspan="1">
+	    If the schema is a DTD, then the document <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/2000/REC-xml-20001006#dt-valid" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">valid</loc> constraint is
+	    satisfied.  If the schema is an XML Schema, then the
+	    document validity is the same as the validity of the <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/2001/REC-xmlschema-1-20010502#key-vr" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">validation root</loc>, i.e.,
+	    <code>documentElement</code>: PSVI <b>[validity]</b> <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/2001/REC-xmlschema-1-20010502#e-validity" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">valid</loc>.
+	  </td>
+	  <td rowspan="1" colspan="1">Fails to satisfy the constraints defined.
+	  </td>
+	  <td rowspan="1" colspan="1">
+	    If the schema is an XML Schema, then schema is not found or
+	    the declaration for the <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/2001/REC-xmlschema-1-20010502#key-vr" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">validation root</loc> is not
+	    found: PSVI <b>[validity]</b> <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/2001/REC-xmlschema-1-20010502#key-vr" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">unknown</loc>.
+	  </td>
+	</tr>
+      </tbody>
+    </table>
+    
+    <p>
+      The following table describes outcomes for the
+      <code>NodeEditVAL.nodeValidity(valType)</code> method called with
+      the validationType <code>NodeEditVAL.VAL_SCHEMA</code>:
+    </p>
+    
+    <table summary="This table describes the validation outcomes for nodeValidity with VAL_SCHEMA." cellpadding="5" cellspacing="0">
+      
+      <tbody>
+	<tr>
+	  <th rowspan="2" colspan="1">Node types</th>
+	  <th colspan="3" rowspan="1">Validity outcome</th>
+	</tr>
+	<tr>
+	  <th rowspan="1" colspan="1">VAL_TRUE</th>
+	  <th rowspan="1" colspan="1">VAL_FALSE</th>
+	  <th rowspan="1" colspan="1">VAL_UNKNOWN</th>
+	</tr>
+	<tr>
+	  <td rowspan="1" colspan="1">
+	    <code>Element</code>
+	  </td>
+	  <td rowspan="1" colspan="1">
+	    If the schema is a DTD, then <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/2000/REC-xml-20001006#elementvalid" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">element</loc> and <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/2000/REC-xml-20001006#ValueType" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">attribute</loc> validity
+	    constraints, including attribute validity constraint defined
+	    below are satisfied.  If the schema is an XML Schema, then
+	    PSVI <b>[validity]</b> <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/2001/REC-xmlschema-1-20010502#e-validity" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">valid</loc>.
+	  </td>
+	  <td rowspan="1" colspan="1">
+	    Fails to satisfy the constraints defined.
+	  </td>
+	  <td rowspan="1" colspan="1">
+	    If the schema is an XML Schema, then PSVI <b>[validity]</b>
+	    <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/2001/REC-xmlschema-1-20010502#e-validity" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">unknown</loc>.
+	  </td>
+	</tr>
+	<tr>
+	  <td rowspan="1" colspan="1">
+	    <code>Attr</code>
+	  </td>
+	  <td rowspan="1" colspan="1">
+	    If the schema is a DTD, then all validity constraints
+	    defined in section 3.3.1, "<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/2000/REC-xml-20001006#sec-attribute-types" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">Attribute Type</loc>",
+	    <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/2000/REC-xml-20001006#RequiredAttr" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">required</loc> and <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/2000/REC-xml-20001006#FixedAttr" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">fixed</loc> attribute are
+	    satisfied.  If the schema is an XML Schema, then PSVI
+	    <b>[validity]</b> <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/2001/REC-xmlschema-1-20010502#a-validity" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">valid</loc>.
+	  </td>
+	  <td rowspan="1" colspan="1">
+	    Fails to satisfy the constraints defined.
+	  </td>
+	  <td rowspan="1" colspan="1">
+	    If the schema is an XML Schema, then PSVI <b>[validity]</b>
+	    <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/2001/REC-xmlschema-1-20010502#e-validity" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">unknown</loc>.
+	  </td>
+	</tr>
+	<tr>
+	  <td rowspan="1" colspan="1"><code>Text</code></td>
+	  <td rowspan="1" colspan="1">
+	    The node is well-formed.
+	  </td>
+	  <td rowspan="1" colspan="1">
+	    The node is not well-formed.
+	  </td>
+	  <td rowspan="1" colspan="1">
+	    If no parent node is found.
+	  </td>
+	</tr>
+	<tr>
+	  <td rowspan="1" colspan="1"><code>CDATASection</code></td>
+	  <td rowspan="1" colspan="1">
+	    The node is well-formed.
+	  </td>
+	  <td rowspan="1" colspan="1">
+	    The node is not well-formed.
+	  </td>
+	  <td rowspan="1" colspan="1">
+	    If no parent node is found.
+	  </td>
+	</tr>
+	<tr>
+	  <td rowspan="1" colspan="1"><code>ProcessingInstruction</code></td>
+	  <td rowspan="1" colspan="1">The node is well-formed.
+	  </td>
+	  <td rowspan="1" colspan="1">The node is not well-formed.
+	  </td>
+	  <td rowspan="1" colspan="1">
+	    If no parent node is found.
+	  </td>
+	</tr>
+	<tr>
+	  <td rowspan="1" colspan="1"><code>Comment</code></td>
+	  <td rowspan="1" colspan="1">The node is well-formed.
+	  </td>
+	  <td rowspan="1" colspan="1">The node is not well-formed.
+	  </td>
+	  <td rowspan="1" colspan="1">
+	    If no parent node is found.
+	  </td>
+	</tr>
+	<tr>
+	  <td rowspan="1" colspan="1"><code>EntityReference</code></td>
+	  <td rowspan="1" colspan="1">Entity is
+	    <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/2000/REC-xml-20001006#vc-entdeclared" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">declared</loc>.
+	  </td>
+	  <td rowspan="1" colspan="1">Entity is not
+	    <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/2000/REC-xml-20001006#vc-entdeclared" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">declared</loc>.
+	  </td>
+	  <td rowspan="1" colspan="1">
+	    Not applicable.
+	  </td>
+	</tr>
+	<tr>
+	  <td rowspan="1" colspan="1"><code>Entity</code></td>
+	  <td rowspan="1" colspan="1">
+	    Implementation-specific.
+	  </td>
+	  <td rowspan="1" colspan="1">
+	    Implementation-specific.
+	  </td>
+	  <td rowspan="1" colspan="1">
+	    Implementation-specific.
+	  </td>
+	</tr>
+	<tr>
+	  <td rowspan="1" colspan="1"><code>Notation</code></td>
+	  <td rowspan="1" colspan="1">
+	    Implementation-specific.
+	  </td>
+	  <td rowspan="1" colspan="1">
+	    Implementation-specific.
+	  </td>
+	  <td rowspan="1" colspan="1">
+	    Implementation-specific.
+	  </td>
+	</tr>
+	<tr>
+	  <td rowspan="1" colspan="1"><code>DocumentType</code></td>
+	  <td rowspan="1" colspan="1">
+	    Implementation-specific.
+	  </td>
+	  <td rowspan="1" colspan="1">
+	    Implementation-specific.
+	  </td>
+	  <td rowspan="1" colspan="1">
+	    Implementation-specific.
+	  </td>
+	</tr>
+	<tr>
+	  <td rowspan="1" colspan="1"><code>DocumentFragment</code></td>
+	  <td rowspan="1" colspan="1">
+	    Not applicable.
+	  </td>
+	  <td rowspan="1" colspan="1">
+	    Not applicable.
+	  </td>
+	  <td rowspan="1" colspan="1">
+	    Not applicable.
+	  </td>
+	</tr>
+      </tbody>
+    </table>
+  </div2>
+  
+  <div2 id="Section_2"><head>Other validation operations</head>
+    <p> 
+      The table below describes validation outcomes from <code>can*</code>
+      validation operations, such as
+      <code>NodeEditVAL.canRemoveChild()</code>, or
+      <code>ElementEditVAL.canSetAttributeNS</code>,
+      <code>CharacterDataEditVAL.canAppendData()</code>.  All these operations
+      attempt to validate with validityType
+      <code>NodeEditVAL.VAL_INCOMPLETE</code>.
+    </p>
+    
+    <table summary="This table describes the validation outcomes of can*       methods with VAL_INCOMPLETE." cellpadding="5" cellspacing="0">
+      <tbody>
+	<tr>
+	  <th rowspan="1" colspan="1">VAL_TRUE</th>
+	  <th rowspan="1" colspan="1">VAL_FALSE</th>
+	  <th rowspan="1" colspan="1">VAL_UNKNOWN</th>
+	</tr>
+	<tr>
+	  <td rowspan="1" colspan="1">If the associated operation is performed, then the node would
+	    be valid with regards to the <code>VAL_INCOMPLETE</code>
+	    definition or if there is no schema found.
+	  </td>
+	  <td rowspan="1" colspan="1">If the associated operation is performed, then the node would
+	    be invalid with regards to the <code>VAL_INCOMPLETE</code>
+	    definition.
+	  </td>
+	  <td rowspan="1" colspan="1">Not applicable.
+	  </td>
+	</tr>
+      </tbody>
+    </table>
+    
+    <p>
+      Note: If the document includes more than one type of <termref def="dt-schema">schema</termref>, e.g., DTD and XML Schema, and
+      the <code>DOMConfiguration</code> "<xspecref xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/DOM-Level-3-Core/core.html#parameter-schema-type" xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">schema-type</xspecref>"
+      parameter is not specified, the validation outcome for
+      <code>NodeEditVAL.VAL_INCOMPLETE</code> and
+      <code>NodeEditVAL.VAL_SCHEMA</code> is implementation-specific.
+    </p>
+    
+  </div2>
+</div1>
+
+<div1 role="idl" id="idl">
+  <head>IDL Definitions</head>
+
+  <p>
+    This appendix contains the complete OMG IDL <bibref ref="OMGIDL"/> for the
+    Level 3 Document Object Model Validation definitions.
+  </p>
+
+  <p>The IDL files are also available as: <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="idl.zip" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">http://www.w3.org/TR/2004/REC-DOM-Level-3-Val-20040127/idl.zip</loc></p>
+
+    <!--
+    ******************************************************
+    | Events OMG IDL DEFINITIONS                           |
+    ******************************************************
+    -->
+      <?GENERATE-IDL Level-3-Validation validation dom.w3c.org dom?>
+</div1>
+
+<div1 role="java-binding" id="java-binding">
+  <head>Java Language Binding</head>
+
+  <p>This appendix contains the complete Java <bibref ref="Java"/> bindings for
+  the Level 3 Document Object Model Validation.</p>
+
+  <p>The Java files are also available as <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="java-binding.zip" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">http://www.w3.org/TR/2004/REC-DOM-Level-3-Val-20040127/java-binding.zip</loc></p>
+
+    <!--
+    ******************************************************
+    | Events JAVA BINDINGS                                 |
+    ******************************************************
+    -->
+      <?GENERATE-JAVA Level-3-Validation org.w3c.dom validation?>
+</div1>
+<div1 role="ecma-binding" id="ecma-binding">
+  <head>ECMAScript Language Binding</head>
+
+  <p>This appendix contains the complete ECMAScript <bibref ref="ECMAScript"/>
+  binding for the Level 3 Document Object Model Validation definitions.</p>
+
+    <!--
+    ******************************************************
+    | Events ECMA SCRIPT BINDINGS                         |
+    ******************************************************
+    -->
+  <?GENERATE-ECMA Level-3-Validation?>
+</div1>
+  
+<!-- $Id: xml-source.xml,v 1.7 2004/01/26 22:31:28 plehegar Exp $ -->
+<div1 role="acknowledgements" id="contributors"> 
+  <head>Acknowledgements</head> 
+
+  <p>Many people contributed to the DOM specifications (Level 1, 2 or 3),
+  including participants of the DOM Working Group and the DOM Interest Group. We
+  especially thank the following:</p>
+
+  <p>
+    Andrew Clover, Andrew Watson (Object Management Group), Andy
+    Heninger (IBM), Angel Diaz (IBM), Arnaud Le Hors (W3C and IBM),
+    Ashok Malhotra (IBM and Microsoft), Ben Chang (Oracle), Bill Smith
+    (Sun), Bill Shea (Merrill Lynch), Bob Sutor (IBM), Chris Lovett
+    (Microsoft), Chris Wilson (Microsoft), David Brownell (Sun), David
+    Ezell (Hewlett-Packard Company), David Singer (IBM), Dimitris
+    Dimitriadis (Improve AB and invited expert), Don Park (invited),
+    Elena Litani (IBM), Eric Vasilik (Microsoft), Gavin Nicol (INSO),
+    Ian Jacobs (W3C), James Clark (invited), James Davidson (Sun), Jared
+    Sorensen (Novell), Jeroen van Rotterdam (X-Hive Corporation), Joe
+    Kesselman (IBM), Joe Lapp (webMethods), Joe Marini (Macromedia),
+    Johnny Stenback (Netscape/AOL), Jon Ferraiolo (Adobe), Jonathan
+    Marsh (Microsoft), Jonathan Robie (Texcel Research and Software AG),
+    Kim Adamson-Sharpe (SoftQuad Software Inc.), Lauren Wood (SoftQuad
+    Software Inc., <emph>former Chair</emph>), Laurence Cable (Sun),
+    Mark Davis (IBM), Mark Scardina (Oracle), Martin D&#252;rst (W3C),
+    Mary Brady (NIST), Mick Goulish (Software AG), Mike Champion
+    (Arbortext and Software AG), Miles Sabin (Cromwell Media), Patti
+    Lutsky (Arbortext), Paul Grosso (Arbortext), Peter Sharpe (SoftQuad
+    Software Inc.), Phil Karlton (Netscape), Philippe Le H&#233;garet
+    (W3C, <emph>W3C Team Contact and former Chair</emph>), Ramesh
+    Lekshmynarayanan (Merrill Lynch), Ray Whitmer (iMall, Excite@Home,
+    and Netscape/AOL, <emph>Chair</emph>), Rezaur Rahman (Intel), Rich
+    Rollman (Microsoft), Rick Gessner (Netscape), Rick Jelliffe
+    (invited), Rob Relyea (Microsoft), Scott Isaacs (Microsoft), Sharon
+    Adler (INSO), Steve Byrne (JavaSoft), Tim Bray (invited), Tim Yu
+    (Oracle), Tom Pixley (Netscape/AOL), Vidur Apparao (Netscape), Vinod
+    Anupam (Lucent).
+  </p>
+
+  <p>
+    Thanks to all those who have helped to improve this specification by
+    sending suggestions and corrections (Please, keep bugging us with your
+    issues!).
+  </p>
+
+  <p>
+    Special thanks to the <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/DOM/Test" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">DOM
+    Conformance Test Suites</loc> contributors: Curt Arnold, Fred Drake,
+    Mary Brady (NIST), Rick Rivello (NIST), Robert Clary (Netscape).
+  </p>
+
+  <div2 id="Productions"><head>Production Systems</head> 
+    <p>
+      This specification was written in XML. The HTML, OMG IDL, Java and
+      ECMAScript bindings were all produced automatically.
+    </p>
+
+    <p>
+      Thanks to Joe English, author of <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.flightlab.com/cost" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">cost</loc>, which was used as the
+      basis for producing DOM Level 1. Thanks also to Gavin Nicol, who wrote
+      the scripts which run on top of cost. Arnaud Le Hors and Philippe Le
+      H&#233;garet maintained the scripts.
+    </p>
+
+    <p>
+      After DOM Level 1, we used <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://xml.apache.org/xerces-j" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">Xerces</loc> as the basis DOM
+      implementation and wish to thank the authors. Philippe Le H&#233;garet
+      and Arnaud Le Hors wrote the <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://dev.w3.org/cvsweb/java/classes/org/w3c/tools/specgenerator/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">Java
+      programs</loc> which are the DOM application.
+    </p>
+
+    <p>
+      Thanks also to Jan K&#228;rrman, author of <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://user.it.uu.se/~jan/html2ps.html" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">html2ps</loc>, which we use
+      in creating the PostScript version of the specification.
+    </p>
+
+  </div2>
+</div1>
+
+  
+<!-- $Id: xml-source.xml,v 1.7 2004/01/26 22:31:28 plehegar Exp $ -->
+<!--
+ *************************************************************************
+ * BEGINNING OF DOM GLOSSARY                                             *
+ *************************************************************************
+-->
+<div1 role="glossary" id="glossary">
+  <head>Glossary</head>
+  <orglist role="editors">
+    <member>
+      <name>Arnaud Le Hors</name>
+      <affiliation>W3C</affiliation>
+    </member>
+    <member>
+      <name>Robert S. Sutor</name>
+      <affiliation>IBM Research (for DOM Level 1)</affiliation>
+    </member>
+  </orglist>
+  <p>Some of the following term definitions have been borrowed or
+    modified from similar definitions in other W3C or standards documents.
+    See the links within the definitions for more information.</p>
+  <glist>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-16-bit-unit">16-bit unit</label>
+      <def><p>The base unit of a <code>DOMString</code>. This indicates that
+          indexing on a <code>DOMString</code> occurs in units of 16 bits. 
+          This must not be misunderstood to mean that a <code>DOMString</code>
+          can store arbitrary 16-bit units. A <code>DOMString</code> is a 
+          character string encoded in UTF-16; this means that the restrictions
+          of UTF-16 as well as the other relevant restrictions on character strings
+          must be maintained. A single character, for example in the form of a 
+          numeric character reference, may correspond to one or two 16-bit units.</p>
+      </def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-ancestor">ancestor</label>
+      <def><p>An <term>ancestor</term> node of any node A is any node
+	  above A in a tree model, where "above" means "toward the root."
+	</p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-API">API</label>
+      <def><p>An <term>API</term> is an Application Programming
+	  Interface, a set of functions or methods used to access some
+	  functionality.</p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-anonymous">anonymous type name</label>
+      <def>
+	<p>
+          An <term>anonymous type name</term> is an
+          implementation-defined, globally unique qualified name
+          provided by the processor for every anonymous type declared in
+          a <termref def="dt-schema">schema</termref>.
+	</p>
+      </def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-bubbling-phase">bubbling phase</label>
+      <def>
+	<p>
+	  The process by which an <termref def="dt-event">event</termref> can be handled by one of the
+	  target ancestors after being handled by the <termref def="dt-target-node">target node</termref>.
+	</p>
+      </def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-capture-phase">capture phase</label>
+      <def>
+	<p>
+	  The process by which an <termref def="dt-event">event</termref> can be handled by one of the
+	  target ancestors before being handled by the <termref def="dt-target-node">target node</termref>.
+	</p>
+      </def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-child">child</label>
+      <def><p>A <term>child</term> is an immediate descendant node of
+	  a node.</p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-application">client application</label>
+      <def><p>A [client] application is any software that uses the
+	  Document Object Model programming interfaces provided by the
+	  hosting implementation to accomplish useful work. Some
+	  examples of client applications are scripts within an HTML
+	  or XML document.</p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-COM">COM</label>
+      <def><p><term>COM</term> is Microsoft's Component Object Model <bibref role="informative" ref="COM"/>, a technology for building applications from binary
+	    software components.</p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-content-model">content model</label>
+      <def><p>The <term>content model</term> is a simple grammar
+	  governing the allowed types of the child elements and the
+	  order in which they appear. See <xspecref xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/2000/REC-xml-20001006#sec-element-content" xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Element Content</xspecref>
+	  in XML <bibref role="informative" ref="XML"/>.</p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-convenience">convenience</label>
+      <def><p>A <term>convenience method</term> is an operation on an
+          object that could be accomplished by a program consisting of
+          more basic operations on the object. Convenience methods are
+          usually provided to make the API easier and simpler to use or to
+	  allow specific programs to create more optimized implementations
+	  for common operations. A similar definition holds for a
+	  <term>convenience property</term>.
+        </p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-cooked">cooked model</label>
+      <def><p>A model for a document that represents the document
+	  after it has been manipulated in some way. For example, any
+	  combination of any of the following transformations would
+	  create a cooked model:
+	  <olist>
+	    <item><p>Expansion of internal text entities.</p></item>
+	    <item><p>Expansion of external entities.</p></item>
+	    <item><p>Model augmentation with style-specified generated
+		text.</p></item>
+	    <item><p>Execution of style-specified
+		reordering.</p></item>
+	    <item><p>Execution of scripts.</p></item>
+	  </olist> A browser might only be able to provide access to a
+	  cooked model, while an editor might provide access to a
+	  cooked or the initial structure model (also known as the
+	  <term>uncooked model</term>) for a document. </p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-CORBA">CORBA</label>
+      <def><p><term>CORBA</term> is the <term>Common Object Request Broker
+	    Architecture</term> from the <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.omg.org" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">OMG</loc> <bibref role="informative" ref="CORBA"/>. This architecture is a collection of objects and
+	    libraries that allow the creation of applications containing
+	    objects that make and receive requests and responses in a
+	    distributed environment.</p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-cursor">cursor</label>
+      <def><p>A <term>cursor</term>is an object representation of a
+	  node. It may possess information about context and the path
+	  traversed to reach the node.</p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-datamodel">data model</label>
+      <def><p>A <term>data model</term> is a collection of descriptions of data
+	  structures and their contained fields, together with the operations
+	  or functions that manipulate them.</p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-deprecation">deprecation</label>
+      <def><p>When new releases of specifications are released, some older
+	  features may be marked as being <term>deprecated</term>. This
+	  means that new work should not use the features and that
+	  although they are supported in the current release, they may
+	  not be supported or available in future releases.</p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-descendant">descendant</label>
+      <def><p>A <term>descendant</term> node of any node A is any node
+	  below A in a tree model, where "below" means "away from the
+	  root."</p></def>
+    </gitem>
+
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-document-element">document element</label>
+      <def>
+	<p>
+	  There is only one document element in a <code>Document</code>. This
+	  element node is a child of the <code>Document</code> node. See
+	  <xspecref xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/2000/REC-xml-20001006#dt-root" xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Well-Formed XML
+	  Documents</xspecref> in XML <bibref role="informative" ref="XML"/>.
+	</p>
+      </def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-document-order">document order</label>
+
+      <def><p>There is an ordering, <term>document order</term>, defined on all
+      the nodes in the document corresponding to the order in which the first
+      character of the XML representation of each node occurs in the XML
+      representation of the document after expansion of general entities. Thus,
+      the <termref def="dt-document-element">document element</termref> node
+      will be the first node. Element nodes occur before their children. Thus,
+      document order orders element nodes in order of the occurrence of their
+      start-tag in the XML (after expansion of entities). The attribute nodes
+      of an element occur after the element and before its children. The
+      relative order of attribute nodes is implementation-dependent.</p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-DOM-Level-0">DOM Level 0</label>
+      <def><p>The term "DOM Level 0" refers to a mix (not formally specified)
+	  of HTML document functionalities offered by Netscape Navigator
+	  version 3.0 and Microsoft Internet Explorer version 3.0. In some
+	  cases, attributes or methods have been included for reasons of
+	  backward compatibility with "DOM Level 0".</p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-ECMAScript">ECMAScript</label>
+      <def><p>The programming language defined by the ECMA-262 standard
+	  <bibref role="informative" ref="ECMAScript"/>. As stated in the standard, the
+            originating technology for ECMAScript was JavaScript <bibref role="informative" ref="JavaScript"/>. Note that in the ECMAScript binding, the word
+              "property" is used in the same sense as the IDL term
+              "attribute."</p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-element">element</label>
+      <def><p>Each document contains one or more elements, the
+	  boundaries of which are either delimited by start-tags and
+	  end-tags, or, for empty elements by an empty-element tag.
+	  Each element has a type, identified by name, and may have a
+	  set of attributes. Each attribute has a name and a value.
+	  See <xspecref xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/2000/REC-xml-20001006#sec-logical-struct" xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Logical
+	    Structures</xspecref> in XML <bibref role="informative" ref="XML"/>.
+	</p></def>
+    </gitem>
+    <gitem>
+      <label id="dt-event">event</label>
+      <def>
+	<p>
+	  An event is the representation of some asynchronous occurrence
+	  (such as a mouse click on the presentation of the element, or
+	  the removal of child node from an element, or any of
+	  unthinkably many other possibilities) that gets associated
+	  with an <termref def="dt-event-target">event target</termref>.
+	</p>
+      </def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-event-target">event target</label>
+      <def>
+	<p>
+	  The object to which an <termref def="dt-event">event</termref>
+	  is targeted.
+	</p>
+      </def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-equivalence">equivalence</label>
+      <def>
+	<p>Two nodes are <term>equivalent</term> if they have the same node
+	  type and same node name. Also, if the nodes contain data, that must
+	  be the same. Finally, if the nodes have attributes then collection
+	  of attribute names must be the same and the attributes corresponding
+	  by name must be equivalent as nodes.</p>
+
+        <p>Two nodes are <term>deeply equivalent</term> if they are
+	  <term>equivalent</term>, the child node lists are equivalent are
+	  equivalent as <code>NodeList</code> objects, and the pairs of
+	  equivalent attributes must in fact be deeply equivalent.</p>
+
+
+        <p>Two <code>NodeList</code> objects are <term>equivalent</term> if they
+	  have the same length,	and the nodes corresponding by index
+	  are deeply equivalent. </p>
+
+        <p>Two <code>NamedNodeMap</code> objects are <term>equivalent</term> if
+	  they have the same length, they have same collection of names,
+	  and the nodes corresponding by name in the maps are deeply
+	  equivalent. </p>
+
+        <p>Two <code>DocumentType</code> nodes are <term>equivalent</term> if
+	  they are equivalent as nodes, have the same names, and have
+	  equivalent entities and attributes <code>NamedNodeMap</code>
+	  objects.</p>
+
+      </def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-infoitem">information item</label>
+      <def><p>An information item is an abstract representation of some
+          component of an XML document. See the <bibref role="informative" ref="InfoSet"/>
+            for details.
+        </p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-logically-adjacent-text-nodes">logically-adjacent text nodes</label>
+      <def><p>
+        <term>Logically-adjacent text nodes</term> are <code>Text</code>
+        or <code>CDATASection</code> nodes that can be visited
+        sequentially in <termref def="dt-document-order">document
+        order</termref> or in reversed document order without entering,
+        exiting, or passing over <code>Element</code>,
+        <code>Comment</code>, or <code>ProcessingInstruction</code>
+        nodes.
+	</p>
+      </def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-global-declaration">global declaration</label>
+      <def>
+	<p>
+	  A <term>global declaration</term> is a schema declaration,
+	  usually for an element or an attribute, that is available for
+	  use in content models throughout the <termref def="dt-schema">schema</termref>, i.e. a declaration that is
+	  not bound to a particular context.
+	</p>
+      </def>
+    </gitem>   
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-implementation">hosting implementation</label>
+      <def><p>A [hosting] implementation is a software module that
+	  provides an implementation of the DOM interfaces so that a
+	  client application can use them. Some examples of hosting
+	  implementations are browsers, editors and document
+	  repositories.</p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-HTML">HTML</label>
+      <def><p>The HyperText Markup Language (<term>HTML</term>) is a
+	  simple markup language used to create hypertext documents
+	  that are portable from one platform to another. HTML
+	  documents are SGML documents with generic semantics that are
+	  appropriate for representing information from a wide range
+	  of applications. <bibref role="informative" ref="HTML40"/></p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-IDL">IDL</label>
+      <def><p>An Interface Definition Language (<term>IDL</term>) is used to
+	  define the interfaces for accessing and operating upon
+	  objects. Examples of IDLs are the Object Management Group's IDL
+	  <bibref role="informative" ref="CORBA"/>, Microsoft's IDL <bibref role="informative" ref="MSIDL"/>, and
+	      Sun's Java IDL <bibref role="informative" ref="JavaIDL"/>.</p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-implementor">implementor</label>
+      <def><p>Companies, organizations, and individuals that claim to
+	  support the Document Object Model as an API for their
+	  products.</p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-inheritance">inheritance</label>
+      <def><p>In object-oriented programming, the ability to create new
+	  classes (or interfaces) that contain all the methods and properties
+	  of another class (or interface), plus additional methods and
+	  properties. If class (or interface) D inherits from class (or
+	  interface) B, then D is said to be <term>derived</term> from B. B is
+	  said to be a <term>base</term> class (or interface) for D. Some
+	  programming languages allow for multiple inheritance, that is,
+	  inheritance from more than one class or interface.</p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-raw-struct">initial structure model</label>
+      <def><p>Also known as the <term>raw structure model</term> or
+	  the <term>uncooked model</term>, this represents the
+	  document before it has been modified by entity expansions,
+	  generated text, style-specified reordering, or the execution
+	  of scripts. In some implementations, this might correspond
+	  to the "initial parse tree" for the document, if
+	  it ever exists. Note that a given implementation might not
+	  be able to provide access to the initial structure model for
+	  a document, though an editor probably would.</p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-interface">interface</label>
+      <def><p>An <term>interface</term> is a declaration of a set of
+          methods with no information given about their implementation.
+	  In object systems that support interfaces and inheritance,
+	  interfaces can usually inherit from one another.
+        </p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-lang-binding">language binding</label>
+      <def><p>A programming <term>language binding</term> for an IDL
+	  specification is an implementation of the interfaces in the
+	  specification for the given language. For example, a Java
+	  language binding for the Document Object Model IDL
+	  specification would implement the concrete Java classes that
+	  provide the functionality exposed by the
+	  interfaces.</p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-live">live</label>
+      <def>
+          <p>An object is <term>live</term> if any change to the underlying
+          document structure is reflected in the object.</p></def>      
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-localname">local name</label>
+      <def><p>A <term>local name</term> is the local part of a <term>qualified
+	    name</term>.
+	  This is called the <xtermref xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/1999/REC-xml-names-19990114/#dt-localname" xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">local
+	    part</xtermref> in Namespaces in XML <bibref role="informative" ref="Namespaces"/>.</p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-method">method</label>
+      <def><p>A <term>method</term> is an operation or function that is
+	  associated with an object and is allowed to manipulate the
+	  object's data.
+        </p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-model">model</label>
+      <def><p>A <term>model</term> is the actual data representation
+	  for the information at hand. Examples are the structural
+	  model and the style model representing the parse structure
+	  and the style information associated with a document. The
+	  model might be a tree, or a directed graph, or something
+	  else.</p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-namespaceprefix">namespace prefix</label>
+      <def><p>A <term>namespace prefix</term> is a string that associates
+	  an element or attribute name with a <term>namespace URI</term> in
+	  XML. See <xtermref xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/1999/REC-xml-names-19990114/#dt-prefix" xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">namespace
+	    prefix</xtermref> in Namespaces in XML <bibref role="informative" ref="Namespaces"/>.</p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-namespaceURI">namespace URI</label>
+      <def>
+	<p>
+	  A <term>namespace URI</term> is a URI that identifies an XML
+	  namespace. This is called the <xtermref xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/1999/REC-xml-names-19990114/#dt-NSName" xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">namespace name</xtermref> in
+	  Namespaces in XML <bibref role="informative" ref="Namespaces"/>. See also sections 1.3.2 "<xspecref xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/DOM-Level-3-Core/core.html#baseURIs-Considerations" xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">DOM
+	  URIs</xspecref>" and 1.3.3 "<xspecref xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/DOM-Level-3-Core/core.html#Namespaces-Considerations" xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">XML
+	  Namespaces</xspecref>" regarding URIs and namespace URIs
+	  handling and comparison in the DOM APIs.
+	</p>
+      </def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-namespace-well-formed">namespace well-formed</label>
+      <def>
+	<p>
+	  A node is a <term>namespace well-formed</term> XML node if it
+	  is a <termref def="dt-well-formed">well-formed</termref> node,
+	  and follows the productions and namespace constraints. If
+	  <bibref ref="XML"/> is used, the constraints are defined in
+	  <bibref ref="Namespaces"/>. If <bibref ref="XML11"/> is used,
+	  the constraints are defined in <bibref ref="Namespaces11"/>.
+	</p>
+      </def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-object-model">object model</label>
+      <def><p>An <term>object model</term>
+	  is a collection of
+	  descriptions of classes or interfaces,
+	  together with their member data, member functions,
+	  and class-static operations.
+	</p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-parent">parent</label>
+      <def><p>A <term>parent</term> is an immediate ancestor node of a
+	  node.</p></def>
+    </gitem>
+    <gitem>
+      <label id="dt-partially-valid">partially valid</label>
+      <def>
+	<p>A node in a DOM tree is <term>partially valid</term> if it is
+	<termref def="dt-well-formed">well formed</termref> (this part is for
+	comments and processing instructions) and its immediate children are
+	those expected by the content model. The node may be missing trailing
+	required children yet still be considered <term>partially
+	valid</term>.
+	</p>
+      </def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-qualifiedname">qualified name</label>
+      <def>
+	<p>A <term>qualified name</term> is the name of an element or
+	  attribute defined as the concatenation of a <term>local name</term>
+	  (as defined in this specification), optionally preceded by a
+	  <term>namespace prefix</term> and colon character. See <xspecref xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/1999/REC-xml-names-19990114/#ns-qualnames" xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Qualified Names</xspecref> in
+	  Namespaces in XML <bibref role="informative" ref="Namespaces"/>.</p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem> 
+      <label id="dt-readonly-node">read only node</label>
+      <def><p>A <term>read only node</term> is a node that is immutable. This
+          means its list of children, its content, and its attributes, when it
+          is an element, cannot be changed in any way. However, a read only node
+          can possibly be moved, when it is not itself contained in a read only
+          node.</p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-root-node">root node</label>
+      <def>
+	<p>The <term>root node</term> is a node that is not a child of any
+	other node. All other nodes are children or other descendants of the
+	root node.</p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-schema">schema</label>
+      <def>
+	<p>
+	  A <term>schema</term> defines a set of structural and value
+	  constraints applicable to XML documents. Schemas can be
+	  expressed in schema languages, such as DTD, XML Schema, etc.
+	</p>
+      </def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-sibling">sibling</label>
+      <def><p>Two nodes are <term>siblings</term> if they have the
+	  same parent node.</p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-string-compare">string comparison</label>
+      <def><p>When string matching is required, it is to occur as
+	  though the comparison was between 2 sequences of code points
+	  from <bibref role="informative" ref="Unicode"/>.</p>
+      </def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-tag-valid">tag valid document</label>
+      <def><p>A document is <term>tag valid</term> if all begin and
+	  end tags are properly balanced and nested.</p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-target-node">target node</label>
+      <def>
+	<p>
+	  The target node is the node representing the <termref def="dt-event-target">event target</termref> to which an <termref def="dt-event">event</termref> is targeted using the DOM event
+	  flow.
+	</p>
+      </def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-target-phase">target phase</label>
+      <def>
+	<p>
+	  The process by which an <termref def="dt-event">event</termref> can be handled by the <termref def="dt-event-target">event target</termref>.
+	</p>
+      </def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem><label id="dt-token">token</label><def>
+        <p>An information item such as an
+          <xtermref xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/REC-xml.html#NT-Name" xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">XML Name</xtermref> which has been
+          <termref def="dt-tokenized">tokenized</termref>.</p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem><label id="dt-tokenized">tokenized</label><def>
+        <p>The description given to various information items (for example,
+          attribute values of various types, but not including the StringType
+          CDATA) after having been processed by the XML processor. The process
+          includes stripping leading and trailing white space, and replacing
+          multiple space characters by one. See the definition of
+          <xtermref xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/REC-xml.html#NT-TokenizedType" xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">tokenized type</xtermref>.</p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-type-valid">type valid document</label>
+      <def><p>A document is <term>type valid</term> if it conforms to
+	  an explicit DTD.</p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-uncooked">uncooked model</label>
+      <def><p>See initial structure model.</p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-well-formed">well-formed</label>
+      <def>
+	<p>
+	  A node is a <term>well-formed</term> XML node if its
+	  serialized form, without doing any transformation during its
+	  serialization, matches its respective production in <bibref ref="XML"/> or <bibref ref="XML11"/> (depending on the XML
+	  version in use) with all well-formedness constraints related
+	  to that production, and if the entities which are referenced
+	  within the node are also well-formed. If namespaces for XML
+	  are in use, the node must also be <termref def="dt-namespace-well-formed">namespace
+	  well-formed</termref>.
+	</p>
+      </def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-XML">XML</label>
+      <def><p>Extensible Markup Language (<term>XML</term>) is an
+	  extremely simple dialect of SGML which is completely
+	  described in this document. The goal is to enable generic
+	  SGML to be served, received, and processed on the Web in the
+	  way that is now possible with HTML. XML has been designed
+	  for ease of implementation and for interoperability with
+	  both SGML and HTML. <bibref role="informative" ref="XML"/></p></def>
+    </gitem>
+    <!-- ................................................................ -->
+    <gitem>
+      <label id="dt-XML-name">XML name</label>
+      <def><p>See <xspecref xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/2000/REC-xml-20001006#NT-Name" xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">XML name</xspecref> in
+	  the XML specification (<bibref role="informative" ref="XML"/>).
+        </p></def>
+    </gitem>
+    <!--
+    ................................................................ -->
+    <gitem>
+      <label id="dt-XML-namespace">XML namespace</label>
+      <def><p>An <term>XML namespace</term> is a collection of names,
+	  identified by a URI reference <bibref role="informative" ref="URIRef"/>, which are used
+	    in XML documents as element types and attribute names. <bibref role="informative" ref="Namespaces"/></p></def>
+    </gitem>
+    <!-- ................................................................ -->
+  </glist>
+</div1>
+<!--
+ *************************************************************************
+ * END OF DOM GLOSSARY                                                   *
+ *************************************************************************
+-->
+ 
+  
+<!-- $Id: xml-source.xml,v 1.7 2004/01/26 22:31:28 plehegar Exp $ -->
+<!--
+ *************************************************************************
+ * BEGINNING OF REFERENCES                                               *
+ *************************************************************************
+-->
+<div1 role="references" id="References">
+  <head>References</head>
+  <p>
+    For the latest version of any W3C specification please consult the list of
+    <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">W3C Technical Reports</loc> available at
+    http://www.w3.org/TR.
+  </p>
+  
+    <blist>      
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="c14n" href="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" key="Canonical XML" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Canonical XML Version 1.0</titleref>, J. Boyer,
+	Editor. World Wide Web Consortium, 15 March 2001. This version
+	of the Canonical XML Recommendation is
+	http://www.w3.org/TR/2001/REC-xml-c14n-20010315. The <loc href="http://www.w3.org/TR/xml-c14n" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest version of Canonical
+	XML</loc> is available at http://www.w3.org/TR/xml-c14n.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="Charmod" key="CharModel" href="http://www.w3.org/TR/2003/WD-charmod-20030822/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Character Model for the World Wide Web 1.0</titleref>,
+	M. D&#252;rst, F. Yergeau, R. Ishida, M. Wolf,
+	T. Texin, Editors. World Wide Web Consortium, August 2003.  This
+	version of the Character Model for the World Wide Web
+	Specification is http://www.w3.org/TR/2003/WD-charmod-20030822/. The <loc href="http://www.w3.org/TR/charmod/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest version of Character
+	Model</loc> is available at http://www.w3.org/TR/charmod/.
+        @@THIS REFERENCE CANNOT BE NORMATIVE. PLEASE, REMOVE ME. 
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="COM" key="COM" href="http://www.microsoft.com/com/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+        <titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">The Microsoft Component Object Model</titleref>,
+        Microsoft Corporation. Available at http://www.microsoft.com/com.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="CORBA" key="CORBA" href="http://www.omg.org/technology/documents/formal/corba_2.htm" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">The Common Object Request Broker: Architecture and
+	Specification, version 2</titleref>. Object Management
+	Group. The latest version of CORBA version  2.0 is available at
+        http://www.omg.org/technology/documents/formal/corba_2.htm.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="CSS2" key="CSS2" href="http://www.w3.org/TR/1998/REC-CSS2-19980512" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Cascading Style Sheets, level 2
+	Specification</titleref>, B. Bos, H. Wium Lie, C.
+	Lilley, and I. Jacobs, Editors. World Wide Web Consortium, 12
+	May 1998. This version of the Cascading Style Sheets
+	Recommendation is http://www.w3.org/TR/1998/REC-CSS2-19980512. The <loc href="http://www.w3.org/TR/REC-CSS2" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest version of Cascading
+	Style Sheets</loc> is available at
+	http://www.w3.org/TR/REC-CSS2.
+    </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="DOM-Level-1" key="DOM Level 1" href="http://www.w3.org/TR/1998/REC-DOM-Level-1-19981001/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">DOM Level 1 Specification</titleref>, V. Apparao,
+	et al., Editors. World Wide Web Consortium, 1 October 1998. This
+	version of the DOM Level 1 Recommendation is http://www.w3.org/TR/1998/REC-DOM-Level-1-19981001. The
+	<loc href="http://www.w3.org/TR/REC-DOM-Level-1/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest version
+	of DOM Level 1</loc> is available at
+	http://www.w3.org/TR/REC-DOM-Level-1.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="DOM2Core" key="DOM Level 2 Core" href="http://www.w3.org/TR/2000/REC-DOM-Level-2-Core-20001113" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Document Object Model Level 2 Core
+	Specification</titleref>, A. Le Hors, et al., Editors. World
+	Wide Web Consortium, 13 November 2000. This version of the DOM
+	Level 2 Core Recommendation is http://www.w3.org/TR/2000/REC-DOM-Level-2-Core-20001113. The <loc href="http://www.w3.org/TR/DOM-Level-2-Core" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest version of
+	DOM Level 2 Core</loc> is available at
+	http://www.w3.org/TR/DOM-Level-2-Core.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="DOMCore" key="DOM Level 3 Core" href="http://www.w3.org/TR/2003/CR-DOM-Level-3-Core-20031107" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+        <titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Document Object Model Level 3 Core
+        Specification</titleref>, A. Le Hors, et al., Editors. World
+        Wide Web Consortium, January 2004. This version of the Document
+        Object Model Level 3 Core Specification is
+        http://www.w3.org/TR/2003/CR-DOM-Level-3-Core-20031107. The <loc href="http://www.w3.org/TR/DOM-Level-3-Core" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest version of
+        DOM Level 3 Core</loc> is available at
+        http://www.w3.org/TR/DOM-Level-3-Core.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="DOM2Events" key="DOM Level 2 Events" href="http://www.w3.org/TR/2000/REC-DOM-Level-2-Events-20001113" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+ 	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Document Object Model Level 2 Events
+ 	Specification</titleref>, T. Pixley, Editor. World Wide Web
+ 	Consortium, 13 November 2000. This version of the Document
+ 	Object Model Level 2 Events Recommendation is http://www.w3.org/TR/2000/REC-DOM-Level-2-Events-20001113.  The
+ 	<loc href="http://www.w3.org/TR/DOM-Level-2-Events" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest
+ 	version of Document Object Model Level 2 Events</loc> is
+ 	available at http://www.w3.org/TR/DOM-Level-2-Events.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="DOMEvents" key="DOM Level 3 Events" href="http://www.w3.org/TR/2003/NOTE-DOM-Level-3-Events-20031107" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Document Object Model Level 3 Events
+	Specification</titleref>, P. Le H&#233;garet, T. Pixley,
+	Editors.  World Wide Web Consortium, November 2003. This version of
+	the Document Object Model Level 3 Events Specification is
+	http://www.w3.org/TR/2003/NOTE-DOM-Level-3-Events-20031107.  The <loc href="http://www.w3.org/TR/DOM-Level-3-Events" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest version of
+	Document Object Model Level 3 Events</loc> is available at
+	http://www.w3.org/TR/DOM-Level-3-Events.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="DOMLS" key="DOM Level 3 Load and Save" href="http://www.w3.org/TR/2003/CR-DOM-Level-3-LS-20031107" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+        <titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Document Object Model Level 3 Load and Save
+        Specification</titleref>, J.  Stenback, A. Heninger,
+        Editors. World Wide Web Consortium, January 2004.  This version of
+        the DOM Level 3 Load and Save Specification is
+        http://www.w3.org/TR/2003/CR-DOM-Level-3-LS-20031107. The <loc href="http://www.w3.org/TR/DOM-Level-3-LS" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest version of DOM
+        Level 3 Load and Save</loc> is available at
+        http://www.w3.org/TR/DOM-Level-3-LS.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="DOM2HTML" key="DOM Level 2 HTML" href="http://www.w3.org/TR/2003/REC-DOM-Level-2-HTML-20030109" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+        <titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Document Object Model Level 2 HTML
+        Specification</titleref>, J. Stenback, et al., Editors. World
+        Wide Web Consortium, 9 January 2003. This version of the Document
+        Object Model Level 2 HTML Recommendation is http://www.w3.org/TR/2003/REC-DOM-Level-2-HTML-20030109.  The <loc href="http://www.w3.org/TR/DOM-Level-2-HTML" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest version of
+        Document Object Model Level 2 HTML</loc> is available at
+        http://www.w3.org/TR/DOM-Level-2-HTML.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="DOM-Level-3-Requirements" key="DOM Level 3 Requirements" href="http://www.w3.org/TR/2001/WD-DOM-Requirements-20010419/#Level3" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">    
+       <quote>DOM Requirements for DOM Level 3</quote> in <titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">DOM
+       Requirements for DOM Level 3</titleref>, B. Chang, et al.,
+       Editors.  World Wide Web Consortium, April 2001. This version of
+       the DOM Requirements for DOM Level 3 is
+       http://www.w3.org/TR/2001/WD-DOM-Requirements-20010419/#Level3.
+       The <loc href="http://www.w3.org/TR/DOM-Requirements" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest
+       version of DOM Requirements</loc> is available at
+       http://www.w3.org/TR/DOM-Requirements.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="DOM2Style" key="DOM Level 2 Style Sheets and CSS" href="http://www.w3.org/TR/2000/REC-DOM-Level-2-Style-20001113" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+       <titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Document Object Model Level 2 Style Sheets and CSS
+       Specification</titleref>, C. Wilson, P. Le H&#233;garet,
+       V. Apparao, Editors.  World Wide Web Consortium, 13 November
+       2000. This version of the Document Object Model Level 2 Style
+       Sheets and CSS Recommendation is http://www.w3.org/TR/2000/REC-DOM-Level-2-Style-20001113.  The <loc href="http://www.w3.org/TR/DOM-Level-2-Style" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest version of
+       Document Object Model Level 2 Style Sheets and CSS</loc> is
+       available at http://www.w3.org/TR/DOM-Level-2-Style.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="DOM2Traversal-Range" key="DOM Level 2 Traversal and      Range" href="http://www.w3.org/TR/2000/REC-DOM-Level-2-Traversal-Range-20001113" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Document Object Model Level 2 Traversal and Range
+	Specification</titleref>, J. Kesselman, J. Robie, M.
+	Champion, P. Sharpe, V. Apparao, L. Wood,
+	Editors. World Wide Web Consortium, 13 November 2000. This
+	version of the Document Object Model Level 2 Traversal and Range
+	Recommendation is http://www.w3.org/TR/2000/REC-DOM-Level-2-Traversal-Range-20001113.  The <loc href="http://www.w3.org/TR/DOM-Level-2-Traversal-Range" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest
+	version of Document Object Model Level 2 Traversal and
+	Range</loc> is available at
+	http://www.w3.org/TR/DOM-Level-2-Traversal-Range.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="DOMVal" key="DOM Level 3 Validation" href="http://www.w3.org/TR/2003/REC-DOM-Level-3-Val-20040127/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+        <titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Document Object Model Level 3 Validation
+        Specification</titleref>, B. Chang, J. Kesselman, R. Rahman,
+        Editors. World Wide Web Consortium, December 2003.  This version of
+        the DOM Level 3 Validation Specification is
+        http://www.w3.org/TR/2003/REC-DOM-Level-3-Val-20040127/. The <loc href="http://www.w3.org/TR/DOM-Level-3-Val" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest version of
+        DOM Level 3 Validation</loc> is available at
+        http://www.w3.org/TR/DOM-Level-3-Val.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="DOM2Views" key="DOM Level 2 Views" href="http://www.w3.org/TR/2000/REC-DOM-Level-2-Views-20001113" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Document Object Model Level 2 Views
+	Specification</titleref>, A. Le Hors, L. Cable, Editors.  World Wide Web
+	Consortium, 13 November 2000. This version of the Document Object
+	Model Level 2 Views Recommendation is http://www.w3.org/TR/2000/REC-DOM-Level-2-Views-20001113.  The <loc href="http://www.w3.org/TR/DOM-Level-2-Views" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest version of Document Object Model Level 2
+	Views</loc> is available at http://www.w3.org/TR/DOM-Level-2-Views.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="DOMXPath" key="DOM Level 3 XPath" href="http://www.w3.org/TR/2003/CR-DOM-Level-3-XPath-20030331/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Document Object Model Level 3 XPath
+	Specification</titleref>, R. Whitmer, Editor. World Wide Web
+	Consortium, March 2003. This version of the Document Object
+	Model Level 3 XPath Specification is http://www.w3.org/TR/2003/CR-DOM-Level-3-XPath-20030331.  The
+	<loc href="http://www.w3.org/TR/DOM-Level-3-XPath" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest
+	version of Document Object Model Level 3 XPath</loc> is
+	available at http://www.w3.org/TR/DOM-Level-3-XPath.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="DWW95" key="DWW95" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Developing International Software for Windows 95 and
+	Windows NT: A Handbook for International Software
+	Design</titleref>, N. Kano, Author. Microsoft Press, 1995. ISBN
+	1-55615-840-8.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="ECMAScript" key="ECMAScript" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">ECMAScript Language Specification</titleref>, Third
+	Edition. European Computer Manufacturers Association, Standard
+	ECMA-262, December 1999. This version of the ECMAScript
+	Language is available from http://www.ecma-international.org/.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="HTML40" key="HTML 4.01" href="http://www.w3.org/TR/1999/REC-html401-19991224/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+        <titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">HTML 4.01 Specification</titleref>, D. Raggett, A. Le
+        Hors, and I. Jacobs, Editors. World Wide Web Consortium, 17
+        December 1997, revised 24 April 1998, revised 24 December
+        1999. This version of the HTML 4.01 Recommendation is
+        http://www.w3.org/TR/1999/REC-html401-19991224. The <loc href="http://www.w3.org/TR/html4" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest version of HTML 4</loc> is
+        available at http://www.w3.org/TR/html4.
+      </bibl>      
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="IANA-CHARSETS" key="IANA-CHARSETS" href="ftp://ftp.isi.edu/in-notes/iana/assignments/character-sets" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+        <titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Official Names for Character Sets</titleref>,
+        K. Simonsen, et al., Editors. Internet Assigned Numbers
+        Authority. Available at
+        ftp://ftp.isi.edu/in-notes/iana/assignments/character-sets.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="ISO10646" key="ISO/IEC 10646" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+        <titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">ISO/IEC 10646-2000 (E). Information technology -
+        Universal Multiple-Octet Coded Character Set (UCS) - Part 1:
+        Architecture and Basic Multilingual Plane</titleref>, as, from
+        time to time, amended, replaced by a new edition or expanded by
+        the addition of new parts. [Geneva]: International Organization
+        for Standardization, 2000. See also <loc href="http://www.iso.ch" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">International Organization for
+        Standardization</loc>, available at http://www.iso.ch, for the
+        latest version.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="Java" key="Java" href="http://java.sun.com/docs/books/jls" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">The Java Language Specification</titleref>, J.
+	Gosling, B. Joy, and G. Steele, Authors. Addison-Wesley,
+	September 1996. Available at http://java.sun.com/docs/books/jls
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="JavaIDL" key="Java IDL" href="http://java.sun.com/products/jdk/idl/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Java IDL</titleref>. Sun Microsystems. Available at http://java.sun.com/products/jdk/idl/
+      </bibl>      
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="JavaScript" key="JavaScript" href="http://devedge.netscape.com/central/javascript/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">JavaScript Resources</titleref>. Netscape
+	Communications Corporation. Available at http://devedge.netscape.com/central/javascript/
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="JAXP" key="JAXP" href="http://java.sun.com/xml/jaxp/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Java API for XML Processing (JAXP)</titleref>. Sun
+	Microsystems. Available at
+	http://java.sun.com/xml/jaxp/.
+	</bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="JScript" key="JScript" href="http://msdn.microsoft.com/library/en-us/script56/html/js56jslrfjscriptlanguagereference.asp" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">JScript Resources</titleref>. Microsoft. Available at
+	http://msdn.microsoft.com/library/en-us/script56/html/js56jslrfjscriptlanguagereference.asp
+      </bibl>    
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="KeyEvent" key="KeyEvent for Java" href="http://java.sun.com/j2se/1.4.2/docs/api/java/awt/event/KeyEvent.html" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Java 2 Platform, Standard Edition, v. 1.4.2 API
+	Specification, Class java.awt.events.KeyEvent</titleref>. Sun
+	Microsystems. Available at
+	http://java.sun.com/j2se/1.4.2/docs/api/java/awt/event/KeyEvent.html.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="Keys" key="Keys enumeration for .Net" href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfSystemWindowsFormsKeysClassTopic.asp" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">.NET Framework Class Library, Keys
+	Enumeration</titleref>. Microsoft. Available at
+	http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfSystemWindowsFormsKeysClassTopic.asp.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="MathML2" key="MathML 2.0" href="http://www.w3.org/TR/2001/REC-MathML2-20010221" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Mathematical Markup Language (MathML) Version
+	2.0</titleref>, D. Carlisle, P. Ion, R. Miner, N. Poppelier,
+	Editors. World Wide Web Consortium, 21 February 2001. This version
+	of the Math 2.0 Recommendation is http://www.w3.org/TR/2001/REC-MathML2-20010221. The <loc href="http://www.w3.org/TR/MathML2" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest version of MathML
+	2.0</loc> is available at http://www.w3.org/TR/MathML2.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="MSIDL" key="MIDL" href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/midl/midl/midl_language_reference.asp" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+        <titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">MIDL Language
+        Reference</titleref>. Microsoft. Available at http://msdn.microsoft.com/library/default.asp?url=/library/en-us/midl/midl/midl_language_reference.asp.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="OMGIDL" key="OMG IDL" href="http://www.omg.org/technology/documents/formal/corba_2.htm" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+        <quote>OMG IDL Syntax and Semantics</quote> defined in
+        <titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">The Common Object Request Broker: Architecture and
+        Specification, version 2</titleref>, Object Management
+        Group. The latest version of CORBA version 2.0 is available at
+        http://www.omg.org/technology/documents/formal/corba_2.htm.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="IRIRef" key="IETF IRIs" href="http://www.w3.org/International/iri-edit/draft-duerst-iri-03.txt" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Internationalized Resource Identifiers
+	(IRIs)</titleref>, M. D&#252;rst, and M. Suignard, Authors. Internet
+	Engineering Task Force, March 2003. Available at
+	http://www.w3.org/International/iri-edit/draft-duerst-iri-03.txt.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="URIRef" key="IETF RFC 2396" href="http://www.ietf.org/rfc/rfc2396.txt" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Uniform Resource Identifiers (URI): Generic Syntax</titleref>, T. Berners-Lee,
+	R. Fielding, L. Masinter, Authors. Internet Engineering Task Force, August 1998. Available at
+	http://www.ietf.org/rfc/rfc2396.txt.
+      </bibl>      
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="RFC2616" key="IETF RFC 2616" href="http://www.ietf.org/rfc/rfc2616.txt" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Hypertext Transfer Protocol -- HTTP/1.1</titleref>,
+	R. Fielding, et al., Authors. Internet Engineering Task Force,
+	June 1999. Available at http://www.ietf.org/rfc/rfc2616.txt.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="RFC3023" key="IETF RFC 3023" href="http://www.ietf.org/rfc/rfc3023.txt" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">XML Media Types</titleref>, M. Murata, S. St.Laurent,
+	and D. Kohn, Editors. Internet Engineering Task Force, January
+	2001. Available at http://www.ietf.org/rfc/rfc3023.txt.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="SAX" key="SAX" href="http://www.saxproject.org/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+        <titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Simple API for XML</titleref>, D. Megginson and
+        D. Brownell, Maintainers. Available at
+        http://www.saxproject.org/.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="SVG1" key="SVG 1.1" href="http://www.w3.org/TR/2003/REC-SVG11-20030114/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Scalable Vector Graphics (SVG) 1.1
+	Specification</titleref>, J. Ferraiolo, &#34276;&#27810;
+	&#28147; (FUJISAWA Jun), and D. Jackson, Editors. World Wide Web
+	Consortium, 14 January 2003. This version of the SVG 1.1
+	Recommendation is http://www.w3.org/TR/2003/REC-SVG11-20030114/. The <loc href="http://www.w3.org/TR/SVG" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest version of SVG 1.1</loc>
+	is available at http://www.w3.org/TR/SVG.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="Unicode" key="Unicode" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">The Unicode Standard, Version 4</titleref>, ISBN
+	0-321-18578-1, as updated from time to time by the publication
+	of new versions. The Unicode Consortium, 2000. See also <loc href="http://www.unicode.org/unicode/standard/versions" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">Versions
+	of the Unicode Standard</loc>, available at
+	http://www.unicode.org/unicode/standard/versions, for latest
+	version and additional information on versions of the standard
+	and of the Unicode Character Database.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="UnicodeNormalization" key="UTR #15" href="http://www.unicode.org/unicode/reports/tr15/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Unicode Normalization Forms</titleref>, The Unicode
+	Standard Annex #15. The Unicode Consortium, 2003. The latest
+	version of this annex is available at
+	http://www.unicode.org/unicode/reports/tr15/.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="VoiceXML20" key="VoiceXML 2.0" href="http://www.w3.org/TR/2003/CR-voicexml20-20030220" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+        <titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Voice Extensible Markup Language (VoiceXML) Version
+        2.0</titleref>, S. McGlashan, et al., Editors. World Wide Web
+        Consortium, February 2003. This version of the Voice Extensible
+        Markup Language Version 2.0 specification is
+        http://www.w3.org/TR/2003/CR-voicexml20-20030220. The <loc href="http://www.w3.org/TR/voicexml20/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest version of Voice
+        Extensible Markup Language Version 2.0</loc> is available at
+        http://www.w3.org/TR/voicexml20/.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="XForms10" key="XForms 1.0" href="http://www.w3.org/TR/2003/REC-xforms-20031014/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+        <titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">XForms 1.0</titleref>, M. Dubinko, et al.,
+        Editors. World Wide Web Consortium, 14 October 2003. This
+        version of the XForms 1.0 Recommendation is http://www.w3.org/TR/2003/REC-xforms-20031014/. The <loc href="http://www.w3.org/TR/xforms/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest version of XForms
+        1.0</loc> is available at http://www.w3.org/TR/xforms/.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="XHTML10" key="XHTML 1.0" href="http://www.w3.org/TR/2002/REC-xhtml1-20020801" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+        <titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">XHTML 1.0: The Extensible HyperText Markup
+        Language</titleref>, S. Pemberton, et al., Authors. World Wide
+        Web Consortium, 26 January 2000, revised 1 August 2002. This
+        version of the XHTML 1.0 Recommendation is http://www.w3.org/TR/2002/REC-xhtml1-20020801. The <loc href="http://www.w3.org/TR/xhtml1" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest version of XHTML
+        1.0</loc> is available at http://www.w3.org/TR/xhtml1.
+      </bibl>
+<!--
+      <bibl id='XHTML11' key='XHTML 1.1'>
+	W3C (World Wide Web Consortium) <loc href='&xhtml11;'>XHTML 1.1 -
+	  Module-base XHTML</loc>, May 2001. Available at &xhtml11;
+      </bibl>
+-->
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="XPath20DataModel" key="XQuery 1.0 and XPath 2.0 Data Model" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	W3C (World Wide Web Consortium) <loc href="http://www.w3.org/TR/query-datamodel/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">XQuery
+	1.0 and XML Path 2.0 Data Model</loc>, June 2001. Available at
+	http://www.w3.org/TR/query-datamodel
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="XML" key="XML 1.0" href="http://www.w3.org/TR/2000/REC-xml-20001006" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Extensible Markup Language (XML) 1.0 (Second
+	Edition)</titleref>, T. Bray, J. Paoli,
+	C. M. Sperberg-McQueen, and E. Maler, Editors. World Wide Web
+	Consortium, 10 February 1998, revised 6 October 2000. This
+	version of the XML 1.0 Recommendation is http://www.w3.org/TR/2000/REC-xml-20001006. The <loc href="http://www.w3.org/TR/REC-xml" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest version of XML
+	1.0</loc> is available at http://www.w3.org/TR/REC-xml.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="XML11" key="XML 1.1" href="http://www.w3.org/TR/2003/PR-xml11-20031105/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">XML 1.1</titleref>, T. Bray, and al., Editors. World
+	Wide Web Consortium, November 2003. This version of the XML 1.1
+	Specification is http://www.w3.org/TR/2003/PR-xml11-20031105. The <loc href="http://www.w3.org/TR/xml11/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest version of XML
+	1.1</loc> is available at http://www.w3.org/TR/xml11.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="XMLBase" key="XML Base" href="http://www.w3.org/TR/2001/REC-xmlbase-20010627/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">XML Base</titleref>, J. Marsh, Editor. World
+	Wide Web Consortium, June 2001.  This version of the XML Base
+	Recommendation is http://www.w3.org/TR/2001/REC-xmlbase-20010627. The <loc href="http://www.w3.org/TR/xmlbase/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest version of XML
+	Base</loc> is available at http://www.w3.org/TR/xmlbase.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="InfoSet" key="XML Information Set" href="http://www.w3.org/TR/2001/REC-xml-infoset-20011024/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+        <titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">XML Information Set</titleref>, J. Cowan and R.
+        Tobin, Editors. World Wide Web Consortium, 24 October 2001.
+        This version of the XML Information Set Recommendation is
+        http://www.w3.org/TR/2001/REC-xml-infoset-20011024. The <loc href="http://www.w3.org/TR/xml-infoset/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest version of XML
+        Information Set</loc> is available at
+        http://www.w3.org/TR/xml-infoset.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="XMLEvents" key="XML Events" href="http://www.w3.org/TR/2003/PR-xml-events-20030804/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">XML Events</titleref>, S. McCarron, S. Pemberton,
+	and T.V. Raman, Editors. World Wide Web Consortium, August
+	2003. This version of the XML Events specification is
+	http://www.w3.org/TR/2003/PR-xml-events-20030804. The <loc href="http://www.w3.org/TR/xml-events/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest version of XML
+	Events</loc> is available at http://www.w3.org/TR/xml-events.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="Namespaces" key="XML Namespaces" href="http://www.w3.org/TR/1999/REC-xml-names-19990114/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Namespaces in XML</titleref>, T. Bray, D.
+	Hollander, and A. Layman, Editors. World Wide Web
+	Consortium, 14 January 1999. This version of the XML
+	Information Set Recommendation is http://www.w3.org/TR/1999/REC-xml-names-19990114. The <loc href="http://www.w3.org/TR/REC-xml-names/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest version of
+	Namespaces in XML</loc> is available at
+	http://www.w3.org/TR/REC-xml-names.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="Namespaces11" key="XML Namespaces 1.1" href="http://www.w3.org/TR/2003/PR-xml-names11-20031105/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">Namespaces in XML 1.1</titleref>, T. Bray, D.
+	Hollander, A. Layman, and R. Tobin, Editors. World Wide Web
+	Consortium, November 2003. This version of the XML Information
+	Set Specification is
+	http://www.w3.org/TR/2003/PR-xml-names11-20031105/. The <loc href="http://www.w3.org/TR/xml-names11/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest version of
+	Namespaces in XML</loc> is available at
+	http://www.w3.org/TR/xml-names11/.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="XMLSchema0" key="XML Schema Part 0" href="http://www.w3.org/TR/2001/REC-xmlschema-0-20010502/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">XML Schema Part 0: Primer</titleref>, D. Fallside,
+	Editor. World Wide Web Consortium, 2 May 2001.  This version of
+	the XML Part 0 Recommendation is http://www.w3.org/TR/2001/REC-xmlschema-0-20010502. The
+	<loc href="http://www.w3.org/TR/xmlschema-0/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest version of
+	XML Schema Part 0</loc> is available at
+	http://www.w3.org/TR/xmlschema-0.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="XMLSchema1" key="XML Schema Part 1" href="http://www.w3.org/TR/2001/REC-xmlschema-1-20010502/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">XML Schema Part 1: Structures</titleref>, H. Thompson,
+	D. Beech, M. Maloney, and N. Mendelsohn, Editors. World Wide Web
+	Consortium, 2 May 2001. This version of the XML Part 1
+	Recommendation is http://www.w3.org/TR/2001/REC-xmlschema-1-20010502. The <loc href="http://www.w3.org/TR/xmlschema-1/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest version of XML
+	Schema Part 1</loc> is available at
+	http://www.w3.org/TR/xmlschema-1.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="XMLSchema2" key="XML Schema Part 2" href="http://www.w3.org/TR/2001/REC-xmlschema-2-20010502/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">XML Schema Part 2: Datatypes</titleref>, P. Byron and
+	Ashok Malhotra, Editors. World Wide Web Consortium, 2 May 2001.
+	This version of the XML Part 2 Recommendation is
+	http://www.w3.org/TR/2001/REC-xmlschema-2-20010502. The <loc href="http://www.w3.org/TR/xmlschema-2/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest version of XML
+	Schema Part 2</loc> is available at
+	http://www.w3.org/TR/xmlschema-2.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="XML-StyleSheet" key="XML StyleSheet" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	W3C (World Wide Web Consortium) <loc href="http://www.w3.org/1999/06/REC-xml-stylesheet-19990629" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">Associating Style Sheets with XML
+	documents Version 1.0</loc>, June 1999. Available at
+	http://www.w3.org/1999/06/REC-xml-stylesheet-19990629
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="XPath10" href="http://www.w3.org/TR/1999/REC-xpath-19991116" key="XPath 1.0" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">XML Path Language (XPath) Version 1.0</titleref>,
+	J. Clark and S. DeRose, Editors. World Wide Web
+	Consortium, 16 November 1999. This version of the XPath 1.0
+	Recommendation is http://www.w3.org/TR/1999/REC-xpath-19991116. The <loc href="http://www.w3.org/TR/xpath" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest version of XPath
+	1.0</loc> is available at http://www.w3.org/TR/xpath.
+      </bibl>
+      <bibl xmlns:xlink="http://www.w3.org/1999/xlink" id="XPointer" key="XPointer" href="http://www.w3.org/TR/2003/REC-xptr-framework-20030325/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">
+	<titleref xlink:type="simple" xlink:show="new" xlink:actuate="onRequest">XPointer Framework</titleref>, P. Grosso, E. Maler,
+	J. Marsh, and N. Walsh., Editors. World Wide Web Consortium,
+	25 March 2003.  This version of the XPointer Framework
+	Recommendation is http://www.w3.org/TR/2003/REC-xptr-framework-20030325/. The <loc href="http://www.w3.org/TR/xptr-framework/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">latest version of
+	XPointer Framework</loc> is available at
+	http://www.w3.org/TR/xptr-framework/.
+      </bibl>
+    </blist>
+
+</div1>
+<!--
+ *************************************************************************
+ * END OF REFERENCES                                                     *
+ *************************************************************************
+-->
+
+  
+<!-- $Id: xml-source.xml,v 1.7 2004/01/26 22:31:28 plehegar Exp $ -->
+<!--
+ *************************************************************************
+ * BEGINNING OF DOM INDEX                                                * 
+ *************************************************************************
+-->
+<div1 role="index" id="Index">
+  <head>Index</head>
+  <?GENERATE-DEFINITION-INDEX?>
+</div1>
+<!--
+ *************************************************************************
+ * END OF DOM INDEX                                                      *
+ *************************************************************************
+-->
+ 
+</back> </spec>

@@ -63,7 +63,9 @@ var InterfaceLoader = {
     parsedInterface.id = xml.attributes['id'].value;
     parsedInterface.name = xml.attributes['name'].value;
     parsedInterface.description = xml.attributes['description'].value;
-    parsedInterface.fullUrl = xml.attributes['full_url'].value;
+    if (xml.attributes['full_url']) {
+      parsedInterface.fullUrl = xml.attributes['full_url'].value;
+    }
     if (xml.attributes['parent_id']) {
       parsedInterface.parentId = xml.attributes['parent_id'].value;
     }
@@ -95,7 +97,9 @@ var InterfaceLoader = {
     attribute.readonly = node.attributes['readonly'].value == 'true';
     attribute.description = node.attributes['description'].value;
     attribute.ownerId = node.attributes['owner_id'].value;
-    attribute.fullUrl = node.attributes['full_url'].value;
+    if (node.attributes['full_url']) {
+      attribute.fullUrl = node.attributes['full_url'].value;
+    }
     return attribute;
   },
 
@@ -108,7 +112,9 @@ var InterfaceLoader = {
     method.description = node.attributes['description'].value;
     method.returnDescription = node.attributes['return_description'].value;
     method.ownerId = node.attributes['owner_id'].value;
-    method.fullUrl = node.attributes['full_url'].value;
+    if (node.attributes['full_url']) {
+      method.fullUrl = node.attributes['full_url'].value;
+    }
 
     var parameters = nodeListToArray(node.getElementsByTagName('parameter'));
     method.parameters = parameters.map(function (parameterNode) {
@@ -116,9 +122,13 @@ var InterfaceLoader = {
       parameter.id = parameterNode.attributes['id'].value;
       parameter.name = parameterNode.attributes['name'].value;
       parameter.type = parameterNode.attributes['type'].value;
-      parameter.optional = parameterNode.attributes['optional'].value == 'true';
+      if (parameterNode.attributes['optional']) {
+        parameter.optional = parameterNode.attributes['optional'].value == 'true';
+      }
       parameter.description = parameterNode.attributes['description'].value;
-      parameter.fullUrl = parameterNode.attributes['full_url'].value;
+      if (parameterNode.attributes['full_url']) {
+        parameter.fullUrl = parameterNode.attributes['full_url'].value;
+      }
       parameter.ownerId = parameterNode.attributes['owner_id'].value;
       return parameter;
     });
