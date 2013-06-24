@@ -61,7 +61,7 @@ li.interface-list-item {
 }
 
 .interface-list-item.show-owner .interface-header .owner-class {
-  display: block;
+  display: inline-block;
 }
 
 .interface-list-item.show-owner.method .interface-header .owner-class:before {
