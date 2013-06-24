@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+<head>
+      <script src="//cdn.optimizely.com/js/237572123.js"></script>
+  
+  <title>File - Web API reference | MDN</title>
+  
+  <meta charset="utf-8">
+  <meta name="robots" content="index, follow">
+  <link rel="home" href="/en-US/">
+  <link rel="copyright" href="#copyright">
+  <link rel="shortcut icon" href="https://developer.cdn.mozilla.net/media/img/favicon.ico">
+
+        <!--[if !IE 6]><!-->
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/mdn-min.css?build=5f4e39d" />
+      <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/wiki-min.css?build=5f4e39d" />
+    <!--<![endif]-->
+  <!--[if IE]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie.css"><![endif]-->
+  <!--[if lte IE 7]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie7.css"><![endif]-->
+  <!--[if lte IE 6]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie6.css"><![endif]-->
+  <link rel="stylesheet" type="text/css" href="https://developer.cdn.mozilla.net/media/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="print" href="https://developer.cdn.mozilla.net/media/css/mdn-print.css">
+  <link rel="stylesheet" href="https://mozorg.cdn.mozilla.net/media/css/tabzilla-min.css">
+  
+
+  <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network" />
+
+  
+    <link rel="stylesheet" media="print" href="https://developer.cdn.mozilla.net/media/css/wiki-print-min.css?build=5f4e39d" />
+          <link rel="stylesheet" type="text/css"
+            href="/en-US/docs/Template:CustomCSS?raw=1" />
+    
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script src="https://developer.cdn.mozilla.net/media/js/html5.js"></script>
+  <![endif]-->
+
+    <link rel="alternate" type="application/json" href="/en-US/docs/Web/API/File$json" />
+  <link rel="canonical" href="https://developer.mozilla.org/en-US/docs/Web/API/File" />
+
+  <meta property="og:title" content="File" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://developer.mozilla.org/media/img/mdn-logo-sm.png" />
+  <meta property="og:site_name" content="Mozilla Developer Network" />
+  <meta property="og:url" content="https://developer.mozilla.org/en-US/docs/Web/API/File" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:url" content="https://developer.mozilla.org/en-US/docs/Web/API/File" />
+  <meta name="twitter:title" content="File" />
+  <meta name="twitter:image" content="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" />
+  <meta name="twitter:site" content="@mozhacks" />
+  <meta name="twitter:creator" content="@mozhacks" />
+
+    <meta property="og:description" content="The File object provides information about -- and access to the contents of -- files. These are generally retrieved from a FileList object returned as a result of a user selecting files using the input element, or from a drag and drop operation&#39;s DataTransfer object."/>
+  <meta name="description" content="The File object provides information about -- and access to the contents of -- files. These are generally retrieved from a FileList object returned as a result of a user selecting files using the input element, or from a drag and drop operation&#39;s DataTransfer object." />
+  <meta name="twitter:description" content="The File object provides information about -- and access to the contents of -- files. These are generally retrieved from a FileList object returned as a result of a user selecting files using the input element, or from a drag and drop operation&#39;s DataTransfer object." />
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36116321-5']);
+  _gaq.push(['_trackPageview']);
+
+  (function(a, d) {
+    var ga = d.createElement(a); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == d.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = d.getElementsByTagName(a)[0]; s.parentNode.insertBefore(ga, s);
+  })('script', document);
+
+</script>
+</head>
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  <header id="masthead" class="minor new-menu">
+    <div class="wrap">
+      <ul id="nav-access">
+        <li><a href="#language">Select language</a></li>
+        <li><a href="#q">Skip to search</a></li>
+        <li><a href="#content">Skip to main content</a></li>
+      </ul>
+    
+      <div id="branding">
+                <div id="logo"><a href="/en-US/"><img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" alt="Mozilla Developer Network" title="Mozilla Developer Network" width="62" height="71"> Mozilla Developer Network</a></div>
+              </div>
+      
+              <nav id="nav">
+          <ul id="nav-main" role="menubar">
+            <li id="nav-main-docs" class="menu" rel="menuitem"><a href="#nav-sub-docs" class="toggle" aria-haspopup="true" aria-labelledby="nav-main-docs" title="Read Documentation">Read<br /><em>Docs</em></a>
+              <div id="nav-sub-docs" class="sub-menu" aria-hidden="true">
+                <ul>
+                  <li>
+                    <ul>
+
+                      <li><a href="/en-US/docs/Web/HTML?menu">HTML</a></li>
+                      <li><a href="/en-US/docs/Web/CSS?menu">CSS</a></li>
+                      <li><a href="/en-US/docs/Web/JavaScript?menu">JavaScript</a></li>
+                      <li><a href="/en-US/docs/Web/Guide/Graphics?menu">Graphics</a></li>
+                      <li><a href="/en-US/docs/Web/API?menu">APIs / DOM</a></li>
+                      <li><a href="/en-US/docs/Web/Apps?menu">Apps</a></li>
+                      <li><a href="/en-US/docs/tools?menu">Dev Tools</a></li>
+                      <li><a href="/en-US/docs/Web/MathML?menu">MathML</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <ul>
+                      <li><a href="/en-US/docs/Web/Tutorials?menu">Tutorials</a></li>
+                      <li><a href="/en-US/docs/Web/Reference?menu">References</a></li>
+                      <li><a href="/en-US/docs/Web/Guide?menu">Developer Guides</a></li>
+                      <li><a href="/en-US/demos/?menu">Demos</a></li>
+                      <li><br /><br /><a href="/en-US/docs?menu">...more docs</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li id="nav-main-apps" role="menuitem"><a href="https://marketplace.firefox.com/developers/">Make<br /><em>Apps</em></a></li>
+            <li id="nav-main-firefox" class="menu" role="menuitem"><a href="#nav-sub-firefox" class="firefox toggle" aria-haspopup="true" aria-labelledby="nav-main-firefox">Build & Use<br /><em>Firefox</em></a>
+              <ul id="nav-sub-firefox" class="sub-menu">
+                <li><a href="/en-US/docs/Mozilla/Firefox_OS?menu">Firefox OS</a></li>
+                <li><a href="/en-US/docs/Mozilla/Firefox?menu">Firefox Desktop</a></li>
+                <li><a href="/en-US/docs/Mozilla/Mobile?menu">Mobile</a></li>
+                <li><a href="/en-US/docs/Mozilla/Add-ons?menu">Add-ons</a></li>
+              </ul>
+            </li>
+            <li id="nav-main-demos" role="menuitem"><a href="/en-US/demos/?menu" class="demos">See & Submit<br /><em>Demos</em></a></li>
+            <li id="nav-main-community" class="menu" role="menuitem"><a href="#nav-sub-community" class="community toggle" aria-haspopup="true" aria-labelledby="nav-main-community">Get<br /><em>Involved</em></a>
+              <ul id="nav-sub-community" class="sub-menu">
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Join_the_community?menu">Join the Community</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing?menu">Contribute to MDN</a></li>
+                <li><a href="/en-US/events?menu">Events</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Follow_what_s_happening?menu">Tweets, Blogs, and More</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+          
+      <ul class="user-state signed-out">
+    <li class="user-signin menu">
+    <form class="browserid" action="/en-US/users/browserid_verify" method="POST">
+        <input id="next" name="next" type="hidden" value="/en-US/docs/Web/API/File"/>
+        <input required="required" type="hidden" name="assertion" id="id_assertion" />
+                        <a href="#" target="_blank" class="browserid-signin toggle" aria-haspopup="true" title="Sign in with Persona">Sign in</a>
+                <div class="browserid-info sub-menu" aria-hidden="true">
+                <h3>What's this?</h3> <p>MDN has switched to <a href="https://persona.org/" target="_blank" rel="external">Persona</a>, a safe and simple way to sign in with just your e-mail address. <a href="http://identity.mozilla.com/post/12950196039/deploying-browserid-at-mozilla" rel="external">Learn more about why Mozilla is using Persona</a>.</p> <p><strong>Returning members:</strong> sign in with Persona and you'll be connected to your MDN profile (all your information is still here).</p> <p><strong>New members:</strong> sign in with Persona first, then you'll be able to set up your new MDN profile.</p>          <p><a href="#" target="_blank" class="browserid-signin" title="Sign in with Persona">Sign in</a></p>
+        </div>
+              </form>
+    </li>
+  </ul>
+      
+      <form id="site-search" method="get" action="http://www.google.com/search"
+              data-url="/en-US/search">
+        <p>
+          <input type="search" role="search" placeholder="Search MDN" id="q" name="q" value="">
+          <noscript><button type="submit">Search</button></noscript>
+        </p>
+        <input type="hidden" name="sitesearch" value="developer.mozilla.org">
+                <div id="site-search-gg"></div>
+              </form>
+
+      <a href="//www.mozilla.org/" id="tabzilla">mozilla</a>
+    </div>
+  </header>
+
+    
+
+<!-- top toolbar -->
+<section id="nav-toolbar"><div><div class="wrap">
+  <!-- right floated navigation -->
+  <nav id="tool-menus" role="navigation">
+    <ul id="tools">
+      <li class="menu">
+        <a href="#page-tools" class="toggle">This page</a>
+        <ul id="page-tools" class="sub-menu">
+          <li class="page-print"> <a href="#" onclick="return window.print();"  title="Print page">Print this page</a></li>
+                      <li><a href="/en-US/docs/new?parent=2448">New sub-page</a></li>
+            <li><a href="/en-US/docs/new?clone=2448">Clone this page</a></li>
+                                      </ul>
+      </li>
+            <li class="menu">
+        <a href="#" class="toggle">Languages</a>
+        <ul id="translations">
+                      <li><a rel="internal" href="/fr/docs/DOM/File" title="File">Français</a></li>
+                      <li><a rel="internal" href="/zh-CN/docs/DOM/File" title="File">中文 (简体)</a></li>
+                    
+                      <li><a href="/en-US/docs/Web/API/File$locales">Add translation</a></li>
+                  </ul>
+      </li>
+          </ul>
+  </nav>
+  
+  <!-- left crumb navigation -->
+  <nav class="crumbs" role="navigation">
+    <ol>
+              <li class="crumb"><a href="/en-US/docs/Web">Web technology for developers</a></li>
+              <li class="crumb"><a href="/en-US/docs/Web/API">Web API reference</a></li>
+            <li class="crumb">File</li>
+    </ol>
+  </nav>
+  
+</div></div></section>
+
+
+
+<section id="content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" 
+          data-current-revision="399491"
+          data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes."
+          data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title">
+            <h1 class="page-title">File</h1>
+                    </div>
+        <ul id="page-buttons">
+            <li class="page-history"><a href="/en-US/docs/Web/API/File$history"><i class="icon-book"></i>History</a></li>
+                                                                                  <li class="page-edit"><a href="/en-US/docs/Web/API/File$edit"><i class="icon-pencil"></i>Edit</a></li>
+                    </ul>
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                <div id="article-nav">
+          <div class="page-toc">
+            <h2>Table of Contents</h2>
+            <ol>
+              <code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Method_overview" rel="internal">Method overview</a><code></code><code></code><code></code><li><a href="#Properties" rel="internal">Properties</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Methods" rel="internal">Methods</a><code></code><ol><li><a href="#getAsBinary()" rel="internal">getAsBinary()</a><code></code><code></code><code></code><ol><li><a href="#getAsBinary-Parameters" rel="internal">Parameters</a><li><a href="#getAsBinary-Return_value" rel="internal">Return value</a></ol></li><li><a href="#getAsDataURL()" rel="internal">getAsDataURL()</a><code></code><code></code><code></code><ol><li><a href="#getAsDataURL-Parameters" rel="internal">Parameters</a><li><a href="#getAsDataURL-Return_value" rel="internal">Return value</a><code></code></ol></li><li><a href="#getAsText()" rel="internal">getAsText()</a><code></code><code></code><ol><li><a href="#getAsText-Parameters" rel="internal">Parameters</a><code></code><li><a href="#getAsText-Return_value" rel="internal">Return value</a><code></code></ol></li></ol></li><li><a href="#Notes" rel="internal">Notes</a><ol><li><a href="#Gecko_notes" rel="internal">Gecko notes</a><code></code><code></code><code></code><code></code><code></code></ol></li><li><a href="#Browser_compatibility" rel="internal">Browser compatibility</a><code></code><code></code><code></code><code></code><li><a href="#Specification" rel="internal">Specifications</a><li><a href="#See_also" rel="internal">See also</a><code></code>
+            </ol>
+          </div>
+          <ul class="page-anchors">
+            <li class="anchor-tags">
+                              <i class="icon-tags"></i><a href="#page-tags">Tags</a>
+                          </li>
+            <li class="anchor-files">
+                              <i class="icon-paper-clip off"></i><span title="This document has no attachments">Files</span>
+                          </li>
+          </ul>
+        </div>
+                                <div><div class="blockIndicator geckoMinVer standardNote standardNoteBlock">  
+    <p>Introduced in Gecko 1.9</p>  
+    (Firefox 3) 
+</div></div>
+
+<p>The <code>File</code> object provides information about -- and access to the contents of -- files. These are generally retrieved from a <a href="/en-US/docs/DOM/FileList" title="/en-US/docs/DOM/FileList"><code>FileList</code></a> object returned as a result of a user selecting files using the <code>input</code> element, or from a drag and drop operation's <a href="/en-US/docs/DragDrop/DataTransfer" title="DragDrop/DataTransfer"><code>DataTransfer</code></a> object.</p>
+
+
+<div class="note">
+  <strong>Note:</strong> In Gecko, you can use this API from chrome code. See <a href="/en-US/docs/Extensions/Using_the_DOM_File_API_in_chrome_code" title="Using the DOM File API in chrome code">Using the DOM File API in chrome code</a> for details.</div>
+
+
+<div class="geckoVersionNote">
+  <div><div class="geckoVersionHeading"> 
+Gecko 2.0 note 
+<div style="font-size: 9px; line-height: 1; font-style: italic;">(Firefox 4 / Thunderbird 3.3 / SeaMonkey 2.1)</div> 
+</div></div>
+  <p>Starting in Gecko 2.0 (Firefox 4 / Thunderbird 3.3 / SeaMonkey 2.1), the File object inherits from the <a href="/en-US/docs/DOM/Blob" title="/en-US/docs/DOM/Blob"><code>Blob</code></a> interface, which provides methods and properties that give further information about the file.</p>
+</div>
+
+<p>The file reference can be saved when the form is submitted while the user is offline, so that the data can be retrieved and uploaded when the Internet connection is restored.</p>
+
+
+<div class="note">
+  <strong>Note:</strong> The <code>File</code> object as implemented by Gecko offers several non-standard methods for reading the contents of the file. These should <em>not</em> be used, as they will prevent your web application from being used in other browsers, as well as in future versions of Gecko, which will likely remove these methods.</div>
+
+
+<h2 id="Method_overview" name="Method_overview">Method overview</h2>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td><code>DOMString <a href="#getAsBinary()">getAsBinary</a>();</code> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span> <span class="inlineIndicator obsolete obsoleteInline" title="(Firefox 7.0 / Thunderbird 7.0 / SeaMonkey 2.4)">Obsolete since Gecko 7.0</span></td>
+    </tr>
+    <tr>
+      <td><code>DOMString <a href="#getAsDataURL()">getAsDataURL</a>();</code> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span> <span class="inlineIndicator obsolete obsoleteInline" title="(Firefox 7.0 / Thunderbird 7.0 / SeaMonkey 2.4)">Obsolete since Gecko 7.0</span></td>
+    </tr>
+    <tr>
+      <td><code>DOMString <a href="#getAsText()">getAsText</a>(in DOMString encoding);</code> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span> <span class="inlineIndicator obsolete obsoleteInline" title="(Firefox 7.0 / Thunderbird 7.0 / SeaMonkey 2.4)">Obsolete since Gecko 7.0</span></td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Properties" name="Properties">Properties</h2>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td class="header">Property</td>
+      <td class="header">Type</td>
+      <td class="header">Description</td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/DOM/File.fileName" title="/en-US/docs/DOM/File.fileName"><code>fileName</code></a></td>
+      <td><a href="/en-US/docs/DOM/DOMString" title="/en-US/docs/DOM/DOMString"><code>DOMString</code></a></td>
+      <td>The name of the file referenced by the <code>File</code> object. <strong>Read only.</strong> <span class="inlineIndicator obsolete obsoleteInline" title="(Firefox 7.0 / Thunderbird 7.0 / SeaMonkey 2.4)">Obsolete since Gecko 7.0</span></td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/DOM/File.fileSize" title="/en-US/docs/DOM/File.fileSize"><code>fileSize</code></a></td>
+      <td>unsigned long long</td>
+      <td>The size of the referenced file in bytes. <strong>Read only.</strong> <span class="inlineIndicator obsolete obsoleteInline" title="(Firefox 7.0 / Thunderbird 7.0 / SeaMonkey 2.4)">Obsolete since Gecko 7.0</span></td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/DOM/File.lastModifiedDate" title="/en-US/docs/DOM/File.lastModifiedDate"><code>lastModifiedDate</code></a></td>
+      <td><code><a href="/en-US/docs/XPIDL#Types" title="XPIDL#Types">jsval</a></code></td>
+      <td>The last modified date of the file referenced by the <code>File</code> object. <strong>Read only.</strong> <span class="inlineIndicator jscontext jscontextInline" title="Adds an additional JSContext *cx parameter to the C++ implementation">JSContext *cx</span> <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 15.0 / Thunderbird 15.0 / SeaMonkey 2.12)">Requires Gecko 15.0</span></td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/DOM/File.mozFullPath" title="/en-US/docs/DOM/File.mozFullPath"><code>mozFullPath</code></a></td>
+      <td><a href="/en-US/docs/DOM/DOMString" title="/en-US/docs/DOM/DOMString"><code>DOMString</code></a></td>
+      <td>The full path of the referenced file; available only to code with UniversalFileRead privileges in chrome. <strong>Read only.</strong> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span> <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 3.6 / Thunderbird 3.1 / Fennec 1.0)">Requires Gecko 1.9.2</span></td>
+    </tr>
+    <tr>
+      <td><a class="new" href="/en-US/docs/DOM/File.mozFullPathInternal" title="/en-US/docs/DOM/File.mozFullPathInternal"><code>mozFullPathInternal</code></a></td>
+      <td><a href="/en-US/docs/DOM/DOMString" title="/en-US/docs/DOM/DOMString"><code>DOMString</code></a></td>
+      <td>This is an internal-use-only property that does not do security checks. It can only be used from native code, and is used to optimize performance in special cases in which security is not a concern. <strong>Read only.</strong> <span class="inlineIndicator noscript noscriptInline" title="This method may only be called from C++; don't use it from JavaScript.">Native code only!</span> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span> <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 4 / Thunderbird 3.3 / SeaMonkey 2.1)">Requires Gecko 2.0</span></td>
+    </tr>
+    <tr>
+      <td><a class="new" href="/en-US/docs/DOM/File.mozLastModifiedDate" title="/en-US/docs/DOM/File.mozLastModifiedDate"><code>mozLastModifiedDate</code></a></td>
+      <td><code><a href="/en-US/docs/XPIDL#Types" title="XPIDL#Types">uint64_t</a></code></td>
+      <td>The last modified date of the file referenced by the <code>File</code> object. <strong>Read only.</strong> <span class="inlineIndicator noscript noscriptInline" title="This method may only be called from C++; don't use it from JavaScript.">Native code only!</span> <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 19.0 / Thunderbird 19.0 / SeaMonkey 2.16)">Requires Gecko 19.0</span></td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/DOM/File.name" title="/en-US/docs/DOM/File.name"><code>name</code></a></td>
+      <td><a href="/en-US/docs/DOM/DOMString" title="/en-US/docs/DOM/DOMString"><code>DOMString</code></a></td>
+      <td>The name of the file referenced by the <code>File</code> object. <strong>Read only.</strong> <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 3.6 / Thunderbird 3.1 / Fennec 1.0)">Requires Gecko 1.9.2</span></td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/DOM/File.size" title="/en-US/docs/DOM/File.size"><code>size</code></a></td>
+      <td><code><a class="new" href="/en-US/docs/unsigned_long_long" title="unsigned long long">unsigned long long</a></code></td>
+      <td>The size (in bytes) of the file referenced by the File object. <strong>Read only.</strong> <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 3.6 / Thunderbird 3.1 / Fennec 1.0)">Requires Gecko 1.9.2</span></td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/DOM/File.type" title="/en-US/docs/DOM/File.type"><code>type</code></a></td>
+      <td><a href="/en-US/docs/DOM/DOMString" title="/en-US/docs/DOM/DOMString"><code>DOMString</code></a></td>
+      <td>The type (MIME type) of the file referenced by the File object. <strong>Read only.</strong> <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 3.6 / Thunderbird 3.1 / Fennec 1.0)">Requires Gecko 1.9.2</span></td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+<h2 id="Methods" name="Methods">Methods</h2>
+<p>These methods are all non-standard. To read the contents of a file, you should use the <a href="/en-US/docs/DOM/FileReader" title="/en-US/docs/DOM/FileReader"><code>FileReader</code></a> object. See <a href="/en-US/docs/Using_files_from_web_applications" title="Using files from web applications">Using files from web applications</a> for examples.</p>
+
+
+<div><div> 
+        <span class="indicatorInHeadline obsolete obsoleteMethod">Obsolete since Gecko 7.0 (Firefox 7.0 / Thunderbird 7.0 / SeaMonkey 2.4)</span> 
+        <h3 id="getAsBinary()">getAsBinary()</h3> 
+        </div></div>
+
+<p>Returns a string containing the file's data in raw binary format.</p>
+<div class="note">
+  <strong>Note:</strong> This method is obsolete; you should use the <a href="/en-US/docs/DOM/FileReader" title="/en-US/docs/DOM/FileReader"><code>FileReader</code></a> method <a href="/en-US/docs/DOM/FileReader#readAsBinaryString()" title="DOM/FileReader#readAsBinaryString()"><code>readAsBinaryString()</code></a> or <a href="/en-US/docs/DOM/FileReader#readAsArrayBuffer()" title="DOM/FileReader#readAsArrayBuffer()"><code>readAsArrayBuffer()</code></a> instead.</div>
+
+<pre>DOMString getAsBinary();
+</pre>
+
+<h4 id="getAsBinary-Parameters" name="getAsBinary-Parameters">Parameters</h4>
+<p>None.</p>
+
+<h4 id="getAsBinary-Return_value" name="getAsBinary-Return_value">Return value</h4>
+<p>A string containing the raw binary contents of the file.</p>
+
+<div><div> 
+        <span class="indicatorInHeadline obsolete obsoleteMethod">Obsolete since Gecko 7.0 (Firefox 7.0 / Thunderbird 7.0 / SeaMonkey 2.4)</span> 
+        <h3 id="getAsDataURL()">getAsDataURL()</h3> 
+        </div></div>
+
+<p>Returns a string containing a <code>data:</code> URL that encodes the entire contents of the referenced file.</p>
+<div class="note">
+  <strong>Note:</strong> This method is obsolete; you should use the <a href="/en-US/docs/DOM/FileReader" title="/en-US/docs/DOM/FileReader"><code>FileReader</code></a> method <a href="/en-US/docs/DOM/FileReader#readAsDataURL()" title="DOM/FileReader#readAsDataURL()"><code>readAsDataURL()</code> </a>instead.</div>
+
+<pre>DOMString getAsDataURL();
+</pre>
+
+<h4 id="getAsDataURL-Parameters" name="getAsDataURL-Parameters">Parameters</h4>
+<p>None.</p>
+
+<h4 id="getAsDataURL-Return_value" name="getAsDataURL-Return_value">Return value</h4>
+<p>A string containing the file's data encoded as a <code>data:</code> URL.</p>
+
+
+<div><div> 
+        <span class="indicatorInHeadline obsolete obsoleteMethod">Obsolete since Gecko 7.0 (Firefox 7.0 / Thunderbird 7.0 / SeaMonkey 2.4)</span> 
+        <h3 id="getAsText()">getAsText()</h3> 
+        </div></div>
+
+
+<p>Returns the file's contents as a string in which the file's data is interpreted as text using a given encoding.</p>
+<div class="note">
+  <strong>Note:</strong> This method is obsolete; you should use the <a href="/en-US/docs/DOM/FileReader" title="/en-US/docs/DOM/FileReader"><code>FileReader</code></a> method <a href="/en-US/docs/DOM/FileReader#readAsText()" title="DOM/FileReader#readAsText()"><code>readAsText()</code> </a>instead.</div>
+<pre>DOMString getAsText(
+  in DOMString encoding
+ );
+</pre>
+
+<h4 id="getAsText-Parameters" name="getAsText-Parameters">Parameters</h4>
+<dl>
+  <dt><code>encoding</code></dt>
+  <dd>A string indicating the encoding to use for the returned data. If this string is empty, UTF-8 is assumed.</dd>
+</dl>
+
+<h4 id="getAsText-Return_value" name="getAsText-Return_value">Return value</h4>
+<p>A string containing the file's data interpreted as text in the specified <code>encoding</code>.</p>
+
+
+
+
+
+
+<h2 id="Notes" name="Notes">Notes</h2>
+
+
+<h3 id="Gecko_notes" name="Gecko_notes">Gecko notes</h3>
+<div class="geckoVersionNote">
+  <div><div class="geckoVersionHeading"> 
+Gecko 6.0 note 
+<div style="font-size: 9px; line-height: 1; font-style: italic;">(Firefox 6.0 / Thunderbird 6.0 / SeaMonkey 2.3)</div> 
+</div></div>
+  <p>Starting in Gecko 6.0 (Firefox 6.0 / Thunderbird 6.0 / SeaMonkey 2.3), privileged code (such as extensions) can pass an <code><a href="https://developer.mozilla.org/en-US/docs/XPCOM_Interface_Reference/nsIFile">nsIFile</a></code> object to the DOM <code>File</code> constructor to specify the file to reference.</p>
+</div>
+
+
+<div class="geckoVersionNote">
+  <div><div class="geckoVersionHeading"> 
+Gecko 8.0 note 
+<div style="font-size: 9px; line-height: 1; font-style: italic;">(Firefox 8.0 / Thunderbird 8.0 / SeaMonkey 2.5)</div> 
+</div></div>
+  <p>Starting in Gecko 8.0 (Firefox 8.0 / Thunderbird 8.0 / SeaMonkey 2.5), you can use <code>new File</code> to create <code>File</code> objects from XPCOM component code instead of having to instantiate the <code><a class="new" href="https://developer.mozilla.org/en-US/docs/XPCOM_Interface_Reference/nsIDOMFile">nsIDOMFile</a></code> object directly.</p>
+</div>
+
+
+
+
+
+
+<h2 id="Browser_compatibility" name="Browser_compatibility">Browser compatibility</h2>
+<p>For deeper details on compatibility that goes down to the method level, go to the articles for each interface.</p>
+<div><div class="htab"> 
+    <a name="AutoCompatibilityTable"></a> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div></div>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari (WebKit)</th>
+      </tr>
+      <tr>
+        <td>File</td>
+        <td>13 <span class="inlineIndicator prefixBox prefixBoxInline" title="prefix">webkit</span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+      </tr>
+      <tr>
+        <td><a href="/en-US/docs/DOM/FileReader" title="/en-US/docs/DOM/FileReader"><code>FileReader</code></a></td>
+        <td>6 <span class="inlineIndicator prefixBox prefixBoxInline" title="prefix">webkit</span></td>
+        <td>4.0 <span class="inlineIndicator prefixBox prefixBoxInline" title="prefix">moz</span></td>
+        <td>10</td>
+        <td>12</td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+      </tr>
+      <tr>
+        <td>FileWriter</td>
+        <td>13 <span class="inlineIndicator prefixBox prefixBoxInline" title="prefix">webkit</span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+      </tr>
+      <tr>
+        <td>FileSystem</td>
+        <td>13 <span class="inlineIndicator prefixBox prefixBoxInline" title="prefix">webkit</span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+      </tr>
+      <tr>
+        <td><a href="/en-US/docs/DOM/BlobBuilder" title="/en-US/docs/DOM/BlobBuilder"><code>BlobBuilder</code></a></td>
+        <td>8 <span class="inlineIndicator prefixBox prefixBoxInline" title="prefix">webkit</span></td>
+        <td>6.0 (6.0) 4.0 <span class="inlineIndicator prefixBox prefixBoxInline" title="prefix">moz</span></td>
+        <td>10</td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+      </tr>
+      <tr>
+        <td>BlobURL</td>
+        <td>8 <span class="inlineIndicator prefixBox prefixBoxInline" title="prefix">webkit</span></td>
+        <td>4.0 4.0<span class="inlineIndicator prefixBox prefixBoxInline" title="prefix">moz</span></td>
+        <td>10</td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Phone</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>File</td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+      </tr>
+      <tr>
+        <td><a href="/en-US/docs/DOM/FileReader" title="/en-US/docs/DOM/FileReader"><code>FileReader</code></a></td>
+        <td>3</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td>11.1</td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+      </tr>
+      <tr>
+        <td>FileWriter</td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+      </tr>
+      <tr>
+        <td>FileSystem</td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+      </tr>
+      <tr>
+        <td><a href="/en-US/docs/DOM/BlobBuilder" title="/en-US/docs/DOM/BlobBuilder"><code>BlobBuilder</code></a></td>
+        <td>3</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+      </tr>
+      <tr>
+        <td>BlobURL</td>
+        <td>4</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<h2 id="Specification" name="Specification">Specifications</h2>
+<ul>
+  <li><a class="external" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#file-upload-state-%28type=file%29" title="http://www.whatwg.org/specs/web-apps/current-work/multipage/number-state.html#concept-input-type-file-selected">File upload state</a> (HTML 5 working draft)</li>
+  <li><a class="external" href="http://www.w3.org/TR/FileAPI/" title="http://www.w3.org/TR/FileAPI/">File API</a></li>
+</ul>
+
+
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/Using_files_from_web_applications" title="Using files from web applications">Using files from web applications</a></li>
+  <li><a href="/en-US/docs/Extensions/Using_the_DOM_File_API_in_chrome_code" title="Extensions/Using the DOM File API in chrome code">Using the DOM File API in chrome code</a></li>
+  <li><a href="/en-US/docs/DOM/FileReader" title="/en-US/docs/DOM/FileReader"><code>FileReader</code></a></li>
+</ul>
+
+<div></div>
+                  </div>
+    <section class="page-meta">
+      
+            <section id="page-tags">
+        <h2><i class="icon-tags"></i>Tags (3)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Files">Files</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/DOM">DOM</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsUpdate">NeedsUpdate</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Sicking">Sicking</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/trevorh">trevorh</a>, <a href="/en-US/profiles/Sonnyp">Sonnyp</a>, <a href="/en-US/profiles/ebidel">ebidel</a>, <a href="/en-US/profiles/teoli">teoli</a>, <a href="/en-US/profiles/Crash">Crash</a>, <a href="/en-US/profiles/madarche">madarche</a>
+                          <br />
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-13T11:56:09-07:00">May 13, 2013 11:56:09 AM</time>
+                      <br />
+            Last reviewed by:  
+            <a href="/en-US/profiles/ethertank">ethertank</a>, 
+            <time datetime="2013-02-24T11:08:55-08:00">Feb 24, 2013 11:08:55 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/API/File$edit">
+      <input type="hidden" name="form" id="form" value="rev" />
+      <input type="hidden" name="content" id="content" value="" />
+  </form>
+      </div>
+   </div>
+    </section>
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+<footer id="site-info" class="footer" role="contentinfo">
+<div class="wrap">
+    <div id="legal">
+      <img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-tiny.png" alt="" width="42" height="48">
+      <p id="copyright">&copy; 2005 - 2013 Mozilla Developer Network and individual contributors</p>
+      <p>
+      Content is available under <a href="/en-US/docs/Project:Copyrights">these licenses</a>      &bull; <a href="/en-US/docs/Project:About">About MDN</a>
+      &bull; <a href="//github.com/mozilla/kuma">Contribute to the code</a>
+      &bull; <a href="//www.mozilla.org/en-US/privacy">Privacy Policy</a>
+    </div>
+          <form class="languages go" method="get" action="/en-US/docs">
+      <label for="language">Other languages:</label>
+      <select id="language" class="wiki-l10n" name="next" dir="ltr">
+        <option value="/en-US/docs/Web/API/File" selected>
+          English (US)
+        </option>
+                  <option value="/fr/docs/DOM/File">
+            Français
+          </option>          <option value="/zh-CN/docs/DOM/File">
+            中文 (简体)
+          </option>      </select>
+      <noscript><button type="submit">Go</button></noscript>
+    </form>
+  </div>
+</footer>
+
+<script src="/en-US/jsi18n/build:5f4e39d"></script>
+  <script src="//mozorg.cdn.mozilla.net/en-US/tabzilla/tabzilla.js" async></script>
+  <script src="//www.google.com/jsapi" type="text/javascript"></script>
+  <script src="https://login.persona.org/include.js" type="text/javascript"></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/mdn-min.js?build=5f4e39d"></script>
+      <script src="https://developer.cdn.mozilla.net/media/js/wiki-min.js?build=5f4e39d"></script>
+  
+  <script type="text/javascript">
+    // Event tracking for the new menu
+    $(function() {
+      $('#nav-main').on('click', 'a', function(e) {
+        window._gaq && _gaq.push(['_trackEvent', 'Menu', 'Click', e.target.innerHTML, e.target.href]);
+      });
+    });
+  </script>
+        <!-- include syntax highlighting scripts -->
+  
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=5f4e39d" />
+
+  <script type="text/javascript">
+    MEDIA_URL = 'https://developer.cdn.mozilla.net/media/';
+  </script>
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/media/prism/prism.js" data-manual></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/syntax-prism-min.js?build=5f4e39d"></script>
+
+<script src="/en-US/waffles.js" type="text/javascript" async></script>
+</body>
+</html>

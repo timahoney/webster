@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+<head>
+      <script src="//cdn.optimizely.com/js/237572123.js"></script>
+  
+  <title>SVGSVGElement - Web API reference | MDN</title>
+  
+  <meta charset="utf-8">
+  <meta name="robots" content="index, follow">
+  <link rel="home" href="/en-US/">
+  <link rel="copyright" href="#copyright">
+  <link rel="shortcut icon" href="https://developer.cdn.mozilla.net/media/img/favicon.ico">
+
+        <!--[if !IE 6]><!-->
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/mdn-min.css?build=5f4e39d" />
+      <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/wiki-min.css?build=5f4e39d" />
+    <!--<![endif]-->
+  <!--[if IE]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie.css"><![endif]-->
+  <!--[if lte IE 7]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie7.css"><![endif]-->
+  <!--[if lte IE 6]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie6.css"><![endif]-->
+  <link rel="stylesheet" type="text/css" href="https://developer.cdn.mozilla.net/media/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="print" href="https://developer.cdn.mozilla.net/media/css/mdn-print.css">
+  <link rel="stylesheet" href="https://mozorg.cdn.mozilla.net/media/css/tabzilla-min.css">
+  
+
+  <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network" />
+
+  
+    <link rel="stylesheet" media="print" href="https://developer.cdn.mozilla.net/media/css/wiki-print-min.css?build=5f4e39d" />
+          <link rel="stylesheet" type="text/css"
+            href="/en-US/docs/Template:CustomCSS?raw=1" />
+    
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script src="https://developer.cdn.mozilla.net/media/js/html5.js"></script>
+  <![endif]-->
+
+    <link rel="alternate" type="application/json" href="/en-US/docs/Web/API/SVGSVGElement$json" />
+  <link rel="canonical" href="https://developer.mozilla.org/en-US/docs/Web/API/SVGSVGElement" />
+
+  <meta property="og:title" content="SVGSVGElement" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://developer.mozilla.org/media/img/mdn-logo-sm.png" />
+  <meta property="og:site_name" content="Mozilla Developer Network" />
+  <meta property="og:url" content="https://developer.mozilla.org/en-US/docs/Web/API/SVGSVGElement" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:url" content="https://developer.mozilla.org/en-US/docs/Web/API/SVGSVGElement" />
+  <meta name="twitter:title" content="SVGSVGElement" />
+  <meta name="twitter:image" content="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" />
+  <meta name="twitter:site" content="@mozhacks" />
+  <meta name="twitter:creator" content="@mozhacks" />
+
+    <meta property="og:description" content="The SVGSVGElement interface provides access to the properties of svg elements, as well as methods to manipulate them. This interface contains also various miscellaneous commonly-used utility methods, such as matrix operations and the ability to control the time of redraw on visual rendering devices."/>
+  <meta name="description" content="The SVGSVGElement interface provides access to the properties of svg elements, as well as methods to manipulate them. This interface contains also various miscellaneous commonly-used utility methods, such as matrix operations and the ability to control the time of redraw on visual rendering devices." />
+  <meta name="twitter:description" content="The SVGSVGElement interface provides access to the properties of svg elements, as well as methods to manipulate them. This interface contains also various miscellaneous commonly-used utility methods, such as matrix operations and the ability to control the time of redraw on visual rendering devices." />
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36116321-5']);
+  _gaq.push(['_trackPageview']);
+
+  (function(a, d) {
+    var ga = d.createElement(a); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == d.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = d.getElementsByTagName(a)[0]; s.parentNode.insertBefore(ga, s);
+  })('script', document);
+
+</script>
+</head>
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  <header id="masthead" class="minor new-menu">
+    <div class="wrap">
+      <ul id="nav-access">
+        <li><a href="#language">Select language</a></li>
+        <li><a href="#q">Skip to search</a></li>
+        <li><a href="#content">Skip to main content</a></li>
+      </ul>
+    
+      <div id="branding">
+                <div id="logo"><a href="/en-US/"><img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" alt="Mozilla Developer Network" title="Mozilla Developer Network" width="62" height="71"> Mozilla Developer Network</a></div>
+              </div>
+      
+              <nav id="nav">
+          <ul id="nav-main" role="menubar">
+            <li id="nav-main-docs" class="menu" rel="menuitem"><a href="#nav-sub-docs" class="toggle" aria-haspopup="true" aria-labelledby="nav-main-docs" title="Read Documentation">Read<br /><em>Docs</em></a>
+              <div id="nav-sub-docs" class="sub-menu" aria-hidden="true">
+                <ul>
+                  <li>
+                    <ul>
+
+                      <li><a href="/en-US/docs/Web/HTML?menu">HTML</a></li>
+                      <li><a href="/en-US/docs/Web/CSS?menu">CSS</a></li>
+                      <li><a href="/en-US/docs/Web/JavaScript?menu">JavaScript</a></li>
+                      <li><a href="/en-US/docs/Web/Guide/Graphics?menu">Graphics</a></li>
+                      <li><a href="/en-US/docs/Web/API?menu">APIs / DOM</a></li>
+                      <li><a href="/en-US/docs/Web/Apps?menu">Apps</a></li>
+                      <li><a href="/en-US/docs/tools?menu">Dev Tools</a></li>
+                      <li><a href="/en-US/docs/Web/MathML?menu">MathML</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <ul>
+                      <li><a href="/en-US/docs/Web/Tutorials?menu">Tutorials</a></li>
+                      <li><a href="/en-US/docs/Web/Reference?menu">References</a></li>
+                      <li><a href="/en-US/docs/Web/Guide?menu">Developer Guides</a></li>
+                      <li><a href="/en-US/demos/?menu">Demos</a></li>
+                      <li><br /><br /><a href="/en-US/docs?menu">...more docs</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li id="nav-main-apps" role="menuitem"><a href="https://marketplace.firefox.com/developers/">Make<br /><em>Apps</em></a></li>
+            <li id="nav-main-firefox" class="menu" role="menuitem"><a href="#nav-sub-firefox" class="firefox toggle" aria-haspopup="true" aria-labelledby="nav-main-firefox">Build & Use<br /><em>Firefox</em></a>
+              <ul id="nav-sub-firefox" class="sub-menu">
+                <li><a href="/en-US/docs/Mozilla/Firefox_OS?menu">Firefox OS</a></li>
+                <li><a href="/en-US/docs/Mozilla/Firefox?menu">Firefox Desktop</a></li>
+                <li><a href="/en-US/docs/Mozilla/Mobile?menu">Mobile</a></li>
+                <li><a href="/en-US/docs/Mozilla/Add-ons?menu">Add-ons</a></li>
+              </ul>
+            </li>
+            <li id="nav-main-demos" role="menuitem"><a href="/en-US/demos/?menu" class="demos">See & Submit<br /><em>Demos</em></a></li>
+            <li id="nav-main-community" class="menu" role="menuitem"><a href="#nav-sub-community" class="community toggle" aria-haspopup="true" aria-labelledby="nav-main-community">Get<br /><em>Involved</em></a>
+              <ul id="nav-sub-community" class="sub-menu">
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Join_the_community?menu">Join the Community</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing?menu">Contribute to MDN</a></li>
+                <li><a href="/en-US/events?menu">Events</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Follow_what_s_happening?menu">Tweets, Blogs, and More</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+          
+      <ul class="user-state signed-out">
+    <li class="user-signin menu">
+    <form class="browserid" action="/en-US/users/browserid_verify" method="POST">
+        <input id="next" name="next" type="hidden" value="/en-US/docs/Web/API/SVGSVGElement"/>
+        <input required="required" type="hidden" name="assertion" id="id_assertion" />
+                        <a href="#" target="_blank" class="browserid-signin toggle" aria-haspopup="true" title="Sign in with Persona">Sign in</a>
+                <div class="browserid-info sub-menu" aria-hidden="true">
+                <h3>What's this?</h3> <p>MDN has switched to <a href="https://persona.org/" target="_blank" rel="external">Persona</a>, a safe and simple way to sign in with just your e-mail address. <a href="http://identity.mozilla.com/post/12950196039/deploying-browserid-at-mozilla" rel="external">Learn more about why Mozilla is using Persona</a>.</p> <p><strong>Returning members:</strong> sign in with Persona and you'll be connected to your MDN profile (all your information is still here).</p> <p><strong>New members:</strong> sign in with Persona first, then you'll be able to set up your new MDN profile.</p>          <p><a href="#" target="_blank" class="browserid-signin" title="Sign in with Persona">Sign in</a></p>
+        </div>
+              </form>
+    </li>
+  </ul>
+      
+      <form id="site-search" method="get" action="http://www.google.com/search"
+              data-url="/en-US/search">
+        <p>
+          <input type="search" role="search" placeholder="Search MDN" id="q" name="q" value="">
+          <noscript><button type="submit">Search</button></noscript>
+        </p>
+        <input type="hidden" name="sitesearch" value="developer.mozilla.org">
+                <div id="site-search-gg"></div>
+              </form>
+
+      <a href="//www.mozilla.org/" id="tabzilla">mozilla</a>
+    </div>
+  </header>
+
+    
+
+<!-- top toolbar -->
+<section id="nav-toolbar"><div><div class="wrap">
+  <!-- right floated navigation -->
+  <nav id="tool-menus" role="navigation">
+    <ul id="tools">
+      <li class="menu">
+        <a href="#page-tools" class="toggle">This page</a>
+        <ul id="page-tools" class="sub-menu">
+          <li class="page-print"> <a href="#" onclick="return window.print();"  title="Print page">Print this page</a></li>
+                      <li><a href="/en-US/docs/new?parent=1194">New sub-page</a></li>
+            <li><a href="/en-US/docs/new?clone=1194">Clone this page</a></li>
+                                      </ul>
+      </li>
+            <li class="menu">
+        <a href="#" class="toggle">Languages</a>
+        <ul id="translations">
+                    
+                      <li><a href="/en-US/docs/Web/API/SVGSVGElement$locales">Add translation</a></li>
+                  </ul>
+      </li>
+          </ul>
+  </nav>
+  
+  <!-- left crumb navigation -->
+  <nav class="crumbs" role="navigation">
+    <ol>
+              <li class="crumb"><a href="/en-US/docs/Web">Web technology for developers</a></li>
+              <li class="crumb"><a href="/en-US/docs/Web/API">Web API reference</a></li>
+            <li class="crumb">SVGSVGElement</li>
+    </ol>
+  </nav>
+  
+</div></div></section>
+
+
+
+<section id="content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" 
+          data-current-revision="404459"
+          data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes."
+          data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title">
+            <h1 class="page-title">SVGSVGElement</h1>
+                    </div>
+        <ul id="page-buttons">
+            <li class="page-history"><a href="/en-US/docs/Web/API/SVGSVGElement$history"><i class="icon-book"></i>History</a></li>
+                                                                                  <li class="page-edit"><a href="/en-US/docs/Web/API/SVGSVGElement$edit"><i class="icon-pencil"></i>Edit</a></li>
+                    </ul>
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                <div id="article-nav">
+          <div class="page-toc">
+            <h2>Table of Contents</h2>
+            <ol>
+              <li><a href="#SVG_Svg_DOM_interface" rel="internal">SVG Svg DOM interface</a><code></code><code></code><ol><li><a href="#Interface_overview" rel="internal">Interface overview</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code><code></code><code></code><code></code></code><code><code></code><code></code><code></code></code><code><code></code><code></code></code><code><code></code><code></code></code><code></code><code><code></code></code><code><code></code></code><code><code></code></code><code><code></code></code><code><code></code></code><code><code></code></code><code><code></code></code><code><code></code><code></code></code><code><code></code><code></code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code></ol></li><li><a href="#Properties" rel="internal">Properties</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Methods" rel="internal">Methods</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code><code></code><code></code></code><code></code><code></code><code></code><code><code></code><code></code></code><code></code><code></code><code><code></code><code></code></code><code></code><code><code></code><code></code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code><code></code></code><code></code><code></code><code></code><code></code><code><code></code></code><code></code><li><a href="#Browser_compatibility" rel="internal">Browser compatibility</a><li><a href="#See_also" rel="internal">See also</a><code></code>
+            </ol>
+          </div>
+          <ul class="page-anchors">
+            <li class="anchor-tags">
+                              <i class="icon-tags"></i><a href="#page-tags">Tags</a>
+                          </li>
+            <li class="anchor-files">
+                              <i class="icon-paper-clip off"></i><span title="This document has no attachments">Files</span>
+                          </li>
+          </ul>
+        </div>
+                                <h2 id="SVG_Svg_DOM_interface">SVG Svg DOM interface</h2>
+<p>The <code>SVGSVGElement</code> interface provides access to the properties of <code><a href="/en-US/docs/SVG/Element/svg">&lt;svg&gt;</a></code> elements, as well as methods to manipulate them. This interface contains also various miscellaneous commonly-used utility methods, such as matrix operations and the ability to control the time of redraw on visual rendering devices.</p>
+<h3 id="Interface_overview">Interface overview</h3>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <th scope="row">Also implement</th>
+      <td><code><a href="/en-US/docs/DOM/SVGElement" title="/en-US/docs/DOM/SVGElement">SVGElement</a></code>, <code><a href="/en-US/docs/DOM/SVGTests" title="/en-US/docs/DOM/SVGTests">SVGTests</a></code>, <code><a class="new" href="/en-US/docs/DOM/SVGLangSpace" title="/en-US/docs/DOM/SVGLangSpace">SVGLangSpace</a></code>, <code><a class="new" href="/en-US/docs/DOM/SVGExternalResourcesRequired" title="/en-US/docs/DOM/SVGExternalResourcesRequired">SVGExternalResourcesRequired</a></code>, <code><a href="/en-US/docs/DOM/SVGStylable" title="/en-US/docs/DOM/SVGStylable">SVGStylable</a></code>, <code><a class="new" href="/en-US/docs/DOM/SVGLocatable" title="/en-US/docs/DOM/SVGLocatable">SVGLocatable</a></code>, <code><a class="new" href="/en-US/docs/DOM/SVGFitToViewBox" title="/en-US/docs/DOM/SVGFitToViewBox">SVGFitToViewBox</a></code>, <code><a class="new" href="/en-US/docs/DOM/SVGZoomAndPan" title="/en-US/docs/DOM/SVGZoomAndPan">SVGZoomAndPan</a></code>, <code><a class="new" href="/en-US/docs/DOM/DocumentEvent" title="/en-US/docs/DOM/DocumentEvent">DocumentEvent</a></code>, <code><a class="new" href="/en-US/docs/DOM/ViewCSS" title="/en-US/docs/DOM/ViewCSS">ViewCSS</a></code>, <code><a class="new" href="/en-US/docs/DOM/DocumentCSS" title="/en-US/docs/DOM/DocumentCSS">DocumentCSS</a></code></td>
+    </tr>
+    <tr>
+      <th scope="row">Methods</th>
+      <td>
+        <ul>
+          <li><code>unsigned long suspendRedraw(in unsigned long maxWaitMilliseconds)</code></li>
+          <li><code>void unsuspendRedraw(in unsigned long suspendHandleID)</code></li>
+          <li><code>void unsuspendRedrawAll()</code></li>
+          <li><code>void forceRedraw()</code></li>
+          <li><code>void pauseAnimations()</code></li>
+          <li><code>void unpauseAnimations()</code></li>
+          <li><code>boolean animationsPaused()</code></li>
+          <li><code>float getCurrentTime()</code></li>
+          <li><code>void setCurrentTime(in float seconds)</code></li>
+          <li><code><code><a href="/en-US/docs/DOM/NodeList" title="/en-US/docs/DOM/NodeList">NodeList</a></code> getIntersectionList(in <code><a href="/en-US/docs/DOM/SVGRect" title="/en-US/docs/DOM/SVGRect">SVGRect</a></code> rect, in <code><a href="/en-US/docs/DOM/SVGElement" title="/en-US/docs/DOM/SVGElement">SVGElement</a></code> referenceElement)</code></li>
+          <li><code><code><a href="/en-US/docs/DOM/NodeList" title="/en-US/docs/DOM/NodeList">NodeList</a></code> getEnclosureList(in <code><a href="/en-US/docs/DOM/SVGRect" title="/en-US/docs/DOM/SVGRect">SVGRect</a></code> rect, in <code><a href="/en-US/docs/DOM/SVGElement" title="/en-US/docs/DOM/SVGElement">SVGElement</a></code> referenceElement)</code></li>
+          <li><code>boolean checkIntersection(in <code><a href="/en-US/docs/DOM/SVGElement" title="/en-US/docs/DOM/SVGElement">SVGElement</a></code> element, in <code><a href="/en-US/docs/DOM/SVGRect" title="/en-US/docs/DOM/SVGRect">SVGRect</a></code> rect)</code></li>
+          <li><code>boolean checkEnclosure(in <code><a href="/en-US/docs/DOM/SVGElement" title="/en-US/docs/DOM/SVGElement">SVGElement</a></code> element, in <code><a href="/en-US/docs/DOM/SVGRect" title="/en-US/docs/DOM/SVGRect">SVGRect</a></code> rect)</code></li>
+          <li><code>void deselectAll()</code></li>
+          <li><code><code><a href="/en-US/docs/DOM/SVGNumber" title="/en-US/docs/DOM/SVGNumber">SVGNumber</a></code> createSVGNumber()</code></li>
+          <li><code><code><a href="/en-US/docs/DOM/SVGLength" title="/en-US/docs/DOM/SVGLength">SVGLength</a></code> createSVGLength()</code></li>
+          <li><code><code><a href="/en-US/docs/DOM/SVGAngle" title="/en-US/docs/DOM/SVGAngle">SVGAngle</a></code> createSVGAngle()</code></li>
+          <li><code><code><a href="/en-US/docs/DOM/SVGPoint" title="/en-US/docs/DOM/SVGPoint">SVGPoint</a></code> createSVGPoint()</code></li>
+          <li><code><code><a href="/en-US/docs/DOM/SVGMatrix" title="/en-US/docs/DOM/SVGMatrix">SVGMatrix</a></code> createSVGMatrix()</code></li>
+          <li><code><code><a href="/en-US/docs/DOM/SVGRect" title="/en-US/docs/DOM/SVGRect">SVGRect</a></code> createSVGRect()</code></li>
+          <li><code><code><a href="/en-US/docs/DOM/SVGTransform" title="/en-US/docs/DOM/SVGTransform">SVGTransform</a></code> createSVGTransform()</code></li>
+          <li><code><code><a href="/en-US/docs/DOM/SVGTransform" title="/en-US/docs/DOM/SVGTransform">SVGTransform</a></code> createSVGTransformFromMatrix(in <code><a href="/en-US/docs/DOM/SVGMatrix" title="/en-US/docs/DOM/SVGMatrix">SVGMatrix</a></code> matrix)</code></li>
+          <li><code><code><a href="/en-US/docs/DOM/Element" title="/en-US/docs/DOM/Element">Element</a></code> getElementById(in <code><a href="/en-US/docs/DOM/DOMString" title="/en-US/docs/DOM/DOMString">DOMString</a></code> elementId)</code></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Properties</th>
+      <td>
+        <ul>
+          <li>readonly <code><a href="/en-US/docs/DOM/SVGAnimatedLength" title="/en-US/docs/DOM/SVGAnimatedLength">SVGAnimatedLength</a></code> <code>x</code></li>
+          <li>readonly <code><a href="/en-US/docs/DOM/SVGAnimatedLength" title="/en-US/docs/DOM/SVGAnimatedLength">SVGAnimatedLength</a></code> <code>y</code></li>
+          <li>readonly <code><a href="/en-US/docs/DOM/SVGAnimatedLength" title="/en-US/docs/DOM/SVGAnimatedLength">SVGAnimatedLength</a></code> <code>width</code></li>
+          <li>readonly <code><a href="/en-US/docs/DOM/SVGAnimatedLength" title="/en-US/docs/DOM/SVGAnimatedLength">SVGAnimatedLength</a></code> <code>height</code></li>
+          <li>readonly <code><a href="/en-US/docs/DOM/DOMString" title="/en-US/docs/DOM/DOMString">DOMString</a></code> <code>contentScriptType</code></li>
+          <li>readonly <code><a href="/en-US/docs/DOM/DOMString" title="/en-US/docs/DOM/DOMString">DOMString</a></code> <code>contentStyleType</code></li>
+          <li>readonly <code><a href="/en-US/docs/DOM/SVGRect" title="/en-US/docs/DOM/SVGRect">SVGRect</a></code> <code>viewport</code></li>
+          <li>readonly float <code>pixelUnitToMillimeterX</code></li>
+          <li>readonly float <code>pixelUnitToMillimeterY</code></li>
+          <li>readonly float <code>screenPixelToMillimeterX</code></li>
+          <li>readonly float <code>screenPixelToMillimeterY</code></li>
+          <li>readonly boolean <code>useCurrentView</code></li>
+          <li>readonly <code><a class="new" href="/en-US/docs/DOM/SVGViewSpec" title="/en-US/docs/DOM/SVGViewSpec">SVGViewSpec</a></code> <code>currentView</code></li>
+          <li>readonly <code><a href="/en-US/docs/DOM/SVGPoint" title="/en-US/docs/DOM/SVGPoint">SVGPoint</a></code> <code>currentTranslate</code></li>
+          <li>float <code>currentScale</code></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Normative document</th>
+      <td><a class="external" href="http://www.w3.org/TR/SVG11/struct.html#InterfaceSVGSVGElement" title="http://www.w3.org/TR/SVG11/struct.html#InterfaceSVGSVGElement">SVG 1.1 (2nd Edition)</a></td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Properties">Properties</h2>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>x</code></td>
+      <td><code><a href="/en-US/docs/DOM/SVGAnimatedLength" title="/en-US/docs/DOM/SVGAnimatedLength">SVGAnimatedLength</a></code></td>
+      <td>Corresponds to attribute <code><a href="/en-US/docs/SVG/Attribute/x">x</a></code> on the given <code><a href="/en-US/docs/SVG/Element/svg">&lt;svg&gt;</a></code> element.</td>
+    </tr>
+    <tr>
+      <td><code>y</code></td>
+      <td><code><a href="/en-US/docs/DOM/SVGAnimatedLength" title="/en-US/docs/DOM/SVGAnimatedLength">SVGAnimatedLength</a></code></td>
+      <td>Corresponds to attribute <code><a href="/en-US/docs/SVG/Attribute/y">y</a></code> on the given <code><a href="/en-US/docs/SVG/Element/svg">&lt;svg&gt;</a></code> element.</td>
+    </tr>
+    <tr>
+      <td><code>width</code></td>
+      <td><code><a href="/en-US/docs/DOM/SVGAnimatedLength" title="/en-US/docs/DOM/SVGAnimatedLength">SVGAnimatedLength</a></code></td>
+      <td>Corresponds to attribute <code><a href="/en-US/docs/SVG/Attribute/width">width</a></code> on the given <code><a href="/en-US/docs/SVG/Element/svg">&lt;svg&gt;</a></code> element.</td>
+    </tr>
+    <tr>
+      <td><code>height</code></td>
+      <td><code><a href="/en-US/docs/DOM/SVGAnimatedLength" title="/en-US/docs/DOM/SVGAnimatedLength">SVGAnimatedLength</a></code></td>
+      <td>Corresponds to attribute <code><a href="/en-US/docs/SVG/Attribute/height">height</a></code> on the given <code><a href="/en-US/docs/SVG/Element/svg">&lt;svg&gt;</a></code> element.</td>
+    </tr>
+    <tr>
+      <td><code>contentScriptType</code></td>
+      <td><code><a href="/en-US/docs/DOM/DOMString" title="/en-US/docs/DOM/DOMString">DOMString</a></code></td>
+      <td>Corresponds to attribute <code><a href="/en-US/docs/SVG/Attribute/contentScriptType">contentScriptType</a></code> on the given <code><a href="/en-US/docs/SVG/Element/svg">&lt;svg&gt;</a></code> element.</td>
+    </tr>
+    <tr>
+      <td><code>contentStyleType</code></td>
+      <td><code><a href="/en-US/docs/DOM/DOMString" title="/en-US/docs/DOM/DOMString">DOMString</a></code></td>
+      <td>Corresponds to attribute <code><a href="/en-US/docs/SVG/Attribute/contentStyleType">contentStyleType</a></code> on the given <code><a href="/en-US/docs/SVG/Element/svg">&lt;svg&gt;</a></code> element.</td>
+    </tr>
+    <tr>
+      <td><code>viewport</code></td>
+      <td><code><a href="/en-US/docs/DOM/SVGRect" title="/en-US/docs/DOM/SVGRect">SVGRect</a></code></td>
+      <td>The position and size of the viewport (implicit or explicit) that corresponds to this <code><a href="/en-US/docs/SVG/Element/svg">&lt;svg&gt;</a></code> element. When the browser is actually rendering the content, then the position and size values represent the actual values when rendering. The position and size values are unitless values in the coordinate system of the parent element. If no parent element exists (i.e., <code><a href="/en-US/docs/SVG/Element/svg">&lt;svg&gt;</a></code> element represents the root of the document tree), if this SVG document is embedded as part of another document (e.g., via the HTML <code><a href="/en-US/docs/HTML/Element/object" title="&lt;object>">&lt;object&gt;</a></code> element), then the position and size are unitless values in the coordinate system of the parent document. (If the parent uses CSS or XSL layout, then unitless values represent pixel units for the current CSS or XSL viewport.)</td>
+    </tr>
+    <tr>
+      <td><code>pixelUnitToMillimeterX</code></td>
+      <td>float</td>
+      <td>Size of a pixel units (as defined by CSS2) along the x-axis of the viewport, which represents a unit somewhere in the range of 70dpi to 120dpi, and, on systems that support this, might actually match the characteristics of the target medium. On systems where it is impossible to know the size of a pixel, a suitable default pixel size is provided.</td>
+    </tr>
+    <tr>
+      <td><code>pixelUnitToMillimeterY</code></td>
+      <td>float</td>
+      <td>Corresponding size of a pixel unit along the y-axis of the viewport.</td>
+    </tr>
+    <tr>
+      <td><code>screenPixelToMillimeterX</code></td>
+      <td>float</td>
+      <td>User interface (UI) events in DOM Level 2 indicate the screen positions at which the given UI event occurred. When the browser actually knows the physical size of a "screen unit", this attribute will express that information; otherwise, user agents will provide a suitable default value such as .28mm.</td>
+    </tr>
+    <tr>
+      <td><code>screenPixelToMillimeterY</code></td>
+      <td>float</td>
+      <td>Corresponding size of a screen pixel along the y-axis of the viewport.</td>
+    </tr>
+    <tr>
+      <td><code>useCurrentView</code></td>
+      <td>boolean</td>
+      <td>The initial view (i.e., before magnification and panning) of the current innermost SVG document fragment can be either the "standard" view (i.e., based on attributes on the <code><a href="/en-US/docs/SVG/Element/svg">&lt;svg&gt;</a></code> element such as <code><a href="/en-US/docs/SVG/Attribute/viewBox">viewBox</a></code>) or to a "custom" view (i.e., a hyperlink into a particular <code><a href="/en-US/docs/SVG/Element/view">&lt;view&gt;</a></code> or other element). If the initial view is the "standard" view, then this attribute is false. If the initial view is a "custom" view, then this attribute is true.</td>
+    </tr>
+    <tr>
+      <td><code>currentView</code></td>
+      <td><code><a class="new" href="/en-US/docs/DOM/SVGViewSpec" title="/en-US/docs/DOM/SVGViewSpec">SVGViewSpec</a></code></td>
+      <td>The definition of the initial view (i.e., before magnification and panning) of the current innermost SVG document fragment. The meaning depends on the situation:<br>
+        <ul>
+          <li>If the initial view was a "standard" view, then:
+            <ul>
+              <li>the values for <code><a href="/en-US/docs/SVG/Attribute/viewBox">viewBox</a></code>, <code><a href="/en-US/docs/SVG/Attribute/preserveAspectRatio">preserveAspectRatio</a></code> and <code><a class="new" href="/en-US/docs/SVG/Attribute/zoomAndPan">zoomAndPan</a></code> within <code><a class="new" href="/en-US/docs/SVG/Attribute/currentView">currentView</a></code> will match the values for the corresponding DOM attributes that are on <code>SVGSVGElement</code> directly</li>
+              <li>the values for <code><a href="/en-US/docs/SVG/Attribute/transform">transform</a></code> and <code><a class="new" href="/en-US/docs/SVG/Attribute/viewTarget">viewTarget</a></code> within <code><a class="new" href="/en-US/docs/SVG/Attribute/currentView">currentView</a></code> will be null</li>
+            </ul>
+          </li>
+          <li>If the initial view was a link into a <code><a href="/en-US/docs/SVG/Element/view">&lt;view&gt;</a></code> element, then:
+            <ul>
+              <li>the values for <code><a href="/en-US/docs/SVG/Attribute/viewBox">viewBox</a></code>, <code><a href="/en-US/docs/SVG/Attribute/preserveAspectRatio">preserveAspectRatio</a></code> and <code><a class="new" href="/en-US/docs/SVG/Attribute/zoomAndPan">zoomAndPan</a></code> within <code><a class="new" href="/en-US/docs/SVG/Attribute/currentView">currentView</a></code> will correspond to the corresponding attributes for the given <code><a href="/en-US/docs/SVG/Element/view">&lt;view&gt;</a></code> element</li>
+              <li>the values for <code><a href="/en-US/docs/SVG/Attribute/transform">transform</a></code> and <code><a class="new" href="/en-US/docs/SVG/Attribute/viewTarget">viewTarget</a></code> within <code><a class="new" href="/en-US/docs/SVG/Attribute/currentView">currentView</a></code> will be null</li>
+            </ul>
+          </li>
+          <li>If the initial view was a link into another element (i.e., other than a <code><a href="/en-US/docs/SVG/Element/view">&lt;view&gt;</a></code>), then:
+            <ul>
+              <li>the values for <code><a href="/en-US/docs/SVG/Attribute/viewBox">viewBox</a></code>, <code><a href="/en-US/docs/SVG/Attribute/preserveAspectRatio">preserveAspectRatio</a></code> and <code><a class="new" href="/en-US/docs/SVG/Attribute/zoomAndPan">zoomAndPan</a></code> within <code><a class="new" href="/en-US/docs/SVG/Attribute/currentView">currentView</a></code> will match the values for the corresponding DOM attributes that are on <code>SVGSVGElement</code> directly for the closest ancestor <code><a href="/en-US/docs/SVG/Element/svg">&lt;svg&gt;</a></code> element</li>
+              <li>the values for <code><a href="/en-US/docs/SVG/Attribute/transform">transform</a></code> within <code><a class="new" href="/en-US/docs/SVG/Attribute/currentView">currentView</a></code> will be null</li>
+              <li>the <code><a class="new" href="/en-US/docs/SVG/Attribute/viewTarget">viewTarget</a></code> within <code><a class="new" href="/en-US/docs/SVG/Attribute/currentView">currentView</a></code> will represent the target of the link</li>
+            </ul>
+          </li>
+          <li>If the initial view was a link into the SVG document fragment using an SVG view specification fragment identifier (i.e., #svgView(...)), then:
+            <ul>
+              <li>the values for <code><a href="/en-US/docs/SVG/Attribute/viewBox">viewBox</a></code>, <code><a href="/en-US/docs/SVG/Attribute/preserveAspectRatio">preserveAspectRatio</a></code>, <code><a class="new" href="/en-US/docs/SVG/Attribute/zoomAndPan">zoomAndPan</a></code>, <code><a href="/en-US/docs/SVG/Attribute/transform">transform</a></code> and <code><a class="new" href="/en-US/docs/SVG/Attribute/viewTarget">viewTarget</a></code> within <code><a class="new" href="/en-US/docs/SVG/Attribute/currentView">currentView</a></code> will correspond to the values from the SVG view specification fragment identifier</li>
+            </ul>
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><code>currentTranslate</code></td>
+      <td><code><a href="/en-US/docs/DOM/SVGPoint" title="/en-US/docs/DOM/SVGPoint">SVGPoint</a></code></td>
+      <td>On an outermost <code><a href="/en-US/docs/SVG/Element/svg">&lt;svg&gt;</a></code> element, the corresponding translation factor that takes into account user "magnification".</td>
+    </tr>
+    <tr>
+      <td><code>currentScale</code></td>
+      <td>float</td>
+      <td>On an outermost <code><a href="/en-US/docs/SVG/Element/svg">&lt;svg&gt;</a></code> element, this attribute indicates the current scale factor relative to the initial view to take into account user magnification and panning operations. DOM attributes <code>currentScale</code> and <code>currentTranslate</code> are equivalent to the 2x3 matrix <code>[a b c d e f] = [currentScale 0 0 currentScale currentTranslate.x currentTranslate.y]</code>. If "magnification" is enabled (i.e., <code>zoomAndPan="magnify"</code>), then the effect is as if an extra transformation were placed at the outermost level on the SVG document fragment (i.e., outside the outermost <code><a href="/en-US/docs/SVG/Element/svg">&lt;svg&gt;</a></code> element).</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Methods">Methods</h2>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th>Name &amp; Arguments</th>
+      <th>Return</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code><strong>suspendRedraw</strong>(in unsigned long <em>maxWaitMilliseconds</em>)</code></td>
+      <td>unsigned long</td>
+      <td>
+        <p>Takes a time-out value which indicates that redraw shall not occur until:</p>
+        <ol>
+          <li>the corresponding unsuspendRedraw() call has been made,</li>
+          <li>an unsuspendRedrawAll() call has been made, or</li>
+          <li>its timer has timed out.</li>
+        </ol>
+        <p>In environments that do not support interactivity (e.g., print media), then redraw shall not be suspended. Calls to <code>suspendRedraw()</code> and <code>unsuspendRedraw()</code> should, but need not be, made in balanced pairs.</p>
+        <p>To suspend redraw actions as a collection of SVG DOM changes occur, precede the changes to the SVG DOM with a method call similar to:</p>
+        <p><code>suspendHandleID = suspendRedraw(maxWaitMilliseconds);</code></p>
+        <p>and follow the changes with a method call similar to:</p>
+        <p><code>unsuspendRedraw(suspendHandleID);</code></p>
+        <p>Note that multiple suspendRedraw calls can be used at once and that each such method call is treated independently of the other suspendRedraw method calls.</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code><strong>unsuspendRedraw</strong>(in unsigned long <em>suspendHandleID</em>)</code></td>
+      <td><em>void</em></td>
+      <td>Cancels a specified <code>suspendRedraw()</code> by providing a unique suspend handle ID that was returned by a previous <code>suspendRedraw()</code> call.</td>
+    </tr>
+    <tr>
+      <td><code><strong>unsuspendRedrawAll</strong>()</code></td>
+      <td><em>void</em></td>
+      <td>Cancels all currently active <code>suspendRedraw()</code> method calls. This method is most useful at the very end of a set of SVG DOM calls to ensure that all pending <code>suspendRedraw()</code> method calls have been cancelled.</td>
+    </tr>
+    <tr>
+      <td><code><strong>forceRedraw</strong>()</code></td>
+      <td><em>void</em></td>
+      <td>In rendering environments supporting interactivity, forces the user agent to immediately redraw all regions of the viewport that require updating.</td>
+    </tr>
+    <tr>
+      <td><code><strong>pauseAnimations</strong>()</code></td>
+      <td><em>void</em></td>
+      <td>Suspends (i.e., pauses) all currently running animations that are defined within the SVG document fragment corresponding to this <code><a href="/en-US/docs/SVG/Element/svg">&lt;svg&gt;</a></code> element, causing the animation clock corresponding to this document fragment to stand still until it is unpaused.</td>
+    </tr>
+    <tr>
+      <td><code><strong>unpauseAnimations</strong>()</code></td>
+      <td><em>void</em></td>
+      <td>Unsuspends (i.e., unpauses) currently running animations that are defined within the SVG document fragment, causing the animation clock to continue from the time at which it was suspended.</td>
+    </tr>
+    <tr>
+      <td><code><strong>animationsPaused</strong>()</code></td>
+      <td>boolean</td>
+      <td>Returns true if this SVG document fragment is in a paused state.</td>
+    </tr>
+    <tr>
+      <td><code><strong>getCurrentTime</strong>()</code></td>
+      <td><em>float</em></td>
+      <td>Returns the current time in seconds relative to the start time for the current SVG document fragment. If getCurrentTime is called before the document timeline has begun (for example, by script running in a <code><a href="/en-US/docs/SVG/Element/script">&lt;script&gt;</a></code> element before the document's SVGLoad event is dispatched), then 0 is returned.</td>
+    </tr>
+    <tr>
+      <td><code><strong>setCurrentTime</strong>(in float <em>seconds</em>)</code></td>
+      <td><em>void</em></td>
+      <td>Adjusts the clock for this SVG document fragment, establishing a new current time. If <code>setCurrentTime</code> is called before the document timeline has begun (for example, by script running in a <code><a href="/en-US/docs/SVG/Element/script">&lt;script&gt;</a></code> element before the document's SVGLoad event is dispatched), then the value of seconds in the last invocation of the method gives the time that the document will seek to once the document timeline has begun.</td>
+    </tr>
+    <tr>
+      <td><code><strong>getIntersectionList</strong>(in <code><a href="/en-US/docs/DOM/SVGRect" title="/en-US/docs/DOM/SVGRect">SVGRect</a></code> <em>rect</em>, in <code><a href="/en-US/docs/DOM/SVGElement" title="/en-US/docs/DOM/SVGElement">SVGElement</a></code> <em>referenceElement</em>)</code></td>
+      <td><code><a href="/en-US/docs/DOM/NodeList" title="/en-US/docs/DOM/NodeList">NodeList</a></code></td>
+      <td>Returns the list of graphics elements whose rendered content intersects the supplied rectangle. Each candidate graphics element is to be considered a match only if the same graphics element can be a target of pointer events as defined in <code><a href="/en-US/docs/SVG/Attribute/pointer-events">pointer-events</a></code> processing.</td>
+    </tr>
+    <tr>
+      <td><strong><code>getEnclosureList</code></strong><code>(in <code><a href="/en-US/docs/DOM/SVGRect" title="/en-US/docs/DOM/SVGRect">SVGRect</a></code> <em>rect</em>, in <code><a href="/en-US/docs/DOM/SVGElement" title="/en-US/docs/DOM/SVGElement">SVGElement</a></code> <em>referenceElement</em>)</code></td>
+      <td><code><a href="/en-US/docs/DOM/NodeList" title="/en-US/docs/DOM/NodeList">NodeList</a></code></td>
+      <td>Returns the list of graphics elements whose rendered content is entirely contained within the supplied rectangle. Each candidate graphics element is to be considered a match only if the same graphics element can be a target of pointer events as defined in <code><a href="/en-US/docs/SVG/Attribute/pointer-events">pointer-events</a></code> processing.</td>
+    </tr>
+    <tr>
+      <td><code><strong>checkIntersection</strong>(in <code><a href="/en-US/docs/DOM/SVGElement" title="/en-US/docs/DOM/SVGElement">SVGElement</a></code> <em>element</em>, in <code><a href="/en-US/docs/DOM/SVGRect" title="/en-US/docs/DOM/SVGRect">SVGRect</a></code> <em>rect</em>)</code></td>
+      <td>boolean</td>
+      <td>Returns true if the rendered content of the given element intersects the supplied rectangle. Each candidate graphics element is to be considered a match only if the same graphics element can be a target of pointer events as defined in <code><a href="/en-US/docs/SVG/Attribute/pointer-events">pointer-events</a></code> processing.</td>
+    </tr>
+    <tr>
+      <td><code><strong>checkEnclosure</strong>(in <code><a href="/en-US/docs/DOM/SVGElement" title="/en-US/docs/DOM/SVGElement">SVGElement</a></code> <em>element</em>, in <code><a href="/en-US/docs/DOM/SVGRect" title="/en-US/docs/DOM/SVGRect">SVGRect</a></code> <em>rect</em>)</code></td>
+      <td>boolean</td>
+      <td>Returns true if the rendered content of the given element is entirely contained within the supplied rectangle. Each candidate graphics element is to be considered a match only if the same graphics element can be a target of pointer events as defined in <code><a href="/en-US/docs/SVG/Attribute/pointer-events">pointer-events</a></code> processing.</td>
+    </tr>
+    <tr>
+      <td><code><strong>deselectAll</strong>()</code></td>
+      <td><em>void</em></td>
+      <td>Unselects any selected objects, including any selections of text strings and type-in bars.</td>
+    </tr>
+    <tr>
+      <td><code><strong>createSVGNumber</strong>()</code></td>
+      <td><code><a href="/en-US/docs/DOM/SVGNumber" title="/en-US/docs/DOM/SVGNumber">SVGNumber</a></code></td>
+      <td>Creates an <code>SVGNumber</code> object outside of any document trees. The object is initialized to a value of zero.</td>
+    </tr>
+    <tr>
+      <td><code><strong>createSVGLength</strong>()</code></td>
+      <td><code><a href="/en-US/docs/DOM/SVGLength" title="/en-US/docs/DOM/SVGLength">SVGLength</a></code></td>
+      <td>Creates an <code>SVGLength</code> object outside of any document trees. The object is initialized to a value of zero user units.</td>
+    </tr>
+    <tr>
+      <td><code><strong>createSVGAngle</strong>()</code></td>
+      <td><code><a href="/en-US/docs/DOM/SVGAngle" title="/en-US/docs/DOM/SVGAngle">SVGAngle</a></code></td>
+      <td>Creates an <code>SVGAngle</code> object outside of any document trees. The object is initialized to a value of zero degrees (unitless).</td>
+    </tr>
+    <tr>
+      <td><code><strong>createSVGPoint</strong>()</code></td>
+      <td><code><a href="/en-US/docs/DOM/SVGPoint" title="/en-US/docs/DOM/SVGPoint">SVGPoint</a></code></td>
+      <td>Creates an <code>SVGPoint</code> object outside of any document trees. The object is initialized to the point (0,0) in the user coordinate system.</td>
+    </tr>
+    <tr>
+      <td><code><strong>createSVGMatrix</strong>()</code></td>
+      <td><code><a href="/en-US/docs/DOM/SVGMatrix" title="/en-US/docs/DOM/SVGMatrix">SVGMatrix</a></code></td>
+      <td>Creates an <code>SVGMatrix</code> object outside of any document trees. The object is initialized to the identity matrix.</td>
+    </tr>
+    <tr>
+      <td><code><strong>createSVGRect</strong>()</code></td>
+      <td><code><a href="/en-US/docs/DOM/SVGRect" title="/en-US/docs/DOM/SVGRect">SVGRect</a></code></td>
+      <td>Creates an <code>SVGRect</code> object outside of any document trees. The object is initialized such that all values are set to 0 user units.</td>
+    </tr>
+    <tr>
+      <td><code><strong>createSVGTransform</strong>()</code></td>
+      <td><code><a href="/en-US/docs/DOM/SVGTransform" title="/en-US/docs/DOM/SVGTransform">SVGTransform</a></code></td>
+      <td>Creates an <code>SVGTransform</code> object outside of any document trees. The object is initialized to an identity matrix transform (<code>SVG_TRANSFORM_MATRIX</code>).</td>
+    </tr>
+    <tr>
+      <td><code><strong>createSVGTransformFromMatrix</strong>(in <code><a href="/en-US/docs/DOM/SVGMatrix" title="/en-US/docs/DOM/SVGMatrix">SVGMatrix</a></code> <em>matrix</em>)</code></td>
+      <td><code><a href="/en-US/docs/DOM/SVGTransform" title="/en-US/docs/DOM/SVGTransform">SVGTransform</a></code></td>
+      <td>Creates an <code>SVGTransform</code> object outside of any document trees. The object is initialized to the given matrix transform (i.e., <code>SVG_TRANSFORM_MATRIX</code>). The values from the parameter matrix are copied, the matrix parameter is not adopted as <code>SVGTransform::matrix</code>.</td>
+    </tr>
+    <tr>
+      <td><code><strong>getElementById</strong>(in <code><a href="/en-US/docs/DOM/DOMString" title="/en-US/docs/DOM/DOMString">DOMString</a></code> <em>elementId</em>)</code></td>
+      <td><code><a href="/en-US/docs/DOM/Element" title="/en-US/docs/DOM/Element">Element</a></code></td>
+      <td>Searches this SVG document fragment (i.e., the search is restricted to a subset of the document tree) for an Element whose id is given by <em>elementId</em>. If an Element is found, that Element is returned. If no such element exists, returns null. Behavior is not defined if more than one element has this id.</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Browser_compatibility" name="Browser_compatibility">Browser compatibility</h2>
+<p></p><div class="htab"> 
+    <a></a> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div><p></p>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari (WebKit)</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td>9.0</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+      <tr>
+        <td>ele.getElementById()</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td>11.0 (11)</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td>ele.useCurrentView</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td>15.0 (15)</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Mobile</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: rgb(255, 0, 0);" title="Not supported.">--</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+      <tr>
+        <td>ele.getElementById()</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td>(11)</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td>ele.useCurrentView</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td>15.0 (15)</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h2 id="See_also">See also</h2>
+<ul>
+  <li><code><a href="/en-US/docs/SVG/Element/circle">&lt;circle&gt;</a></code> SVG Element</li>
+</ul>
+                  </div>
+    <section class="page-meta">
+      
+            <section id="page-tags">
+        <h2><i class="icon-tags"></i>Tags (4)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/SVG%20DOM">SVG DOM</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/SVG">SVG</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsBrowserCompatibility">NeedsBrowserCompatibility</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsExample">NeedsExample</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Longsonr">Longsonr</a>, <a href="/en-US/profiles/HelderMagalhaes">HelderMagalhaes</a>, <a href="/en-US/profiles/Jeremie">Jeremie</a>
+                          <br />
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-15T15:07:05-07:00">May 15, 2013 3:07:05 PM</time>
+                      <br />
+            Last reviewed by:  
+            <a href="/en-US/profiles/Longsonr">Longsonr</a>, 
+            <time datetime="2012-08-20T07:30:06-07:00">Aug 20, 2012 7:30:06 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/API/SVGSVGElement$edit">
+      <input type="hidden" name="form" id="form" value="rev" />
+      <input type="hidden" name="content" id="content" value="" />
+  </form>
+      </div>
+   </div>
+    </section>
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+<footer id="site-info" class="footer" role="contentinfo">
+<div class="wrap">
+    <div id="legal">
+      <img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-tiny.png" alt="" width="42" height="48">
+      <p id="copyright">&copy; 2005 - 2013 Mozilla Developer Network and individual contributors</p>
+      <p>
+      Content is available under <a href="/en-US/docs/Project:Copyrights">these licenses</a>      &bull; <a href="/en-US/docs/Project:About">About MDN</a>
+      &bull; <a href="//github.com/mozilla/kuma">Contribute to the code</a>
+      &bull; <a href="//www.mozilla.org/en-US/privacy">Privacy Policy</a>
+    </div>
+          <form class="languages go" method="get" action="/en-US/docs">
+      <label for="language">Other languages:</label>
+      <select id="language" class="wiki-l10n" name="next" dir="ltr">
+        <option value="/en-US/docs/Web/API/SVGSVGElement" selected>
+          English (US)
+        </option>
+              </select>
+      <noscript><button type="submit">Go</button></noscript>
+    </form>
+  </div>
+</footer>
+
+<script src="/en-US/jsi18n/build:5f4e39d"></script>
+  <script src="//mozorg.cdn.mozilla.net/en-US/tabzilla/tabzilla.js" async></script>
+  <script src="//www.google.com/jsapi" type="text/javascript"></script>
+  <script src="https://login.persona.org/include.js" type="text/javascript"></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/mdn-min.js?build=5f4e39d"></script>
+      <script src="https://developer.cdn.mozilla.net/media/js/wiki-min.js?build=5f4e39d"></script>
+  
+  <script type="text/javascript">
+    // Event tracking for the new menu
+    $(function() {
+      $('#nav-main').on('click', 'a', function(e) {
+        window._gaq && _gaq.push(['_trackEvent', 'Menu', 'Click', e.target.innerHTML, e.target.href]);
+      });
+    });
+  </script>
+        <!-- include syntax highlighting scripts -->
+  
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=5f4e39d" />
+
+  <script type="text/javascript">
+    MEDIA_URL = 'https://developer.cdn.mozilla.net/media/';
+  </script>
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/media/prism/prism.js" data-manual></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/syntax-prism-min.js?build=5f4e39d"></script>
+
+<script src="/en-US/waffles.js" type="text/javascript" async></script>
+</body>
+</html>

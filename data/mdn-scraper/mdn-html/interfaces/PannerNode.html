@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+<head>
+      <script src="//cdn.optimizely.com/js/237572123.js"></script>
+  
+  <title>PannerNode - Web API reference | MDN</title>
+  
+  <meta charset="utf-8">
+  <meta name="robots" content="index, follow">
+  <link rel="home" href="/en-US/">
+  <link rel="copyright" href="#copyright">
+  <link rel="shortcut icon" href="https://developer.cdn.mozilla.net/media/img/favicon.ico">
+
+        <!--[if !IE 6]><!-->
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/mdn-min.css?build=5f4e39d" />
+      <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/wiki-min.css?build=5f4e39d" />
+    <!--<![endif]-->
+  <!--[if IE]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie.css"><![endif]-->
+  <!--[if lte IE 7]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie7.css"><![endif]-->
+  <!--[if lte IE 6]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie6.css"><![endif]-->
+  <link rel="stylesheet" type="text/css" href="https://developer.cdn.mozilla.net/media/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="print" href="https://developer.cdn.mozilla.net/media/css/mdn-print.css">
+  <link rel="stylesheet" href="https://mozorg.cdn.mozilla.net/media/css/tabzilla-min.css">
+  
+
+  <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network" />
+
+  
+    <link rel="stylesheet" media="print" href="https://developer.cdn.mozilla.net/media/css/wiki-print-min.css?build=5f4e39d" />
+          <link rel="stylesheet" type="text/css"
+            href="/en-US/docs/Template:CustomCSS?raw=1" />
+    
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script src="https://developer.cdn.mozilla.net/media/js/html5.js"></script>
+  <![endif]-->
+
+    <link rel="alternate" type="application/json" href="/en-US/docs/Web/API/PannerNode$json" />
+  <link rel="canonical" href="https://developer.mozilla.org/en-US/docs/Web/API/PannerNode" />
+
+  <meta property="og:title" content="PannerNode" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://developer.mozilla.org/media/img/mdn-logo-sm.png" />
+  <meta property="og:site_name" content="Mozilla Developer Network" />
+  <meta property="og:url" content="https://developer.mozilla.org/en-US/docs/Web/API/PannerNode" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:url" content="https://developer.mozilla.org/en-US/docs/Web/API/PannerNode" />
+  <meta name="twitter:title" content="PannerNode" />
+  <meta name="twitter:image" content="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" />
+  <meta name="twitter:site" content="@mozhacks" />
+  <meta name="twitter:creator" content="@mozhacks" />
+
+    <meta property="og:description" content="The PannerNode interface represents the behavior of a signal in space. It is an AudioNode, that is an audio-processing module describing its position with a right-hand Cartesian coordinates, its movement using a velocity vector and its directionality using a directionality cone. A PannerNode always has exactly one input and one output: the input can be mono or stereo but the output is always stereo (2 channels)."/>
+  <meta name="description" content="The PannerNode interface represents the behavior of a signal in space. It is an AudioNode, that is an audio-processing module describing its position with a right-hand Cartesian coordinates, its movement using a velocity vector and its directionality using a directionality cone. A PannerNode always has exactly one input and one output: the input can be mono or stereo but the output is always stereo (2 channels)." />
+  <meta name="twitter:description" content="The PannerNode interface represents the behavior of a signal in space. It is an AudioNode, that is an audio-processing module describing its position with a right-hand Cartesian coordinates, its movement using a velocity vector and its directionality using a directionality cone. A PannerNode always has exactly one input and one output: the input can be mono or stereo but the output is always stereo (2 channels)." />
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36116321-5']);
+  _gaq.push(['_trackPageview']);
+
+  (function(a, d) {
+    var ga = d.createElement(a); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == d.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = d.getElementsByTagName(a)[0]; s.parentNode.insertBefore(ga, s);
+  })('script', document);
+
+</script>
+</head>
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  <header id="masthead" class="minor new-menu">
+    <div class="wrap">
+      <ul id="nav-access">
+        <li><a href="#language">Select language</a></li>
+        <li><a href="#q">Skip to search</a></li>
+        <li><a href="#content">Skip to main content</a></li>
+      </ul>
+    
+      <div id="branding">
+                <div id="logo"><a href="/en-US/"><img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" alt="Mozilla Developer Network" title="Mozilla Developer Network" width="62" height="71"> Mozilla Developer Network</a></div>
+              </div>
+      
+              <nav id="nav">
+          <ul id="nav-main" role="menubar">
+            <li id="nav-main-docs" class="menu" rel="menuitem"><a href="#nav-sub-docs" class="toggle" aria-haspopup="true" aria-labelledby="nav-main-docs" title="Read Documentation">Read<br /><em>Docs</em></a>
+              <div id="nav-sub-docs" class="sub-menu" aria-hidden="true">
+                <ul>
+                  <li>
+                    <ul>
+
+                      <li><a href="/en-US/docs/Web/HTML?menu">HTML</a></li>
+                      <li><a href="/en-US/docs/Web/CSS?menu">CSS</a></li>
+                      <li><a href="/en-US/docs/Web/JavaScript?menu">JavaScript</a></li>
+                      <li><a href="/en-US/docs/Web/Guide/Graphics?menu">Graphics</a></li>
+                      <li><a href="/en-US/docs/Web/API?menu">APIs / DOM</a></li>
+                      <li><a href="/en-US/docs/Web/Apps?menu">Apps</a></li>
+                      <li><a href="/en-US/docs/tools?menu">Dev Tools</a></li>
+                      <li><a href="/en-US/docs/Web/MathML?menu">MathML</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <ul>
+                      <li><a href="/en-US/docs/Web/Tutorials?menu">Tutorials</a></li>
+                      <li><a href="/en-US/docs/Web/Reference?menu">References</a></li>
+                      <li><a href="/en-US/docs/Web/Guide?menu">Developer Guides</a></li>
+                      <li><a href="/en-US/demos/?menu">Demos</a></li>
+                      <li><br /><br /><a href="/en-US/docs?menu">...more docs</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li id="nav-main-apps" role="menuitem"><a href="https://marketplace.firefox.com/developers/">Make<br /><em>Apps</em></a></li>
+            <li id="nav-main-firefox" class="menu" role="menuitem"><a href="#nav-sub-firefox" class="firefox toggle" aria-haspopup="true" aria-labelledby="nav-main-firefox">Build & Use<br /><em>Firefox</em></a>
+              <ul id="nav-sub-firefox" class="sub-menu">
+                <li><a href="/en-US/docs/Mozilla/Firefox_OS?menu">Firefox OS</a></li>
+                <li><a href="/en-US/docs/Mozilla/Firefox?menu">Firefox Desktop</a></li>
+                <li><a href="/en-US/docs/Mozilla/Mobile?menu">Mobile</a></li>
+                <li><a href="/en-US/docs/Mozilla/Add-ons?menu">Add-ons</a></li>
+              </ul>
+            </li>
+            <li id="nav-main-demos" role="menuitem"><a href="/en-US/demos/?menu" class="demos">See & Submit<br /><em>Demos</em></a></li>
+            <li id="nav-main-community" class="menu" role="menuitem"><a href="#nav-sub-community" class="community toggle" aria-haspopup="true" aria-labelledby="nav-main-community">Get<br /><em>Involved</em></a>
+              <ul id="nav-sub-community" class="sub-menu">
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Join_the_community?menu">Join the Community</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing?menu">Contribute to MDN</a></li>
+                <li><a href="/en-US/events?menu">Events</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Follow_what_s_happening?menu">Tweets, Blogs, and More</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+          
+      <ul class="user-state signed-out">
+    <li class="user-signin menu">
+    <form class="browserid" action="/en-US/users/browserid_verify" method="POST">
+        <input id="next" name="next" type="hidden" value="/en-US/docs/Web/API/PannerNode"/>
+        <input required="required" type="hidden" name="assertion" id="id_assertion" />
+                        <a href="#" target="_blank" class="browserid-signin toggle" aria-haspopup="true" title="Sign in with Persona">Sign in</a>
+                <div class="browserid-info sub-menu" aria-hidden="true">
+                <h3>What's this?</h3> <p>MDN has switched to <a href="https://persona.org/" target="_blank" rel="external">Persona</a>, a safe and simple way to sign in with just your e-mail address. <a href="http://identity.mozilla.com/post/12950196039/deploying-browserid-at-mozilla" rel="external">Learn more about why Mozilla is using Persona</a>.</p> <p><strong>Returning members:</strong> sign in with Persona and you'll be connected to your MDN profile (all your information is still here).</p> <p><strong>New members:</strong> sign in with Persona first, then you'll be able to set up your new MDN profile.</p>          <p><a href="#" target="_blank" class="browserid-signin" title="Sign in with Persona">Sign in</a></p>
+        </div>
+              </form>
+    </li>
+  </ul>
+      
+      <form id="site-search" method="get" action="http://www.google.com/search"
+              data-url="/en-US/search">
+        <p>
+          <input type="search" role="search" placeholder="Search MDN" id="q" name="q" value="">
+          <noscript><button type="submit">Search</button></noscript>
+        </p>
+        <input type="hidden" name="sitesearch" value="developer.mozilla.org">
+                <div id="site-search-gg"></div>
+              </form>
+
+      <a href="//www.mozilla.org/" id="tabzilla">mozilla</a>
+    </div>
+  </header>
+
+    
+
+<!-- top toolbar -->
+<section id="nav-toolbar"><div><div class="wrap">
+  <!-- right floated navigation -->
+  <nav id="tool-menus" role="navigation">
+    <ul id="tools">
+      <li class="menu">
+        <a href="#page-tools" class="toggle">This page</a>
+        <ul id="page-tools" class="sub-menu">
+          <li class="page-print"> <a href="#" onclick="return window.print();"  title="Print page">Print this page</a></li>
+                      <li><a href="/en-US/docs/new?parent=65157">New sub-page</a></li>
+            <li><a href="/en-US/docs/new?clone=65157">Clone this page</a></li>
+                                      </ul>
+      </li>
+            <li class="menu">
+        <a href="#" class="toggle">Languages</a>
+        <ul id="translations">
+                    
+                      <li><a href="/en-US/docs/Web/API/PannerNode$locales">Add translation</a></li>
+                  </ul>
+      </li>
+          </ul>
+  </nav>
+  
+  <!-- left crumb navigation -->
+  <nav class="crumbs" role="navigation">
+    <ol>
+              <li class="crumb"><a href="/en-US/docs/Web">Web technology for developers</a></li>
+              <li class="crumb"><a href="/en-US/docs/Web/API">Web API reference</a></li>
+            <li class="crumb">PannerNode</li>
+    </ol>
+  </nav>
+  
+</div></div></section>
+
+
+
+<section id="content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" 
+          data-current-revision="411025"
+          data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes."
+          data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title">
+            <h1 class="page-title">PannerNode</h1>
+                    </div>
+        <ul id="page-buttons">
+            <li class="page-history"><a href="/en-US/docs/Web/API/PannerNode$history"><i class="icon-book"></i>History</a></li>
+                                                                                  <li class="page-edit"><a href="/en-US/docs/Web/API/PannerNode$edit"><i class="icon-pencil"></i>Edit</a></li>
+                    </ul>
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                <div id="article-nav">
+          <div class="page-toc">
+            <h2>Table of Contents</h2>
+            <ol>
+              <code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Properties" rel="internal">Properties</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Methods" rel="internal">Methods</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Examples" rel="internal">Examples</a><li><a href="#Specifications" rel="internal">Specifications</a><li><a href="#Browser_compatibility" rel="internal">Browser compatibility</a><li><a href="#See_also" rel="internal">See also</a>
+            </ol>
+          </div>
+          <ul class="page-anchors">
+            <li class="anchor-tags">
+                              <i class="icon-tags"></i><a href="#page-tags">Tags</a>
+                          </li>
+            <li class="anchor-files">
+                              <i class="icon-paper-clip"></i><a href="#page-file">Files</a>
+                          </li>
+          </ul>
+        </div>
+                                <p>« <a href="/en-US/docs/Web_Audio_API">Web Audio API</a></p>
+<p></p><div class="overheadIndicator translationInProgress translationInProgressHeader"> 
+    <p><strong>This is an experimental technology</strong><br>Because this technology's specification has not stabilized, check the <a href="#Browser_compatibility">compatibility table</a> for the proper prefixes to use in various browsers. Also note that the syntax and behavior of an experimental technology is subject to change in future versions of browsers as the spec changes.</p> 
+</div><p></p>
+<p>The <strong><code>PannerNode</code></strong><strong> </strong>interface represents the behavior of a signal in space. It is an <a href="/en-US/docs/Web/API/AudioNode" title="/en-US/docs/Web/API/AudioNode"><code>AudioNode</code></a>, that is an audio-processing module describing its position with a right-hand Cartesian coordinates, its movement using a velocity vector and its directionality using a directionality cone. A <code>PannerNode</code> always has exactly one input and one output: the input can be <em>mono</em> or <em>stereo</em> but the output is always <em>stereo</em> (2 channels).</p>
+<p><img alt="The PannerNode brings a spatial position and velocity and a directionality for a given signal." height="228" src="https://mdn.mozillademos.org/files/5087/WebAudioPannerNode.png" width="568"></p>
+<ul class="audionodebox">
+  <li><dfn>Number of inputs</dfn> <code>1</code></li>
+  <li><dfn>Number of outputs</dfn> <code>1</code></li>
+  <li><dfn>Channel count mode</dfn> <code>"clamped-max"</code></li>
+  <li><dfn>Channel count</dfn> <code>2</code></li>
+  <li><dfn>Channel interpretation</dfn> <code>"speakers"</code></li>
+</ul>
+<h2 id="Properties">Properties</h2>
+<p><em>Inherits properties from its parent, </em><em><a href="/en-US/docs/Web/API/AudioNode" title="/en-US/docs/Web/API/AudioNode"><code>AudioNode</code></a></em>.</p>
+<dl>
+  <dt>
+    <a class="new" href="/en-US/docs/Web/API/PannerNode.panningModel" title="/en-US/docs/Web/API/PannerNode.panningModel"><code>PannerNode.panningModel</code></a></dt>
+  <dd>
+    Is an enumerated value determining which spatialization algorithm to use to position the audio in 3D space. The possible values are:
+    <ul>
+      <li><code>"equalpower"</code>, representing the equal-power panning algorithm, usually considered as simple and efficient;</li>
+      <li><code>"HRTF"</code>, rendering a stereo output and of higher quality than the previous one as it uses a convolution with measured impulse responses from human subjects. It is the default value.</li>
+    </ul>
+  </dd>
+  <dt>
+    <a class="new" href="/en-US/docs/Web/API/PannerNode.distanceModel" title="/en-US/docs/Web/API/PannerNode.distanceModel"><code>PannerNode.distanceModel</code></a></dt>
+  <dd>
+    Is an enumerated value determining which algorithm to use to reduce the volume of the audio source as it moves away from the listeners. The possible values are:
+    <ul>
+      <li><code>"linear"</code>, a <em>linear distance model</em> calculating the gain induced by the distance according to: <code>1 - rolloffFactor * (distance - refDistance) / (maxDistance - refDistance)</code>.</li>
+      <li><code>"inverse"</code>, an <em>inverse distance model </em> calculating the gain induced by the distance according to: <code>refDistance / (refDistance + rolloffFactor * (distance - refDistance))</code>. This is the default value.</li>
+      <li><code>"exponential"</code>, an <em>exponential distance model</em> calculating hte gain induced by the distance according to: <code>pow(distance / refDistance, -rolloffFactor)</code></li>
+    </ul>
+  </dd>
+  <dt>
+    <a class="new" href="/en-US/docs/Web/API/PannerNode.refDistance" title="/en-US/docs/Web/API/PannerNode.refDistance"><code>PannerNode.refDistance</code></a></dt>
+  <dd>
+    Is a double value representing the reference distance for reducing volume as source move further from the listener. This value is used by all distance model. Its default value is <code>1</code>.</dd>
+  <dt>
+    <a class="new" href="/en-US/docs/Web/API/PannerNode.maxDistance" title="/en-US/docs/Web/API/PannerNode.maxDistance"><code>PannerNode.maxDistance</code></a></dt>
+  <dd>
+    Is a double value representing the maximum distance between the source and the listener, after which the volume is no more reduced. This value is used only by the <code>"linear"</code> distance model. Its default value is <code>10000</code>.</dd>
+  <dt>
+    <a class="new" href="/en-US/docs/Web/API/PannerNode.rolloffFactor" title="/en-US/docs/Web/API/PannerNode.rolloffFactor"><code>PannerNode.rolloffFactor</code></a></dt>
+  <dd>
+    Is a double value describing how quickly the volume is reduced as the source moves away from listener. This value is used by all distance model. Its default value is <code>1</code>.</dd>
+  <dt>
+    <a class="new" href="/en-US/docs/Web/API/PannerNode.coneInnerAngle" title="/en-US/docs/Web/API/PannerNode.coneInnerAngle"><code>PannerNode.coneInnerAngle</code></a></dt>
+  <dd>
+    Is a double value describing the angle, in degrees, of the cone, inside of which there will be no volume reduction. Its default value is <code>360</code>, suitable for a non-directional source.</dd>
+  <dt>
+    <a class="new" href="/en-US/docs/Web/API/PannerNode.coneOuterAngle" title="/en-US/docs/Web/API/PannerNode.coneOuterAngle"><code>PannerNode.coneOuterAngle</code></a></dt>
+  <dd>
+    Is a double value describing the angle, in degrees, of the cone, outside of which the volume will be reduce by a constant value, defined by the <code>coneOuterGain</code> attribute. Its default value is <code>0</code>.</dd>
+  <dt>
+    <a class="new" href="/en-US/docs/Web/API/PannerNode.coneOuterGain" title="/en-US/docs/Web/API/PannerNode.coneOuterGain"><code>PannerNode.coneOuterGain</code></a></dt>
+  <dd>
+    Is a double value describing the amount of volume reduction outside of the cone defined by the <code>coneOuterAngle</code> attribute. Its default value is <code>0</code>, meaning that no sound can be heard.</dd>
+</dl>
+<h2 id="Methods">Methods</h2>
+<p><em>Inherits methods from its parent, </em><em><a href="/en-US/docs/Web/API/AudioNode" title="/en-US/docs/Web/API/AudioNode"><code>AudioNode</code></a></em>.</p>
+<dl>
+  <dt>
+    <a class="new" href="/en-US/docs/Web/API/PannerNode.setPosition" title="/en-US/docs/Web/API/PannerNode.setPosition"><code>PannerNode.setPosition()</code></a></dt>
+  <dd>
+    Defines the position of the audio source regarding the position of the person listening to the scene, represented by an <a href="/en-US/docs/Web/API/AudioListener" title="/en-US/docs/Web/API/AudioListener"><code>AudioListener</code></a> object stored in the <a class="new" href="/en-US/docs/Web/API/AudioContext.listener" title="/en-US/docs/Web/API/AudioContext.listener"><code>AudioContext.listener</code></a> attribute. The three parameters <code>x</code>, <code>y</code> and <code>z</code> are unitless and describes the vector in the 3D space using the right-hand Cartesian coordinate system. The default value of the position vector is <code>(0,</code> <code>0,</code> <code>0)</code>.</dd>
+</dl>
+<dl>
+  <dt>
+    <a class="new" href="/en-US/docs/Web/API/PannerNode.setOrientation" title="/en-US/docs/Web/API/PannerNode.setOrientation"><code>PannerNode.setOrientation()</code></a></dt>
+  <dd>
+    Defines the direction of the audio source. This can have a big effect if the sound is very directional (controlled by the three cone-related attributes): in that case, a sound pointing away from the listener can be very quiet or even silent. The three parameters <code>x</code>, <code>y</code> and <code>z</code> are unitless and describes the vector in the 3D space using the right-hand Cartesian coordinate system. The default value of the position vector is <code>(1,</code> <code>0,</code> <code>0)</code>.</dd>
+</dl>
+<dl>
+  <dt>
+    <a class="new" href="/en-US/docs/Web/API/PannerNode.setVelocity" title="/en-US/docs/Web/API/PannerNode.setVelocity"><code>PannerNode.setVelocity()</code></a></dt>
+  <dd>
+    Defines the velocity vector of the audio source. The velocity relative to the listener's is used do control the pitch change needed to conform with the Doppler effect due to the relative speed. The vector controls both the direction of travel, and its velocity, as the three parameters <code>x</code>, <code>y</code> and <code>z</code> are expressed in <em>meters per second<code>.</code></em> The default value of the position vector is <code>(0,</code> <code>0,</code> <code>0)</code>.</dd>
+</dl>
+<h2 id="Examples">Examples</h2>
+<p> </p>
+<h2 id="Specifications">Specifications</h2>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <th scope="col">Specification</th>
+      <th scope="col">Status</th>
+      <th scope="col">Comment</th>
+    </tr>
+    <tr>
+      <td><a class="external" href="https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/specification.html#PannerNode-section" lang="en" title="The definition of 'PannerNode' in that specification.">Web Audio API</a></td>
+      <td><span class="spec-WD">Working Draft</span></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Browser_compatibility">Browser compatibility</h2>
+<div>
+  <div class="htab"> 
+    <a name="AutoCompatibilityTable"></a> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div></div>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari (WebKit)</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span><span class="inlineIndicator prefixBox prefixBoxInline" title="prefix">webkit</span></td>
+        <td>Activated on Nightly only</td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Phone</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td>Activated on Nightly only</td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h2 id="See_also">See also</h2>
+<ul>
+  <li>Using Web Audio</li>
+</ul>
+                  </div>
+    <section class="page-meta">
+      
+            <section id="page-tags">
+        <h2><i class="icon-tags"></i>Tags (2)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Web%20Audio%20API">Web Audio API</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/experimental">experimental</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+            
+<section id="page-attachments">
+  <h2><i class="icon-paper-clip"></i>Attachments <bdi>(<span id="page-attachments-count">1</span>)</bdi></h2>
+
+  
+  <p id="page-attachments-no-message" class="hidden">
+    This document has no attachments.
+  </p>
+
+  <script>
+    // This is a global, but has to be :/
+    MDN_ATTACHMENTS = [{"creatorUrl": "/en-US/profiles/teoli", "description": "The PannerNode brings a spatial position and velocity and a directionality for a given signal.", "creator": "teoli", "mime": "image/png", "date": "2013-04-08 04:15:57", "id": 5087, "size": 72539, "title": "The PannerNode positioning in the space", "url": "https://mdn.mozillademos.org/files/5087/WebAudioPannerNode.png", "html": "<tr data-revision-id=\"5397\" data-attachment-id=\"5087\">\n  <td class=\"attachment-name-cell\">\n    <a href=\"https://mdn.mozillademos.org/files/5087/WebAudioPannerNode.png\" target=\"_blank\">The PannerNode positioning in the space</a>\n      <div class=\"attachment-description\">The PannerNode brings a spatial position and velocity and a directionality for a given signal.</div>\n  </td>\n  <td>72539 bytes</td>\n  <td>2013-04-08 04:15:57</td>\n  <td><a href=\"/en-US/profiles/teoli\">teoli</a></td>\n</tr>", "revision": 5397}];
+  </script>
+  <table cellpadding="0" cellspacing="0" id="page-attachments-table" class="">
+    <thead>
+      <th>File</th>
+      <th>Size</th>
+      <th>Date</th>
+      <th>Attached by</th>
+    </thead>
+    <tbody>
+              <tr data-revision-id="5397" data-attachment-id="5087">
+  <td class="attachment-name-cell">
+    <a href="https://mdn.mozillademos.org/files/5087/WebAudioPannerNode.png" target="_blank">The PannerNode positioning in the space</a>
+      <div class="attachment-description">The PannerNode brings a spatial position and velocity and a directionality for a given signal.</div>
+  </td>
+  <td>72539 bytes</td>
+  <td>2013-04-08 04:15:57</td>
+  <td><a href="/en-US/profiles/teoli">teoli</a></td>
+</tr>
+          </tbody>
+  </table>
+
+  </section>      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/teoli">teoli</a>
+                          <br />
+          Last updated by:  
+          <a href="/en-US/profiles/teoli">teoli</a>, 
+          <time datetime="2013-05-20T11:16:32-07:00">May 20, 2013 11:16:32 AM</time>
+                      <br />
+            Last reviewed by:  
+            <a href="/en-US/profiles/teoli">teoli</a>, 
+            <time datetime="2013-05-20T11:16:32-07:00">May 20, 2013 11:16:32 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/API/PannerNode$edit">
+      <input type="hidden" name="form" id="form" value="rev" />
+      <input type="hidden" name="content" id="content" value="" />
+  </form>
+      </div>
+   </div>
+    </section>
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+<footer id="site-info" class="footer" role="contentinfo">
+<div class="wrap">
+    <div id="legal">
+      <img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-tiny.png" alt="" width="42" height="48">
+      <p id="copyright">&copy; 2005 - 2013 Mozilla Developer Network and individual contributors</p>
+      <p>
+      Content is available under <a href="/en-US/docs/Project:Copyrights">these licenses</a>      &bull; <a href="/en-US/docs/Project:About">About MDN</a>
+      &bull; <a href="//github.com/mozilla/kuma">Contribute to the code</a>
+      &bull; <a href="//www.mozilla.org/en-US/privacy">Privacy Policy</a>
+    </div>
+          <form class="languages go" method="get" action="/en-US/docs">
+      <label for="language">Other languages:</label>
+      <select id="language" class="wiki-l10n" name="next" dir="ltr">
+        <option value="/en-US/docs/Web/API/PannerNode" selected>
+          English (US)
+        </option>
+              </select>
+      <noscript><button type="submit">Go</button></noscript>
+    </form>
+  </div>
+</footer>
+
+<script src="/en-US/jsi18n/build:5f4e39d"></script>
+  <script src="//mozorg.cdn.mozilla.net/en-US/tabzilla/tabzilla.js" async></script>
+  <script src="//www.google.com/jsapi" type="text/javascript"></script>
+  <script src="https://login.persona.org/include.js" type="text/javascript"></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/mdn-min.js?build=5f4e39d"></script>
+      <script src="https://developer.cdn.mozilla.net/media/js/wiki-min.js?build=5f4e39d"></script>
+  
+  <script type="text/javascript">
+    // Event tracking for the new menu
+    $(function() {
+      $('#nav-main').on('click', 'a', function(e) {
+        window._gaq && _gaq.push(['_trackEvent', 'Menu', 'Click', e.target.innerHTML, e.target.href]);
+      });
+    });
+  </script>
+        <!-- include syntax highlighting scripts -->
+  
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=5f4e39d" />
+
+  <script type="text/javascript">
+    MEDIA_URL = 'https://developer.cdn.mozilla.net/media/';
+  </script>
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/media/prism/prism.js" data-manual></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/syntax-prism-min.js?build=5f4e39d"></script>
+
+<script src="/en-US/waffles.js" type="text/javascript" async></script>
+</body>
+</html>

@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+<head>
+      <script src="//cdn.optimizely.com/js/237572123.js"></script>
+  
+  <title>CompositionEvent - Web API reference | MDN</title>
+  
+  <meta charset="utf-8">
+  <meta name="robots" content="index, follow">
+  <link rel="home" href="/en-US/">
+  <link rel="copyright" href="#copyright">
+  <link rel="shortcut icon" href="https://developer.cdn.mozilla.net/media/img/favicon.ico">
+
+        <!--[if !IE 6]><!-->
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/mdn-min.css?build=5f4e39d" />
+      <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/wiki-min.css?build=5f4e39d" />
+    <!--<![endif]-->
+  <!--[if IE]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie.css"><![endif]-->
+  <!--[if lte IE 7]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie7.css"><![endif]-->
+  <!--[if lte IE 6]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie6.css"><![endif]-->
+  <link rel="stylesheet" type="text/css" href="https://developer.cdn.mozilla.net/media/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="print" href="https://developer.cdn.mozilla.net/media/css/mdn-print.css">
+  <link rel="stylesheet" href="https://mozorg.cdn.mozilla.net/media/css/tabzilla-min.css">
+  
+
+  <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network" />
+
+  
+    <link rel="stylesheet" media="print" href="https://developer.cdn.mozilla.net/media/css/wiki-print-min.css?build=5f4e39d" />
+          <link rel="stylesheet" type="text/css"
+            href="/en-US/docs/Template:CustomCSS?raw=1" />
+    
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script src="https://developer.cdn.mozilla.net/media/js/html5.js"></script>
+  <![endif]-->
+
+    <link rel="alternate" type="application/json" href="/en-US/docs/Web/API/CompositionEvent$json" />
+  <link rel="canonical" href="https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent" />
+
+  <meta property="og:title" content="CompositionEvent" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://developer.mozilla.org/media/img/mdn-logo-sm.png" />
+  <meta property="og:site_name" content="Mozilla Developer Network" />
+  <meta property="og:url" content="https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:url" content="https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent" />
+  <meta name="twitter:title" content="CompositionEvent" />
+  <meta name="twitter:image" content="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" />
+  <meta name="twitter:site" content="@mozhacks" />
+  <meta name="twitter:creator" content="@mozhacks" />
+
+    <meta property="og:description" content="The DOM CompositionEvent represents events that occur due to the user indirectly entering text."/>
+  <meta name="description" content="The DOM CompositionEvent represents events that occur due to the user indirectly entering text." />
+  <meta name="twitter:description" content="The DOM CompositionEvent represents events that occur due to the user indirectly entering text." />
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36116321-5']);
+  _gaq.push(['_trackPageview']);
+
+  (function(a, d) {
+    var ga = d.createElement(a); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == d.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = d.getElementsByTagName(a)[0]; s.parentNode.insertBefore(ga, s);
+  })('script', document);
+
+</script>
+</head>
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  <header id="masthead" class="minor new-menu">
+    <div class="wrap">
+      <ul id="nav-access">
+        <li><a href="#language">Select language</a></li>
+        <li><a href="#q">Skip to search</a></li>
+        <li><a href="#content">Skip to main content</a></li>
+      </ul>
+    
+      <div id="branding">
+                <div id="logo"><a href="/en-US/"><img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" alt="Mozilla Developer Network" title="Mozilla Developer Network" width="62" height="71"> Mozilla Developer Network</a></div>
+              </div>
+      
+              <nav id="nav">
+          <ul id="nav-main" role="menubar">
+            <li id="nav-main-docs" class="menu" rel="menuitem"><a href="#nav-sub-docs" class="toggle" aria-haspopup="true" aria-labelledby="nav-main-docs" title="Read Documentation">Read<br /><em>Docs</em></a>
+              <div id="nav-sub-docs" class="sub-menu" aria-hidden="true">
+                <ul>
+                  <li>
+                    <ul>
+
+                      <li><a href="/en-US/docs/Web/HTML?menu">HTML</a></li>
+                      <li><a href="/en-US/docs/Web/CSS?menu">CSS</a></li>
+                      <li><a href="/en-US/docs/Web/JavaScript?menu">JavaScript</a></li>
+                      <li><a href="/en-US/docs/Web/Guide/Graphics?menu">Graphics</a></li>
+                      <li><a href="/en-US/docs/Web/API?menu">APIs / DOM</a></li>
+                      <li><a href="/en-US/docs/Web/Apps?menu">Apps</a></li>
+                      <li><a href="/en-US/docs/tools?menu">Dev Tools</a></li>
+                      <li><a href="/en-US/docs/Web/MathML?menu">MathML</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <ul>
+                      <li><a href="/en-US/docs/Web/Tutorials?menu">Tutorials</a></li>
+                      <li><a href="/en-US/docs/Web/Reference?menu">References</a></li>
+                      <li><a href="/en-US/docs/Web/Guide?menu">Developer Guides</a></li>
+                      <li><a href="/en-US/demos/?menu">Demos</a></li>
+                      <li><br /><br /><a href="/en-US/docs?menu">...more docs</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li id="nav-main-apps" role="menuitem"><a href="https://marketplace.firefox.com/developers/">Make<br /><em>Apps</em></a></li>
+            <li id="nav-main-firefox" class="menu" role="menuitem"><a href="#nav-sub-firefox" class="firefox toggle" aria-haspopup="true" aria-labelledby="nav-main-firefox">Build & Use<br /><em>Firefox</em></a>
+              <ul id="nav-sub-firefox" class="sub-menu">
+                <li><a href="/en-US/docs/Mozilla/Firefox_OS?menu">Firefox OS</a></li>
+                <li><a href="/en-US/docs/Mozilla/Firefox?menu">Firefox Desktop</a></li>
+                <li><a href="/en-US/docs/Mozilla/Mobile?menu">Mobile</a></li>
+                <li><a href="/en-US/docs/Mozilla/Add-ons?menu">Add-ons</a></li>
+              </ul>
+            </li>
+            <li id="nav-main-demos" role="menuitem"><a href="/en-US/demos/?menu" class="demos">See & Submit<br /><em>Demos</em></a></li>
+            <li id="nav-main-community" class="menu" role="menuitem"><a href="#nav-sub-community" class="community toggle" aria-haspopup="true" aria-labelledby="nav-main-community">Get<br /><em>Involved</em></a>
+              <ul id="nav-sub-community" class="sub-menu">
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Join_the_community?menu">Join the Community</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing?menu">Contribute to MDN</a></li>
+                <li><a href="/en-US/events?menu">Events</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Follow_what_s_happening?menu">Tweets, Blogs, and More</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+          
+      <ul class="user-state signed-out">
+    <li class="user-signin menu">
+    <form class="browserid" action="/en-US/users/browserid_verify" method="POST">
+        <input id="next" name="next" type="hidden" value="/en-US/docs/Web/API/CompositionEvent"/>
+        <input required="required" type="hidden" name="assertion" id="id_assertion" />
+                        <a href="#" target="_blank" class="browserid-signin toggle" aria-haspopup="true" title="Sign in with Persona">Sign in</a>
+                <div class="browserid-info sub-menu" aria-hidden="true">
+                <h3>What's this?</h3> <p>MDN has switched to <a href="https://persona.org/" target="_blank" rel="external">Persona</a>, a safe and simple way to sign in with just your e-mail address. <a href="http://identity.mozilla.com/post/12950196039/deploying-browserid-at-mozilla" rel="external">Learn more about why Mozilla is using Persona</a>.</p> <p><strong>Returning members:</strong> sign in with Persona and you'll be connected to your MDN profile (all your information is still here).</p> <p><strong>New members:</strong> sign in with Persona first, then you'll be able to set up your new MDN profile.</p>          <p><a href="#" target="_blank" class="browserid-signin" title="Sign in with Persona">Sign in</a></p>
+        </div>
+              </form>
+    </li>
+  </ul>
+      
+      <form id="site-search" method="get" action="http://www.google.com/search"
+              data-url="/en-US/search">
+        <p>
+          <input type="search" role="search" placeholder="Search MDN" id="q" name="q" value="">
+          <noscript><button type="submit">Search</button></noscript>
+        </p>
+        <input type="hidden" name="sitesearch" value="developer.mozilla.org">
+                <div id="site-search-gg"></div>
+              </form>
+
+      <a href="//www.mozilla.org/" id="tabzilla">mozilla</a>
+    </div>
+  </header>
+
+    
+
+<!-- top toolbar -->
+<section id="nav-toolbar"><div><div class="wrap">
+  <!-- right floated navigation -->
+  <nav id="tool-menus" role="navigation">
+    <ul id="tools">
+      <li class="menu">
+        <a href="#page-tools" class="toggle">This page</a>
+        <ul id="page-tools" class="sub-menu">
+          <li class="page-print"> <a href="#" onclick="return window.print();"  title="Print page">Print this page</a></li>
+                      <li><a href="/en-US/docs/new?parent=4835">New sub-page</a></li>
+            <li><a href="/en-US/docs/new?clone=4835">Clone this page</a></li>
+                                      </ul>
+      </li>
+            <li class="menu">
+        <a href="#" class="toggle">Languages</a>
+        <ul id="translations">
+                      <li><a rel="internal" href="/ja/docs/DOM/CompositionEvent" title="CompositionEvent">日本語</a></li>
+                    
+                      <li><a href="/en-US/docs/Web/API/CompositionEvent$locales">Add translation</a></li>
+                  </ul>
+      </li>
+          </ul>
+  </nav>
+  
+  <!-- left crumb navigation -->
+  <nav class="crumbs" role="navigation">
+    <ol>
+              <li class="crumb"><a href="/en-US/docs/Web">Web technology for developers</a></li>
+              <li class="crumb"><a href="/en-US/docs/Web/API">Web API reference</a></li>
+            <li class="crumb">CompositionEvent</li>
+    </ol>
+  </nav>
+  
+</div></div></section>
+
+
+
+<section id="content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" 
+          data-current-revision="399993"
+          data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes."
+          data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title">
+            <h1 class="page-title">CompositionEvent</h1>
+                    </div>
+        <ul id="page-buttons">
+            <li class="page-history"><a href="/en-US/docs/Web/API/CompositionEvent$history"><i class="icon-book"></i>History</a></li>
+                                                                                  <li class="page-edit"><a href="/en-US/docs/Web/API/CompositionEvent$edit"><i class="icon-pencil"></i>Edit</a></li>
+                    </ul>
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                <div id="article-nav">
+          <div class="page-toc">
+            <h2>Table of Contents</h2>
+            <ol>
+              <code></code><code></code><li><a href="#Method_overview" rel="internal">Method overview</a><code></code><li><a href="#Attributes" rel="internal">Attributes</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Methods" rel="internal">Methods</a><ol><li><a href="#initCompositionEvent" rel="internal">initCompositionEvent</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code></ol></li><li><a href="#Specification" rel="internal">Specification</a><li><a href="#Browser_compatibility" rel="internal">Browser compatibility</a><ol><li><a href="#Gecko_notes" rel="internal">Gecko notes</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code></ol></li><li><a href="#See_also" rel="internal">See also</a><code></code><code></code><code></code>
+            </ol>
+          </div>
+          <ul class="page-anchors">
+            <li class="anchor-tags">
+                              <i class="icon-tags"></i><a href="#page-tags">Tags</a>
+                          </li>
+            <li class="anchor-files">
+                              <i class="icon-paper-clip off"></i><span title="This document has no attachments">Files</span>
+                          </li>
+          </ul>
+        </div>
+                                <p></p><div style="border: solid #ddd 2px; margin-right: 262px; margin-bottom: 12px;"> 
+<div style="background: #eee; padding: 2px;"><a class="external" href="http://mxr.mozilla.org/mozilla-central/source/dom/interfaces/events/nsIDOMCompositionEvent.idl" rel="custom">dom/interfaces/events/nsIDOMCompositionEvent.idl</a><span style="text-align: right; float: right;"><a href="en-US/docs/Interfaces/About_Scriptable_Interfaces" style="color: #00cc00; font-weight: 700;">Scriptable</a></span></div> 
+<span style="padding: 4px 2px;"> 
+ 
+An event interface for composition events 
+</span> 
+ 
+  <div style="height: 42px; position: relative; padding: 2px; width: auto;"> 
+ 
+  <div style="top: 22px; font-size: 11px; position: absolute;">1.0</div> 
+   
+  <div style="top: 22px; font-size: 11px; position: absolute; left: 0px; text-align: right; float: right; width: 100%;">22.0</div> 
+   
+  <div style="height: 8px; top: 16px; background: #dd0000; left: 0px; position: absolute; width: 50%;"></div> 
+   
+<div style="height: 8px; top: 16px; left: 50%; background: #00dd00; position: absolute; width: 50%;" title="Introduced in Gecko 9.0 (Firefox 9.0 / Thunderbird 9.0 / SeaMonkey 2.6)"></div> 
+ 
+<div style="top: 0px; font-size: 11px; position: absolute; left: 50%;">Introduced</div> 
+<div style="top: 22px; font-size: 11px; position: absolute; left: 50%;">Gecko 9.0</div> 
+ 
+</div> 
+ 
+<div style="background: #eee; padding: 2px;"> 
+Inherits from: <code><a class="new" href="https://developer.mozilla.org/en-US/docs/XPCOM_Interface_Reference/nsIDOMUIEvent">nsIDOMUIEvent</a></code> 
+<span style="text-align: right; float: right;">Last changed in Gecko 9.0 (Firefox 9.0 / Thunderbird 9.0 / SeaMonkey 2.6)</span></div> 
+</div><p></p>
+<p>The DOM <code>CompositionEvent</code> represents events that occur due to the user indirectly entering text.</p>
+<h2 id="Method_overview">Method overview</h2>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td><code>void <a href="/en-US/docs/DOM/CompositionEvent#initCompositionEvent()" title="DOM/CompositionEvent#initCompositionEvent()">initCompositionEvent</a>(in DOMString typeArg,in boolean canBubbleArg, in boolean cancelableArg, in views::AbstractView viewArg, in DOMString dataArg, in DOMString localeArg);</code></td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Attributes">Attributes</h2>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td class="header">Attribute</td>
+      <td class="header">Type</td>
+      <td class="header">Description</td>
+    </tr>
+    <tr>
+      <td><code>data</code></td>
+      <td><a href="/en-US/docs/DOM/DOMString" title="/en-US/docs/DOM/DOMString"><code>DOMString</code></a></td>
+      <td>
+        <p>For <code><a href="https://developer.mozilla.org/en-US/docs/DOM/DOM_event_reference/compositionstart">compositionstart</a></code> events, this is the currently selected text that will be replaced by the string being composed. This value doesn't change even if content changes the selection range; rather, it indicates the string that was selected when composition started.</p>
+        <p>For <code><a href="https://developer.mozilla.org/en-US/docs/DOM/DOM_event_reference/compositionupdate">compositionupdate</a></code>, this is the string as it stands currently as editing is ongoing.</p>
+        <p>For <code><a href="https://developer.mozilla.org/en-US/docs/DOM/DOM_event_reference/compositionend">compositionend</a></code> events, this is the string as committed to the editor.</p>
+        <p><strong>Read only</strong>.</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code>locale</code></td>
+      <td><a href="/en-US/docs/DOM/DOMString" title="/en-US/docs/DOM/DOMString"><code>DOMString</code></a></td>
+      <td>
+        <p>The locale of current input method (for example, the keyboard layout locale if the composition is associated with IME). <strong>Read only.</strong></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Methods">Methods</h2>
+<h3 id="initCompositionEvent">initCompositionEvent</h3>
+<p>Initializes the attributes of a composition event.</p>
+<pre>void initCompositionEvent(
+  in DOMString typeArg,
+  in boolean canBubbleArg,
+  in boolean cancelableArg,
+  in views::AbstractView viewArg,
+  in DOMString dataArg,
+  in DOMString localeArg
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt><code>typeArg</code></dt>
+  <dd>The type of composition event; this will be one of <code>compositionstart</code>, <code>compositionupdate</code>, or <code>compositionend</code>.</dd>
+  <dt><code>canBubbleArg</code></dt>
+  <dd>Whether or not the event can bubble.</dd>
+  <dt><code>cancelableArg</code></dt>
+  <dd>Whether or not the event can be canceled.</dd>
+  <dt><code>viewArg</code></dt>
+  <dd>?</dd>
+  <dt><code>dataArg</code></dt>
+  <dd>The value of the <code>data</code> attribute.</dd>
+  <dt><code>localeArg</code></dt>
+  <dd>The value of the <code>locale</code> attribute.</dd>
+</dl>
+<h2 id="Specification">Specification</h2>
+<ul>
+  <li><a class="external" href="http://dev.w3.org/2006/webapi/DOM-Level-3-Events/html/DOM3-Events.html#events-compositionevents" title="http://dev.w3.org/2006/webapi/DOM-Level-3-Events/html/DOM3-Events.html#events-compositionevents">DOM Level 3: Composition Events</a></li>
+</ul>
+<h2 id="Browser_compatibility">Browser compatibility</h2>
+<div><div class="htab"> 
+    <a name="AutoCompatibilityTable"></a> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div></div>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td>9.0 (9.0)</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Mobile</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td>9.0 (9.0)</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h3 id="Gecko_notes">Gecko notes</h3>
+<p>The <code><a href="https://developer.mozilla.org/en-US/docs/DOM/DOM_event_reference/compositionstart">compositionstart</a></code> and <code><a href="https://developer.mozilla.org/en-US/docs/DOM/DOM_event_reference/compositionend">compositionend</a></code> events were fired in versions of Gecko before 9.0, but didn't have the DOM Level 3 attributes and methods. In addition, support for the <code><a href="https://developer.mozilla.org/en-US/docs/DOM/DOM_event_reference/compositionupdate">compositionupdate</a></code> event was added in Gecko 9.0 (Firefox 9.0 / Thunderbird 9.0 / SeaMonkey 2.6).</p>
+<div class="note">
+  <strong>Note:</strong> Gecko doesn't support the <code>locale</code> attribute for trusted events yet.  However, web developers can set this value via <code>initCompositionEvent()</code> when creating untrusted events.</div>
+<p>Gecko's editors (for example, <code>&lt;input type="text"&gt;</code>, <code>&lt;div contenteditable/&gt;</code>, and <code>designMode</code>) start composition after the bubble phase of <code>compositionstart</code>. So, by the time your <code>compositionstart</code> handler is called, no contents have not been modified.</p>
+<p>Gecko's editors don't handle the <code>compositionupdate</code> event yet. By the time your <code>compositionupdate</code> handler is called, no contents have been modified.</p>
+<p>By the time your <code>compositionend</code> event handler is called, composition is complete, and no further changes will occur. For that reason, if you call <a href="/en-US/docs/DOM/event.stopPropagation" title="/en-US/docs/DOM/event.stopPropagation"><code>event.stopPropagation()</code></a> on the <code>compositionstart</code> or <code>compositionend</code> event, you can break composition behavior and cause editors to fail to manage editing properly. See <a class="external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=697842" rel="external" title="">bug 697842</a> for progress on this problem getting fixed.</p>
+<h2 id="See_also">See also</h2>
+<ul>
+  <li><code><a href="https://developer.mozilla.org/en-US/docs/DOM/DOM_event_reference/compositionstart">compositionstart</a></code></li>
+  <li><code><a href="https://developer.mozilla.org/en-US/docs/DOM/DOM_event_reference/compositionend">compositionend</a></code></li>
+  <li><code><a href="https://developer.mozilla.org/en-US/docs/DOM/DOM_event_reference/compositionupdate">compositionupdate</a></code></li>
+  <li><a href="/en-US/docs/DOM/Event/UIEvent" title="UIEvent">UIEvent</a></li>
+  <li><a href="/en-US/docs/DOM/event" title="Event">Event</a></li>
+</ul>
+                  </div>
+    <section class="page-meta">
+      
+            <section id="page-tags">
+        <h2><i class="icon-tags"></i>Tags (6)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsBrowserCompatibility">NeedsBrowserCompatibility</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/events">events</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Event">Event</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Gecko%20DOM%20Reference">Gecko DOM Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/DOM">DOM</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsTechnicalReview">NeedsTechnicalReview</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Masayuki">Masayuki</a>, <a href="/en-US/profiles/teoli">teoli</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>
+                          <br />
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-13T13:39:58-07:00">May 13, 2013 1:39:58 PM</time>
+                      <br />
+            Last reviewed by:  
+            <a href="/en-US/profiles/ethertank">ethertank</a>, 
+            <time datetime="2013-04-29T14:21:00-07:00">Apr 29, 2013 2:21:00 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/API/CompositionEvent$edit">
+      <input type="hidden" name="form" id="form" value="rev" />
+      <input type="hidden" name="content" id="content" value="" />
+  </form>
+      </div>
+   </div>
+    </section>
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+<footer id="site-info" class="footer" role="contentinfo">
+<div class="wrap">
+    <div id="legal">
+      <img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-tiny.png" alt="" width="42" height="48">
+      <p id="copyright">&copy; 2005 - 2013 Mozilla Developer Network and individual contributors</p>
+      <p>
+      Content is available under <a href="/en-US/docs/Project:Copyrights">these licenses</a>      &bull; <a href="/en-US/docs/Project:About">About MDN</a>
+      &bull; <a href="//github.com/mozilla/kuma">Contribute to the code</a>
+      &bull; <a href="//www.mozilla.org/en-US/privacy">Privacy Policy</a>
+    </div>
+          <form class="languages go" method="get" action="/en-US/docs">
+      <label for="language">Other languages:</label>
+      <select id="language" class="wiki-l10n" name="next" dir="ltr">
+        <option value="/en-US/docs/Web/API/CompositionEvent" selected>
+          English (US)
+        </option>
+                  <option value="/ja/docs/DOM/CompositionEvent">
+            日本語
+          </option>      </select>
+      <noscript><button type="submit">Go</button></noscript>
+    </form>
+  </div>
+</footer>
+
+<script src="/en-US/jsi18n/build:5f4e39d"></script>
+  <script src="//mozorg.cdn.mozilla.net/en-US/tabzilla/tabzilla.js" async></script>
+  <script src="//www.google.com/jsapi" type="text/javascript"></script>
+  <script src="https://login.persona.org/include.js" type="text/javascript"></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/mdn-min.js?build=5f4e39d"></script>
+      <script src="https://developer.cdn.mozilla.net/media/js/wiki-min.js?build=5f4e39d"></script>
+  
+  <script type="text/javascript">
+    // Event tracking for the new menu
+    $(function() {
+      $('#nav-main').on('click', 'a', function(e) {
+        window._gaq && _gaq.push(['_trackEvent', 'Menu', 'Click', e.target.innerHTML, e.target.href]);
+      });
+    });
+  </script>
+        <!-- include syntax highlighting scripts -->
+  
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=5f4e39d" />
+
+  <script type="text/javascript">
+    MEDIA_URL = 'https://developer.cdn.mozilla.net/media/';
+  </script>
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/media/prism/prism.js" data-manual></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/syntax-prism-min.js?build=5f4e39d"></script>
+
+<script src="/en-US/waffles.js" type="text/javascript" async></script>
+</body>
+</html>

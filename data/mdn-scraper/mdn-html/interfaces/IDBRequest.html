@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+<head>
+      <script src="//cdn.optimizely.com/js/237572123.js"></script>
+  
+  <title>IDBRequest - Web API reference | MDN</title>
+  
+  <meta charset="utf-8">
+  <meta name="robots" content="index, follow">
+  <link rel="home" href="/en-US/">
+  <link rel="copyright" href="#copyright">
+  <link rel="shortcut icon" href="https://developer.cdn.mozilla.net/media/img/favicon.ico">
+
+        <!--[if !IE 6]><!-->
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/mdn-min.css?build=5f4e39d" />
+      <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/wiki-min.css?build=5f4e39d" />
+    <!--<![endif]-->
+  <!--[if IE]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie.css"><![endif]-->
+  <!--[if lte IE 7]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie7.css"><![endif]-->
+  <!--[if lte IE 6]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie6.css"><![endif]-->
+  <link rel="stylesheet" type="text/css" href="https://developer.cdn.mozilla.net/media/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="print" href="https://developer.cdn.mozilla.net/media/css/mdn-print.css">
+  <link rel="stylesheet" href="https://mozorg.cdn.mozilla.net/media/css/tabzilla-min.css">
+  
+
+  <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network" />
+
+  
+    <link rel="stylesheet" media="print" href="https://developer.cdn.mozilla.net/media/css/wiki-print-min.css?build=5f4e39d" />
+          <link rel="stylesheet" type="text/css"
+            href="/en-US/docs/Template:CustomCSS?raw=1" />
+    
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script src="https://developer.cdn.mozilla.net/media/js/html5.js"></script>
+  <![endif]-->
+
+    <link rel="alternate" type="application/json" href="/en-US/docs/Web/API/IDBRequest$json" />
+  <link rel="canonical" href="https://developer.mozilla.org/en-US/docs/Web/API/IDBRequest" />
+
+  <meta property="og:title" content="IDBRequest" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://developer.mozilla.org/media/img/mdn-logo-sm.png" />
+  <meta property="og:site_name" content="Mozilla Developer Network" />
+  <meta property="og:url" content="https://developer.mozilla.org/en-US/docs/Web/API/IDBRequest" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:url" content="https://developer.mozilla.org/en-US/docs/Web/API/IDBRequest" />
+  <meta name="twitter:title" content="IDBRequest" />
+  <meta name="twitter:image" content="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" />
+  <meta name="twitter:site" content="@mozhacks" />
+  <meta name="twitter:creator" content="@mozhacks" />
+
+    <meta property="og:description" content="The IDBRequest interface of the IndexedDB API provides access to results of asynchronous requests to databases and database objects using event handler attributes. Each reading and writing operation on a database is done using a request."/>
+  <meta name="description" content="The IDBRequest interface of the IndexedDB API provides access to results of asynchronous requests to databases and database objects using event handler attributes. Each reading and writing operation on a database is done using a request." />
+  <meta name="twitter:description" content="The IDBRequest interface of the IndexedDB API provides access to results of asynchronous requests to databases and database objects using event handler attributes. Each reading and writing operation on a database is done using a request." />
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36116321-5']);
+  _gaq.push(['_trackPageview']);
+
+  (function(a, d) {
+    var ga = d.createElement(a); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == d.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = d.getElementsByTagName(a)[0]; s.parentNode.insertBefore(ga, s);
+  })('script', document);
+
+</script>
+</head>
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  <header id="masthead" class="minor new-menu">
+    <div class="wrap">
+      <ul id="nav-access">
+        <li><a href="#language">Select language</a></li>
+        <li><a href="#q">Skip to search</a></li>
+        <li><a href="#content">Skip to main content</a></li>
+      </ul>
+    
+      <div id="branding">
+                <div id="logo"><a href="/en-US/"><img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" alt="Mozilla Developer Network" title="Mozilla Developer Network" width="62" height="71"> Mozilla Developer Network</a></div>
+              </div>
+      
+              <nav id="nav">
+          <ul id="nav-main" role="menubar">
+            <li id="nav-main-docs" class="menu" rel="menuitem"><a href="#nav-sub-docs" class="toggle" aria-haspopup="true" aria-labelledby="nav-main-docs" title="Read Documentation">Read<br /><em>Docs</em></a>
+              <div id="nav-sub-docs" class="sub-menu" aria-hidden="true">
+                <ul>
+                  <li>
+                    <ul>
+
+                      <li><a href="/en-US/docs/Web/HTML?menu">HTML</a></li>
+                      <li><a href="/en-US/docs/Web/CSS?menu">CSS</a></li>
+                      <li><a href="/en-US/docs/Web/JavaScript?menu">JavaScript</a></li>
+                      <li><a href="/en-US/docs/Web/Guide/Graphics?menu">Graphics</a></li>
+                      <li><a href="/en-US/docs/Web/API?menu">APIs / DOM</a></li>
+                      <li><a href="/en-US/docs/Web/Apps?menu">Apps</a></li>
+                      <li><a href="/en-US/docs/tools?menu">Dev Tools</a></li>
+                      <li><a href="/en-US/docs/Web/MathML?menu">MathML</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <ul>
+                      <li><a href="/en-US/docs/Web/Tutorials?menu">Tutorials</a></li>
+                      <li><a href="/en-US/docs/Web/Reference?menu">References</a></li>
+                      <li><a href="/en-US/docs/Web/Guide?menu">Developer Guides</a></li>
+                      <li><a href="/en-US/demos/?menu">Demos</a></li>
+                      <li><br /><br /><a href="/en-US/docs?menu">...more docs</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li id="nav-main-apps" role="menuitem"><a href="https://marketplace.firefox.com/developers/">Make<br /><em>Apps</em></a></li>
+            <li id="nav-main-firefox" class="menu" role="menuitem"><a href="#nav-sub-firefox" class="firefox toggle" aria-haspopup="true" aria-labelledby="nav-main-firefox">Build & Use<br /><em>Firefox</em></a>
+              <ul id="nav-sub-firefox" class="sub-menu">
+                <li><a href="/en-US/docs/Mozilla/Firefox_OS?menu">Firefox OS</a></li>
+                <li><a href="/en-US/docs/Mozilla/Firefox?menu">Firefox Desktop</a></li>
+                <li><a href="/en-US/docs/Mozilla/Mobile?menu">Mobile</a></li>
+                <li><a href="/en-US/docs/Mozilla/Add-ons?menu">Add-ons</a></li>
+              </ul>
+            </li>
+            <li id="nav-main-demos" role="menuitem"><a href="/en-US/demos/?menu" class="demos">See & Submit<br /><em>Demos</em></a></li>
+            <li id="nav-main-community" class="menu" role="menuitem"><a href="#nav-sub-community" class="community toggle" aria-haspopup="true" aria-labelledby="nav-main-community">Get<br /><em>Involved</em></a>
+              <ul id="nav-sub-community" class="sub-menu">
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Join_the_community?menu">Join the Community</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing?menu">Contribute to MDN</a></li>
+                <li><a href="/en-US/events?menu">Events</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Follow_what_s_happening?menu">Tweets, Blogs, and More</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+          
+      <ul class="user-state signed-out">
+    <li class="user-signin menu">
+    <form class="browserid" action="/en-US/users/browserid_verify" method="POST">
+        <input id="next" name="next" type="hidden" value="/en-US/docs/Web/API/IDBRequest"/>
+        <input required="required" type="hidden" name="assertion" id="id_assertion" />
+                        <a href="#" target="_blank" class="browserid-signin toggle" aria-haspopup="true" title="Sign in with Persona">Sign in</a>
+                <div class="browserid-info sub-menu" aria-hidden="true">
+                <h3>What's this?</h3> <p>MDN has switched to <a href="https://persona.org/" target="_blank" rel="external">Persona</a>, a safe and simple way to sign in with just your e-mail address. <a href="http://identity.mozilla.com/post/12950196039/deploying-browserid-at-mozilla" rel="external">Learn more about why Mozilla is using Persona</a>.</p> <p><strong>Returning members:</strong> sign in with Persona and you'll be connected to your MDN profile (all your information is still here).</p> <p><strong>New members:</strong> sign in with Persona first, then you'll be able to set up your new MDN profile.</p>          <p><a href="#" target="_blank" class="browserid-signin" title="Sign in with Persona">Sign in</a></p>
+        </div>
+              </form>
+    </li>
+  </ul>
+      
+      <form id="site-search" method="get" action="http://www.google.com/search"
+              data-url="/en-US/search">
+        <p>
+          <input type="search" role="search" placeholder="Search MDN" id="q" name="q" value="">
+          <noscript><button type="submit">Search</button></noscript>
+        </p>
+        <input type="hidden" name="sitesearch" value="developer.mozilla.org">
+                <div id="site-search-gg"></div>
+              </form>
+
+      <a href="//www.mozilla.org/" id="tabzilla">mozilla</a>
+    </div>
+  </header>
+
+    
+
+<!-- top toolbar -->
+<section id="nav-toolbar"><div><div class="wrap">
+  <!-- right floated navigation -->
+  <nav id="tool-menus" role="navigation">
+    <ul id="tools">
+      <li class="menu">
+        <a href="#page-tools" class="toggle">This page</a>
+        <ul id="page-tools" class="sub-menu">
+          <li class="page-print"> <a href="#" onclick="return window.print();"  title="Print page">Print this page</a></li>
+                      <li><a href="/en-US/docs/new?parent=5146">New sub-page</a></li>
+            <li><a href="/en-US/docs/new?clone=5146">Clone this page</a></li>
+                                      </ul>
+      </li>
+            <li class="menu">
+        <a href="#" class="toggle">Languages</a>
+        <ul id="translations">
+                    
+                      <li><a href="/en-US/docs/Web/API/IDBRequest$locales">Add translation</a></li>
+                  </ul>
+      </li>
+          </ul>
+  </nav>
+  
+  <!-- left crumb navigation -->
+  <nav class="crumbs" role="navigation">
+    <ol>
+              <li class="crumb"><a href="/en-US/docs/Web">Web technology for developers</a></li>
+              <li class="crumb"><a href="/en-US/docs/Web/API">Web API reference</a></li>
+            <li class="crumb">IDBRequest</li>
+    </ol>
+  </nav>
+  
+</div></div></section>
+
+
+
+<section id="content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" 
+          data-current-revision="415159"
+          data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes."
+          data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title">
+            <h1 class="page-title">IDBRequest</h1>
+                    </div>
+        <ul id="page-buttons">
+            <li class="page-history"><a href="/en-US/docs/Web/API/IDBRequest$history"><i class="icon-book"></i>History</a></li>
+                                                                                  <li class="page-edit"><a href="/en-US/docs/Web/API/IDBRequest$edit"><i class="icon-pencil"></i>Edit</a></li>
+                    </ul>
+
+        
+               </header>
+
+           
+                        <div class="warning review-technical"><p>This article is in need of a technical review.</p></div>
+                            
+            
+      <div id="wikiArticle" class="page-content boxed">
+                <div id="article-nav">
+          <div class="page-toc">
+            <h2>Table of Contents</h2>
+            <ol>
+              <code></code><code></code><li><a href="#About_this_document" rel="internal">About this document</a><li><a href="#Basic_concepts" rel="internal">Basic concepts</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><ol><li><a href="#Example" rel="internal">Example</a></ol></li><li><a href="#Attributes" rel="internal">Attributes</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Constants" rel="internal">Constants</a><ol><li><a href="#readyState_constants" rel="internal">readyState constants</a><code></code><code></code></ol></li><li><a href="#Event_handlers" rel="internal">Event handlers</a><code></code><code></code><code></code><code></code><li><a href="#Derived_interface" rel="internal">Derived interface</a><code></code><li><a href="#Browser_Compatibility" rel="internal">Browser compatibility</a>
+            </ol>
+          </div>
+          <ul class="page-anchors">
+            <li class="anchor-tags">
+                              <i class="icon-tags"></i><a href="#page-tags">Tags</a>
+                          </li>
+            <li class="anchor-files">
+                              <i class="icon-paper-clip off"></i><span title="This document has no attachments">Files</span>
+                          </li>
+          </ul>
+        </div>
+                                <p>The <code>IDBRequest</code> interface of the IndexedDB API provides access to results of asynchronous requests to databases and database objects using event handler attributes. Each reading and writing operation on a database is done using a request.</p>
+<p>The request object does not initially contain any information about the result of the operation, but once information becomes available, an event is fired on the request, and the information becomes available through the properties of the <code>IDBRequest</code> instance.</p>
+<p>Inherits from: <a href="/en/DOM/EventTarget" title="en/DOM/EventTarget">EventTarget</a></p>
+<h2 id="About_this_document">About this document</h2>
+<p>This document was last updated on August 17, 2012 and follows the <a class="external" href="http://dvcs.w3.org/hg/IndexedDB/raw-file/tip/Overview.html#request-api">W3C Specifications (Editor's Draft)</a> drafted on July 24, 2012. It has not yet been verified.</p>
+<h2 id="Basic_concepts">Basic concepts</h2>
+<p>All asynchronous operations immediately return an <code>IDBRequest</code> instance. Each request has a <code><a href="#readyState">readyState</a></code> that is set to the <a href="#const_pending" title="#const_pending"><font face="Courier New, Andale Mono, monospace"><span style="line-height: normal;">pending</span></font></a> state, which then changes to <code><a href="#const_done">d</a>one</code> when the request is completed or fails. When the state is set to <code>done</code>, every request returns a <a href="/en/IndexedDB/IDBRequest?revision=11#attr_result" title="en/IndexedDB/IDBRequest?revision=11#attr_result"><code>result</code></a> and an <a href="/en/IndexedDB/IDBRequest?revision=11#attr_errorCode" title="en/IndexedDB/IDBRequest?revision=11#attr_errorCode"><code>error</code></a>, and an event is fired on the request. When the state is still <code>pending</code>, any attempt to access the <code>result</code> or <code>error</code> raises an <code>InvalidStateError</code> exception.</p>
+<p>All that is saying in plain English is that: All asynchronous methods return a request object. If the request has been completed successfully, the result is made available through the <code>result</code> property and an event indicating success is fired at the request. If an error occurs while performing the operation, the exception is made available through the <code>result</code> property and an error event is fired.</p>
+<h3 id="Example">Example</h3>
+<p>In the following code snippet, we open a database asynchronously and make a request. Event handlers are registered for responding to various situations.</p>
+<pre class="brush: js" style="margin-left: 40px;">var request = window.indexedDB.open('Database Name');
+request.onsuccess = function(event) {
+        var db = this.result;
+        var transaction = db.transaction([]);
+// "readonly" is the default option; 
+// when data will be added to the database use "readwrite".
+        var curRequest = transaction.objectStore('ObjectStore Name').openCursor();
+        curRequest.onsuccess = ...;
+    };
+request.onerror = function(event) {
+         ...;
+    };
+request.onupgradeneeded= function(event) {
+         // changing objectStore data is done here, as opposed to a transaction enum:
+         ...;
+    };
+</pre>
+<h2 id="Attributes">Attributes</h2>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th scope="col">Attribute</th>
+      <th scope="col">Type</th>
+      <th scope="col">Description</th>
+    </tr>
+    <tr>
+      <td><code><a name="attr_result">result</a></code></td>
+      <td><code>readonly any</code></td>
+      <td>
+        <p>Returns the result of the request.</p>
+        <p>If the the request failed and the result is not available, the <span style="font-family: 'Courier New', 'Andale Mono', monospace; line-height: normal;">InvalidStateError</span> exception is thrown.</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code><a name="attr_errorCode">error</a></code></td>
+      <td><code>readonly <a href="/en-US/docs/DOM/DOMError" style="color: rgb(34, 85, 170); line-height: 21px;" title="/en-US/docs/DOM/DOMError">DOMError</a></code></td>
+      <td>
+        <p>The following error codes are returned under certain conditions:</p>
+        <ul>
+          <li><code>AbortError</code> — If you abort the transaction, then all requests still in progress receive this error.</li>
+          <li><code>ConstraintError</code> — If you insert data that doesn't conform to a constraint. It's an exception type for creating stores and indexes. You get this error, for example, if you try to add a new key that already exists in the record.</li>
+          <li><code>QuotaExceededError</code> — If you run out of disk quota and the user declined to grant you more space.</li>
+          <li><code>UnknownError</code> — If the operation failed for reasons unrelated to the database itself. A failure due to disk IO errors is such an example.</li>
+          <li><code>NoError</code> — If the request succeeds.</li>
+          <li><code>VersionError</code> — If you try to open a database with a version lower than the one it already has.</li>
+        </ul>
+        <p>In addition to the error codes sent to the IDBRequest object, asynchronous operations can also raise exceptions. The list describes problems that could occur when the request is being executed, but you might also encounter other problems when the request is being made. For example, if the the request failed and the result is not available, the <span style="font-family: 'Courier New', 'Andale Mono', monospace; line-height: normal;">InvalidStateError</span> exception is thrown.</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code><a name="attr_source">source</a></code></td>
+      <td><code>readonly Object</code></td>
+      <td>
+        <p>The source of the request, such as an Index or a ObjectStore. If no source exists (such as when calling <code>indexedDB.open()</code>), it returns null.</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code><a name="attr_transaction">transaction</a></code></td>
+      <td><code>readonly <a href="/en/IndexedDB/IDBTransaction" title="en/IndexedDB/IDBTransaction">IDBTransaction</a></code></td>
+      <td>The transaction for the request. This property can be null for certain requests, such as for request returned from <code><a href="/en/IndexedDB/IDBFactory#open" title="en/IndexedDB/IDBFactory#open">IDBFactory.open</a></code> (You're just connecting to a database, so there is no transaction to return).</td>
+    </tr>
+    <tr>
+      <td><code><a name="attr_readyState">readyState</a></code></td>
+      <td><code>readonly enum</code></td>
+      <td>
+        <p>The state of the request. Every request starts in the <code>pending</code> state. The state changes to <code>done</code> when the request completes successfully or when an error occurs.</p>
+        <!--<p>The <code>readyState</code> is set to <code>DONE</code> in two situations, with different outcomes:</p>
+          <dl>
+            <dt>If the request completes successfully,</dt>
+            <dd>then the result of the request is included as the <code><a href="mks://localhost/en/IndexedDB/IDBSuccessEvent#attr_result" title="en/IndexedDB/IDBSuccessEvent#attr result">result</a></code> of a new <a href="mks://localhost/en/IndexedDB/IDBSuccessEvent" title="en/IndexedDB/IDBSuccessEvent">IDBSuccessEvent</a> object, which is queued to fire with the name <code>success</code>.</dd>
+            <dt>If an error occurs,</dt>
+            <dd>then the error code and message are included in a new <a href="mks://localhost/en/IndexedDB/IDBErrorEvent" title="en/IndexedDB/IDBErrorEvent">IDBErrorEvent</a> object, which is queued to fire with the name <code>error</code>.</dd>
+          </dl>
+          <p>The event fired in these situations has no namespace, does not bubble, and is not cancelable at each <a href="mks://localhost/en/DOM/window" title="en/DOM/window">window</a> object.</p>--></td>
+    </tr>
+    <tr>
+      <td><code><a name="attr_onerror">onerror</a></code></td>
+      <td><code>Function </code></td>
+      <td>The event handler for the error event.</td>
+    </tr>
+    <tr>
+      <td><code><a name="attr_onsuccess">onsuccess</a></code></td>
+      <td><code>Function </code></td>
+      <td>The event handler for the success event.</td>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2 id="Constants">Constants</h2>
+<h3 id="readyState_constants">readyState constants</h3>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th scope="col">Constant</th>
+      <th scope="col">Value</th>
+      <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code><a name="const_done">done</a></code></td>
+      <td>2</td>
+      <td>The request has completed or an error has occurred. Initially false</td>
+    </tr>
+    <tr>
+      <td><code><a name="const_pending">pending</a></code></td>
+      <td>1</td>
+      <td>The request has been started, but its result is not yet available.</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Event_handlers">Event handlers</h2>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th scope="col">Event handler</th>
+      <th scope="col">Event handler type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>onerror </code></td>
+      <td><code>error </code></td>
+    </tr>
+    <tr>
+      <td><code>onsuccess </code></td>
+      <td><code>success </code></td>
+    </tr>
+  </tbody>
+</table>
+<!--
+<p>Any objects that implement this interface must support, as IDL attributes, the following event handlers and their corresponding event handler types:</p>
+<table border="1" cellpadding="1" cellspacing="1" class="standard-table">
+	<thead>
+		<tr>
+			<th scope="col">Event handler</th>
+			<th scope="col">Event handler type</th>
+			<th scope="col">Event interface(s)</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><code>onerror<br />
+				</code></td>
+			<td><code>error<br />
+				</code></td>
+			<td><a href="mks://localhost/en/IndexedDB/IDBErrorEvent" title="en/IndexedDB/IDBErrorEvent">IDBErrorEvent</a></td>
+		</tr>
+		<tr>
+			<td><code>onsuccess<br />
+				</code></td>
+			<td><code>success<br />
+				</code></td>
+			<td><a href="mks://localhost/en/IndexedDB/IDBSuccessEvent" title="en/IndexedDB/IDBSuccessEvent">IDBSuccessEvent</a>, <a href="mks://localhost/en/IndexedDB/IDBTransactionEvent" title="en/IndexedDB/IDBTransactionEvent">IDBTransactionEvent</a></td>
+		</tr>
+	</tbody>
+</table> -->
+<h2 id="Derived_interface">Derived interface</h2>
+<ul>
+  <li><code><a href="/en/IndexedDB/IDBOpenDBRequest" title="en/IndexedDB/IDBOpenDBRequest">IDBOpenDBRequest</a></code></li>
+</ul>
+<h2 id="Browser_Compatibility" name="Browser_Compatibility">Browser compatibility</h2>
+<p></p><div class="htab"> 
+    <a name="AutoCompatibilityTable"></a> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div><p></p>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari (WebKit)</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td>12 <span class="inlineIndicator prefixBox prefixBoxInline" title="prefix">-webkit</span></td>
+        <td>4.0 (2.0)</td>
+        <td><span style="color: rgb(255, 0, 0);" title="Not supported.">--</span></td>
+        <td><span style="color: rgb(255, 0, 0);" title="Not supported.">--</span></td>
+        <td><span style="color: rgb(255, 0, 0);" title="Not supported.">--</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Phone</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: rgb(255, 0, 0);" title="Not supported.">--</span></td>
+        <td>6.0 (6.0)</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 0, 0);" title="Not supported.">--</span></td>
+        <td><span style="color: rgb(255, 0, 0);" title="Not supported.">--</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p> </p>
+                  </div>
+    <section class="page-meta">
+      
+            <section id="page-tags">
+        <h2><i class="icon-tags"></i>Tags (1)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/indexeddb">indexeddb</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/ian81">ian81</a>, <a href="/en-US/profiles/scottrowe">scottrowe</a>, <a href="/en-US/profiles/jswisher">jswisher</a>, <a href="/en-US/profiles/grendel">grendel</a>, <a href="/en-US/profiles/teoli">teoli</a>
+                          <br />
+          Last updated by:  
+          <a href="/en-US/profiles/teoli">teoli</a>, 
+          <time datetime="2013-05-25T07:16:34-07:00">May 25, 2013 7:16:34 AM</time>
+                      <br />
+            Last reviewed by:  
+            <a href="/en-US/profiles/ian81">ian81</a>, 
+            <time datetime="2012-09-15T01:38:35-07:00">Sep 15, 2012 1:38:35 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/API/IDBRequest$edit">
+      <input type="hidden" name="form" id="form" value="rev" />
+      <input type="hidden" name="content" id="content" value="" />
+  </form>
+      </div>
+   </div>
+    </section>
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+<footer id="site-info" class="footer" role="contentinfo">
+<div class="wrap">
+    <div id="legal">
+      <img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-tiny.png" alt="" width="42" height="48">
+      <p id="copyright">&copy; 2005 - 2013 Mozilla Developer Network and individual contributors</p>
+      <p>
+      Content is available under <a href="/en-US/docs/Project:Copyrights">these licenses</a>      &bull; <a href="/en-US/docs/Project:About">About MDN</a>
+      &bull; <a href="//github.com/mozilla/kuma">Contribute to the code</a>
+      &bull; <a href="//www.mozilla.org/en-US/privacy">Privacy Policy</a>
+    </div>
+          <form class="languages go" method="get" action="/en-US/docs">
+      <label for="language">Other languages:</label>
+      <select id="language" class="wiki-l10n" name="next" dir="ltr">
+        <option value="/en-US/docs/Web/API/IDBRequest" selected>
+          English (US)
+        </option>
+              </select>
+      <noscript><button type="submit">Go</button></noscript>
+    </form>
+  </div>
+</footer>
+
+<script src="/en-US/jsi18n/build:5f4e39d"></script>
+  <script src="//mozorg.cdn.mozilla.net/en-US/tabzilla/tabzilla.js" async></script>
+  <script src="//www.google.com/jsapi" type="text/javascript"></script>
+  <script src="https://login.persona.org/include.js" type="text/javascript"></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/mdn-min.js?build=5f4e39d"></script>
+      <script src="https://developer.cdn.mozilla.net/media/js/wiki-min.js?build=5f4e39d"></script>
+  
+  <script type="text/javascript">
+    // Event tracking for the new menu
+    $(function() {
+      $('#nav-main').on('click', 'a', function(e) {
+        window._gaq && _gaq.push(['_trackEvent', 'Menu', 'Click', e.target.innerHTML, e.target.href]);
+      });
+    });
+  </script>
+        <!-- include syntax highlighting scripts -->
+  
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=5f4e39d" />
+
+  <script type="text/javascript">
+    MEDIA_URL = 'https://developer.cdn.mozilla.net/media/';
+  </script>
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/media/prism/prism.js" data-manual></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/syntax-prism-min.js?build=5f4e39d"></script>
+
+<script src="/en-US/waffles.js" type="text/javascript" async></script>
+</body>
+</html>

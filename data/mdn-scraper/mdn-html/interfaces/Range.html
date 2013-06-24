@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+<head>
+      <script src="//cdn.optimizely.com/js/237572123.js"></script>
+  
+  <title>Range - Web API reference | MDN</title>
+  
+  <meta charset="utf-8">
+  <meta name="robots" content="index, follow">
+  <link rel="home" href="/en-US/">
+  <link rel="copyright" href="#copyright">
+  <link rel="shortcut icon" href="https://developer.cdn.mozilla.net/media/img/favicon.ico">
+
+        <!--[if !IE 6]><!-->
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/mdn-min.css?build=5f4e39d" />
+      <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/wiki-min.css?build=5f4e39d" />
+    <!--<![endif]-->
+  <!--[if IE]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie.css"><![endif]-->
+  <!--[if lte IE 7]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie7.css"><![endif]-->
+  <!--[if lte IE 6]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie6.css"><![endif]-->
+  <link rel="stylesheet" type="text/css" href="https://developer.cdn.mozilla.net/media/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="print" href="https://developer.cdn.mozilla.net/media/css/mdn-print.css">
+  <link rel="stylesheet" href="https://mozorg.cdn.mozilla.net/media/css/tabzilla-min.css">
+  
+
+  <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network" />
+
+  
+    <link rel="stylesheet" media="print" href="https://developer.cdn.mozilla.net/media/css/wiki-print-min.css?build=5f4e39d" />
+          <link rel="stylesheet" type="text/css"
+            href="/en-US/docs/Template:CustomCSS?raw=1" />
+    
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script src="https://developer.cdn.mozilla.net/media/js/html5.js"></script>
+  <![endif]-->
+
+    <link rel="alternate" type="application/json" href="/en-US/docs/Web/API/range$json" />
+  <link rel="canonical" href="https://developer.mozilla.org/en-US/docs/Web/API/range" />
+
+  <meta property="og:title" content="Range" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://developer.mozilla.org/media/img/mdn-logo-sm.png" />
+  <meta property="og:site_name" content="Mozilla Developer Network" />
+  <meta property="og:url" content="https://developer.mozilla.org/en-US/docs/Web/API/range" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:url" content="https://developer.mozilla.org/en-US/docs/Web/API/range" />
+  <meta name="twitter:title" content="Range" />
+  <meta name="twitter:image" content="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" />
+  <meta name="twitter:site" content="@mozhacks" />
+  <meta name="twitter:creator" content="@mozhacks" />
+
+    <meta property="og:description" content="The Range object represents a fragment of a document that can contain nodes and parts of text nodes in a given document."/>
+  <meta name="description" content="The Range object represents a fragment of a document that can contain nodes and parts of text nodes in a given document." />
+  <meta name="twitter:description" content="The Range object represents a fragment of a document that can contain nodes and parts of text nodes in a given document." />
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36116321-5']);
+  _gaq.push(['_trackPageview']);
+
+  (function(a, d) {
+    var ga = d.createElement(a); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == d.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = d.getElementsByTagName(a)[0]; s.parentNode.insertBefore(ga, s);
+  })('script', document);
+
+</script>
+</head>
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  <header id="masthead" class="minor new-menu">
+    <div class="wrap">
+      <ul id="nav-access">
+        <li><a href="#language">Select language</a></li>
+        <li><a href="#q">Skip to search</a></li>
+        <li><a href="#content">Skip to main content</a></li>
+      </ul>
+    
+      <div id="branding">
+                <div id="logo"><a href="/en-US/"><img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" alt="Mozilla Developer Network" title="Mozilla Developer Network" width="62" height="71"> Mozilla Developer Network</a></div>
+              </div>
+      
+              <nav id="nav">
+          <ul id="nav-main" role="menubar">
+            <li id="nav-main-docs" class="menu" rel="menuitem"><a href="#nav-sub-docs" class="toggle" aria-haspopup="true" aria-labelledby="nav-main-docs" title="Read Documentation">Read<br /><em>Docs</em></a>
+              <div id="nav-sub-docs" class="sub-menu" aria-hidden="true">
+                <ul>
+                  <li>
+                    <ul>
+
+                      <li><a href="/en-US/docs/Web/HTML?menu">HTML</a></li>
+                      <li><a href="/en-US/docs/Web/CSS?menu">CSS</a></li>
+                      <li><a href="/en-US/docs/Web/JavaScript?menu">JavaScript</a></li>
+                      <li><a href="/en-US/docs/Web/Guide/Graphics?menu">Graphics</a></li>
+                      <li><a href="/en-US/docs/Web/API?menu">APIs / DOM</a></li>
+                      <li><a href="/en-US/docs/Web/Apps?menu">Apps</a></li>
+                      <li><a href="/en-US/docs/tools?menu">Dev Tools</a></li>
+                      <li><a href="/en-US/docs/Web/MathML?menu">MathML</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <ul>
+                      <li><a href="/en-US/docs/Web/Tutorials?menu">Tutorials</a></li>
+                      <li><a href="/en-US/docs/Web/Reference?menu">References</a></li>
+                      <li><a href="/en-US/docs/Web/Guide?menu">Developer Guides</a></li>
+                      <li><a href="/en-US/demos/?menu">Demos</a></li>
+                      <li><br /><br /><a href="/en-US/docs?menu">...more docs</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li id="nav-main-apps" role="menuitem"><a href="https://marketplace.firefox.com/developers/">Make<br /><em>Apps</em></a></li>
+            <li id="nav-main-firefox" class="menu" role="menuitem"><a href="#nav-sub-firefox" class="firefox toggle" aria-haspopup="true" aria-labelledby="nav-main-firefox">Build & Use<br /><em>Firefox</em></a>
+              <ul id="nav-sub-firefox" class="sub-menu">
+                <li><a href="/en-US/docs/Mozilla/Firefox_OS?menu">Firefox OS</a></li>
+                <li><a href="/en-US/docs/Mozilla/Firefox?menu">Firefox Desktop</a></li>
+                <li><a href="/en-US/docs/Mozilla/Mobile?menu">Mobile</a></li>
+                <li><a href="/en-US/docs/Mozilla/Add-ons?menu">Add-ons</a></li>
+              </ul>
+            </li>
+            <li id="nav-main-demos" role="menuitem"><a href="/en-US/demos/?menu" class="demos">See & Submit<br /><em>Demos</em></a></li>
+            <li id="nav-main-community" class="menu" role="menuitem"><a href="#nav-sub-community" class="community toggle" aria-haspopup="true" aria-labelledby="nav-main-community">Get<br /><em>Involved</em></a>
+              <ul id="nav-sub-community" class="sub-menu">
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Join_the_community?menu">Join the Community</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing?menu">Contribute to MDN</a></li>
+                <li><a href="/en-US/events?menu">Events</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Follow_what_s_happening?menu">Tweets, Blogs, and More</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+          
+      <ul class="user-state signed-out">
+    <li class="user-signin menu">
+    <form class="browserid" action="/en-US/users/browserid_verify" method="POST">
+        <input id="next" name="next" type="hidden" value="/en-US/docs/Web/API/range"/>
+        <input required="required" type="hidden" name="assertion" id="id_assertion" />
+                        <a href="#" target="_blank" class="browserid-signin toggle" aria-haspopup="true" title="Sign in with Persona">Sign in</a>
+                <div class="browserid-info sub-menu" aria-hidden="true">
+                <h3>What's this?</h3> <p>MDN has switched to <a href="https://persona.org/" target="_blank" rel="external">Persona</a>, a safe and simple way to sign in with just your e-mail address. <a href="http://identity.mozilla.com/post/12950196039/deploying-browserid-at-mozilla" rel="external">Learn more about why Mozilla is using Persona</a>.</p> <p><strong>Returning members:</strong> sign in with Persona and you'll be connected to your MDN profile (all your information is still here).</p> <p><strong>New members:</strong> sign in with Persona first, then you'll be able to set up your new MDN profile.</p>          <p><a href="#" target="_blank" class="browserid-signin" title="Sign in with Persona">Sign in</a></p>
+        </div>
+              </form>
+    </li>
+  </ul>
+      
+      <form id="site-search" method="get" action="http://www.google.com/search"
+              data-url="/en-US/search">
+        <p>
+          <input type="search" role="search" placeholder="Search MDN" id="q" name="q" value="">
+          <noscript><button type="submit">Search</button></noscript>
+        </p>
+        <input type="hidden" name="sitesearch" value="developer.mozilla.org">
+                <div id="site-search-gg"></div>
+              </form>
+
+      <a href="//www.mozilla.org/" id="tabzilla">mozilla</a>
+    </div>
+  </header>
+
+    
+
+<!-- top toolbar -->
+<section id="nav-toolbar"><div><div class="wrap">
+  <!-- right floated navigation -->
+  <nav id="tool-menus" role="navigation">
+    <ul id="tools">
+      <li class="menu">
+        <a href="#page-tools" class="toggle">This page</a>
+        <ul id="page-tools" class="sub-menu">
+          <li class="page-print"> <a href="#" onclick="return window.print();"  title="Print page">Print this page</a></li>
+                      <li><a href="/en-US/docs/new?parent=753">New sub-page</a></li>
+            <li><a href="/en-US/docs/new?clone=753">Clone this page</a></li>
+                                      </ul>
+      </li>
+            <li class="menu">
+        <a href="#" class="toggle">Languages</a>
+        <ul id="translations">
+                      <li><a rel="internal" href="/es/docs/DOM/range" title="range">Español</a></li>
+                      <li><a rel="internal" href="/fr/docs/DOM/range" title="range">Français</a></li>
+                      <li><a rel="internal" href="/ja/docs/Web/API/range" title="range">日本語</a></li>
+                      <li><a rel="internal" href="/pl/docs/DOM/range" title="range">Polski</a></li>
+                    
+                      <li><a href="/en-US/docs/Web/API/range$locales">Add translation</a></li>
+                  </ul>
+      </li>
+          </ul>
+  </nav>
+  
+  <!-- left crumb navigation -->
+  <nav class="crumbs" role="navigation">
+    <ol>
+              <li class="crumb"><a href="/en-US/docs/Web">Web technology for developers</a></li>
+              <li class="crumb"><a href="/en-US/docs/Web/API">Web API reference</a></li>
+            <li class="crumb">Range</li>
+    </ol>
+  </nav>
+  
+</div></div></section>
+
+
+
+<section id="content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" 
+          data-current-revision="405683"
+          data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes."
+          data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title">
+            <h1 class="page-title">Range</h1>
+                    </div>
+        <ul id="page-buttons">
+            <li class="page-history"><a href="/en-US/docs/Web/API/range$history"><i class="icon-book"></i>History</a></li>
+                                                                                  <li class="page-edit"><a href="/en-US/docs/Web/API/range$edit"><i class="icon-pencil"></i>Edit</a></li>
+                    </ul>
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                <div id="article-nav">
+          <div class="page-toc">
+            <h2>Table of Contents</h2>
+            <ol>
+              <code></code><code></code><code></code><code></code><code></code><li><ol><li><a href="#Properties" rel="internal">Properties</a><code></code><code></code><code></code><code></code><li><a href="#Methods" rel="internal">Methods</a><ol><li><a href="#Positioning_Methods" rel="internal">Positioning Methods</a><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Editing_Methods" rel="internal">Editing Methods</a><code></code><code></code><code></code><code></code><code></code><li><a href="#Other_Methods" rel="internal">Other methods</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Gecko_Methods" rel="internal">Gecko Methods</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code></ol></li><li><a href="#Exceptions" rel="internal">Exceptions</a><code></code><code></code><code></code></ol></li>
+            </ol>
+          </div>
+          <ul class="page-anchors">
+            <li class="anchor-tags">
+                              <i class="icon-tags"></i><a href="#page-tags">Tags</a>
+                          </li>
+            <li class="anchor-files">
+                              <i class="icon-paper-clip off"></i><span title="This document has no attachments">Files</span>
+                          </li>
+          </ul>
+        </div>
+                                <p><span class="breadcrumbs domRef_breadcrumbs">« <a href="/en-US/docs/DOM/DOM_Reference">DOM Reference</a></span></p>
+<p>The <code>Range</code> object represents a fragment of a document that can contain nodes and parts of text nodes in a given document.</p>
+<p>A range can be created using the <a href="/en-US/docs/Web/API/Document.createRange" title="/en-US/docs/Web/API/Document.createRange"><code>createRange</code></a> method of the <a href="/en-US/docs/Web/API/Document" title="/en-US/docs/Web/API/Document"><code>Document</code></a> object. Range objects can also be retrieved by using the <a href="/en-US/docs/Web/API/Selection/getRangeAt" title="/en-US/docs/Web/API/Selection/getRangeAt"><code>getRangeAt</code></a> method of the <a href="/en-US/docs/Web/API/Selection" title="/en-US/docs/Web/API/Selection"><code>Selection</code></a> object.</p>
+<h3 id="Properties" name="Properties">Properties</h3>
+<dl>
+  <dt>
+    <a href="/en/DOM/range.collapsed" title="en/DOM/range.collapsed">collapsed</a></dt>
+  <dd>
+    Returns a <code>boolean</code> indicating whether the range's start and end points are at the same position.</dd>
+  <dt>
+    <a href="/en/DOM/range.commonAncestorContainer" title="en/DOM/range.commonAncestorContainer">commonAncestorContainer</a></dt>
+  <dd>
+    Returns the deepest <a href="/en-US/docs/Web/API/Node" title="/en-US/docs/Web/API/Node"><code>Node</code></a> that contains the startContainer and endContainer Nodes.</dd>
+  <dt>
+    <a href="/en/DOM/range.endContainer" title="en/DOM/range.endContainer">endContainer</a></dt>
+  <dd>
+    Returns the <a href="/en-US/docs/Web/API/Node" title="/en-US/docs/Web/API/Node"><code>Node</code></a> within which the Range ends.</dd>
+  <dt>
+    <a href="/en/DOM/range.endOffset" title="en/DOM/range.endOffset">endOffset</a></dt>
+  <dd>
+    Returns a number representing where in the endContainer the Range ends.</dd>
+  <dt>
+    <a href="/en/DOM/range.startContainer" title="en/DOM/range.startContainer">startContainer</a></dt>
+  <dd>
+    Returns the <a href="/en-US/docs/Web/API/Node" title="/en-US/docs/Web/API/Node"><code>Node</code></a> within which the Range starts.</dd>
+  <dt>
+    <a href="/en/DOM/range.startOffset" title="en/DOM/range.startOffset">startOffset</a></dt>
+  <dd>
+    Returns a number representing where in the startContainer the Range starts.</dd>
+</dl>
+<h3 id="Methods" name="Methods">Methods</h3>
+<h4 id="Positioning_Methods" name="Positioning_Methods">Positioning Methods</h4>
+<p>These methods set the start and end points of a range.</p>
+<dl>
+  <dt>
+    <a href="/en/DOM/range.setStart" title="en/DOM/range.setStart">setStart</a></dt>
+  <dd>
+    Sets the start position of a Range.</dd>
+  <dt>
+    <a href="/en/DOM/range.setEnd" title="en/DOM/range.setEnd">setEnd</a></dt>
+  <dd>
+    Sets the end position of a Range.</dd>
+  <dt>
+    <a href="/en/DOM/range.setStartBefore" title="en/DOM/range.setStartBefore">setStartBefore</a></dt>
+  <dd>
+    Sets the start position of a Range relative to another <a href="/en-US/docs/Web/API/Node" title="/en-US/docs/Web/API/Node"><code>Node</code></a>.</dd>
+  <dt>
+    <a href="/en/DOM/range.setStartAfter" title="en/DOM/range.setStartAfter">setStartAfter</a></dt>
+  <dd>
+    Sets the start position of a Range relative to another <a href="/en-US/docs/Web/API/Node" title="/en-US/docs/Web/API/Node"><code>Node</code></a>.</dd>
+  <dt>
+    <a href="/en/DOM/range.setEndBefore" title="en/DOM/range.setEndBefore">setEndBefore</a></dt>
+  <dd>
+    Sets the end position of a Range relative to another <a href="/en-US/docs/Web/API/Node" title="/en-US/docs/Web/API/Node"><code>Node</code></a>.</dd>
+  <dt>
+    <a href="/en/DOM/range.setEndAfter" title="en/DOM/range.setEndAfter">setEndAfter</a></dt>
+  <dd>
+    Sets the end position of a Range relative to another <a href="/en-US/docs/Web/API/Node" title="/en-US/docs/Web/API/Node"><code>Node</code></a>.</dd>
+  <dt>
+    <a href="/en/DOM/range.selectNode" title="en/DOM/range.selectNode">selectNode</a></dt>
+  <dd>
+    Sets the Range to contain the <a href="/en-US/docs/Web/API/Node" title="/en-US/docs/Web/API/Node"><code>Node</code></a> and its contents.</dd>
+  <dt>
+    <a href="/en/DOM/range.selectNodeContents" title="en/DOM/range.selectNodeContents">selectNodeContents</a></dt>
+  <dd>
+    Sets the Range to contain the contents of a <a href="/en-US/docs/Web/API/Node" title="/en-US/docs/Web/API/Node"><code>Node</code></a>.</dd>
+  <dt>
+    <a href="/en/DOM/range.collapse" title="en/DOM/range.collapse">collapse</a></dt>
+  <dd>
+    Collapses the Range to one of its boundary points.</dd>
+</dl>
+<h4 id="Editing_Methods" name="Editing_Methods">Editing Methods</h4>
+<p>These methods retrieve Nodes from a range and modify the contents of a range.</p>
+<dl>
+  <dt>
+    <a href="/en/DOM/range.cloneContents" title="en/DOM/range.cloneContents">cloneContents</a></dt>
+  <dd>
+    Returns a <a href="/en-US/docs/Web/API/DocumentFragment" title="/en-US/docs/Web/API/DocumentFragment"><code>DocumentFragment</code></a> copying the nodes of a Range.</dd>
+  <dt>
+    <a href="/en/DOM/range.deleteContents" title="en/DOM/range.deleteContents">deleteContents</a></dt>
+  <dd>
+    Removes the contents of a Range from the <a href="/en-US/docs/Web/API/Document" title="/en-US/docs/Web/API/Document"><code>Document</code></a>.</dd>
+  <dt>
+    <a href="/en/DOM/range.extractContents" title="en/DOM/range.extractContents">extractContents</a></dt>
+  <dd>
+    Moves contents of a Range from the document tree into a <a href="/en-US/docs/Web/API/DocumentFragment" title="/en-US/docs/Web/API/DocumentFragment"><code>DocumentFragment</code></a>.</dd>
+  <dt>
+    <a href="/en/DOM/range.insertNode" title="en/DOM/range.insertNode">insertNode</a></dt>
+  <dd>
+    Insert a <a href="/en-US/docs/Web/API/Node" title="/en-US/docs/Web/API/Node"><code>Node</code></a> at the start of a Range.</dd>
+  <dt>
+    <a href="/en/DOM/range.surroundContents" title="en/DOM/range.surroundContents">surroundContents</a></dt>
+  <dd>
+    Moves content of a Range into a new <a href="/en-US/docs/Web/API/Node" title="/en-US/docs/Web/API/Node"><code>Node</code></a>.</dd>
+</dl>
+<h4 id="Other_Methods" name="Other_Methods">Other methods</h4>
+<dl>
+  <dt>
+    <code><a href="/en/DOM/range.compareBoundaryPoints" title="en/DOM/range.compareBoundaryPoints">compareBoundaryPoints</a></code></dt>
+  <dd>
+    Compares the boundary points of two <code>Range</code>s.</dd>
+  <dt>
+    <code><a href="/en/DOM/range.cloneRange" title="en/DOM/range.cloneRange">cloneRange</a></code></dt>
+  <dd>
+    Returns a <code>Range</code> object with boundary points identical to the cloned <code>Range</code>.</dd>
+  <dt>
+    <code><a href="/en/DOM/range.detach" title="en/DOM/range.detach">detach</a></code></dt>
+  <dd>
+    Releases the <code>Range</code> from use to improve performance.</dd>
+  <dt>
+    <code><a href="/en/DOM/range.toString" title="en/DOM/range.toString">toString</a></code></dt>
+  <dd>
+    Returns the text of the <code>Range</code>.</dd>
+</dl>
+<h4 id="Gecko_Methods" name="Gecko_Methods">Gecko Methods</h4>
+<p>This section describes <code>Range</code> methods that are particular to Mozilla and not part of the W3C DOM specifications.</p>
+<dl>
+  <dt>
+    <a href="/en/DOM/range.compareNode" title="en/DOM/range.compareNode">compareNode</a> <span class="inlineIndicator obsolete obsoleteInline" title="">Obsolete</span></dt>
+  <dd>
+    Returns a constant representing whether the <a href="/en/DOM/Node" title="en/DOM/Node">Node</a> is before, after, inside, or surrounding the range.</dd>
+  <dt>
+    <a href="/en/DOM/range.comparePoint" title="en/DOM/range.comparePoint">comparePoint</a></dt>
+  <dd>
+    Returns -1, 0, or 1 indicating whether the point occurs before, inside, or after the range.</dd>
+  <dt>
+    <a href="/en/DOM/range.createContextualFragment" title="en/DOM/range.createContextualFragment">createContextualFragment</a></dt>
+  <dd>
+    Returns a <a href="/en-US/docs/Web/API/DocumentFragment" title="/en-US/docs/Web/API/DocumentFragment"><code>DocumentFragment</code></a> created from a given string of code.</dd>
+  <dt>
+    <a href="/en-US/docs/Web/API/range.getBoundingClientRect" title="/en-US/docs/Web/API/range.getBoundingClientRect"><code>range.getBoundingClientRect()</code></a> <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 4 / Thunderbird 3.3 / SeaMonkey 2.1)">Requires Gecko 2.0</span></dt>
+  <dd>
+    Returns a <a class="new" href="/en-US/docs/Web/API/ClientRect" title="/en-US/docs/Web/API/ClientRect"><code>ClientRect</code></a> object which bounds the entire contents of the range; this would be the union of all the rectangles returned by <a href="/en-US/docs/Web/API/range.getClientRects" title="/en-US/docs/Web/API/range.getClientRects"><code>range.getClientRects()</code></a>.</dd>
+  <dt>
+    <a href="/en-US/docs/Web/API/range.getClientRects" title="/en-US/docs/Web/API/range.getClientRects"><code>range.getClientRects()</code></a> <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 4 / Thunderbird 3.3 / SeaMonkey 2.1)">Requires Gecko 2.0</span></dt>
+  <dd>
+    Returns a list of <a class="new" href="/en-US/docs/Web/API/ClientRect" title="/en-US/docs/Web/API/ClientRect"><code>ClientRect</code></a> objects that aggregates the results of <a href="/en-US/docs/Web/API/Element.getClientRects" title="/en-US/docs/Web/API/Element.getClientRects"><code>Element.getClientRects()</code></a> for all the elements in the range.</dd>
+  <dt>
+    <a href="/en/DOM/range.intersectsNode" title="en/DOM/range.intersectsNode">intersectsNode</a> <span class="inlineIndicator obsolete obsoleteInline" title="">Obsolete</span></dt>
+  <dd>
+    Returns a <code>boolean</code> indicating whether the given node intersects the range.</dd>
+  <dt>
+    <a href="/en/DOM/range.isPointInRange" title="en/DOM/range.isPointInRange">isPointInRange</a></dt>
+  <dd>
+    Returns a <code>boolean</code> indicating whether the given point is in the range.</dd>
+</dl>
+<h3 id="Exceptions">Exceptions</h3>
+<p>Starting with Gecko 13.0 (Firefox 13.0 / Thunderbird 13.0 / SeaMonkey 2.10) the <code>Range</code> object throws <a href="/en-US/docs/Web/API/DOMException" title="/en-US/docs/Web/API/DOMException"><code>DOMExceptions</code></a> as defined in DOM 4, instead of a <code>RangeException</code> defined in prior specifications.</p>
+<p></p>
+                  </div>
+    <section class="page-meta">
+      
+            <section id="page-tags">
+        <h2><i class="icon-tags"></i>Tags (6)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsBrowserCompatibility">NeedsBrowserCompatibility</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsMarkupWork">NeedsMarkupWork</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Fixit">Fixit</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Gecko%20DOM%20Reference">Gecko DOM Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/DOM">DOM</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Gecko">Gecko</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Fredchat">Fredchat</a>, <a href="/en-US/profiles/Elchi3">Elchi3</a>, <a href="/en-US/profiles/XiaoWP">XiaoWP</a>, <a href="/en-US/profiles/Sicking">Sicking</a>, <a href="/en-US/profiles/teoli">teoli</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/SkyLined">SkyLined</a>, <a href="/en-US/profiles/Gor1">Gor1</a>, <a href="/en-US/profiles/enderandpeter">enderandpeter</a>, <a href="/en-US/profiles/Ptak82">Ptak82</a>, <a href="/en-US/profiles/Jonnyq">Jonnyq</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Andreas%20Wuest">Andreas Wuest</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br />
+          Last updated by:  
+          <a href="/en-US/profiles/teoli">teoli</a>, 
+          <time datetime="2013-05-17T00:26:27-07:00">May 17, 2013 12:26:27 AM</time>
+                      <br />
+            Last reviewed by:  
+            <a href="/en-US/profiles/teoli">teoli</a>, 
+            <time datetime="2013-05-17T00:26:27-07:00">May 17, 2013 12:26:27 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/API/range$edit">
+      <input type="hidden" name="form" id="form" value="rev" />
+      <input type="hidden" name="content" id="content" value="" />
+  </form>
+      </div>
+   </div>
+    </section>
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+<footer id="site-info" class="footer" role="contentinfo">
+<div class="wrap">
+    <div id="legal">
+      <img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-tiny.png" alt="" width="42" height="48">
+      <p id="copyright">&copy; 2005 - 2013 Mozilla Developer Network and individual contributors</p>
+      <p>
+      Content is available under <a href="/en-US/docs/Project:Copyrights">these licenses</a>      &bull; <a href="/en-US/docs/Project:About">About MDN</a>
+      &bull; <a href="//github.com/mozilla/kuma">Contribute to the code</a>
+      &bull; <a href="//www.mozilla.org/en-US/privacy">Privacy Policy</a>
+    </div>
+          <form class="languages go" method="get" action="/en-US/docs">
+      <label for="language">Other languages:</label>
+      <select id="language" class="wiki-l10n" name="next" dir="ltr">
+        <option value="/en-US/docs/Web/API/range" selected>
+          English (US)
+        </option>
+                  <option value="/es/docs/DOM/range">
+            Español
+          </option>          <option value="/fr/docs/DOM/range">
+            Français
+          </option>          <option value="/ja/docs/Web/API/range">
+            日本語
+          </option>          <option value="/pl/docs/DOM/range">
+            Polski
+          </option>      </select>
+      <noscript><button type="submit">Go</button></noscript>
+    </form>
+  </div>
+</footer>
+
+<script src="/en-US/jsi18n/build:5f4e39d"></script>
+  <script src="//mozorg.cdn.mozilla.net/en-US/tabzilla/tabzilla.js" async></script>
+  <script src="//www.google.com/jsapi" type="text/javascript"></script>
+  <script src="https://login.persona.org/include.js" type="text/javascript"></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/mdn-min.js?build=5f4e39d"></script>
+      <script src="https://developer.cdn.mozilla.net/media/js/wiki-min.js?build=5f4e39d"></script>
+  
+  <script type="text/javascript">
+    // Event tracking for the new menu
+    $(function() {
+      $('#nav-main').on('click', 'a', function(e) {
+        window._gaq && _gaq.push(['_trackEvent', 'Menu', 'Click', e.target.innerHTML, e.target.href]);
+      });
+    });
+  </script>
+        <!-- include syntax highlighting scripts -->
+  
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=5f4e39d" />
+
+  <script type="text/javascript">
+    MEDIA_URL = 'https://developer.cdn.mozilla.net/media/';
+  </script>
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/media/prism/prism.js" data-manual></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/syntax-prism-min.js?build=5f4e39d"></script>
+
+<script src="/en-US/waffles.js" type="text/javascript" async></script>
+</body>
+</html>

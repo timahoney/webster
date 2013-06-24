@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+<head>
+      <script src="//cdn.optimizely.com/js/237572123.js"></script>
+  
+  <title>TouchEvent - Web API reference | MDN</title>
+  
+  <meta charset="utf-8">
+  <meta name="robots" content="index, follow">
+  <link rel="home" href="/en-US/">
+  <link rel="copyright" href="#copyright">
+  <link rel="shortcut icon" href="https://developer.cdn.mozilla.net/media/img/favicon.ico">
+
+        <!--[if !IE 6]><!-->
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/mdn-min.css?build=5f4e39d" />
+      <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/wiki-min.css?build=5f4e39d" />
+    <!--<![endif]-->
+  <!--[if IE]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie.css"><![endif]-->
+  <!--[if lte IE 7]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie7.css"><![endif]-->
+  <!--[if lte IE 6]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie6.css"><![endif]-->
+  <link rel="stylesheet" type="text/css" href="https://developer.cdn.mozilla.net/media/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="print" href="https://developer.cdn.mozilla.net/media/css/mdn-print.css">
+  <link rel="stylesheet" href="https://mozorg.cdn.mozilla.net/media/css/tabzilla-min.css">
+  
+
+  <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network" />
+
+  
+    <link rel="stylesheet" media="print" href="https://developer.cdn.mozilla.net/media/css/wiki-print-min.css?build=5f4e39d" />
+          <link rel="stylesheet" type="text/css"
+            href="/en-US/docs/Template:CustomCSS?raw=1" />
+    
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script src="https://developer.cdn.mozilla.net/media/js/html5.js"></script>
+  <![endif]-->
+
+    <link rel="alternate" type="application/json" href="/en-US/docs/Web/API/TouchEvent$json" />
+  <link rel="canonical" href="https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent" />
+
+  <meta property="og:title" content="TouchEvent" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://developer.mozilla.org/media/img/mdn-logo-sm.png" />
+  <meta property="og:site_name" content="Mozilla Developer Network" />
+  <meta property="og:url" content="https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:url" content="https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent" />
+  <meta name="twitter:title" content="TouchEvent" />
+  <meta name="twitter:image" content="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" />
+  <meta name="twitter:site" content="@mozhacks" />
+  <meta name="twitter:creator" content="@mozhacks" />
+
+    <meta property="og:description" content="A TouchEvent represents an event sent when the state of contacts with a touch-sensitive surface changes. This surface can be a touch screen or trackpad, for example. The event can describe one or more points of contact with the screen and includes support for detecting movement, addition and removal of contact points, and so forth."/>
+  <meta name="description" content="A TouchEvent represents an event sent when the state of contacts with a touch-sensitive surface changes. This surface can be a touch screen or trackpad, for example. The event can describe one or more points of contact with the screen and includes support for detecting movement, addition and removal of contact points, and so forth." />
+  <meta name="twitter:description" content="A TouchEvent represents an event sent when the state of contacts with a touch-sensitive surface changes. This surface can be a touch screen or trackpad, for example. The event can describe one or more points of contact with the screen and includes support for detecting movement, addition and removal of contact points, and so forth." />
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36116321-5']);
+  _gaq.push(['_trackPageview']);
+
+  (function(a, d) {
+    var ga = d.createElement(a); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == d.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = d.getElementsByTagName(a)[0]; s.parentNode.insertBefore(ga, s);
+  })('script', document);
+
+</script>
+</head>
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  <header id="masthead" class="minor new-menu">
+    <div class="wrap">
+      <ul id="nav-access">
+        <li><a href="#language">Select language</a></li>
+        <li><a href="#q">Skip to search</a></li>
+        <li><a href="#content">Skip to main content</a></li>
+      </ul>
+    
+      <div id="branding">
+                <div id="logo"><a href="/en-US/"><img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" alt="Mozilla Developer Network" title="Mozilla Developer Network" width="62" height="71"> Mozilla Developer Network</a></div>
+              </div>
+      
+              <nav id="nav">
+          <ul id="nav-main" role="menubar">
+            <li id="nav-main-docs" class="menu" rel="menuitem"><a href="#nav-sub-docs" class="toggle" aria-haspopup="true" aria-labelledby="nav-main-docs" title="Read Documentation">Read<br /><em>Docs</em></a>
+              <div id="nav-sub-docs" class="sub-menu" aria-hidden="true">
+                <ul>
+                  <li>
+                    <ul>
+
+                      <li><a href="/en-US/docs/Web/HTML?menu">HTML</a></li>
+                      <li><a href="/en-US/docs/Web/CSS?menu">CSS</a></li>
+                      <li><a href="/en-US/docs/Web/JavaScript?menu">JavaScript</a></li>
+                      <li><a href="/en-US/docs/Web/Guide/Graphics?menu">Graphics</a></li>
+                      <li><a href="/en-US/docs/Web/API?menu">APIs / DOM</a></li>
+                      <li><a href="/en-US/docs/Web/Apps?menu">Apps</a></li>
+                      <li><a href="/en-US/docs/tools?menu">Dev Tools</a></li>
+                      <li><a href="/en-US/docs/Web/MathML?menu">MathML</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <ul>
+                      <li><a href="/en-US/docs/Web/Tutorials?menu">Tutorials</a></li>
+                      <li><a href="/en-US/docs/Web/Reference?menu">References</a></li>
+                      <li><a href="/en-US/docs/Web/Guide?menu">Developer Guides</a></li>
+                      <li><a href="/en-US/demos/?menu">Demos</a></li>
+                      <li><br /><br /><a href="/en-US/docs?menu">...more docs</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li id="nav-main-apps" role="menuitem"><a href="https://marketplace.firefox.com/developers/">Make<br /><em>Apps</em></a></li>
+            <li id="nav-main-firefox" class="menu" role="menuitem"><a href="#nav-sub-firefox" class="firefox toggle" aria-haspopup="true" aria-labelledby="nav-main-firefox">Build & Use<br /><em>Firefox</em></a>
+              <ul id="nav-sub-firefox" class="sub-menu">
+                <li><a href="/en-US/docs/Mozilla/Firefox_OS?menu">Firefox OS</a></li>
+                <li><a href="/en-US/docs/Mozilla/Firefox?menu">Firefox Desktop</a></li>
+                <li><a href="/en-US/docs/Mozilla/Mobile?menu">Mobile</a></li>
+                <li><a href="/en-US/docs/Mozilla/Add-ons?menu">Add-ons</a></li>
+              </ul>
+            </li>
+            <li id="nav-main-demos" role="menuitem"><a href="/en-US/demos/?menu" class="demos">See & Submit<br /><em>Demos</em></a></li>
+            <li id="nav-main-community" class="menu" role="menuitem"><a href="#nav-sub-community" class="community toggle" aria-haspopup="true" aria-labelledby="nav-main-community">Get<br /><em>Involved</em></a>
+              <ul id="nav-sub-community" class="sub-menu">
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Join_the_community?menu">Join the Community</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing?menu">Contribute to MDN</a></li>
+                <li><a href="/en-US/events?menu">Events</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Follow_what_s_happening?menu">Tweets, Blogs, and More</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+          
+      <ul class="user-state signed-out">
+    <li class="user-signin menu">
+    <form class="browserid" action="/en-US/users/browserid_verify" method="POST">
+        <input id="next" name="next" type="hidden" value="/en-US/docs/Web/API/TouchEvent"/>
+        <input required="required" type="hidden" name="assertion" id="id_assertion" />
+                        <a href="#" target="_blank" class="browserid-signin toggle" aria-haspopup="true" title="Sign in with Persona">Sign in</a>
+                <div class="browserid-info sub-menu" aria-hidden="true">
+                <h3>What's this?</h3> <p>MDN has switched to <a href="https://persona.org/" target="_blank" rel="external">Persona</a>, a safe and simple way to sign in with just your e-mail address. <a href="http://identity.mozilla.com/post/12950196039/deploying-browserid-at-mozilla" rel="external">Learn more about why Mozilla is using Persona</a>.</p> <p><strong>Returning members:</strong> sign in with Persona and you'll be connected to your MDN profile (all your information is still here).</p> <p><strong>New members:</strong> sign in with Persona first, then you'll be able to set up your new MDN profile.</p>          <p><a href="#" target="_blank" class="browserid-signin" title="Sign in with Persona">Sign in</a></p>
+        </div>
+              </form>
+    </li>
+  </ul>
+      
+      <form id="site-search" method="get" action="http://www.google.com/search"
+              data-url="/en-US/search">
+        <p>
+          <input type="search" role="search" placeholder="Search MDN" id="q" name="q" value="">
+          <noscript><button type="submit">Search</button></noscript>
+        </p>
+        <input type="hidden" name="sitesearch" value="developer.mozilla.org">
+                <div id="site-search-gg"></div>
+              </form>
+
+      <a href="//www.mozilla.org/" id="tabzilla">mozilla</a>
+    </div>
+  </header>
+
+    
+
+<!-- top toolbar -->
+<section id="nav-toolbar"><div><div class="wrap">
+  <!-- right floated navigation -->
+  <nav id="tool-menus" role="navigation">
+    <ul id="tools">
+      <li class="menu">
+        <a href="#page-tools" class="toggle">This page</a>
+        <ul id="page-tools" class="sub-menu">
+          <li class="page-print"> <a href="#" onclick="return window.print();"  title="Print page">Print this page</a></li>
+                      <li><a href="/en-US/docs/new?parent=7081">New sub-page</a></li>
+            <li><a href="/en-US/docs/new?clone=7081">Clone this page</a></li>
+                                      </ul>
+      </li>
+            <li class="menu">
+        <a href="#" class="toggle">Languages</a>
+        <ul id="translations">
+                      <li><a rel="internal" href="/zh-CN/docs/DOM/TouchEvent" title="TouchEvent">中文 (简体)</a></li>
+                    
+                      <li><a href="/en-US/docs/Web/API/TouchEvent$locales">Add translation</a></li>
+                  </ul>
+      </li>
+          </ul>
+  </nav>
+  
+  <!-- left crumb navigation -->
+  <nav class="crumbs" role="navigation">
+    <ol>
+              <li class="crumb"><a href="/en-US/docs/Web">Web technology for developers</a></li>
+              <li class="crumb"><a href="/en-US/docs/Web/API">Web API reference</a></li>
+            <li class="crumb">TouchEvent</li>
+    </ol>
+  </nav>
+  
+</div></div></section>
+
+
+
+<section id="content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" 
+          data-current-revision="383501"
+          data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes."
+          data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title">
+            <h1 class="page-title">TouchEvent</h1>
+                    </div>
+        <ul id="page-buttons">
+            <li class="page-history"><a href="/en-US/docs/Web/API/TouchEvent$history"><i class="icon-book"></i>History</a></li>
+                                                                                  <li class="page-edit"><a href="/en-US/docs/Web/API/TouchEvent$edit"><i class="icon-pencil"></i>Edit</a></li>
+                    </ul>
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                <div id="article-nav">
+          <div class="page-toc">
+            <h2>Table of Contents</h2>
+            <ol>
+              <code></code><code></code><code></code><li><a href="#Attributes" rel="internal">Attributes</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Touch_event_types" rel="internal">Touch event types</a><code></code><code></code><ol><li><a href="#touchstart" rel="internal">touchstart</a><code></code><li><a href="#touchend" rel="internal">touchend</a><code></code><code></code><code></code><code></code><li><a href="#touchmove" rel="internal">touchmove</a><code></code><code></code><code></code><li><a href="#touchenter" rel="internal">touchenter</a><code></code><li><a href="#touchleave" rel="internal">touchleave</a><code></code><li><a href="#touchcancel" rel="internal">touchcancel</a><code></code><code></code></ol></li><li><a href="#Example" rel="internal">Example</a><li><a href="#See_also" rel="internal">See also</a><code></code><code></code>
+            </ol>
+          </div>
+          <ul class="page-anchors">
+            <li class="anchor-tags">
+                              <i class="icon-tags"></i><a href="#page-tags">Tags</a>
+                          </li>
+            <li class="anchor-files">
+                              <i class="icon-paper-clip off"></i><span title="This document has no attachments">Files</span>
+                          </li>
+          </ul>
+        </div>
+                                <p><span class="breadcrumbs domRef_breadcrumbs">« <a href="/en-US/docs/Gecko_DOM_Reference">Gecko DOM Reference</a></span></p>
+<p>A <code>TouchEvent</code> represents an event sent when the state of contacts with a touch-sensitive surface changes. This surface can be a touch screen or trackpad, for example. The event can describe one or more points of contact with the screen and includes support for detecting movement, addition and removal of contact points, and so forth.</p>
+<p>Touches are represented by the <a href="/en-US/docs/DOM/Touch" title="/en-US/docs/DOM/Touch"><code>Touch</code></a> object; each touch is described by a position, size and shape, amount of pressure, and target element. Lists of touches are represented by <a href="/en-US/docs/DOM/TouchList" title="/en-US/docs/DOM/TouchList"><code>TouchList</code></a> objects.</p>
+<h2 id="Attributes">Attributes</h2>
+<dl>
+</dl>
+<dl>
+  <dt>
+    <a href="/en-US/docs/DOM/event.altKey" title="/en-US/docs/DOM/event.altKey"><code>TouchEvent.altKey</code></a></dt>
+  <dd>
+    A Boolean value indicating whether or not the alt key was down when the touch event was fired. <strong>Read only.</strong></dd>
+  <dt>
+    <a href="/en-US/docs/DOM/TouchEvent.changedTouches" title="/en-US/docs/DOM/TouchEvent.changedTouches"><code>TouchEvent.changedTouches</code></a></dt>
+  <dd>
+    A <a href="/en-US/docs/DOM/TouchList" title="/en-US/docs/DOM/TouchList"><code>TouchList</code></a> of all the <a href="/en-US/docs/DOM/Touch" title="/en-US/docs/DOM/Touch"><code>Touch</code></a> objects representing individual points of contact whose states changed between the previous touch event and this one. <strong>Read only.</strong></dd>
+  <dt>
+    <a href="/en-US/docs/DOM/event.ctrlKey" title="/en-US/docs/DOM/event.ctrlKey"><code>TouchEvent.ctrlKey</code></a></dt>
+  <dd>
+    A Boolean value indicating whether or not the control key was down when the touch event was fired. <strong>Read only.</strong></dd>
+  <dt>
+    <a href="/en-US/docs/DOM/event.metaKey" title="/en-US/docs/DOM/event.metaKey"><code>TouchEvent.metaKey</code></a></dt>
+  <dd>
+    A Boolean value indicating whether or not the meta key was down when the touch event was fired. <strong>Read only.</strong></dd>
+  <dt>
+    <a href="/en-US/docs/DOM/event.shiftKey" title="/en-US/docs/DOM/event.shiftKey"><code>TouchEvent.shiftKey</code></a></dt>
+  <dd>
+    A Boolean value indicating whether or not the shift key was down when the touch event was fired. <strong>Read only.</strong></dd>
+  <dt>
+    <a href="/en-US/docs/DOM/TouchEvent.targetTouches" title="/en-US/docs/DOM/TouchEvent.targetTouches"><code>TouchEvent.targetTouches</code></a></dt>
+  <dd>
+    A <a href="/en-US/docs/DOM/TouchList" title="/en-US/docs/DOM/TouchList"><code>TouchList</code></a> of all the <a href="/en-US/docs/DOM/Touch" title="/en-US/docs/DOM/Touch"><code>Touch</code></a> objects that are both currently in contact with the touch surface <strong>and</strong> were also started on the same element that is the target of the event. <strong>Read only.</strong></dd>
+  <dt>
+    <a href="/en-US/docs/DOM/TouchEvent.touches" title="/en-US/docs/DOM/TouchEvent.touches"><code>TouchEvent.touches</code></a></dt>
+  <dd>
+    A <a href="/en-US/docs/DOM/TouchList" title="/en-US/docs/DOM/TouchList"><code>TouchList</code></a> of all the <a href="/en-US/docs/DOM/Touch" title="/en-US/docs/DOM/Touch"><code>Touch</code></a> objects representing all current points of contact with the surface, regardless of target or changed status. <strong>Read only.</strong></dd>
+  <dt>
+    <strong><a href="/en-US/docs/DOM/event.type" title="/en-US/docs/DOM/event.type"><code>TouchEvent.type</code></a></strong></dt>
+  <dd>
+    The type of touch event that occurred. See <a href="#Touch_event_types">Touch event types</a> for possible values and details.</dd>
+  <dt>
+    <strong><a href="/en-US/docs/DOM/event.target" title="/en-US/docs/DOM/event.target"><code>TouchEvent.target</code></a></strong></dt>
+  <dd>
+    The target of the touches associated with this event. This target corresponds to the target of all the touches in the targetTouches attribute, but note that other touches in this event may have a different target. To be careful, you should use the target associated with individual touches.</dd>
+</dl>
+<h2 id="Touch_event_types">Touch event types</h2>
+<p>There are several types of event that can be fired to indicate that touch-related changes have occurred. You can determine which of these has happened by looking at the event's <a href="/en-US/docs/DOM/event.type" title="/en-US/docs/DOM/event.type"><code>TouchEvent.type</code></a> property.</p>
+<div class="note">
+  <strong>Note:</strong> It's important to note that in many cases, both touch and mouse events get sent (in order to let non-touch-specific code still interact with the user). If you use touch events, you should call <a href="/en-US/docs/DOM/event.preventDefault" title="/en-US/docs/DOM/event.preventDefault"><code>event.preventDefault()</code></a> to keep the mouse event from being sent as well.</div>
+<h3 id="touchstart">touchstart</h3>
+<p>Sent when the user places a touch point on the touch surface. The event's target will be the <a href="/en-US/docs/DOM/element" title="/en-US/docs/DOM/element"><code>element</code></a> in which the touch occurred.</p>
+<h3 id="touchend">touchend</h3>
+<p>Sent when the user removes a touch point from the surface (that is, when they lift a finger or stylus from the surface). This is also sent if the touch point moves off the edge of the surface; for example, if the user's finger slides off the edge of the screen.</p>
+<p>The event's target is the same <a href="/en-US/docs/DOM/element" title="/en-US/docs/DOM/element"><code>element</code></a> that received the <code>touchstart</code> event corresponding to the touch point, even if the touch point has moved outside that element.</p>
+<p>The touch point (or points) that were removed from the surface can be found in the <a href="/en-US/docs/DOM/TouchList" title="/en-US/docs/DOM/TouchList"><code>TouchList</code></a> specified by the <code>changedTouches</code> attribute.</p>
+<h3 id="touchmove">touchmove</h3>
+<p>Sent when the user moves a touch point along the surface. The event's target is the same <a href="/en-US/docs/DOM/element" title="/en-US/docs/DOM/element"><code>element</code></a> that received the <code>touchstart</code> event corresponding to the touch point, even if the touch point has moved outside that element.</p>
+<p>This event is also sent if the values of the radius, rotation angle, or force attributes of a touch point change.</p>
+<div class="note">
+  <strong>Note:</strong> The rate at which <code>touchmove</code> events is sent is browser-specific, and may also vary depending on the capability of the user's hardware. You must not rely on a specific granularity of these events.</div>
+<h3 id="touchenter">touchenter</h3>
+<p>Sent when a touch point enters an <a href="/en-US/docs/DOM/element" title="/en-US/docs/DOM/element"><code>element</code></a>.</p>
+<div class="note">
+  <strong>Note:</strong> These events don't bubble.</div>
+<h3 id="touchleave">touchleave</h3>
+<p>Sent when a touch point exits an <a href="/en-US/docs/DOM/element" title="/en-US/docs/DOM/element"><code>element</code></a>.</p>
+<div class="note">
+  <strong>Note:</strong> These events don't bubble.</div>
+<h3 id="touchcancel">touchcancel</h3>
+<p>Sent when a touch point has been disrupted in some way. There are several possible reasons why this might happen (and the exact reasons will vary from device to device, as well as browser to browser):</p>
+<ul>
+  <li>An event of some kind occurred that canceled the touch; this might happen if a modal alert pops up during the interaction.</li>
+  <li>The touch point has left the document window and moved into the browser's UI area, a plug-in, or other external content.</li>
+  <li>The user has placed more touch points on the screen than can be supported, in which case the earliest <a href="/en-US/docs/DOM/Touch" title="/en-US/docs/DOM/Touch"><code>Touch</code></a> in the <a href="/en-US/docs/DOM/TouchList" title="/en-US/docs/DOM/TouchList"><code>TouchList</code></a> gets canceled.</li>
+</ul>
+<h2 id="Example">Example</h2>
+<p>See the <a href="/en/DOM/Touch_events#Example" title="en/DOM/Touch events#Example">example on the main Touch events article</a>.</p>
+<h2 id="See_also">See also</h2>
+<ul>
+  <li><a href="/en/DOM/Touch_events" title="en/DOM/Touch events">Touch events</a></li>
+  <li><a href="/en-US/docs/DOM/Touch" title="/en-US/docs/DOM/Touch"><code>Touch</code></a></li>
+  <li><a href="/en-US/docs/DOM/TouchList" title="/en-US/docs/DOM/TouchList"><code>TouchList</code></a></li>
+</ul>
+<dl>
+  <br>
+</dl>
+                  </div>
+    <section class="page-meta">
+      
+            <section id="page-tags">
+        <h2><i class="icon-tags"></i>Tags (5)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Mobile">Mobile</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Gecko%20DOM%20Reference">Gecko DOM Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/DOM">DOM</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsTechnicalReview">NeedsTechnicalReview</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/touch">touch</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/bigbossSNK">bigbossSNK</a>, <a href="/en-US/profiles/wesj">wesj</a>, <a href="/en-US/profiles/acusti">acusti</a>
+                          <br />
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-04-27T11:52:28-07:00">Apr 27, 2013 11:52:28 AM</time>
+                      <br />
+            Last reviewed by:  
+            <a href="/en-US/profiles/acusti">acusti</a>, 
+            <time datetime="2013-04-16T14:16:42-07:00">Apr 16, 2013 2:16:42 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/API/TouchEvent$edit">
+      <input type="hidden" name="form" id="form" value="rev" />
+      <input type="hidden" name="content" id="content" value="" />
+  </form>
+      </div>
+   </div>
+    </section>
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+<footer id="site-info" class="footer" role="contentinfo">
+<div class="wrap">
+    <div id="legal">
+      <img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-tiny.png" alt="" width="42" height="48">
+      <p id="copyright">&copy; 2005 - 2013 Mozilla Developer Network and individual contributors</p>
+      <p>
+      Content is available under <a href="/en-US/docs/Project:Copyrights">these licenses</a>      &bull; <a href="/en-US/docs/Project:About">About MDN</a>
+      &bull; <a href="//github.com/mozilla/kuma">Contribute to the code</a>
+      &bull; <a href="//www.mozilla.org/en-US/privacy">Privacy Policy</a>
+    </div>
+          <form class="languages go" method="get" action="/en-US/docs">
+      <label for="language">Other languages:</label>
+      <select id="language" class="wiki-l10n" name="next" dir="ltr">
+        <option value="/en-US/docs/Web/API/TouchEvent" selected>
+          English (US)
+        </option>
+                  <option value="/zh-CN/docs/DOM/TouchEvent">
+            中文 (简体)
+          </option>      </select>
+      <noscript><button type="submit">Go</button></noscript>
+    </form>
+  </div>
+</footer>
+
+<script src="/en-US/jsi18n/build:5f4e39d"></script>
+  <script src="//mozorg.cdn.mozilla.net/en-US/tabzilla/tabzilla.js" async></script>
+  <script src="//www.google.com/jsapi" type="text/javascript"></script>
+  <script src="https://login.persona.org/include.js" type="text/javascript"></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/mdn-min.js?build=5f4e39d"></script>
+      <script src="https://developer.cdn.mozilla.net/media/js/wiki-min.js?build=5f4e39d"></script>
+  
+  <script type="text/javascript">
+    // Event tracking for the new menu
+    $(function() {
+      $('#nav-main').on('click', 'a', function(e) {
+        window._gaq && _gaq.push(['_trackEvent', 'Menu', 'Click', e.target.innerHTML, e.target.href]);
+      });
+    });
+  </script>
+        <!-- include syntax highlighting scripts -->
+  
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=5f4e39d" />
+
+  <script type="text/javascript">
+    MEDIA_URL = 'https://developer.cdn.mozilla.net/media/';
+  </script>
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/media/prism/prism.js" data-manual></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/syntax-prism-min.js?build=5f4e39d"></script>
+
+<script src="/en-US/waffles.js" type="text/javascript" async></script>
+</body>
+</html>

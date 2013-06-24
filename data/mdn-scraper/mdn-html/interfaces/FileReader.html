@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+<head>
+      <script src="//cdn.optimizely.com/js/237572123.js"></script>
+  
+  <title>FileReader - Web API reference | MDN</title>
+  
+  <meta charset="utf-8">
+  <meta name="robots" content="index, follow">
+  <link rel="home" href="/en-US/">
+  <link rel="copyright" href="#copyright">
+  <link rel="shortcut icon" href="https://developer.cdn.mozilla.net/media/img/favicon.ico">
+
+        <!--[if !IE 6]><!-->
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/mdn-min.css?build=5f4e39d" />
+      <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/wiki-min.css?build=5f4e39d" />
+    <!--<![endif]-->
+  <!--[if IE]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie.css"><![endif]-->
+  <!--[if lte IE 7]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie7.css"><![endif]-->
+  <!--[if lte IE 6]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie6.css"><![endif]-->
+  <link rel="stylesheet" type="text/css" href="https://developer.cdn.mozilla.net/media/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="print" href="https://developer.cdn.mozilla.net/media/css/mdn-print.css">
+  <link rel="stylesheet" href="https://mozorg.cdn.mozilla.net/media/css/tabzilla-min.css">
+  
+
+  <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network" />
+
+  
+    <link rel="stylesheet" media="print" href="https://developer.cdn.mozilla.net/media/css/wiki-print-min.css?build=5f4e39d" />
+          <link rel="stylesheet" type="text/css"
+            href="/en-US/docs/Template:CustomCSS?raw=1" />
+    
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script src="https://developer.cdn.mozilla.net/media/js/html5.js"></script>
+  <![endif]-->
+
+    <link rel="alternate" type="application/json" href="/en-US/docs/Web/API/FileReader$json" />
+  <link rel="canonical" href="https://developer.mozilla.org/en-US/docs/Web/API/FileReader" />
+
+  <meta property="og:title" content="FileReader" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://developer.mozilla.org/media/img/mdn-logo-sm.png" />
+  <meta property="og:site_name" content="Mozilla Developer Network" />
+  <meta property="og:url" content="https://developer.mozilla.org/en-US/docs/Web/API/FileReader" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:url" content="https://developer.mozilla.org/en-US/docs/Web/API/FileReader" />
+  <meta name="twitter:title" content="FileReader" />
+  <meta name="twitter:image" content="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" />
+  <meta name="twitter:site" content="@mozhacks" />
+  <meta name="twitter:creator" content="@mozhacks" />
+
+    <meta property="og:description" content="The FileReader object lets web applications asynchronously read the contents of files (or raw data buffers) stored on the user&#39;s computer, using File or Blob objects to specify the file or data to read. File objects may be obtained from a FileList object returned as a result of a user selecting files using the input element, from a drag and drop operation&#39;s DataTransfer object, or from the mozGetAsFile() API on an HTMLCanvasElement."/>
+  <meta name="description" content="The FileReader object lets web applications asynchronously read the contents of files (or raw data buffers) stored on the user&#39;s computer, using File or Blob objects to specify the file or data to read. File objects may be obtained from a FileList object returned as a result of a user selecting files using the input element, from a drag and drop operation&#39;s DataTransfer object, or from the mozGetAsFile() API on an HTMLCanvasElement." />
+  <meta name="twitter:description" content="The FileReader object lets web applications asynchronously read the contents of files (or raw data buffers) stored on the user&#39;s computer, using File or Blob objects to specify the file or data to read. File objects may be obtained from a FileList object returned as a result of a user selecting files using the input element, from a drag and drop operation&#39;s DataTransfer object, or from the mozGetAsFile() API on an HTMLCanvasElement." />
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36116321-5']);
+  _gaq.push(['_trackPageview']);
+
+  (function(a, d) {
+    var ga = d.createElement(a); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == d.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = d.getElementsByTagName(a)[0]; s.parentNode.insertBefore(ga, s);
+  })('script', document);
+
+</script>
+</head>
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  <header id="masthead" class="minor new-menu">
+    <div class="wrap">
+      <ul id="nav-access">
+        <li><a href="#language">Select language</a></li>
+        <li><a href="#q">Skip to search</a></li>
+        <li><a href="#content">Skip to main content</a></li>
+      </ul>
+    
+      <div id="branding">
+                <div id="logo"><a href="/en-US/"><img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" alt="Mozilla Developer Network" title="Mozilla Developer Network" width="62" height="71"> Mozilla Developer Network</a></div>
+              </div>
+      
+              <nav id="nav">
+          <ul id="nav-main" role="menubar">
+            <li id="nav-main-docs" class="menu" rel="menuitem"><a href="#nav-sub-docs" class="toggle" aria-haspopup="true" aria-labelledby="nav-main-docs" title="Read Documentation">Read<br /><em>Docs</em></a>
+              <div id="nav-sub-docs" class="sub-menu" aria-hidden="true">
+                <ul>
+                  <li>
+                    <ul>
+
+                      <li><a href="/en-US/docs/Web/HTML?menu">HTML</a></li>
+                      <li><a href="/en-US/docs/Web/CSS?menu">CSS</a></li>
+                      <li><a href="/en-US/docs/Web/JavaScript?menu">JavaScript</a></li>
+                      <li><a href="/en-US/docs/Web/Guide/Graphics?menu">Graphics</a></li>
+                      <li><a href="/en-US/docs/Web/API?menu">APIs / DOM</a></li>
+                      <li><a href="/en-US/docs/Web/Apps?menu">Apps</a></li>
+                      <li><a href="/en-US/docs/tools?menu">Dev Tools</a></li>
+                      <li><a href="/en-US/docs/Web/MathML?menu">MathML</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <ul>
+                      <li><a href="/en-US/docs/Web/Tutorials?menu">Tutorials</a></li>
+                      <li><a href="/en-US/docs/Web/Reference?menu">References</a></li>
+                      <li><a href="/en-US/docs/Web/Guide?menu">Developer Guides</a></li>
+                      <li><a href="/en-US/demos/?menu">Demos</a></li>
+                      <li><br /><br /><a href="/en-US/docs?menu">...more docs</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li id="nav-main-apps" role="menuitem"><a href="https://marketplace.firefox.com/developers/">Make<br /><em>Apps</em></a></li>
+            <li id="nav-main-firefox" class="menu" role="menuitem"><a href="#nav-sub-firefox" class="firefox toggle" aria-haspopup="true" aria-labelledby="nav-main-firefox">Build & Use<br /><em>Firefox</em></a>
+              <ul id="nav-sub-firefox" class="sub-menu">
+                <li><a href="/en-US/docs/Mozilla/Firefox_OS?menu">Firefox OS</a></li>
+                <li><a href="/en-US/docs/Mozilla/Firefox?menu">Firefox Desktop</a></li>
+                <li><a href="/en-US/docs/Mozilla/Mobile?menu">Mobile</a></li>
+                <li><a href="/en-US/docs/Mozilla/Add-ons?menu">Add-ons</a></li>
+              </ul>
+            </li>
+            <li id="nav-main-demos" role="menuitem"><a href="/en-US/demos/?menu" class="demos">See & Submit<br /><em>Demos</em></a></li>
+            <li id="nav-main-community" class="menu" role="menuitem"><a href="#nav-sub-community" class="community toggle" aria-haspopup="true" aria-labelledby="nav-main-community">Get<br /><em>Involved</em></a>
+              <ul id="nav-sub-community" class="sub-menu">
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Join_the_community?menu">Join the Community</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing?menu">Contribute to MDN</a></li>
+                <li><a href="/en-US/events?menu">Events</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Follow_what_s_happening?menu">Tweets, Blogs, and More</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+          
+      <ul class="user-state signed-out">
+    <li class="user-signin menu">
+    <form class="browserid" action="/en-US/users/browserid_verify" method="POST">
+        <input id="next" name="next" type="hidden" value="/en-US/docs/Web/API/FileReader"/>
+        <input required="required" type="hidden" name="assertion" id="id_assertion" />
+                        <a href="#" target="_blank" class="browserid-signin toggle" aria-haspopup="true" title="Sign in with Persona">Sign in</a>
+                <div class="browserid-info sub-menu" aria-hidden="true">
+                <h3>What's this?</h3> <p>MDN has switched to <a href="https://persona.org/" target="_blank" rel="external">Persona</a>, a safe and simple way to sign in with just your e-mail address. <a href="http://identity.mozilla.com/post/12950196039/deploying-browserid-at-mozilla" rel="external">Learn more about why Mozilla is using Persona</a>.</p> <p><strong>Returning members:</strong> sign in with Persona and you'll be connected to your MDN profile (all your information is still here).</p> <p><strong>New members:</strong> sign in with Persona first, then you'll be able to set up your new MDN profile.</p>          <p><a href="#" target="_blank" class="browserid-signin" title="Sign in with Persona">Sign in</a></p>
+        </div>
+              </form>
+    </li>
+  </ul>
+      
+      <form id="site-search" method="get" action="http://www.google.com/search"
+              data-url="/en-US/search">
+        <p>
+          <input type="search" role="search" placeholder="Search MDN" id="q" name="q" value="">
+          <noscript><button type="submit">Search</button></noscript>
+        </p>
+        <input type="hidden" name="sitesearch" value="developer.mozilla.org">
+                <div id="site-search-gg"></div>
+              </form>
+
+      <a href="//www.mozilla.org/" id="tabzilla">mozilla</a>
+    </div>
+  </header>
+
+    
+
+<!-- top toolbar -->
+<section id="nav-toolbar"><div><div class="wrap">
+  <!-- right floated navigation -->
+  <nav id="tool-menus" role="navigation">
+    <ul id="tools">
+      <li class="menu">
+        <a href="#page-tools" class="toggle">This page</a>
+        <ul id="page-tools" class="sub-menu">
+          <li class="page-print"> <a href="#" onclick="return window.print();"  title="Print page">Print this page</a></li>
+                      <li><a href="/en-US/docs/new?parent=177">New sub-page</a></li>
+            <li><a href="/en-US/docs/new?clone=177">Clone this page</a></li>
+                                      </ul>
+      </li>
+            <li class="menu">
+        <a href="#" class="toggle">Languages</a>
+        <ul id="translations">
+                      <li><a rel="internal" href="/fr/docs/DOM/FileReader" title="FileReader">Français</a></li>
+                      <li><a rel="internal" href="/zh-CN/docs/DOM/FileReader" title="FileReader">中文 (简体)</a></li>
+                    
+                      <li><a href="/en-US/docs/Web/API/FileReader$locales">Add translation</a></li>
+                  </ul>
+      </li>
+          </ul>
+  </nav>
+  
+  <!-- left crumb navigation -->
+  <nav class="crumbs" role="navigation">
+    <ol>
+              <li class="crumb"><a href="/en-US/docs/Web">Web technology for developers</a></li>
+              <li class="crumb"><a href="/en-US/docs/Web/API">Web API reference</a></li>
+            <li class="crumb">FileReader</li>
+    </ol>
+  </nav>
+  
+</div></div></section>
+
+
+
+<section id="content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" 
+          data-current-revision="400299"
+          data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes."
+          data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title">
+            <h1 class="page-title">FileReader</h1>
+                    </div>
+        <ul id="page-buttons">
+            <li class="page-history"><a href="/en-US/docs/Web/API/FileReader$history"><i class="icon-book"></i>History</a></li>
+                                                                                  <li class="page-edit"><a href="/en-US/docs/Web/API/FileReader$edit"><i class="icon-pencil"></i>Edit</a></li>
+                    </ul>
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                <div id="article-nav">
+          <div class="page-toc">
+            <h2>Table of Contents</h2>
+            <ol>
+              <code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Important_note_about_input_parameters" rel="internal">Important note about input parameters</a><code></code><code></code><code></code><li><a href="#Method_overview" rel="internal">Method overview</a><code></code><code></code><code></code><code></code><code></code><li><a href="#State_constants" rel="internal">State constants</a><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Properties" rel="internal">Properties</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Methods" rel="internal">Methods</a><ol><li><a href="#abort()" rel="internal">abort()</a><code></code><code></code><code></code><code></code><code></code><li><a href="#readAsArrayBuffer()" rel="internal">readAsArrayBuffer()</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#readAsBinaryString()" rel="internal">readAsBinaryString()</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#readAsDataURL()" rel="internal">readAsDataURL()</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#readAsText()" rel="internal">readAsText()</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code></ol></li><li><a href="#Event_handlers" rel="internal">Event handlers</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Browser_compatibility" rel="internal">Browser compatibility</a><ol><li><a href="#Gecko-specific_notes" rel="internal">Gecko-specific notes</a><code></code><code></code><code></code><code></code><code></code><code></code></ol></li><li><a href="#See_also" rel="internal">See also</a><code></code>
+            </ol>
+          </div>
+          <ul class="page-anchors">
+            <li class="anchor-tags">
+                              <i class="icon-tags"></i><a href="#page-tags">Tags</a>
+                          </li>
+            <li class="anchor-files">
+                              <i class="icon-paper-clip"></i><a href="#page-file">Files</a>
+                          </li>
+          </ul>
+        </div>
+                                <p>The <code>FileReader</code> object lets web applications asynchronously read the contents of files (or raw data buffers) stored on the user's computer, using <a href="/en-US/docs/DOM/File" title="/en-US/docs/DOM/File"><code>File</code></a> or <a href="/en-US/docs/DOM/Blob" title="/en-US/docs/DOM/Blob"><code>Blob</code></a> objects to specify the file or data to read. File objects may be obtained from a <a href="/en-US/docs/DOM/FileList" title="/en-US/docs/DOM/FileList"><code>FileList</code></a> object returned as a result of a user selecting files using the <code><a href="/en-US/docs/HTML/Element/input" title="&lt;input>">&lt;input&gt;</a></code> element, from a drag and drop operation's <a href="/En/DragDrop/DataTransfer" title="En/DragDrop/DataTransfer"><code>DataTransfer</code></a> object, or from the <code>mozGetAsFile()</code> API on an <a href="/en-US/docs/DOM/HTMLCanvasElement" title="/en-US/docs/DOM/HTMLCanvasElement"><code>HTMLCanvasElement</code></a>.</p>
+<p>To create a <code>FileReader</code>, simply do the following:</p>
+<pre>var reader = new FileReader();
+</pre>
+<p>See <a href="/en/Using_files_from_web_applications" title="en/Using files from web applications">Using files from web applications</a> for details and examples.</p>
+<h2 id="Important_note_about_input_parameters">Important note about input parameters</h2>
+<p>Note that in Gecko 1.9.2 (Firefox 3.6 / Thunderbird 3.1 / Fennec 1.0) and early builds of Firefox 4, this interface used <a href="/en-US/docs/DOM/File" title="/en-US/docs/DOM/File"><code>File</code></a> objects to specify files; the specification uses <code>Blob</code> objects. Starting in Gecko 2.0 (beta 7) (Firefox 4 / Thunderbird 3.3 / SeaMonkey 2.1), the implementation matches the specification. This may result in some changes being needed to your code, especially if you used the non-standard Mozilla-specific methods that have been deprecated on the <code>File</code> object.</p>
+<h2 id="Method_overview" name="Method_overview">Method overview</h2>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td><code>void <a href="#abort()">abort</a>();</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#readAsArrayBuffer()">readAsArrayBuffer</a>(in Blob blob);</code> <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 7.0 / Thunderbird 7.0 / SeaMonkey 2.4)">Requires Gecko 7.0</span></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#readAsBinaryString()">readAsBinaryString</a>(in Blob blob);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#readAsDataURL()">readAsDataURL</a>(in Blob file);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#readAsText()">readAsText</a>(in Blob blob, [optional] in DOMString encoding);</code></td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="State_constants" name="State_constants">State constants</h2>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td class="header">Constant</td>
+      <td class="header">Value</td>
+      <td class="header">Description</td>
+    </tr>
+    <tr>
+      <td><code>EMPTY</code></td>
+      <td><code>0</code></td>
+      <td>No data has been loaded yet.</td>
+    </tr>
+    <tr>
+      <td><code>LOADING</code></td>
+      <td><code>1</code></td>
+      <td>Data is currently being loaded.</td>
+    </tr>
+    <tr>
+      <td><code>DONE</code></td>
+      <td><code>2</code></td>
+      <td>The entire read request has been completed.</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Properties" name="Properties">Properties</h2>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td class="header">Property</td>
+      <td class="header">Type</td>
+      <td class="header">Description</td>
+    </tr>
+    <tr>
+      <td><code>error</code></td>
+      <td><a href="/en-US/docs/DOM/DOMError" title="/en-US/docs/DOM/DOMError"><code>DOMError</code></a></td>
+      <td>The error that occurred while reading the file. <strong>Read only.</strong></td>
+    </tr>
+    <tr>
+      <td><code>readyState</code></td>
+      <td><code><a href="/en/unsigned_short" title="en/unsigned short">unsigned short</a></code></td>
+      <td>Indicates the state of the <code>FileReader</code>. This will be one of the <a href="#State_constants">State constants</a>. <strong>Read only.</strong></td>
+    </tr>
+    <tr>
+      <td><code>result</code></td>
+      <td><code><a class="external" href="http://developer.mozilla.org/en-US/docs/SpiderMonkey/JSAPI_Reference/jsval">jsval</a></code></td>
+      <td>The file's contents. This property is only valid after the read operation is complete, and the format of the data depends on which of the methods was used to initiate the read operation. <strong>Read only.</strong></td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Methods" name="Methods">Methods</h2>
+<h3 id="abort()" name="abort()">abort()</h3>
+<p>Aborts the read operation. Upon return, the <code>readyState</code> will be <code>DONE</code>.</p>
+<pre class="eval">void abort();
+</pre>
+<h6 id="Parameters" name="Parameters">Parameters</h6>
+<p>None.</p>
+<h6 id="Exceptions_thrown" name="Exceptions_thrown">Exceptions thrown</h6>
+<dl>
+  <dt>
+    <code>DOM_FILE_ABORT_ERR</code></dt>
+  <dd>
+    <code>abort()</code> was called while no read operation was in progress (that is, the state wasn't <code>LOADING</code>). <div class="note"><strong>Note:</strong> This exception was not thrown by Gecko until Gecko 6.0.</div></dd>
+</dl>
+<p></p><div> 
+    <span class="indicatorInHeadline standardNote standardNoteMethod">Requires Gecko 7.0 (Firefox 7.0 / Thunderbird 7.0 / SeaMonkey 2.4)</span> 
+    <h3 id="readAsArrayBuffer()">readAsArrayBuffer()</h3> 
+</div><p></p>
+<p>Starts reading the contents of the specified <a href="/en-US/docs/DOM/Blob" title="/en-US/docs/DOM/Blob"><code>Blob</code></a> or <a href="/en-US/docs/DOM/File" title="/en-US/docs/DOM/File"><code>File</code></a>. When the read operation is finished, the <code>readyState</code> will become <code>DONE</code>, and the <code>onloadend</code> callback, if any, will be called. At that time, the <code>result</code> attribute contains an <code><a href="/en/JavaScript_typed_arrays/ArrayBuffer" title="/en/JavaScript_typed_arrays/ArrayBuffer">ArrayBuffer</a></code> representing the file's data.</p>
+<pre class="eval">void readAsArrayBuffer(
+  in Blob blob
+);
+</pre>
+<h6 id="Parameters" name="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>blob</code></dt>
+  <dd>
+    The DOM <a href="/en-US/docs/DOM/Blob" title="/en-US/docs/DOM/Blob"><code>Blob</code></a> or <a href="/en-US/docs/DOM/File" title="/en-US/docs/DOM/File"><code>File</code></a> to read into the <code><a href="/en/JavaScript_typed_arrays/ArrayBuffer" title="/en/JavaScript_typed_arrays/ArrayBuffer">ArrayBuffer</a></code>.</dd>
+</dl>
+<h3 id="readAsBinaryString()" name="readAsBinaryString()">readAsBinaryString()</h3>
+<p>Starts reading the contents of the specified <a href="/en-US/docs/DOM/Blob" title="/en-US/docs/DOM/Blob"><code>Blob</code></a>, which may be a <a href="/en-US/docs/DOM/File" title="/en-US/docs/DOM/File"><code>File</code></a>. When the read operation is finished, the <code>readyState</code> will become <code>DONE</code>, and the <code>onloadend</code> callback, if any, will be called. At that time, the <code>result</code> attribute contains the raw binary data from the file.</p>
+<pre class="eval">void readAsBinaryString(
+  in Blob blob
+);
+</pre>
+<p>This method, used in conjuncton with the <a href="/en-US/docs/DOM/XMLHttpRequest#sendAsBinary()" title="/en-US/docs/DOM/XMLHttpRequest#sendAsBinary()"><code>sendAsBinary</code></a> <a href="/en-US/docs/DOM/XMLHttpRequest" title="/en-US/docs/DOM/XMLHttpRequest"><code>XMLHttpRequest</code></a>'s method, make possible to <a href="/en-US/docs/DOM/XMLHttpRequest/Using_XMLHttpRequest#Submitting_forms_and_uploading_files" title="/en-US/docs/DOM/XMLHttpRequest/Using_XMLHttpRequest#Submitting_forms_and_uploading_files">read and <strong>upload</strong> any type of file</a>.</p>
+<h6 id="Parameters" name="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>blob</code></dt>
+  <dd>
+    The DOM <a href="/en-US/docs/DOM/Blob" title="/en-US/docs/DOM/Blob"><code>Blob</code></a> or <a href="/en-US/docs/DOM/File" title="/en-US/docs/DOM/File"><code>File</code></a> from which to read.</dd>
+</dl>
+<h3 id="readAsDataURL()" name="readAsDataURL()">readAsDataURL()</h3>
+<p>Starts reading the contents of the specified <a href="/en-US/docs/DOM/Blob" title="/en-US/docs/DOM/Blob"><code>Blob</code></a> or <a href="/en-US/docs/DOM/File" title="/en-US/docs/DOM/File"><code>File</code></a>. When the read operation is finished, the <code>readyState</code> will become <code>DONE</code>, and the <code>onloadend</code> callback, if any, will be called. At that time, the <code>result</code> attribute contains a <code>data:</code> URL representing the file's data.</p>
+<pre class="eval">void readAsDataURL(
+  in Blob file
+);
+</pre>
+<h6 id="Parameters" name="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>file</code></dt>
+  <dd>
+    The DOM <a href="/en-US/docs/DOM/Blob" title="/en-US/docs/DOM/Blob"><code>Blob</code></a> or <a href="/en-US/docs/DOM/File" title="/en-US/docs/DOM/File"><code>File</code></a> from which to read.</dd>
+</dl>
+<h6 id="Example">Example</h6>
+<p>This method is useful, for example, to get a preview of an image before uploading it (<a class="internal" href="/@api/deki/files/6231/=image_upload_preview.html" title="image_upload_preview.html">download example</a>):</p>
+<pre class="brush: html">&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /&gt;
+&lt;title&gt;Image preview example&lt;/title&gt;
+&lt;script type="text/javascript"&gt;
+oFReader = new FileReader(), rFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-xwindowdump)$/i;
+
+oFReader.onload = function (oFREvent) {
+  document.getElementById("uploadPreview").src = oFREvent.target.result;
+};
+
+function loadImageFile() {
+  if (document.getElementById("uploadImage").files.length === 0) { return; }
+  var oFile = document.getElementById("uploadImage").files[0];
+  if (!rFilter.test(oFile.type)) { alert("You must select a valid image file!"); return; }
+  oFReader.readAsDataURL(oFile);
+}
+&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body onload="loadImageFile();"&gt;
+  &lt;form name="uploadForm"&gt;
+    &lt;table&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;&lt;img id="uploadPreview" style="width: 100px; height: 100px;" src="data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%3F%3E%0A%3Csvg%20width%3D%22153%22%20height%3D%22153%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%0A%20%3Cg%3E%0A%20%20%3Ctitle%3ENo%20image%3C/title%3E%0A%20%20%3Crect%20id%3D%22externRect%22%20height%3D%22150%22%20width%3D%22150%22%20y%3D%221.5%22%20x%3D%221.500024%22%20stroke-width%3D%223%22%20stroke%3D%22%23666666%22%20fill%3D%22%23e1e1e1%22/%3E%0A%20%20%3Ctext%20transform%3D%22matrix%286.66667%2C%200%2C%200%2C%206.66667%2C%20-960.5%2C%20-1099.33%29%22%20xml%3Aspace%3D%22preserve%22%20text-anchor%3D%22middle%22%20font-family%3D%22Fantasy%22%20font-size%3D%2214%22%20id%3D%22questionMark%22%20y%3D%22181.249569%22%20x%3D%22155.549819%22%20stroke-width%3D%220%22%20stroke%3D%22%23666666%22%20fill%3D%22%23000000%22%3E%3F%3C/text%3E%0A%20%3C/g%3E%0A%3C/svg%3E" alt="Image preview" /&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;input id="uploadImage" type="file" name="myPhoto" onchange="loadImageFile();" /&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+
+    &lt;p&gt;&lt;input type="submit" value="Send" /&gt;&lt;/p&gt;
+  &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<div class="note">
+  <strong>Note:</strong> The constructor <code>FileReader()</code> was not supported by Internet Explorer for versions before 10. For a full compatibility code you can see our <a class="internal" href="/@api/deki/files/6232/=crossbrowser_image_preview.html" title="crossbrowser_image_preview.html">crossbrowser preview possible solution</a>.</div>
+<h3 id="readAsText()" name="readAsText()">readAsText()</h3>
+<p>Starts reading the specified blob's contents. When the read operation is finished, the <code>readyState</code> will become <code>DONE</code>, and the <code>onloadend</code> callback, if any, will be called. At that time, the <code>result</code> attribute contains the contents of the file as a text string.</p>
+<pre class="eval">void readAsText(
+  in Blob blob,
+  in DOMString encoding <span class="inlineIndicator optional optionalInline">Optional</span>
+);
+</pre>
+<h6 id="Parameters" name="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>blob</code></dt>
+  <dd>
+    The DOM <a href="/en-US/docs/DOM/Blob" title="/en-US/docs/DOM/Blob"><code>Blob</code></a> or <a href="/en-US/docs/DOM/File" title="/en-US/docs/DOM/File"><code>File</code></a> from which to read.</dd>
+  <dt>
+    <code>encoding</code> <span class="inlineIndicator optional optionalInline">Optional</span></dt>
+  <dd>
+    A string indicating the encoding to use for the returned data. By default, UTF-8 is assumed if this parameter is not specified.</dd>
+</dl>
+<h2 id="Event_handlers">Event handlers</h2>
+<dl>
+  <dt>
+    <code>onabort</code></dt>
+  <dd>
+    Called when the read operation is aborted.</dd>
+  <dt>
+    <code>onerror</code></dt>
+  <dd>
+    Called when an error occurs.</dd>
+  <dt>
+    <code>onload</code></dt>
+  <dd>
+    Called when the read operation is successfully completed.</dd>
+  <dt>
+    <code>onloadend</code></dt>
+  <dd>
+    Called when the read is completed, whether successful or not. This is called after either <code>onload</code> or <code>onerror</code>.</dd>
+  <dt>
+    <code>onloadstart</code></dt>
+  <dd>
+    Called when reading the data is about to begin.</dd>
+  <dt>
+    <code>onprogress</code></dt>
+  <dd>
+    Called periodically while the data is being read.</dd>
+</dl>
+<h2 id="Browser_compatibility">Browser compatibility</h2>
+<p></p><div class="htab"> 
+    <a name="AutoCompatibilityTable"></a> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div><p></p>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Firefox (Gecko)</th>
+        <th>Chrome</th>
+        <th>Internet Explorer*</th>
+        <th>Opera*</th>
+        <th>Safari</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td>3.6 (1.9.2)</td>
+        <td>7</td>
+        <td>10</td>
+        <td>12.02</td>
+        <td>6.0.2</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>Android</th>
+        <th>IE Mobile</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p>*IE9 has a <a class="external" href="http://html5labs.interoperabilitybridges.com/prototypes/fileapi/fileapi/info" title="http://html5labs.interoperabilitybridges.com/prototypes/fileapi/fileapi/info">File API Lab</a>. Opera has <a class="external" href="http://www.opera.com/docs/specs/presto28/file/" title="http://my.opera.com/desktopteam/blog/2011/04/05/stability-gmail-socks">partial support</a> in 11.1.</p>
+<h3 id="Gecko-specific_notes">Gecko-specific notes</h3>
+<ul>
+  <li>Prior to Gecko 2.0 beta 7 (Firefox 4.0 beta 7), all <a href="/en-US/docs/DOM/Blob" title="/en-US/docs/DOM/Blob"><code>Blob</code></a> parameters below were <a href="/en-US/docs/DOM/File" title="/en-US/docs/DOM/File"><code>File</code></a> parameters; this has since been updated to match the specification correctly.</li>
+  <li>Prior to Gecko 13.0 (Firefox 13.0 / Thunderbird 13.0 / SeaMonkey 2.10) the <code>FileReader.error</code> property returned a <a href="/en-US/docs/DOM/FileError" title="/en-US/docs/DOM/FileError"><code>FileError</code></a> object. This interface has been removed and <code>FileReader.error</code> is now returning the <a href="/en-US/docs/DOM/DOMError" title="/en-US/docs/DOM/DOMError"><code>DOMError</code></a> object as defined in the latest FileAPI draft.</li>
+</ul>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="/en/Using_files_from_web_applications" title="en/Using files from web applications">Using files from web applications</a></li>
+  <li><a href="/en-US/docs/DOM/File" title="/en-US/docs/DOM/File"><code>File</code></a></li>
+  <li><a class="external" href="http://www.w3.org/TR/FileAPI/#FileReader-interface">Specification: File API: FileReader</a><span style="color: #fff; background: #e66e33; display: inline-block; font-size: x-small; margin-left: 6px; white-space: nowrap; padding: 2px 5px;" title="Working Draft">WD</span></li>
+</ul>
+                  </div>
+    <section class="page-meta">
+      
+            <section id="page-tags">
+        <h2><i class="icon-tags"></i>Tags (3)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Files">Files</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/DOM">DOM</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsCompatTable">NeedsCompatTable</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+            
+<section id="page-attachments">
+  <h2><i class="icon-paper-clip"></i>Attachments <bdi>(<span id="page-attachments-count">2</span>)</bdi></h2>
+
+  
+  <p id="page-attachments-no-message" class="hidden">
+    This document has no attachments.
+  </p>
+
+  <script>
+    // This is a global, but has to be :/
+    MDN_ATTACHMENTS = [{"creatorUrl": "/en-US/profiles/fusionchess", "description": "", "creator": "fusionchess", "mime": "text/html", "date": "2012-05-08 17:16:34", "id": 3698, "size": 2235, "title": "image_upload_preview.html", "url": "https://mdn.mozillademos.org/files/3698/image_upload_preview.html", "html": "<tr data-revision-id=\"4021\" data-attachment-id=\"3698\">\n  <td class=\"attachment-name-cell\">\n    <a href=\"https://mdn.mozillademos.org/files/3698/image_upload_preview.html\" target=\"_blank\">image_upload_preview.html</a>\n      <div class=\"attachment-description\"></div>\n  </td>\n  <td>2235 bytes</td>\n  <td>2012-05-08 17:16:34</td>\n  <td><a href=\"/en-US/profiles/fusionchess\">fusionchess</a></td>\n</tr>", "revision": 4021}, {"creatorUrl": "/en-US/profiles/fusionchess", "description": "", "creator": "fusionchess", "mime": "text/html", "date": "2012-05-08 20:50:14", "id": 3699, "size": 2021, "title": "crossbrowser_image_preview.html", "url": "https://mdn.mozillademos.org/files/3699/crossbrowser_image_preview.html", "html": "<tr data-revision-id=\"4022\" data-attachment-id=\"3699\">\n  <td class=\"attachment-name-cell\">\n    <a href=\"https://mdn.mozillademos.org/files/3699/crossbrowser_image_preview.html\" target=\"_blank\">crossbrowser_image_preview.html</a>\n      <div class=\"attachment-description\"></div>\n  </td>\n  <td>2021 bytes</td>\n  <td>2012-05-08 20:50:14</td>\n  <td><a href=\"/en-US/profiles/fusionchess\">fusionchess</a></td>\n</tr>", "revision": 4022}];
+  </script>
+  <table cellpadding="0" cellspacing="0" id="page-attachments-table" class="">
+    <thead>
+      <th>File</th>
+      <th>Size</th>
+      <th>Date</th>
+      <th>Attached by</th>
+    </thead>
+    <tbody>
+              <tr data-revision-id="4021" data-attachment-id="3698">
+  <td class="attachment-name-cell">
+    <a href="https://mdn.mozillademos.org/files/3698/image_upload_preview.html" target="_blank">image_upload_preview.html</a>
+      <div class="attachment-description"></div>
+  </td>
+  <td>2235 bytes</td>
+  <td>2012-05-08 17:16:34</td>
+  <td><a href="/en-US/profiles/fusionchess">fusionchess</a></td>
+</tr>
+              <tr data-revision-id="4022" data-attachment-id="3699">
+  <td class="attachment-name-cell">
+    <a href="https://mdn.mozillademos.org/files/3699/crossbrowser_image_preview.html" target="_blank">crossbrowser_image_preview.html</a>
+      <div class="attachment-description"></div>
+  </td>
+  <td>2021 bytes</td>
+  <td>2012-05-08 20:50:14</td>
+  <td><a href="/en-US/profiles/fusionchess">fusionchess</a></td>
+</tr>
+          </tbody>
+  </table>
+
+  </section>      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/mrflix">mrflix</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/lmorchard">lmorchard</a>, <a href="/en-US/profiles/GijsKruitbosch">GijsKruitbosch</a>, <a href="/en-US/profiles/samdutton">samdutton</a>, <a href="/en-US/profiles/MKaply">MKaply</a>, <a href="/en-US/profiles/allergic">allergic</a>, <a href="/en-US/profiles/trevorh">trevorh</a>, <a href="/en-US/profiles/kuvik3">kuvik3</a>, <a href="/en-US/profiles/ebidel">ebidel</a>, <a href="/en-US/profiles/fusionchess">fusionchess</a>, <a href="/en-US/profiles/Jeremie">Jeremie</a>, <a href="/en-US/profiles/Ms2ger">Ms2ger</a>, <a href="/en-US/profiles/sltam">sltam</a>, <a href="/en-US/profiles/Elchi3">Elchi3</a>, <a href="/en-US/profiles/skaterdav85">skaterdav85</a>, <a href="/en-US/profiles/paul.irish">paul.irish</a>
+                          <br />
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-13T13:50:26-07:00">May 13, 2013 1:50:26 PM</time>
+                      <br />
+            Last reviewed by:  
+            <a href="/en-US/profiles/fusionchess">fusionchess</a>, 
+            <time datetime="2013-03-30T12:25:53-07:00">Mar 30, 2013 12:25:53 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/API/FileReader$edit">
+      <input type="hidden" name="form" id="form" value="rev" />
+      <input type="hidden" name="content" id="content" value="" />
+  </form>
+      </div>
+   </div>
+    </section>
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+<footer id="site-info" class="footer" role="contentinfo">
+<div class="wrap">
+    <div id="legal">
+      <img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-tiny.png" alt="" width="42" height="48">
+      <p id="copyright">&copy; 2005 - 2013 Mozilla Developer Network and individual contributors</p>
+      <p>
+      Content is available under <a href="/en-US/docs/Project:Copyrights">these licenses</a>      &bull; <a href="/en-US/docs/Project:About">About MDN</a>
+      &bull; <a href="//github.com/mozilla/kuma">Contribute to the code</a>
+      &bull; <a href="//www.mozilla.org/en-US/privacy">Privacy Policy</a>
+    </div>
+          <form class="languages go" method="get" action="/en-US/docs">
+      <label for="language">Other languages:</label>
+      <select id="language" class="wiki-l10n" name="next" dir="ltr">
+        <option value="/en-US/docs/Web/API/FileReader" selected>
+          English (US)
+        </option>
+                  <option value="/fr/docs/DOM/FileReader">
+            Français
+          </option>          <option value="/zh-CN/docs/DOM/FileReader">
+            中文 (简体)
+          </option>      </select>
+      <noscript><button type="submit">Go</button></noscript>
+    </form>
+  </div>
+</footer>
+
+<script src="/en-US/jsi18n/build:5f4e39d"></script>
+  <script src="//mozorg.cdn.mozilla.net/en-US/tabzilla/tabzilla.js" async></script>
+  <script src="//www.google.com/jsapi" type="text/javascript"></script>
+  <script src="https://login.persona.org/include.js" type="text/javascript"></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/mdn-min.js?build=5f4e39d"></script>
+      <script src="https://developer.cdn.mozilla.net/media/js/wiki-min.js?build=5f4e39d"></script>
+  
+  <script type="text/javascript">
+    // Event tracking for the new menu
+    $(function() {
+      $('#nav-main').on('click', 'a', function(e) {
+        window._gaq && _gaq.push(['_trackEvent', 'Menu', 'Click', e.target.innerHTML, e.target.href]);
+      });
+    });
+  </script>
+        <!-- include syntax highlighting scripts -->
+  
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=5f4e39d" />
+
+  <script type="text/javascript">
+    MEDIA_URL = 'https://developer.cdn.mozilla.net/media/';
+  </script>
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/media/prism/prism.js" data-manual></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/syntax-prism-min.js?build=5f4e39d"></script>
+
+<script src="/en-US/waffles.js" type="text/javascript" async></script>
+</body>
+</html>

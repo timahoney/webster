@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+<head>
+      <script src="//cdn.optimizely.com/js/237572123.js"></script>
+  
+  <title>FMRadio - Web API reference | MDN</title>
+  
+  <meta charset="utf-8">
+  <meta name="robots" content="index, follow">
+  <link rel="home" href="/en-US/">
+  <link rel="copyright" href="#copyright">
+  <link rel="shortcut icon" href="https://developer.cdn.mozilla.net/media/img/favicon.ico">
+
+        <!--[if !IE 6]><!-->
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/mdn-min.css?build=5f4e39d" />
+      <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/wiki-min.css?build=5f4e39d" />
+    <!--<![endif]-->
+  <!--[if IE]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie.css"><![endif]-->
+  <!--[if lte IE 7]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie7.css"><![endif]-->
+  <!--[if lte IE 6]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie6.css"><![endif]-->
+  <link rel="stylesheet" type="text/css" href="https://developer.cdn.mozilla.net/media/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="print" href="https://developer.cdn.mozilla.net/media/css/mdn-print.css">
+  <link rel="stylesheet" href="https://mozorg.cdn.mozilla.net/media/css/tabzilla-min.css">
+  
+
+  <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network" />
+
+  
+    <link rel="stylesheet" media="print" href="https://developer.cdn.mozilla.net/media/css/wiki-print-min.css?build=5f4e39d" />
+          <link rel="stylesheet" type="text/css"
+            href="/en-US/docs/Template:CustomCSS?raw=1" />
+    
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script src="https://developer.cdn.mozilla.net/media/js/html5.js"></script>
+  <![endif]-->
+
+    <link rel="alternate" type="application/json" href="/en-US/docs/Web/API/FMRadio$json" />
+  <link rel="canonical" href="https://developer.mozilla.org/en-US/docs/Web/API/FMRadio" />
+
+  <meta property="og:title" content="FMRadio" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://developer.mozilla.org/media/img/mdn-logo-sm.png" />
+  <meta property="og:site_name" content="Mozilla Developer Network" />
+  <meta property="og:url" content="https://developer.mozilla.org/en-US/docs/Web/API/FMRadio" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:url" content="https://developer.mozilla.org/en-US/docs/Web/API/FMRadio" />
+  <meta name="twitter:title" content="FMRadio" />
+  <meta name="twitter:image" content="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" />
+  <meta name="twitter:site" content="@mozhacks" />
+  <meta name="twitter:creator" content="@mozhacks" />
+
+    <meta property="og:description" content="The WebFM API provides access to the device FM radio. This interface lets you turn the FM radio on and off and tune it to different stations. It is accessible through the navigator.mozFMRadio property."/>
+  <meta name="description" content="The WebFM API provides access to the device FM radio. This interface lets you turn the FM radio on and off and tune it to different stations. It is accessible through the navigator.mozFMRadio property." />
+  <meta name="twitter:description" content="The WebFM API provides access to the device FM radio. This interface lets you turn the FM radio on and off and tune it to different stations. It is accessible through the navigator.mozFMRadio property." />
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36116321-5']);
+  _gaq.push(['_trackPageview']);
+
+  (function(a, d) {
+    var ga = d.createElement(a); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == d.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = d.getElementsByTagName(a)[0]; s.parentNode.insertBefore(ga, s);
+  })('script', document);
+
+</script>
+</head>
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  <header id="masthead" class="minor new-menu">
+    <div class="wrap">
+      <ul id="nav-access">
+        <li><a href="#language">Select language</a></li>
+        <li><a href="#q">Skip to search</a></li>
+        <li><a href="#content">Skip to main content</a></li>
+      </ul>
+    
+      <div id="branding">
+                <div id="logo"><a href="/en-US/"><img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" alt="Mozilla Developer Network" title="Mozilla Developer Network" width="62" height="71"> Mozilla Developer Network</a></div>
+              </div>
+      
+              <nav id="nav">
+          <ul id="nav-main" role="menubar">
+            <li id="nav-main-docs" class="menu" rel="menuitem"><a href="#nav-sub-docs" class="toggle" aria-haspopup="true" aria-labelledby="nav-main-docs" title="Read Documentation">Read<br /><em>Docs</em></a>
+              <div id="nav-sub-docs" class="sub-menu" aria-hidden="true">
+                <ul>
+                  <li>
+                    <ul>
+
+                      <li><a href="/en-US/docs/Web/HTML?menu">HTML</a></li>
+                      <li><a href="/en-US/docs/Web/CSS?menu">CSS</a></li>
+                      <li><a href="/en-US/docs/Web/JavaScript?menu">JavaScript</a></li>
+                      <li><a href="/en-US/docs/Web/Guide/Graphics?menu">Graphics</a></li>
+                      <li><a href="/en-US/docs/Web/API?menu">APIs / DOM</a></li>
+                      <li><a href="/en-US/docs/Web/Apps?menu">Apps</a></li>
+                      <li><a href="/en-US/docs/tools?menu">Dev Tools</a></li>
+                      <li><a href="/en-US/docs/Web/MathML?menu">MathML</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <ul>
+                      <li><a href="/en-US/docs/Web/Tutorials?menu">Tutorials</a></li>
+                      <li><a href="/en-US/docs/Web/Reference?menu">References</a></li>
+                      <li><a href="/en-US/docs/Web/Guide?menu">Developer Guides</a></li>
+                      <li><a href="/en-US/demos/?menu">Demos</a></li>
+                      <li><br /><br /><a href="/en-US/docs?menu">...more docs</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li id="nav-main-apps" role="menuitem"><a href="https://marketplace.firefox.com/developers/">Make<br /><em>Apps</em></a></li>
+            <li id="nav-main-firefox" class="menu" role="menuitem"><a href="#nav-sub-firefox" class="firefox toggle" aria-haspopup="true" aria-labelledby="nav-main-firefox">Build & Use<br /><em>Firefox</em></a>
+              <ul id="nav-sub-firefox" class="sub-menu">
+                <li><a href="/en-US/docs/Mozilla/Firefox_OS?menu">Firefox OS</a></li>
+                <li><a href="/en-US/docs/Mozilla/Firefox?menu">Firefox Desktop</a></li>
+                <li><a href="/en-US/docs/Mozilla/Mobile?menu">Mobile</a></li>
+                <li><a href="/en-US/docs/Mozilla/Add-ons?menu">Add-ons</a></li>
+              </ul>
+            </li>
+            <li id="nav-main-demos" role="menuitem"><a href="/en-US/demos/?menu" class="demos">See & Submit<br /><em>Demos</em></a></li>
+            <li id="nav-main-community" class="menu" role="menuitem"><a href="#nav-sub-community" class="community toggle" aria-haspopup="true" aria-labelledby="nav-main-community">Get<br /><em>Involved</em></a>
+              <ul id="nav-sub-community" class="sub-menu">
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Join_the_community?menu">Join the Community</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing?menu">Contribute to MDN</a></li>
+                <li><a href="/en-US/events?menu">Events</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Follow_what_s_happening?menu">Tweets, Blogs, and More</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+          
+      <ul class="user-state signed-out">
+    <li class="user-signin menu">
+    <form class="browserid" action="/en-US/users/browserid_verify" method="POST">
+        <input id="next" name="next" type="hidden" value="/en-US/docs/Web/API/FMRadio"/>
+        <input required="required" type="hidden" name="assertion" id="id_assertion" />
+                        <a href="#" target="_blank" class="browserid-signin toggle" aria-haspopup="true" title="Sign in with Persona">Sign in</a>
+                <div class="browserid-info sub-menu" aria-hidden="true">
+                <h3>What's this?</h3> <p>MDN has switched to <a href="https://persona.org/" target="_blank" rel="external">Persona</a>, a safe and simple way to sign in with just your e-mail address. <a href="http://identity.mozilla.com/post/12950196039/deploying-browserid-at-mozilla" rel="external">Learn more about why Mozilla is using Persona</a>.</p> <p><strong>Returning members:</strong> sign in with Persona and you'll be connected to your MDN profile (all your information is still here).</p> <p><strong>New members:</strong> sign in with Persona first, then you'll be able to set up your new MDN profile.</p>          <p><a href="#" target="_blank" class="browserid-signin" title="Sign in with Persona">Sign in</a></p>
+        </div>
+              </form>
+    </li>
+  </ul>
+      
+      <form id="site-search" method="get" action="http://www.google.com/search"
+              data-url="/en-US/search">
+        <p>
+          <input type="search" role="search" placeholder="Search MDN" id="q" name="q" value="">
+          <noscript><button type="submit">Search</button></noscript>
+        </p>
+        <input type="hidden" name="sitesearch" value="developer.mozilla.org">
+                <div id="site-search-gg"></div>
+              </form>
+
+      <a href="//www.mozilla.org/" id="tabzilla">mozilla</a>
+    </div>
+  </header>
+
+    
+
+<!-- top toolbar -->
+<section id="nav-toolbar"><div><div class="wrap">
+  <!-- right floated navigation -->
+  <nav id="tool-menus" role="navigation">
+    <ul id="tools">
+      <li class="menu">
+        <a href="#page-tools" class="toggle">This page</a>
+        <ul id="page-tools" class="sub-menu">
+          <li class="page-print"> <a href="#" onclick="return window.print();"  title="Print page">Print this page</a></li>
+                      <li><a href="/en-US/docs/new?parent=60693">New sub-page</a></li>
+            <li><a href="/en-US/docs/new?clone=60693">Clone this page</a></li>
+                                      </ul>
+      </li>
+            <li class="menu">
+        <a href="#" class="toggle">Languages</a>
+        <ul id="translations">
+                      <li><a rel="internal" href="/zh-TW/docs/Gecko_DOM_%E5%8F%83%E8%80%83/WebFM" title="WebFM">正體中文 (繁體)</a></li>
+                    
+                      <li><a href="/en-US/docs/Web/API/FMRadio$locales">Add translation</a></li>
+                  </ul>
+      </li>
+          </ul>
+  </nav>
+  
+  <!-- left crumb navigation -->
+  <nav class="crumbs" role="navigation">
+    <ol>
+              <li class="crumb"><a href="/en-US/docs/Web">Web technology for developers</a></li>
+              <li class="crumb"><a href="/en-US/docs/Web/API">Web API reference</a></li>
+            <li class="crumb">FMRadio</li>
+    </ol>
+  </nav>
+  
+</div></div></section>
+
+
+
+<section id="content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" 
+          data-current-revision="426141"
+          data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes."
+          data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title">
+            <h1 class="page-title">FMRadio</h1>
+                    </div>
+        <ul id="page-buttons">
+            <li class="page-history"><a href="/en-US/docs/Web/API/FMRadio$history"><i class="icon-book"></i>History</a></li>
+                                                                                  <li class="page-edit"><a href="/en-US/docs/Web/API/FMRadio$edit"><i class="icon-pencil"></i>Edit</a></li>
+                    </ul>
+
+        
+               </header>
+
+           
+                        <div class="warning review-technical"><p>This article is in need of a technical review.</p></div>
+                            
+            
+      <div id="wikiArticle" class="page-content boxed">
+                <div id="article-nav">
+          <div class="page-toc">
+            <h2>Table of Contents</h2>
+            <ol>
+              <li><a href="#Summary" rel="internal">Summary</a><code></code><li><a href="#API_Overview" rel="internal">API Overview</a><li><a href="#Properties" rel="internal">Properties</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><ol><li><a href="#Event_handlers" rel="internal">Event handlers</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code></ol></li><li><a href="#Methods" rel="internal">Methods</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Specification" rel="internal">Specification</a><li><a href="#See_also" rel="internal">See also</a>
+            </ol>
+          </div>
+          <ul class="page-anchors">
+            <li class="anchor-tags">
+                              <i class="icon-tags"></i><a href="#page-tags">Tags</a>
+                          </li>
+            <li class="anchor-files">
+                              <i class="icon-paper-clip off"></i><span title="This document has no attachments">Files</span>
+                          </li>
+          </ul>
+        </div>
+                                <p></p><div class="overheadIndicator nonStandard nonStandardHeader"> 
+      <p>Non-standard</p> 
+      </div><p></p>
+<p></p><div class="warning"> 
+    <p style="text-align: center;">This API is available on Firefox or <a href="/en-US/docs/Mozilla/Firefox_OS">Firefox OS</a> for <a href="/en-US/docs/Mozilla/Firefox_OS/Security/Application_security">installed or higher privileged applications</a>.</p> 
+</div><p></p>
+<h2 id="Summary">Summary</h2>
+<p>The WebFM API provides access to the device FM radio. This interface lets you turn the FM radio on and off and tune it to different stations. It is accessible through the <a href="/en-US/docs/Web/API/window.navigator.mozFMRadio" title="/en-US/docs/Web/API/window.navigator.mozFMRadio"><code>navigator.mozFMRadio</code></a> property.</p>
+<h2 id="API_Overview">API Overview</h2>
+<pre>interface FMRadio : EventTarget {
+   readonly attribute boolean enabled;
+   readonly attribute boolean antennaAvailable;
+   readonly attribute double frequency;
+   readonly attribute double frequencyUpperBound;
+   readonly attribute double frequencyLowerBound;
+   readonly attribute double channelWidth;
+
+   attribute Function onantennaavailablechange;
+   attribute Function onfrequencychange;
+   attribute Function onenabled;
+   attribute Function ondisabled;
+
+   DOMRequest enable(double frequency);
+   DOMRequest disable();
+   DOMRequest setFrequency(double frequency);
+   DOMRequest seekUp();
+   DOMRequest seekDown();
+   DOMRequest cancelSeek();
+}</pre>
+<h2 id="Properties">Properties</h2>
+<dl>
+  <dt>
+    <a href="/en-US/docs/Web/API/FMRadio.enabled" title="/en-US/docs/Web/API/FMRadio.enabled"><code>FMRadio.enabled</code></a></dt>
+  <dd>
+    Indicates whether the radio is playing</dd>
+  <dt>
+    <a href="/en-US/docs/Web/API/FMRadio.antennaAvailable" title="/en-US/docs/Web/API/FMRadio.antennaAvailable"><code>FMRadio.antennaAvailable</code></a></dt>
+  <dd>
+    Indicate if an antenna is plugged and available</dd>
+  <dt>
+    <a href="/en-US/docs/Web/API/FMRadio.frequency" title="/en-US/docs/Web/API/FMRadio.frequency"><code>FMRadio.frequency</code></a></dt>
+  <dd>
+    Current radio frequency.</dd>
+  <dt>
+    <a href="/en-US/docs/Web/API/FMRadio.frequencyUpperBound" title="/en-US/docs/Web/API/FMRadio.frequencyUpperBound"><code>FMRadio.frequencyUpperBound</code></a></dt>
+  <dd>
+    Maximum frequency up to which the <code>seek</code> method searches for radio stations</dd>
+  <dt>
+    <a href="/en-US/docs/Web/API/FMRadio.frequencyLowerBound" title="/en-US/docs/Web/API/FMRadio.frequencyLowerBound"><code>FMRadio.frequencyLowerBound</code></a></dt>
+  <dd>
+    Minimum frequency down to which the <code>seek</code> method searches for radio stations</dd>
+  <dt>
+    <a href="/en-US/docs/Web/API/FMRadio.channelWidth" title="/en-US/docs/Web/API/FMRadio.channelWidth"><code>FMRadio.channelWidth</code></a></dt>
+  <dd>
+    The channel width of the ranges of frequency, in MHz.</dd>
+</dl>
+<h3 id="Event_handlers">Event handlers</h3>
+<dl>
+  <dt>
+    <a href="/en-US/docs/Web/API/FMRadio.onenabled" title="/en-US/docs/Web/API/FMRadio.onenabled"><code>FMRadio.onenabled</code></a></dt>
+  <dd>
+    A handler for the <code><a href="/en-US/docs/Web/Reference/Events/enabled" title="/en-US/docs/Web/Reference/Events/enabled">enabled</a></code> event; It is triggered when the radio has been turned on</dd>
+  <dt>
+    <a href="/en-US/docs/Web/API/FMRadio.ondisabled" title="/en-US/docs/Web/API/FMRadio.ondisabled"><code>FMRadio.ondisabled</code></a></dt>
+  <dd>
+    A handler for the <code><a href="/en-US/docs/Web/Reference/Events/disabled" title="/en-US/docs/Web/Reference/Events/disabled">disabled</a></code> event; It is triggered when the radio has been turned off</dd>
+  <dt>
+    <a href="/en-US/docs/Web/API/FMRadio.onantennaavailablechange" title="/en-US/docs/Web/API/FMRadio.onantennaavailablechange"><code>FMRadio.onantennaavailablechange</code></a></dt>
+  <dd>
+    A handler for the <code><a class="new" href="/en-US/docs/Web/Reference/Events/antennaavailablechange" title="/en-US/docs/Web/Reference/Events/antennaavailablechange">antennaavailablechange</a></code> event; It is triggered when an antenna is plugged or unplugged</dd>
+  <dt>
+    <a href="/en-US/docs/Web/API/FMRadio.onfrequencychange" title="/en-US/docs/Web/API/FMRadio.onfrequencychange"><code>FMRadio.onfrequencychange</code></a></dt>
+  <dd>
+    A handler for the <code><a class="new" href="/en-US/docs/Web/Reference/Events/frequencychange" title="/en-US/docs/Web/Reference/Events/frequencychange">frequencychange</a></code> event; It is triggered whenever the radio frequency is changed</dd>
+</dl>
+<h2 id="Methods">Methods</h2>
+<dl>
+  <dt>
+    <a href="/en-US/docs/Web/API/FMRadio.enable" title="/en-US/docs/Web/API/FMRadio.enable"><code>FMRadio.enable()</code></a></dt>
+  <dd>
+    Turns on the radio on the given frequency. This function throws if called with no argument. Returns a <a href="/en-US/docs/Web/API/DOMRequest" title="/en-US/docs/Web/API/DOMRequest"><code>DOMRequest</code></a> for the success or error of the operation.</dd>
+  <dt>
+    <a href="/en-US/docs/Web/API/FMRadio.disable" title="/en-US/docs/Web/API/FMRadio.disable"><code>FMRadio.disable()</code></a></dt>
+  <dd>
+    Turns the radio off. Returns a <a href="/en-US/docs/Web/API/DOMRequest" title="/en-US/docs/Web/API/DOMRequest"><code>DOMRequest</code></a> which success indicates that the radio has properly been disabled</dd>
+  <dt>
+    <a href="/en-US/docs/Web/API/FMRadio.setFrequency" title="/en-US/docs/Web/API/FMRadio.setFrequency"><code>FMRadio.setFrequency()</code></a></dt>
+  <dd>
+    Asynchronously changes the radio frequency. The value has to be between <code>frequencyLowerBound</code> and <code>frequencyUpperBound</code>. Trying to set outside the bounds results in an error.</dd>
+  <dd>
+    Returns a <a href="/en-US/docs/Web/API/DOMRequest" title="/en-US/docs/Web/API/DOMRequest"><code>DOMRequest</code></a> which success indicates the frequency has properly been changed.</dd>
+  <dt>
+    <a href="/en-US/docs/Web/API/FMRadio.seekUp" title="/en-US/docs/Web/API/FMRadio.seekUp"><code>FMRadio.seekUp()</code></a></dt>
+  <dd>
+    Asks the radio to find a new frequency (usually greater than the current one). If one is successfully found, a <code>frequencychange</code> event is fired. Returns a <a href="/en-US/docs/Web/API/DOMRequest" title="/en-US/docs/Web/API/DOMRequest"><code>DOMRequest</code></a> which success indicates that the search has started. The search circles back to lower frequencies when the highest frequency has been reached.</dd>
+  <dt>
+    <a href="/en-US/docs/Web/API/FMRadio.seekDown" title="/en-US/docs/Web/API/FMRadio.seekDown"><code>FMRadio.seekDown()</code></a></dt>
+  <dd>
+    Same as above, but searching in frequencies lower than the current one. The search cirlces back to higher frequencies when the lowest frequency has been reached.</dd>
+  <dt>
+    <a href="/en-US/docs/Web/API/FMRadio.cancelSeek" title="/en-US/docs/Web/API/FMRadio.cancelSeek"><code>FMRadio.cancelSeek()</code></a></dt>
+  <dd>
+    Cancels the radio seek if one was happening. Returns a <a href="/en-US/docs/Web/API/DOMRequest" title="/en-US/docs/Web/API/DOMRequest"><code>DOMRequest</code></a> which success indicates that the frequency search has been cancelled.</dd>
+</dl>
+<h2 id="Specification">Specification</h2>
+<p>Not part of any specification.</p>
+<h2 id="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/WebAPI/WebFM_API" title="/en-US/docs/WebAPI/WebFM_API">WebFM API</a></li>
+  <li><a class="external" href="https://github.com/mozilla-b2g/gaia/tree/master/apps/fm" title="https://github.com/mozilla-b2g/gaia/tree/master/apps/fm">Gaia radio app</a></li>
+</ul>
+                  </div>
+    <section class="page-meta">
+      
+            <section id="page-tags">
+        <h2><i class="icon-tags"></i>Tags (5)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/WebAPI">WebAPI</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/B2G">B2G</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/WebFM">WebFM</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Non-standard">Non-standard</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/FirefoxOS">FirefoxOS</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/dbruant">dbruant</a>, <a href="/en-US/profiles/jlebar">jlebar</a>, <a href="/en-US/profiles/Jeremie">Jeremie</a>, <a href="/en-US/profiles/justinpotts">justinpotts</a>, <a href="/en-US/profiles/teoli">teoli</a>, <a href="/en-US/profiles/MarkGiffin">MarkGiffin</a>
+                          <br />
+          Last updated by:  
+          <a href="/en-US/profiles/Jeremie">Jeremie</a>, 
+          <time datetime="2013-06-07T05:36:20-07:00">Jun 7, 2013 5:36:20 AM</time>
+                      <br />
+            Last reviewed by:  
+            <a href="/en-US/profiles/Jeremie">Jeremie</a>, 
+            <time datetime="2013-06-07T05:36:20-07:00">Jun 7, 2013 5:36:20 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/API/FMRadio$edit">
+      <input type="hidden" name="form" id="form" value="rev" />
+      <input type="hidden" name="content" id="content" value="" />
+  </form>
+      </div>
+   </div>
+    </section>
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+<footer id="site-info" class="footer" role="contentinfo">
+<div class="wrap">
+    <div id="legal">
+      <img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-tiny.png" alt="" width="42" height="48">
+      <p id="copyright">&copy; 2005 - 2013 Mozilla Developer Network and individual contributors</p>
+      <p>
+      Content is available under <a href="/en-US/docs/Project:Copyrights">these licenses</a>      &bull; <a href="/en-US/docs/Project:About">About MDN</a>
+      &bull; <a href="//github.com/mozilla/kuma">Contribute to the code</a>
+      &bull; <a href="//www.mozilla.org/en-US/privacy">Privacy Policy</a>
+    </div>
+          <form class="languages go" method="get" action="/en-US/docs">
+      <label for="language">Other languages:</label>
+      <select id="language" class="wiki-l10n" name="next" dir="ltr">
+        <option value="/en-US/docs/Web/API/FMRadio" selected>
+          English (US)
+        </option>
+                  <option value="/zh-TW/docs/Gecko_DOM_%E5%8F%83%E8%80%83/WebFM">
+            正體中文 (繁體)
+          </option>      </select>
+      <noscript><button type="submit">Go</button></noscript>
+    </form>
+  </div>
+</footer>
+
+<script src="/en-US/jsi18n/build:5f4e39d"></script>
+  <script src="//mozorg.cdn.mozilla.net/en-US/tabzilla/tabzilla.js" async></script>
+  <script src="//www.google.com/jsapi" type="text/javascript"></script>
+  <script src="https://login.persona.org/include.js" type="text/javascript"></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/mdn-min.js?build=5f4e39d"></script>
+      <script src="https://developer.cdn.mozilla.net/media/js/wiki-min.js?build=5f4e39d"></script>
+  
+  <script type="text/javascript">
+    // Event tracking for the new menu
+    $(function() {
+      $('#nav-main').on('click', 'a', function(e) {
+        window._gaq && _gaq.push(['_trackEvent', 'Menu', 'Click', e.target.innerHTML, e.target.href]);
+      });
+    });
+  </script>
+        <!-- include syntax highlighting scripts -->
+  
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=5f4e39d" />
+
+  <script type="text/javascript">
+    MEDIA_URL = 'https://developer.cdn.mozilla.net/media/';
+  </script>
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/media/prism/prism.js" data-manual></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/syntax-prism-min.js?build=5f4e39d"></script>
+
+<script src="/en-US/waffles.js" type="text/javascript" async></script>
+</body>
+</html>

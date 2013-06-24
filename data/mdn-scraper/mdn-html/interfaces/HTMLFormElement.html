@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+<head>
+      <script src="//cdn.optimizely.com/js/237572123.js"></script>
+  
+  <title>HTMLFormElement - Web API reference | MDN</title>
+  
+  <meta charset="utf-8">
+  <meta name="robots" content="index, follow">
+  <link rel="home" href="/en-US/">
+  <link rel="copyright" href="#copyright">
+  <link rel="shortcut icon" href="https://developer.cdn.mozilla.net/media/img/favicon.ico">
+
+        <!--[if !IE 6]><!-->
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/mdn-min.css?build=5f4e39d" />
+      <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/wiki-min.css?build=5f4e39d" />
+    <!--<![endif]-->
+  <!--[if IE]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie.css"><![endif]-->
+  <!--[if lte IE 7]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie7.css"><![endif]-->
+  <!--[if lte IE 6]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie6.css"><![endif]-->
+  <link rel="stylesheet" type="text/css" href="https://developer.cdn.mozilla.net/media/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="print" href="https://developer.cdn.mozilla.net/media/css/mdn-print.css">
+  <link rel="stylesheet" href="https://mozorg.cdn.mozilla.net/media/css/tabzilla-min.css">
+  
+
+  <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network" />
+
+  
+    <link rel="stylesheet" media="print" href="https://developer.cdn.mozilla.net/media/css/wiki-print-min.css?build=5f4e39d" />
+          <link rel="stylesheet" type="text/css"
+            href="/en-US/docs/Template:CustomCSS?raw=1" />
+    
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script src="https://developer.cdn.mozilla.net/media/js/html5.js"></script>
+  <![endif]-->
+
+    <link rel="alternate" type="application/json" href="/en-US/docs/Web/API/HTMLFormElement$json" />
+  <link rel="canonical" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement" />
+
+  <meta property="og:title" content="HTMLFormElement" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://developer.mozilla.org/media/img/mdn-logo-sm.png" />
+  <meta property="og:site_name" content="Mozilla Developer Network" />
+  <meta property="og:url" content="https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:url" content="https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement" />
+  <meta name="twitter:title" content="HTMLFormElement" />
+  <meta name="twitter:image" content="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" />
+  <meta name="twitter:site" content="@mozhacks" />
+  <meta name="twitter:creator" content="@mozhacks" />
+
+    <meta property="og:description" content="The HTMLFormElement interface provides methods to create and modify form elements; it inherits from properties and methods of the HTMLElement interface."/>
+  <meta name="description" content="The HTMLFormElement interface provides methods to create and modify form elements; it inherits from properties and methods of the HTMLElement interface." />
+  <meta name="twitter:description" content="The HTMLFormElement interface provides methods to create and modify form elements; it inherits from properties and methods of the HTMLElement interface." />
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36116321-5']);
+  _gaq.push(['_trackPageview']);
+
+  (function(a, d) {
+    var ga = d.createElement(a); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == d.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = d.getElementsByTagName(a)[0]; s.parentNode.insertBefore(ga, s);
+  })('script', document);
+
+</script>
+</head>
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  <header id="masthead" class="minor new-menu">
+    <div class="wrap">
+      <ul id="nav-access">
+        <li><a href="#language">Select language</a></li>
+        <li><a href="#q">Skip to search</a></li>
+        <li><a href="#content">Skip to main content</a></li>
+      </ul>
+    
+      <div id="branding">
+                <div id="logo"><a href="/en-US/"><img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" alt="Mozilla Developer Network" title="Mozilla Developer Network" width="62" height="71"> Mozilla Developer Network</a></div>
+              </div>
+      
+              <nav id="nav">
+          <ul id="nav-main" role="menubar">
+            <li id="nav-main-docs" class="menu" rel="menuitem"><a href="#nav-sub-docs" class="toggle" aria-haspopup="true" aria-labelledby="nav-main-docs" title="Read Documentation">Read<br /><em>Docs</em></a>
+              <div id="nav-sub-docs" class="sub-menu" aria-hidden="true">
+                <ul>
+                  <li>
+                    <ul>
+
+                      <li><a href="/en-US/docs/Web/HTML?menu">HTML</a></li>
+                      <li><a href="/en-US/docs/Web/CSS?menu">CSS</a></li>
+                      <li><a href="/en-US/docs/Web/JavaScript?menu">JavaScript</a></li>
+                      <li><a href="/en-US/docs/Web/Guide/Graphics?menu">Graphics</a></li>
+                      <li><a href="/en-US/docs/Web/API?menu">APIs / DOM</a></li>
+                      <li><a href="/en-US/docs/Web/Apps?menu">Apps</a></li>
+                      <li><a href="/en-US/docs/tools?menu">Dev Tools</a></li>
+                      <li><a href="/en-US/docs/Web/MathML?menu">MathML</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <ul>
+                      <li><a href="/en-US/docs/Web/Tutorials?menu">Tutorials</a></li>
+                      <li><a href="/en-US/docs/Web/Reference?menu">References</a></li>
+                      <li><a href="/en-US/docs/Web/Guide?menu">Developer Guides</a></li>
+                      <li><a href="/en-US/demos/?menu">Demos</a></li>
+                      <li><br /><br /><a href="/en-US/docs?menu">...more docs</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li id="nav-main-apps" role="menuitem"><a href="https://marketplace.firefox.com/developers/">Make<br /><em>Apps</em></a></li>
+            <li id="nav-main-firefox" class="menu" role="menuitem"><a href="#nav-sub-firefox" class="firefox toggle" aria-haspopup="true" aria-labelledby="nav-main-firefox">Build & Use<br /><em>Firefox</em></a>
+              <ul id="nav-sub-firefox" class="sub-menu">
+                <li><a href="/en-US/docs/Mozilla/Firefox_OS?menu">Firefox OS</a></li>
+                <li><a href="/en-US/docs/Mozilla/Firefox?menu">Firefox Desktop</a></li>
+                <li><a href="/en-US/docs/Mozilla/Mobile?menu">Mobile</a></li>
+                <li><a href="/en-US/docs/Mozilla/Add-ons?menu">Add-ons</a></li>
+              </ul>
+            </li>
+            <li id="nav-main-demos" role="menuitem"><a href="/en-US/demos/?menu" class="demos">See & Submit<br /><em>Demos</em></a></li>
+            <li id="nav-main-community" class="menu" role="menuitem"><a href="#nav-sub-community" class="community toggle" aria-haspopup="true" aria-labelledby="nav-main-community">Get<br /><em>Involved</em></a>
+              <ul id="nav-sub-community" class="sub-menu">
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Join_the_community?menu">Join the Community</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing?menu">Contribute to MDN</a></li>
+                <li><a href="/en-US/events?menu">Events</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Follow_what_s_happening?menu">Tweets, Blogs, and More</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+          
+      <ul class="user-state signed-out">
+    <li class="user-signin menu">
+    <form class="browserid" action="/en-US/users/browserid_verify" method="POST">
+        <input id="next" name="next" type="hidden" value="/en-US/docs/Web/API/HTMLFormElement"/>
+        <input required="required" type="hidden" name="assertion" id="id_assertion" />
+                        <a href="#" target="_blank" class="browserid-signin toggle" aria-haspopup="true" title="Sign in with Persona">Sign in</a>
+                <div class="browserid-info sub-menu" aria-hidden="true">
+                <h3>What's this?</h3> <p>MDN has switched to <a href="https://persona.org/" target="_blank" rel="external">Persona</a>, a safe and simple way to sign in with just your e-mail address. <a href="http://identity.mozilla.com/post/12950196039/deploying-browserid-at-mozilla" rel="external">Learn more about why Mozilla is using Persona</a>.</p> <p><strong>Returning members:</strong> sign in with Persona and you'll be connected to your MDN profile (all your information is still here).</p> <p><strong>New members:</strong> sign in with Persona first, then you'll be able to set up your new MDN profile.</p>          <p><a href="#" target="_blank" class="browserid-signin" title="Sign in with Persona">Sign in</a></p>
+        </div>
+              </form>
+    </li>
+  </ul>
+      
+      <form id="site-search" method="get" action="http://www.google.com/search"
+              data-url="/en-US/search">
+        <p>
+          <input type="search" role="search" placeholder="Search MDN" id="q" name="q" value="">
+          <noscript><button type="submit">Search</button></noscript>
+        </p>
+        <input type="hidden" name="sitesearch" value="developer.mozilla.org">
+                <div id="site-search-gg"></div>
+              </form>
+
+      <a href="//www.mozilla.org/" id="tabzilla">mozilla</a>
+    </div>
+  </header>
+
+    
+
+<!-- top toolbar -->
+<section id="nav-toolbar"><div><div class="wrap">
+  <!-- right floated navigation -->
+  <nav id="tool-menus" role="navigation">
+    <ul id="tools">
+      <li class="menu">
+        <a href="#page-tools" class="toggle">This page</a>
+        <ul id="page-tools" class="sub-menu">
+          <li class="page-print"> <a href="#" onclick="return window.print();"  title="Print page">Print this page</a></li>
+                      <li><a href="/en-US/docs/new?parent=9873">New sub-page</a></li>
+            <li><a href="/en-US/docs/new?clone=9873">Clone this page</a></li>
+                                      </ul>
+      </li>
+            <li class="menu">
+        <a href="#" class="toggle">Languages</a>
+        <ul id="translations">
+                      <li><a rel="internal" href="/es/docs/DOM/form" title="form">Español</a></li>
+                      <li><a rel="internal" href="/fr/docs/DOM/form" title="form">Français</a></li>
+                      <li><a rel="internal" href="/ja/docs/DOM/form" title="form">日本語</a></li>
+                      <li><a rel="internal" href="/pl/docs/DOM/form" title="form">Polski</a></li>
+                    
+                      <li><a href="/en-US/docs/Web/API/HTMLFormElement$locales">Add translation</a></li>
+                  </ul>
+      </li>
+          </ul>
+  </nav>
+  
+  <!-- left crumb navigation -->
+  <nav class="crumbs" role="navigation">
+    <ol>
+              <li class="crumb"><a href="/en-US/docs/Web">Web technology for developers</a></li>
+              <li class="crumb"><a href="/en-US/docs/Web/API">Web API reference</a></li>
+            <li class="crumb">HTMLFormElement</li>
+    </ol>
+  </nav>
+  
+</div></div></section>
+
+
+
+<section id="content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" 
+          data-current-revision="414251"
+          data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes."
+          data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title">
+            <h1 class="page-title">HTMLFormElement</h1>
+                    </div>
+        <ul id="page-buttons">
+            <li class="page-history"><a href="/en-US/docs/Web/API/HTMLFormElement$history"><i class="icon-book"></i>History</a></li>
+                                                                                  <li class="page-edit"><a href="/en-US/docs/Web/API/HTMLFormElement$edit"><i class="icon-pencil"></i>Edit</a></li>
+                    </ul>
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                <div id="article-nav">
+          <div class="page-toc">
+            <h2>Table of Contents</h2>
+            <ol>
+              <code></code><code></code><code></code><li><a href="#Properties" rel="internal">Properties</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Methods" rel="internal">Methods</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Examples" rel="internal">Examples</a><ol><li><a href="#Submitting_forms_and_uploading_files_using_XMLHttpRequest" rel="internal">Submitting forms and uploading files using <code>XMLHttpRequest</code></a><code></code></ol></li><li><a href="#Specifications" rel="internal">Specifications</a><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Browser_compatibility" rel="internal">Browser compatibility</a><li><a href="#See_also" rel="internal">See also</a><code></code>
+            </ol>
+          </div>
+          <ul class="page-anchors">
+            <li class="anchor-tags">
+                              <i class="icon-tags"></i><a href="#page-tags">Tags</a>
+                          </li>
+            <li class="anchor-files">
+                              <i class="icon-paper-clip off"></i><span title="This document has no attachments">Files</span>
+                          </li>
+          </ul>
+        </div>
+                                <p><span class="breadcrumbs domRef_breadcrumbs">« <a href="/en-US/docs/DOM/DOM_Reference">DOM Reference</a></span></p>
+<p>The <strong><code>HTMLFormElement</code></strong> interface provides methods to create and modify <a href="/en-US/docs/Web/HTML/Element/form"><code>&lt;form&gt;</code></a> elements; it inherits from properties and methods of the <a href="/en-US/docs/Web/API/HTMLElement" title="/en-US/docs/Web/API/HTMLElement"><code>HTMLElement</code></a> interface.</p>
+<h2 id="Properties">Properties</h2>
+<p><em>Inherits properties from its parent, <a href="/en-US/docs/Web/API/HTMLElement" title="/en-US/docs/Web/API/HTMLElement"><code>HTMLElement</code></a>.</em></p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Type</th>
+      <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="/en-US/docs/Web/API/HTMLFormElement.acceptCharset" title="/en-US/docs/Web/API/HTMLFormElement.acceptCharset"><code>acceptCharset</code></a></td>
+      <td><a href="/en-US/docs/Web/API/DOMString" title="/en-US/docs/Web/API/DOMString"><code>DOMString</code></a></td>
+      <td>Reflects the <code><a href="/en-US/docs/Web/HTML/Element/form#attr-accept-charset">accept-charset</a></code> HTML attribute, containing a list of character encodings that the server accepts.</td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/Web/API/HTMLFormElement.action" title="/en-US/docs/Web/API/HTMLFormElement.action"><code>action</code></a></td>
+      <td><a href="/en-US/docs/Web/API/DOMString" title="/en-US/docs/Web/API/DOMString"><code>DOMString</code></a></td>
+      <td>Reflects the <code><a href="/en-US/docs/Web/HTML/Element/form#attr-action">action</a></code> HTML attribute, containing the URI of a program that processes the information submitted by the form.</td>
+    </tr>
+    <tr>
+      <td><code>autocomplete</code></td>
+      <td><a href="/en-US/docs/Web/API/DOMString" title="/en-US/docs/Web/API/DOMString"><code>DOMString</code></a></td>
+      <td>Reflects the <code><a href="/en-US/docs/Web/HTML/Element/form#attr-autocomplete">autocomplete</a></code> HTML attribute, containing a string that indicates whether the controls in this form can have their values automatically populated by the browser.</td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/Web/API/HTMLFormElement.elements" title="/en-US/docs/Web/API/HTMLFormElement.elements"><code>elements</code></a><code><a href="/en/DOM/form.elements" title="en/DOM/form.elements"> </a></code><span class="inlineIndicator readOnly readOnlyInline" title="This value may not be changed.">Read only </span></td>
+      <td><a href="/en-US/docs/Web/API/HTMLFormControlsCollection" title="/en-US/docs/Web/API/HTMLFormControlsCollection"><code>HTMLFormControlsCollection</code></a></td>
+      <td>All the form controls belonging to this form element.</td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/Web/API/HTMLFormElement.encoding" title="/en-US/docs/Web/API/HTMLFormElement.encoding"><code>encoding</code></a></td>
+      <td><a href="/en-US/docs/Web/API/DOMString" title="/en-US/docs/Web/API/DOMString"><code>DOMString</code></a></td>
+      <td>Synonym for <code>enctype</code>.</td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/Web/API/HTMLFormElement.enctype" title="/en-US/docs/Web/API/HTMLFormElement.enctype"><code>enctype</code></a></td>
+      <td><a href="/en-US/docs/Web/API/DOMString" title="/en-US/docs/Web/API/DOMString"><code>DOMString</code></a></td>
+      <td>Reflects the <code><a href="/en-US/docs/Web/HTML/Element/form#attr-enctype">enctype</a></code> HTML attribute, indicating the type of content that is used to transmit the form to the server. Only specified values can be set.</td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/Web/API/HTMLFormElement.length" title="/en-US/docs/Web/API/HTMLFormElement.length"><code>length</code></a> <span class="inlineIndicator readOnly readOnlyInline" title="This value may not be changed.">Read only </span></td>
+      <td><code>long</code></td>
+      <td>The number of controls in the form.</td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/Web/API/HTMLFormElement.method" title="/en-US/docs/Web/API/HTMLFormElement.method"><code>method</code></a></td>
+      <td><a href="/en-US/docs/Web/API/DOMString" title="/en-US/docs/Web/API/DOMString"><code>DOMString</code></a></td>
+      <td>Reflects the <code><a href="/en-US/docs/Web/HTML/Element/form#attr-method">method</a></code> HTML attribute, indicating the HTTP method used to submit the form. Only specified values can be set.</td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/Web/API/HTMLFormElement.name" title="/en-US/docs/Web/API/HTMLFormElement.name"><code>name</code></a></td>
+      <td><a href="/en-US/docs/Web/API/DOMString" title="/en-US/docs/Web/API/DOMString"><code>DOMString</code></a></td>
+      <td>Reflects the <code><a href="/en-US/docs/Web/HTML/Element/form#attr-name">name</a></code> HTML attribute, containing the name of the form.</td>
+    </tr>
+    <tr>
+      <td><code>noValidate</code></td>
+      <td><a href="/en-US/docs/Web/API/Boolean" title="/en-US/docs/Web/API/Boolean"><code>Boolean</code></a></td>
+      <td>Reflects the <code><a href="/en-US/docs/Web/HTML/Element/form#attr-novalidate">novalidate</a></code> HTML attribute, indicating that the form should not be validated.</td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/Web/API/HTMLFormElement.target" title="/en-US/docs/Web/API/HTMLFormElement.target"><code>target</code></a></td>
+      <td><a href="/en-US/docs/Web/API/DOMString" title="/en-US/docs/Web/API/DOMString"><code>DOMString</code></a></td>
+      <td>Reflects the <code><a href="/en-US/docs/Web/HTML/Element/form#attr-target">target</a></code> HTML attribute, indicating where to display the results received from submitting the form.</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Methods">Methods</h2>
+<p><em>Inherits methods from its parent, <a href="/en-US/docs/Web/API/HTMLElement" title="/en-US/docs/Web/API/HTMLElement"><code>HTMLElement</code></a></em><em>.</em></p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th scope="col">Name &amp; Arguments</th>
+      <th scope="col">Return</th>
+      <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <p><code>checkValidity()</code></p>
+      </td>
+      <td><a href="/en-US/docs/Web/API/Boolean" title="/en-US/docs/Web/API/Boolean"><code>Boolean</code></a></td>
+      <td>Returns true if all controls that are subject to constraint validation satisfy their constraints, or false if some controls do not satisfy their constraints. Fires an event named <code>invalid</code> at any control that does not satisfy its constraints; such controls are considered invalid if the event is not canceled.</td>
+    </tr>
+    <tr>
+      <td><code>item(in unsigned long index) </code><span class="inlineIndicator htmlVer htmlVerInline"><a href="/en-US/docs/HTML/HTML5">HTML5</a></span></td>
+      <td><code>any</code></td>
+      <td>Gets the item in the <code>elements</code> collection at the specified index, or null if there is no item at that index. You can also specify the index in array-style brackets or parentheses after the form object name, without calling this method explicitly.</td>
+    </tr>
+    <tr>
+      <td><code>namedItem(in DOMString name) </code><span class="inlineIndicator htmlVer htmlVerInline"><a href="/en-US/docs/HTML/HTML5">HTML5</a></span></td>
+      <td><code>any</code></td>
+      <td>Gets the item or list of items in <code>elements</code> collection whose <code>name</code> or <code>id</code> match the specified name, or null if no items match. You can also specify the name in array-style brackets or parentheses after the form object name, without calling this method explicitly.</td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/Web/API/HTMLFormElement.submit" title="/en-US/docs/Web/API/HTMLFormElement.submit"><code>submit()</code></a></td>
+      <td><code>void</code></td>
+      <td>Submits the form to the server.</td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/Web/API/HTMLFormElement.reset" title="/en-US/docs/Web/API/HTMLFormElement.reset"><code>reset()</code></a></td>
+      <td><code>void</code></td>
+      <td>Resets the forms to its initial state.</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Examples">Examples</h2>
+<p>The following example shows how to create a new form element, modify its attributes and submit it.</p>
+<pre class="brush: js">// Create a form
+var f = document.createElement("form");
+
+// Add it to the document body
+document.body.appendChild(f);
+
+// Add action and method attributes
+f.action = "/cgi-bin/some.cgi";
+f.method = "POST"
+
+// Call the form's submit method
+f.submit();
+</pre>
+<p>In addition, the following complete HTML document shows how to extract information from a form element and to set some of its attributes.</p>
+<pre class="brush: html">&lt;title&gt;Form example&lt;/title&gt;
+&lt;script type="text/javascript"&gt;
+  function getFormInfo() {
+    var info;
+
+    // Get a reference using the forms collection
+    var f = document.forms["formA"];
+    info = "f.elements: " + f.elements + "\n"
+         + "f.length: " + f.length + "\n"
+         + "f.name: " + f.name + "\n"
+         + "f.acceptCharset: " + f.acceptCharset + "\n"
+         + "f.action: " + f.action + "\n"
+         + "f.enctype: " + f.enctype + "\n"
+         + "f.encoding: " + f.encoding + "\n"
+         + "f.method: " + f.method + "\n"
+         + "f.target: " + f.target;
+    document.forms["formA"].elements['tex'].value = info;
+  }
+
+  // A reference to the form is passed from the
+  // button's onclick attribute using 'this.form'
+  function setFormInfo(f) {
+    f.method = "GET";
+    f.action = "/cgi-bin/evil_executable.cgi";
+    f.name   = "totally_new";
+  }
+&lt;/script&gt;
+
+&lt;h1&gt;Form  example&lt;/h1&gt;
+
+&lt;form name="formA" id="formA"
+ action="/cgi-bin/test" method="POST"&gt;
+ &lt;p&gt;Click "Info" to see information about the form.
+    Click set to change settings, then info again
+    to see their effect&lt;/p&gt;
+ &lt;p&gt;
+  &lt;input type="button" value="info"
+   onclick="getFormInfo();"&gt;
+  &lt;input type="button" value="set"
+   onclick="setFormInfo(this.form);"&gt;
+  &lt;input type="reset" value="reset"&gt;
+  &lt;br&gt;
+  &lt;textarea id="tex" style="height:15em; width:20em"&gt;
+  &lt;/textarea&gt;
+ &lt;/p&gt;
+&lt;/form&gt;
+</pre>
+<p>The following example shows how to submit a form in a <a href="/en-US/docs/DOM/window.open" title="/en-US/docs/DOM/window.open">popup window</a>.</p>
+<pre class="brush: html">&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
+&lt;title&gt;MDN Example&lt;/title&gt;
+&lt;script type="text/javascript"&gt;
+function popupSend (oFormElement) {
+  if (oFormElement.method &amp;&amp; oFormElement.method.toLowerCase() !== "get") {
+    alert("This script supports the GET method only.");
+    return;
+  }
+  var oField, sFieldType, nFile, sSearch = "";
+  for (var nItem = 0; nItem &lt; oFormElement.elements.length; nItem++) {
+    oField = oFormElement.elements[nItem];
+    if (!oField.hasAttribute("name")) { continue; }
+    sFieldType = oField.nodeName.toUpperCase() === "INPUT" ? oField.getAttribute("type").toUpperCase() : "TEXT";
+    if (sFieldType === "FILE") {
+      for (nFile = 0; nFile &lt; oField.files.length; sSearch += "&amp;" + escape(oField.name) + "=" + escape(oField.files[nFile++].name));
+    } else if ((sFieldType !== "RADIO" &amp;&amp; sFieldType !== "CHECKBOX") || oField.checked) {
+      sSearch += "&amp;" + escape(oField.name) + "=" + escape(oField.value);
+    }
+  }
+  open(oFormElement.action.replace(/(?:\?.*)?$/, sSearch.replace(/^&amp;/, "?")), "submit-" + (oFormElement.name || Math.floor(Math.random() * 1e6)), "resizable=yes,scrollbars=yes,status=yes");
+}
+&lt;/script&gt;
+
+&lt;/head&gt;
+ 
+&lt;body&gt;
+
+&lt;form name="yourForm" action="test.php" method="get" onsubmit="popupSend(this); return false;"&gt;
+  &lt;p&gt;First name: &lt;input type="text" name="firstname" /&gt;&lt;br /&gt;
+  Last name: &lt;input type="text" name="lastname" /&gt;&lt;br /&gt;
+  Password: &lt;input type="password" name="pwd" /&gt;&lt;br /&gt;
+  &lt;input type="radio" name="sex" value="male" /&gt; Male &lt;input type="radio" name="sex" value="female" /&gt; Female&lt;/p&gt;
+  &lt;p&gt;&lt;input type="checkbox" name="vehicle" value="Bike" /&gt;I have a bike&lt;br /&gt;
+  &lt;input type="checkbox" name="vehicle" value="Car" /&gt;I have a car&lt;/p&gt;
+  &lt;p&gt;&lt;input type="submit" value="Submit" /&gt;&lt;/p&gt;
+&lt;/form&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<h3 id="Submitting_forms_and_uploading_files_using_XMLHttpRequest">Submitting forms and uploading files using <code>XMLHttpRequest</code></h3>
+<p>If you want to know how to serialize and submit a form using the <a href="/en-US/docs/DOM/XMLHttpRequest" title="/en-US/docs/DOM/XMLHttpRequest"><code>XMLHttpRequest</code></a> API, please read <a href="/en-US/docs/DOM/XMLHttpRequest/Using_XMLHttpRequest#Submitting_forms_and_uploading_files" title="/en-US/docs/DOM/XMLHttpRequest/Using_XMLHttpRequest#Submitting_forms_and_uploading_files">this paragraph</a>.</p>
+<h2 id="Specifications">Specifications</h2>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <th scope="col">Specification</th>
+      <th scope="col">Status</th>
+      <th scope="col">Comment</th>
+    </tr>
+    <tr>
+      <td><a class="external" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/forms.html#the-form-element" lang="en" title="The definition of 'HTMLFormElement' in that specification.">WHATWG HTML Living Standard</a></td>
+      <td><span class="spec-Living">Living Standard</span></td>
+      <td>No change from <a class="external" href="http://www.w3.org/TR/html5/" lang="en" title="The 'HTML5' specification">HTML5</a></td>
+    </tr>
+    <tr>
+      <td><a class="external" href="http://www.w3.org/TR/html5/forms.html#the-form-element" lang="en" title="The definition of 'HTMLFormElement' in that specification.">HTML5</a></td>
+      <td><span class="spec-CR">Candidate Recommendation</span></td>
+      <td>The elements properties returns an <a href="/en-US/docs/Web/API/HTMLFormControlsCollection" title="/en-US/docs/Web/API/HTMLFormControlsCollection"><code>HTMLFormControlsCollection</code></a> instead of a raw <a href="/en-US/docs/Web/API/HTMLCollection" title="/en-US/docs/Web/API/HTMLCollection"><code>HTMLCollection</code></a>. This is mainly a technical change.<br>
+        The following method has been added: <code>checkValidity()</code>.<br>
+        The following properties have been added: <code>autocomplete</code>, <code>noValidate</code>, and <code>encoding</code>.</td>
+    </tr>
+    <tr>
+      <td><a class="external" href="http://www.w3.org/TR/DOM-Level-2-HTML/html.html#ID-40002357" lang="en" title="The definition of 'HTMLFormElement' in that specification.">Document Object Model (DOM) Level 2 HTML Specification</a></td>
+      <td><span class="spec-REC">Recommendation</span></td>
+      <td>No change from <a class="external" href="http://www.w3.org/TR/REC-DOM-Level-1/" lang="en" title="The 'Document Object Model (DOM) Level 1 Specification' specification">Document Object Model (DOM) Level 1 Specification</a>.</td>
+    </tr>
+    <tr>
+      <td><a class="external" href="http://www.w3.org/TR/REC-DOM-Level-1/level-one-html.html#ID-40002357" lang="en" title="The definition of 'HTMLFormElement' in that specification.">Document Object Model (DOM) Level 1 Specification</a></td>
+      <td><span class="spec-REC">Recommendation</span></td>
+      <td>Initial definition.</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Browser_compatibility">Browser compatibility</h2>
+<p></p><div class="htab"> 
+    <a id="AutoCompatibilityTable" name="AutoCompatibilityTable"></a> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div><p></p>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari (WebKit)</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td>1.0 (1.7 or earlier)</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Phone</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td>1.0 (1.0)</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h2 id="See_also">See also</h2>
+<ul>
+  <li>The HTML element implementing this interface: <a href="/en-US/docs/Web/HTML/Element/form"><code>&lt;form&gt;</code></a>.</li>
+</ul>
+                  </div>
+    <section class="page-meta">
+      
+            <section id="page-tags">
+        <h2><i class="icon-tags"></i>Tags (2)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/DOM">DOM</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/DOM%20Reference">DOM Reference</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Takenbot">Takenbot</a>, <a href="/en-US/profiles/WEStafford">WEStafford</a>, <a href="/en-US/profiles/Asztal">Asztal</a>, <a href="/en-US/profiles/William%20E">William E</a>, <a href="/en-US/profiles/GSchizas">GSchizas</a>, <a href="/en-US/profiles/teoli">teoli</a>, <a href="/en-US/profiles/jswisher">jswisher</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Brettz9">Brettz9</a>, <a href="/en-US/profiles/RobG">RobG</a>, <a href="/en-US/profiles/fusionchess">fusionchess</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br />
+          Last updated by:  
+          <a href="/en-US/profiles/teoli">teoli</a>, 
+          <time datetime="2013-05-24T00:04:01-07:00">May 24, 2013 12:04:01 AM</time>
+                      <br />
+            Last reviewed by:  
+            <a href="/en-US/profiles/teoli">teoli</a>, 
+            <time datetime="2013-05-24T00:04:01-07:00">May 24, 2013 12:04:01 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/API/HTMLFormElement$edit">
+      <input type="hidden" name="form" id="form" value="rev" />
+      <input type="hidden" name="content" id="content" value="" />
+  </form>
+      </div>
+   </div>
+    </section>
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+<footer id="site-info" class="footer" role="contentinfo">
+<div class="wrap">
+    <div id="legal">
+      <img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-tiny.png" alt="" width="42" height="48">
+      <p id="copyright">&copy; 2005 - 2013 Mozilla Developer Network and individual contributors</p>
+      <p>
+      Content is available under <a href="/en-US/docs/Project:Copyrights">these licenses</a>      &bull; <a href="/en-US/docs/Project:About">About MDN</a>
+      &bull; <a href="//github.com/mozilla/kuma">Contribute to the code</a>
+      &bull; <a href="//www.mozilla.org/en-US/privacy">Privacy Policy</a>
+    </div>
+          <form class="languages go" method="get" action="/en-US/docs">
+      <label for="language">Other languages:</label>
+      <select id="language" class="wiki-l10n" name="next" dir="ltr">
+        <option value="/en-US/docs/Web/API/HTMLFormElement" selected>
+          English (US)
+        </option>
+                  <option value="/es/docs/DOM/form">
+            Español
+          </option>          <option value="/fr/docs/DOM/form">
+            Français
+          </option>          <option value="/ja/docs/DOM/form">
+            日本語
+          </option>          <option value="/pl/docs/DOM/form">
+            Polski
+          </option>      </select>
+      <noscript><button type="submit">Go</button></noscript>
+    </form>
+  </div>
+</footer>
+
+<script src="/en-US/jsi18n/build:5f4e39d"></script>
+  <script src="//mozorg.cdn.mozilla.net/en-US/tabzilla/tabzilla.js" async></script>
+  <script src="//www.google.com/jsapi" type="text/javascript"></script>
+  <script src="https://login.persona.org/include.js" type="text/javascript"></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/mdn-min.js?build=5f4e39d"></script>
+      <script src="https://developer.cdn.mozilla.net/media/js/wiki-min.js?build=5f4e39d"></script>
+  
+  <script type="text/javascript">
+    // Event tracking for the new menu
+    $(function() {
+      $('#nav-main').on('click', 'a', function(e) {
+        window._gaq && _gaq.push(['_trackEvent', 'Menu', 'Click', e.target.innerHTML, e.target.href]);
+      });
+    });
+  </script>
+        <!-- include syntax highlighting scripts -->
+  
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=5f4e39d" />
+
+  <script type="text/javascript">
+    MEDIA_URL = 'https://developer.cdn.mozilla.net/media/';
+  </script>
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/media/prism/prism.js" data-manual></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/syntax-prism-min.js?build=5f4e39d"></script>
+
+<script src="/en-US/waffles.js" type="text/javascript" async></script>
+</body>
+</html>

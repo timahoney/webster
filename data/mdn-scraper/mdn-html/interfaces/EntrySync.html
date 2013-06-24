@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+<head>
+      <script src="//cdn.optimizely.com/js/237572123.js"></script>
+  
+  <title>EntrySync - Web API reference | MDN</title>
+  
+  <meta charset="utf-8">
+  <meta name="robots" content="index, follow">
+  <link rel="home" href="/en-US/">
+  <link rel="copyright" href="#copyright">
+  <link rel="shortcut icon" href="https://developer.cdn.mozilla.net/media/img/favicon.ico">
+
+        <!--[if !IE 6]><!-->
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/mdn-min.css?build=5f4e39d" />
+      <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/wiki-min.css?build=5f4e39d" />
+    <!--<![endif]-->
+  <!--[if IE]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie.css"><![endif]-->
+  <!--[if lte IE 7]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie7.css"><![endif]-->
+  <!--[if lte IE 6]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie6.css"><![endif]-->
+  <link rel="stylesheet" type="text/css" href="https://developer.cdn.mozilla.net/media/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="print" href="https://developer.cdn.mozilla.net/media/css/mdn-print.css">
+  <link rel="stylesheet" href="https://mozorg.cdn.mozilla.net/media/css/tabzilla-min.css">
+  
+
+  <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network" />
+
+  
+    <link rel="stylesheet" media="print" href="https://developer.cdn.mozilla.net/media/css/wiki-print-min.css?build=5f4e39d" />
+          <link rel="stylesheet" type="text/css"
+            href="/en-US/docs/Template:CustomCSS?raw=1" />
+    
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script src="https://developer.cdn.mozilla.net/media/js/html5.js"></script>
+  <![endif]-->
+
+    <link rel="alternate" type="application/json" href="/en-US/docs/Web/API/EntrySync$json" />
+  <link rel="canonical" href="https://developer.mozilla.org/en-US/docs/Web/API/EntrySync" />
+
+  <meta property="og:title" content="EntrySync" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://developer.mozilla.org/media/img/mdn-logo-sm.png" />
+  <meta property="og:site_name" content="Mozilla Developer Network" />
+  <meta property="og:url" content="https://developer.mozilla.org/en-US/docs/Web/API/EntrySync" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:url" content="https://developer.mozilla.org/en-US/docs/Web/API/EntrySync" />
+  <meta name="twitter:title" content="EntrySync" />
+  <meta name="twitter:image" content="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" />
+  <meta name="twitter:site" content="@mozhacks" />
+  <meta name="twitter:creator" content="@mozhacks" />
+
+    <meta property="og:description" content="The EntrySync interface of the FileSystem API represents an entry in a file system. The entry can be a FileEntrySync or a DirectoryEntry. It includes methods for working with files—including copying, moving, removing, and reading files—as well as information about the file it points to—including the file name and its path from the root to the entry."/>
+  <meta name="description" content="The EntrySync interface of the FileSystem API represents an entry in a file system. The entry can be a FileEntrySync or a DirectoryEntry. It includes methods for working with files—including copying, moving, removing, and reading files—as well as information about the file it points to—including the file name and its path from the root to the entry." />
+  <meta name="twitter:description" content="The EntrySync interface of the FileSystem API represents an entry in a file system. The entry can be a FileEntrySync or a DirectoryEntry. It includes methods for working with files—including copying, moving, removing, and reading files—as well as information about the file it points to—including the file name and its path from the root to the entry." />
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36116321-5']);
+  _gaq.push(['_trackPageview']);
+
+  (function(a, d) {
+    var ga = d.createElement(a); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == d.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = d.getElementsByTagName(a)[0]; s.parentNode.insertBefore(ga, s);
+  })('script', document);
+
+</script>
+</head>
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  <header id="masthead" class="minor new-menu">
+    <div class="wrap">
+      <ul id="nav-access">
+        <li><a href="#language">Select language</a></li>
+        <li><a href="#q">Skip to search</a></li>
+        <li><a href="#content">Skip to main content</a></li>
+      </ul>
+    
+      <div id="branding">
+                <div id="logo"><a href="/en-US/"><img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" alt="Mozilla Developer Network" title="Mozilla Developer Network" width="62" height="71"> Mozilla Developer Network</a></div>
+              </div>
+      
+              <nav id="nav">
+          <ul id="nav-main" role="menubar">
+            <li id="nav-main-docs" class="menu" rel="menuitem"><a href="#nav-sub-docs" class="toggle" aria-haspopup="true" aria-labelledby="nav-main-docs" title="Read Documentation">Read<br /><em>Docs</em></a>
+              <div id="nav-sub-docs" class="sub-menu" aria-hidden="true">
+                <ul>
+                  <li>
+                    <ul>
+
+                      <li><a href="/en-US/docs/Web/HTML?menu">HTML</a></li>
+                      <li><a href="/en-US/docs/Web/CSS?menu">CSS</a></li>
+                      <li><a href="/en-US/docs/Web/JavaScript?menu">JavaScript</a></li>
+                      <li><a href="/en-US/docs/Web/Guide/Graphics?menu">Graphics</a></li>
+                      <li><a href="/en-US/docs/Web/API?menu">APIs / DOM</a></li>
+                      <li><a href="/en-US/docs/Web/Apps?menu">Apps</a></li>
+                      <li><a href="/en-US/docs/tools?menu">Dev Tools</a></li>
+                      <li><a href="/en-US/docs/Web/MathML?menu">MathML</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <ul>
+                      <li><a href="/en-US/docs/Web/Tutorials?menu">Tutorials</a></li>
+                      <li><a href="/en-US/docs/Web/Reference?menu">References</a></li>
+                      <li><a href="/en-US/docs/Web/Guide?menu">Developer Guides</a></li>
+                      <li><a href="/en-US/demos/?menu">Demos</a></li>
+                      <li><br /><br /><a href="/en-US/docs?menu">...more docs</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li id="nav-main-apps" role="menuitem"><a href="https://marketplace.firefox.com/developers/">Make<br /><em>Apps</em></a></li>
+            <li id="nav-main-firefox" class="menu" role="menuitem"><a href="#nav-sub-firefox" class="firefox toggle" aria-haspopup="true" aria-labelledby="nav-main-firefox">Build & Use<br /><em>Firefox</em></a>
+              <ul id="nav-sub-firefox" class="sub-menu">
+                <li><a href="/en-US/docs/Mozilla/Firefox_OS?menu">Firefox OS</a></li>
+                <li><a href="/en-US/docs/Mozilla/Firefox?menu">Firefox Desktop</a></li>
+                <li><a href="/en-US/docs/Mozilla/Mobile?menu">Mobile</a></li>
+                <li><a href="/en-US/docs/Mozilla/Add-ons?menu">Add-ons</a></li>
+              </ul>
+            </li>
+            <li id="nav-main-demos" role="menuitem"><a href="/en-US/demos/?menu" class="demos">See & Submit<br /><em>Demos</em></a></li>
+            <li id="nav-main-community" class="menu" role="menuitem"><a href="#nav-sub-community" class="community toggle" aria-haspopup="true" aria-labelledby="nav-main-community">Get<br /><em>Involved</em></a>
+              <ul id="nav-sub-community" class="sub-menu">
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Join_the_community?menu">Join the Community</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing?menu">Contribute to MDN</a></li>
+                <li><a href="/en-US/events?menu">Events</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Follow_what_s_happening?menu">Tweets, Blogs, and More</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+          
+      <ul class="user-state signed-out">
+    <li class="user-signin menu">
+    <form class="browserid" action="/en-US/users/browserid_verify" method="POST">
+        <input id="next" name="next" type="hidden" value="/en-US/docs/Web/API/EntrySync"/>
+        <input required="required" type="hidden" name="assertion" id="id_assertion" />
+                        <a href="#" target="_blank" class="browserid-signin toggle" aria-haspopup="true" title="Sign in with Persona">Sign in</a>
+                <div class="browserid-info sub-menu" aria-hidden="true">
+                <h3>What's this?</h3> <p>MDN has switched to <a href="https://persona.org/" target="_blank" rel="external">Persona</a>, a safe and simple way to sign in with just your e-mail address. <a href="http://identity.mozilla.com/post/12950196039/deploying-browserid-at-mozilla" rel="external">Learn more about why Mozilla is using Persona</a>.</p> <p><strong>Returning members:</strong> sign in with Persona and you'll be connected to your MDN profile (all your information is still here).</p> <p><strong>New members:</strong> sign in with Persona first, then you'll be able to set up your new MDN profile.</p>          <p><a href="#" target="_blank" class="browserid-signin" title="Sign in with Persona">Sign in</a></p>
+        </div>
+              </form>
+    </li>
+  </ul>
+      
+      <form id="site-search" method="get" action="http://www.google.com/search"
+              data-url="/en-US/search">
+        <p>
+          <input type="search" role="search" placeholder="Search MDN" id="q" name="q" value="">
+          <noscript><button type="submit">Search</button></noscript>
+        </p>
+        <input type="hidden" name="sitesearch" value="developer.mozilla.org">
+                <div id="site-search-gg"></div>
+              </form>
+
+      <a href="//www.mozilla.org/" id="tabzilla">mozilla</a>
+    </div>
+  </header>
+
+    
+
+<!-- top toolbar -->
+<section id="nav-toolbar"><div><div class="wrap">
+  <!-- right floated navigation -->
+  <nav id="tool-menus" role="navigation">
+    <ul id="tools">
+      <li class="menu">
+        <a href="#page-tools" class="toggle">This page</a>
+        <ul id="page-tools" class="sub-menu">
+          <li class="page-print"> <a href="#" onclick="return window.print();"  title="Print page">Print this page</a></li>
+                      <li><a href="/en-US/docs/new?parent=2808">New sub-page</a></li>
+            <li><a href="/en-US/docs/new?clone=2808">Clone this page</a></li>
+                                      </ul>
+      </li>
+            <li class="menu">
+        <a href="#" class="toggle">Languages</a>
+        <ul id="translations">
+                    
+                      <li><a href="/en-US/docs/Web/API/EntrySync$locales">Add translation</a></li>
+                  </ul>
+      </li>
+          </ul>
+  </nav>
+  
+  <!-- left crumb navigation -->
+  <nav class="crumbs" role="navigation">
+    <ol>
+              <li class="crumb"><a href="/en-US/docs/Web">Web technology for developers</a></li>
+              <li class="crumb"><a href="/en-US/docs/Web/API">Web API reference</a></li>
+            <li class="crumb">EntrySync</li>
+    </ol>
+  </nav>
+  
+</div></div></section>
+
+
+
+<section id="content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" 
+          data-current-revision="411283"
+          data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes."
+          data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title">
+            <h1 class="page-title">EntrySync</h1>
+                    </div>
+        <ul id="page-buttons">
+            <li class="page-history"><a href="/en-US/docs/Web/API/EntrySync$history"><i class="icon-book"></i>History</a></li>
+                                                                                  <li class="page-edit"><a href="/en-US/docs/Web/API/EntrySync$edit"><i class="icon-pencil"></i>Edit</a></li>
+                    </ul>
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                <div id="article-nav">
+          <div class="page-toc">
+            <h2>Table of Contents</h2>
+            <ol>
+              <code></code><li><a href="#About_this_document" rel="internal">About this document</a><li><a href="#basic" rel="internal">Basic Concepts</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Method_overview" rel="internal">Method overview</a><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Attributes" rel="internal">Attributes</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Methods" rel="internal">Methods</a><ol><li><a href="#getMetadata" rel="internal">getMetadata()</a><code></code><code></code><code></code><code></code><li><a href="#moveTo" rel="internal">moveTo()</a><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#copyTo" rel="internal">copyTo()</a><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#toURL" rel="internal">toURL()</a><code></code><code></code><code></code><code></code><code></code><code><code></code></code><code></code><li><a href="#remove" rel="internal">remove()</a><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#getParent" rel="internal">getParent()</a><code></code><code></code></ol></li><li><a href="#Browser_Compatibility" rel="internal">Browser compatibility</a><li><a href="#See_also" rel="internal">See also</a>
+            </ol>
+          </div>
+          <ul class="page-anchors">
+            <li class="anchor-tags">
+                              <i class="icon-tags"></i><a href="#page-tags">Tags</a>
+                          </li>
+            <li class="anchor-files">
+                              <i class="icon-paper-clip off"></i><span title="This document has no attachments">Files</span>
+                          </li>
+          </ul>
+        </div>
+                                <p></p><div class="overheadIndicator nonStandard nonStandardHeader"> 
+      <p>Non-standard</p> 
+      </div><p></p>
+<p>The <code>EntrySync</code> interface of the <a href="/en/DOM/File_API/File_System_API" title="en/DOM/File_API/File_System_API">FileSystem API</a> represents an entry in a file system. The entry can be a <a href="/en/DOM/File_API/File_System_API/FileEntrySync" title="en/DOM/File_API/File_Sysatem_API/FileEntrySync">FileEntrySync</a> or a <a href="/en/DOM/File_API/File_system_API/DirectoryEntry" rel="internal" title="en/DOM/File_API/File_system_API/DirectoryEntry">DirectoryEntry</a>. It includes methods for working with files—including copying, moving, removing, and reading files—as well as information about the file it points to—including the file name and its path from the root to the entry.</p>
+<h2 id="About_this_document">About this document</h2>
+<p>This document was last updated on March 14, 2011 and follows the <a class="external" href="http://www.w3.org/TR/file-system-api/">W3C Specifications (Working Draft)</a> drafted on April 19, 2011.</p>
+<p>This specification is more or less abandoned as it didn't got significant traction.</p>
+<h2 id="basic" name="basic">Basic Concepts</h2>
+<p>The <code>EntrySync</code> interface includes methods that you would expect for manipulating files and directories, but it also include a really handy method for getting a URL of the entry: <code><a href="#toURL">toURL()</a></code>. It also introduces a new URL scheme: <code>filesystem:</code>.</p>
+<p>You can use the <code>filesystem:</code> scheme on Google Chrome to see all the files and folders that are stored in the origin of your app. Just use <code>filesystem:</code> scheme for the root directory of the origin of the app. For example, if your app is in <code><a class="external" href="http://ww.html5rocks.com" rel="freelink">http://ww.html5rocks.com</a></code>, open<code> filesystem:<a class="external" href="http://www.html5rocks.com/temporary/" rel="freelink">http://www.html5rocks.com/temporary/</a></code> in a tab. Chrome shows a read-only list of all the files and folders stored the origin of your app.</p>
+<h2 id="Method_overview">Method overview</h2>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td><code>Metadata <a href="#getMetada" title="#getMetada">getMetada</a> () raises (<a href="/en/DOM/File_API/File_System_API/FileException" title="en/DOM/File_API/File_System_API/FileException">FileException</a>);</code></td>
+    </tr>
+    <tr>
+      <td><code>EntrySync <a href="#moveTo" title="#moveTo">moveTo</a> (in <a href="/en/DOM/File_API/File_System_API/DirectoryEntrySync" title="en/DOM/File_API/File_System_API/DirectoryEntrySync">DirectoryEntrySync</a> <em>parent</em>, optional DOMString <em>newName</em>) raises (<a href="/en/DOM/File_API/File_System_API/FileException" title="en/DOM/File_API/File_System_API/FileException">FileException</a>);</code></td>
+    </tr>
+    <tr>
+      <td><code>EntrySync <a href="#copyTo" title="#copyTo">copyTo</a>(in <a href="/en/DOM/File_API/File_System_API/DirectoryEntrySync" title="en/DOM/File_API/File_System_API/DirectoryEntrySync">DirectoryEntrySync</a> <em>parent</em>, optional DOMString <em>newName</em>) raises (<a href="/en/DOM/File_API/File_System_API/FileException" title="en/DOM/File_API/File_System_API/FileException">FileException</a>);</code></td>
+    </tr>
+    <tr>
+      <td><code>DOMString <a href="#toURL" title="#toURL">toURL</a> ();</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#remove" title="#remove">remove</a> () raises (<a href="/en/DOM/File_API/File_System_API/FileException" title="en/DOM/File_API/File_System_API/FileException">FileException</a>);</code></td>
+    </tr>
+    <tr>
+      <td><code>DirectoryEntrySync <a href="#getParent" title="#getParent">getParent</a> ();</code></td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Attributes">Attributes</h2>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th scope="col">Attribute</th>
+      <th scope="col">Type</th>
+      <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a name="attr_filesystem"><code>filesystem</code></a></td>
+      <td><code>readonly FileSystemSync</code></td>
+      <td>The file system where the entry resides.</td>
+    </tr>
+    <tr>
+      <td><a id="attr_fullpath" name="fullpath"><code>fullpath</code></a></td>
+      <td><code>readonly DOMString</code></td>
+      <td>
+        <p>The full absolute path from the root to the entry.</p>
+        <p>An absolute path is a relative path from the root directory, prepended with a '<code>/</code>'.</p>
+        </td>
+    </tr>
+    <tr>
+      <td><a id="attr_root" name="attr_isDirectory"><code>isDirectory</code></a></td>
+      <td><code>readonly boolean</code></td>
+      <td>True if EntrySync is a directory.</td>
+    </tr>
+    <tr>
+      <td><a id="attr_isfile" name="attr_isfile"><code>isFile</code></a></td>
+      <td><code>readonly boolean</code></td>
+      <td>True if the EntrySync is a file.</td>
+    </tr>
+    <tr>
+      <td><a id="attr_name" name="attr_name"><code>name</code></a></td>
+      <td><code>readonly DOMString</code></td>
+      <td>The name of the entry, excluding the path leading to it.</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Methods">Methods</h2>
+<h3 id="getMetadata" name="getMetadata">getMetadata()</h3>
+<p>Look up metadata about this entry. [ todo: specify what kind of metadata ]</p>
+<pre>Metadata getMetada ()
+  raises <code>(<a href="https://developer.mozilla.org/en/DOM/File_API/File_System_API/FileException">FileException</a>)</code>;</pre>
+<h5 id="Parameter">Parameter</h5>
+<dl>
+  <dt>
+    None</dt>
+</dl>
+<h5 id="Returns">Returns</h5>
+<dl>
+  <dt>
+    <code>Metadata</code></dt>
+</dl>
+<h5 id="Exceptions">Exceptions</h5>
+<p>This method can raise a <a href="/en/DOM/File_API/File_System_API/FileException" title="en/DOM/File_API/File_System_API/FileException">FileException</a> with the following codes:</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th scope="col">Exception</th>
+      <th scope="col">Description</th>
+    </tr>
+    <tr>
+      <td><code>NOT_FOUND_ERR</code></td>
+      <td>The entry does not exist.</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>INVALID_STATE_ERR</code></td>
+      <td>The FileSystemSync is no longer valid for some reason besides being deleted.</td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="moveTo" name="moveTo">moveTo()</h3>
+<p>Move an entry to a different location on the file system. Moving a file over an existing file replaces that existing file. Moving a directory over an existing empty directory replaces that directory. [todo: What if the directory is not empty? ]</p>
+<p>[todo: Verify ] This is the same method for renaming files. You can keep it in the same location and then define the <code>newName</code> parameter.</p>
+<p>You cannot do the following:</p>
+<ul>
+  <li>Move a directory inside itself or to any child at any depth</li>
+  <li>Move an entry into its parent if a name different from its current one isn't provided</li>
+  <li>Move a file to a path occupied by a directory or move a directory to a path occupied by a file</li>
+  <li>Move any element to a path occupied by a directory that is not empty.</li>
+</ul>
+<pre>EntrySync moveTo (
+  in DirectoryEntrySync <em>parent</em>, optional DOMString <em>newName</em>
+) raises (<a href="https://developer.mozilla.org/en/DOM/File_API/File_System_API/FileException">FileException</a>);</pre>
+<h5 id="Parameters">Parameters</h5>
+<dl>
+  <dt>
+    parent</dt>
+  <dd>
+    The directory to which to move the entry.</dd>
+  <dt>
+    newName</dt>
+  <dd>
+    The new name of the entry. If you do not specify a name, the browser preserves the entry's current name.</dd>
+</dl>
+<h5 id="Returns">Returns</h5>
+<dl>
+  <dt>
+    <code>EntrySync</code></dt>
+  <dd>
+    An object that represents an entry in the file system.</dd>
+</dl>
+<h5 id="Exceptions">Exceptions</h5>
+<p>This method can raise a <a href="/en/DOM/File_API/File_System_API/FileException" title="en/DOM/File_API/File_System_API/FileException">FileException</a> with the following codes:</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th scope="col">Exception</th>
+      <th scope="col">Description</th>
+    </tr>
+    <tr>
+      <td><code>ENCODING_ERR</code></td>
+      <td>The name supplied is invalid, because at least one of the characters is reserved or illegal. Examples include a backslash (\), dot (.), and two dots (..). </td>
+    </tr>
+    <tr>
+      <td><code>NOT_FOUND_ERR</code></td>
+      <td>The target directory does not exist.</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>INVALID_MODIFICATION_ERR</code></td>
+      <td>
+        <p>You tried one of the following disallowed operations:</p>
+        <ul>
+          <li>Moving an entry into its parent without changing its name</li>
+          <li>Moving a parent directory into one of its child directories. [todo: verify ]</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><code>NO_MODIFICATION_ALLOWED_ERR</code></td>
+      <td>One of the following is not writable: the source entry, its parent directory, and the target directory.</td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="copyTo" name="copyTo">copyTo()</h3>
+<p>Copy an entry to a different location on the file system. You cannot copy an entry inside itself if it is a directory, nor can you copy it into its parent without providing a new name. Directory copies are always recursive—that is, all contents of the directory are copied. You cannot change this behavior. Files are simply duplicated.</p>
+<pre>void copyTo (
+  in DirectoryEntrySync <em>parent</em>, optional DOMString <em>newName</em>
+) raises (<a href="https://developer.mozilla.org/en/DOM/File_API/File_System_API/FileException">FileException</a>);</pre>
+<h5 id="Parameters">Parameters</h5>
+<dl>
+  <dt>
+    parent</dt>
+  <dd>
+    The directory where you want the entry to move to.</dd>
+  <dt>
+    newName</dt>
+  <dd>
+    The new name of the entry. If you do not specify a name, the browser preserves the EntrySync's current name.</dd>
+</dl>
+<h5 id="Returns">Returns</h5>
+<dl>
+  <dt>
+    <code>EntrySync</code></dt>
+  <dd>
+    An object that represents an entry in the file system.</dd>
+</dl>
+<h5 id="Exceptions">Exceptions</h5>
+<p>This method can raise a <a href="/en/DOM/File_API/File_System_API/FileException" title="en/DOM/File_API/File_System_API/FileException">FileException</a> with the following codes:</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th scope="col">Exception</th>
+      <th scope="col">Description</th>
+    </tr>
+    <tr>
+      <td><code>ENCODING_ERR</code></td>
+      <td>The name supplied is invalid, because at least one of the characters is reserved or illegal. Examples include a backslash (\), dot (.), and two dots (..). </td>
+    </tr>
+    <tr>
+      <td><code>NOT_FOUND_ERR</code></td>
+      <td>The target directory does not exist.</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>INVALID_MODIFICATION_ERR</code></td>
+      <td>
+        <p>You tried one of the following disallowed operations:</p>
+        <ul>
+          <li>Moving an entry into its parent without changing its name</li>
+          <li>Moving a parent directory into one of its child directories. </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><code>NO_MODIFICATION_ALLOWED_ERR</code></td>
+      <td>One of the following is not writable: the source entry, its parent directory, and the target directory.</td>
+    </tr>
+    <tr>
+      <td><code>QUOTA_EXCEEDED_ERR</code></td>
+      <td>The operation would cause the application to exceed its storage quota. You can ask for a larger persistent storage, which your user must explicitly grant. For more information, see the article on <a href="/en/DOM/File_APIs/Filesystem/Basic_Concepts_About_the_Filesystem_API" title="Basic Concepts About the Filesystem API">basic concepts</a>. </td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="toURL" name="toURL">toURL()</h3>
+<p>Returns a URL that can be used to identify this entry. It exposes a new URL scheme—<code>filesystem:</code>—that you can use to fill <code>src</code> or <code>href </code>attributes. For example, if you wanted to display an image and have its <a class="external" href="/en/DOM/File_API/File_System_API/FileEntry" title="en/DOM/File_API/File_System_API/FileEntry">fileEntry</a>, calling <code>toURL()</code> gives you the image file's file system URL. You get something like: <code>filesystem:<a class="external" href="http://example.com/temporary/lolcat.png" rel="freelink">http://example.com/temporary/lolcat.png</a>.</code></p>
+<p>The file system URL does not expire. Because the method describes a location on disk, the URL is valid for as long as that location exists. You can delete the file and recreate it, and it's all good. </p>
+<p>You can supply <code>the <code>mimeType</code></code> to simulate the optional mime-type header associated with HTTP downloads.</p>
+<pre>DOMString toURL ();</pre>
+<h5 id="Parameter">Parameter</h5>
+<dl>
+  <dt>
+    None.</dt>
+</dl>
+<h5 id="Returns">Returns</h5>
+<dl>
+  <dt>
+    <code>DOMString</code></dt>
+</dl>
+<h5 id="Exceptions">Exceptions</h5>
+<p>None</p>
+<h3 id="remove" name="remove">remove()</h3>
+<p>Deletes a file or directory. You cannot delete an empty directory or the root directory of a file system. If you want to remove an empty directory, use <a href="/en/DOM/File_API/File_System_API/DirectoryEntrySync#removeRecursively()" rel="internal" title="https://developer.mozilla.org/en/DOM/File_API/File_System_API/DirectoryEntrySync#removeRecursively()"><code>removeRecursively()</code></a> instead.</p>
+<pre>void remove (
+) raises (<a href="https://developer.mozilla.org/en/DOM/File_API/File_System_API/FileException">FileException</a>);</pre>
+<h5 id="Parameter">Parameter</h5>
+<p>None</p>
+<h5 id="Returns">Returns</h5>
+<dl>
+  <dt>
+    <code>void</code></dt>
+</dl>
+<h5 id="Exceptions">Exceptions</h5>
+<p>This method can raise a <a href="/en/DOM/File_API/File_System_API/FileException" title="en/DOM/File_API/File_System_API/FileException">FileException</a> with the following codes:</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th scope="col">Exception</th>
+      <th scope="col">Description</th>
+    </tr>
+    <tr>
+      <td><code>NOT_FOUND_ERR</code></td>
+      <td>The target directory does not exist.</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>INVALID_MODIFICATION_ERR</code></td>
+      <td>
+        <p>You tried to remove a directory that is not empty. If you want to remove an empty directory, use <a href="/en/DOM/File_API/File_System_API/DirectoryEntrySync#removeRecursively()" title="https://developer.mozilla.org/en/DOM/File_API/File_System_API/DirectoryEntrySync#removeRecursively()"><code>removeRecursively()</code></a> instead.</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code>NO_MODIFICATION_ALLOWED_ERR</code></td>
+      <td>One of the following is not writable: the source entry, its parent directory, and the target directory.</td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="getParent" name="getParent">getParent()</h3>
+<p>Look up the parent <a href="/en/DOM/File_API/File_System_API/DirectoryEntrySync" title="https://developer.mozilla.org/en/DOM/File_API/File_System_API/DirectoryEntrySync"><code>DirectoryEntrySync</code></a> containing the entry. If this entry is the root of its file system, then the parent is itself.</p>
+<pre>void getParent ();</pre>
+<h5 id="Parameter">Parameter</h5>
+<p>None</p>
+<h5 id="Returns">Returns</h5>
+<dl>
+  <dt>
+    <code><a href="/en/DOM/File_API/File_System_API/DirectoryEntrySync" title="en/DOM/File_API/File_System_API/DirectoryEntrySync">DirectoryEntrySync</a></code></dt>
+  <dd>
+    An object that represents a directory in the file system.</dd>
+</dl>
+<h5 id="Exceptions">Exceptions</h5>
+<p>None.</p>
+<h2 id="Browser_Compatibility" name="Browser_Compatibility">Browser compatibility</h2>
+<p></p><div class="htab"> 
+    <a name="AutoCompatibilityTable"></a> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div><p></p>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari (WebKit)</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td>13<span class="inlineIndicator prefixBox prefixBoxInline" title="prefix">webkit</span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Android</th>
+        <th>Chrome for Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Phone</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td>0.16<span class="inlineIndicator prefixBox prefixBoxInline" title="prefix">webkit</span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h2 id="See_also">See also</h2>
+<p>Specification:<a class="external" href="http://dev.w3.org/2009/dap/file-system/pub/FileSystem/">File API: Directories and System Specification</a><span style="color: #fff; background: #e66e33; display: inline-block; font-size: x-small; margin-left: 6px; white-space: nowrap; padding: 2px 5px;" title="Working Draft">WD</span></p>
+<p>Reference: <a href="/en/DOM/File_API/File_System_API" title="en/DOM/File_API/File_System_API">File System API</a></p>
+<p>Introduction: <a href="/en/DOM/File_APIs/Filesystem/Basic_Concepts_About_the_Filesystem_API" title="en/DOM/File_APIs/Filesystem/Basic_Concepts_About_the_Filesystem_API">Basic Concepts About the File System API</a></p>
+                  </div>
+    <section class="page-meta">
+      
+            <section id="page-tags">
+        <h2><i class="icon-tags"></i>Tags (5)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/File%20System%20API">File System API</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/filesystem">filesystem</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/offline">offline</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Non-standard">Non-standard</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/File%20API">File API</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/grendel">grendel</a>, <a href="/en-US/profiles/teoli">teoli</a>
+                          <br />
+          Last updated by:  
+          <a href="/en-US/profiles/teoli">teoli</a>, 
+          <time datetime="2013-05-21T00:10:20-07:00">May 21, 2013 12:10:20 AM</time>
+                      <br />
+            Last reviewed by:  
+            <a href="/en-US/profiles/teoli">teoli</a>, 
+            <time datetime="2013-05-21T00:10:21-07:00">May 21, 2013 12:10:21 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/API/EntrySync$edit">
+      <input type="hidden" name="form" id="form" value="rev" />
+      <input type="hidden" name="content" id="content" value="" />
+  </form>
+      </div>
+   </div>
+    </section>
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+<footer id="site-info" class="footer" role="contentinfo">
+<div class="wrap">
+    <div id="legal">
+      <img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-tiny.png" alt="" width="42" height="48">
+      <p id="copyright">&copy; 2005 - 2013 Mozilla Developer Network and individual contributors</p>
+      <p>
+      Content is available under <a href="/en-US/docs/Project:Copyrights">these licenses</a>      &bull; <a href="/en-US/docs/Project:About">About MDN</a>
+      &bull; <a href="//github.com/mozilla/kuma">Contribute to the code</a>
+      &bull; <a href="//www.mozilla.org/en-US/privacy">Privacy Policy</a>
+    </div>
+          <form class="languages go" method="get" action="/en-US/docs">
+      <label for="language">Other languages:</label>
+      <select id="language" class="wiki-l10n" name="next" dir="ltr">
+        <option value="/en-US/docs/Web/API/EntrySync" selected>
+          English (US)
+        </option>
+              </select>
+      <noscript><button type="submit">Go</button></noscript>
+    </form>
+  </div>
+</footer>
+
+<script src="/en-US/jsi18n/build:5f4e39d"></script>
+  <script src="//mozorg.cdn.mozilla.net/en-US/tabzilla/tabzilla.js" async></script>
+  <script src="//www.google.com/jsapi" type="text/javascript"></script>
+  <script src="https://login.persona.org/include.js" type="text/javascript"></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/mdn-min.js?build=5f4e39d"></script>
+      <script src="https://developer.cdn.mozilla.net/media/js/wiki-min.js?build=5f4e39d"></script>
+  
+  <script type="text/javascript">
+    // Event tracking for the new menu
+    $(function() {
+      $('#nav-main').on('click', 'a', function(e) {
+        window._gaq && _gaq.push(['_trackEvent', 'Menu', 'Click', e.target.innerHTML, e.target.href]);
+      });
+    });
+  </script>
+        <!-- include syntax highlighting scripts -->
+  
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=5f4e39d" />
+
+  <script type="text/javascript">
+    MEDIA_URL = 'https://developer.cdn.mozilla.net/media/';
+  </script>
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/media/prism/prism.js" data-manual></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/syntax-prism-min.js?build=5f4e39d"></script>
+
+<script src="/en-US/waffles.js" type="text/javascript" async></script>
+</body>
+</html>

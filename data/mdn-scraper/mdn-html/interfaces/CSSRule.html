@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+<head>
+      <script src="//cdn.optimizely.com/js/237572123.js"></script>
+  
+  <title>CSSRule - Web API reference | MDN</title>
+  
+  <meta charset="utf-8">
+  <meta name="robots" content="index, follow">
+  <link rel="home" href="/en-US/">
+  <link rel="copyright" href="#copyright">
+  <link rel="shortcut icon" href="https://developer.cdn.mozilla.net/media/img/favicon.ico">
+
+        <!--[if !IE 6]><!-->
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/mdn-min.css?build=5f4e39d" />
+      <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/wiki-min.css?build=5f4e39d" />
+    <!--<![endif]-->
+  <!--[if IE]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie.css"><![endif]-->
+  <!--[if lte IE 7]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie7.css"><![endif]-->
+  <!--[if lte IE 6]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie6.css"><![endif]-->
+  <link rel="stylesheet" type="text/css" href="https://developer.cdn.mozilla.net/media/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="print" href="https://developer.cdn.mozilla.net/media/css/mdn-print.css">
+  <link rel="stylesheet" href="https://mozorg.cdn.mozilla.net/media/css/tabzilla-min.css">
+  
+
+  <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network" />
+
+  
+    <link rel="stylesheet" media="print" href="https://developer.cdn.mozilla.net/media/css/wiki-print-min.css?build=5f4e39d" />
+          <link rel="stylesheet" type="text/css"
+            href="/en-US/docs/Template:CustomCSS?raw=1" />
+    
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script src="https://developer.cdn.mozilla.net/media/js/html5.js"></script>
+  <![endif]-->
+
+    <link rel="alternate" type="application/json" href="/en-US/docs/Web/API/CSSRule$json" />
+  <link rel="canonical" href="https://developer.mozilla.org/en-US/docs/Web/API/CSSRule" />
+
+  <meta property="og:title" content="CSSRule" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://developer.mozilla.org/media/img/mdn-logo-sm.png" />
+  <meta property="og:site_name" content="Mozilla Developer Network" />
+  <meta property="og:url" content="https://developer.mozilla.org/en-US/docs/Web/API/CSSRule" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:url" content="https://developer.mozilla.org/en-US/docs/Web/API/CSSRule" />
+  <meta name="twitter:title" content="CSSRule" />
+  <meta name="twitter:image" content="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" />
+  <meta name="twitter:site" content="@mozhacks" />
+  <meta name="twitter:creator" content="@mozhacks" />
+
+    <meta property="og:description" content="An object implementing the CSSRule DOM interface represents a single CSS at-rule. References to a CSSRule -implementing object may be obtained by looking at a CSS style sheet&#39;s cssRules list."/>
+  <meta name="description" content="An object implementing the CSSRule DOM interface represents a single CSS at-rule. References to a CSSRule -implementing object may be obtained by looking at a CSS style sheet&#39;s cssRules list." />
+  <meta name="twitter:description" content="An object implementing the CSSRule DOM interface represents a single CSS at-rule. References to a CSSRule -implementing object may be obtained by looking at a CSS style sheet&#39;s cssRules list." />
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36116321-5']);
+  _gaq.push(['_trackPageview']);
+
+  (function(a, d) {
+    var ga = d.createElement(a); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == d.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = d.getElementsByTagName(a)[0]; s.parentNode.insertBefore(ga, s);
+  })('script', document);
+
+</script>
+</head>
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  <header id="masthead" class="minor new-menu">
+    <div class="wrap">
+      <ul id="nav-access">
+        <li><a href="#language">Select language</a></li>
+        <li><a href="#q">Skip to search</a></li>
+        <li><a href="#content">Skip to main content</a></li>
+      </ul>
+    
+      <div id="branding">
+                <div id="logo"><a href="/en-US/"><img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" alt="Mozilla Developer Network" title="Mozilla Developer Network" width="62" height="71"> Mozilla Developer Network</a></div>
+              </div>
+      
+              <nav id="nav">
+          <ul id="nav-main" role="menubar">
+            <li id="nav-main-docs" class="menu" rel="menuitem"><a href="#nav-sub-docs" class="toggle" aria-haspopup="true" aria-labelledby="nav-main-docs" title="Read Documentation">Read<br /><em>Docs</em></a>
+              <div id="nav-sub-docs" class="sub-menu" aria-hidden="true">
+                <ul>
+                  <li>
+                    <ul>
+
+                      <li><a href="/en-US/docs/Web/HTML?menu">HTML</a></li>
+                      <li><a href="/en-US/docs/Web/CSS?menu">CSS</a></li>
+                      <li><a href="/en-US/docs/Web/JavaScript?menu">JavaScript</a></li>
+                      <li><a href="/en-US/docs/Web/Guide/Graphics?menu">Graphics</a></li>
+                      <li><a href="/en-US/docs/Web/API?menu">APIs / DOM</a></li>
+                      <li><a href="/en-US/docs/Web/Apps?menu">Apps</a></li>
+                      <li><a href="/en-US/docs/tools?menu">Dev Tools</a></li>
+                      <li><a href="/en-US/docs/Web/MathML?menu">MathML</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <ul>
+                      <li><a href="/en-US/docs/Web/Tutorials?menu">Tutorials</a></li>
+                      <li><a href="/en-US/docs/Web/Reference?menu">References</a></li>
+                      <li><a href="/en-US/docs/Web/Guide?menu">Developer Guides</a></li>
+                      <li><a href="/en-US/demos/?menu">Demos</a></li>
+                      <li><br /><br /><a href="/en-US/docs?menu">...more docs</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li id="nav-main-apps" role="menuitem"><a href="https://marketplace.firefox.com/developers/">Make<br /><em>Apps</em></a></li>
+            <li id="nav-main-firefox" class="menu" role="menuitem"><a href="#nav-sub-firefox" class="firefox toggle" aria-haspopup="true" aria-labelledby="nav-main-firefox">Build & Use<br /><em>Firefox</em></a>
+              <ul id="nav-sub-firefox" class="sub-menu">
+                <li><a href="/en-US/docs/Mozilla/Firefox_OS?menu">Firefox OS</a></li>
+                <li><a href="/en-US/docs/Mozilla/Firefox?menu">Firefox Desktop</a></li>
+                <li><a href="/en-US/docs/Mozilla/Mobile?menu">Mobile</a></li>
+                <li><a href="/en-US/docs/Mozilla/Add-ons?menu">Add-ons</a></li>
+              </ul>
+            </li>
+            <li id="nav-main-demos" role="menuitem"><a href="/en-US/demos/?menu" class="demos">See & Submit<br /><em>Demos</em></a></li>
+            <li id="nav-main-community" class="menu" role="menuitem"><a href="#nav-sub-community" class="community toggle" aria-haspopup="true" aria-labelledby="nav-main-community">Get<br /><em>Involved</em></a>
+              <ul id="nav-sub-community" class="sub-menu">
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Join_the_community?menu">Join the Community</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing?menu">Contribute to MDN</a></li>
+                <li><a href="/en-US/events?menu">Events</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Follow_what_s_happening?menu">Tweets, Blogs, and More</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+          
+      <ul class="user-state signed-out">
+    <li class="user-signin menu">
+    <form class="browserid" action="/en-US/users/browserid_verify" method="POST">
+        <input id="next" name="next" type="hidden" value="/en-US/docs/Web/API/CSSRule"/>
+        <input required="required" type="hidden" name="assertion" id="id_assertion" />
+                        <a href="#" target="_blank" class="browserid-signin toggle" aria-haspopup="true" title="Sign in with Persona">Sign in</a>
+                <div class="browserid-info sub-menu" aria-hidden="true">
+                <h3>What's this?</h3> <p>MDN has switched to <a href="https://persona.org/" target="_blank" rel="external">Persona</a>, a safe and simple way to sign in with just your e-mail address. <a href="http://identity.mozilla.com/post/12950196039/deploying-browserid-at-mozilla" rel="external">Learn more about why Mozilla is using Persona</a>.</p> <p><strong>Returning members:</strong> sign in with Persona and you'll be connected to your MDN profile (all your information is still here).</p> <p><strong>New members:</strong> sign in with Persona first, then you'll be able to set up your new MDN profile.</p>          <p><a href="#" target="_blank" class="browserid-signin" title="Sign in with Persona">Sign in</a></p>
+        </div>
+              </form>
+    </li>
+  </ul>
+      
+      <form id="site-search" method="get" action="http://www.google.com/search"
+              data-url="/en-US/search">
+        <p>
+          <input type="search" role="search" placeholder="Search MDN" id="q" name="q" value="">
+          <noscript><button type="submit">Search</button></noscript>
+        </p>
+        <input type="hidden" name="sitesearch" value="developer.mozilla.org">
+                <div id="site-search-gg"></div>
+              </form>
+
+      <a href="//www.mozilla.org/" id="tabzilla">mozilla</a>
+    </div>
+  </header>
+
+    
+
+<!-- top toolbar -->
+<section id="nav-toolbar"><div><div class="wrap">
+  <!-- right floated navigation -->
+  <nav id="tool-menus" role="navigation">
+    <ul id="tools">
+      <li class="menu">
+        <a href="#page-tools" class="toggle">This page</a>
+        <ul id="page-tools" class="sub-menu">
+          <li class="page-print"> <a href="#" onclick="return window.print();"  title="Print page">Print this page</a></li>
+                      <li><a href="/en-US/docs/new?parent=8121">New sub-page</a></li>
+            <li><a href="/en-US/docs/new?clone=8121">Clone this page</a></li>
+                                      </ul>
+      </li>
+            <li class="menu">
+        <a href="#" class="toggle">Languages</a>
+        <ul id="translations">
+                      <li><a rel="internal" href="/ja/docs/Web/API/CSSRule" title="CSSRule">日本語</a></li>
+                      <li><a rel="internal" href="/pl/docs/DOM/cssRule" title="cssRule">Polski</a></li>
+                    
+                      <li><a href="/en-US/docs/Web/API/CSSRule$locales">Add translation</a></li>
+                  </ul>
+      </li>
+          </ul>
+  </nav>
+  
+  <!-- left crumb navigation -->
+  <nav class="crumbs" role="navigation">
+    <ol>
+              <li class="crumb"><a href="/en-US/docs/Web">Web technology for developers</a></li>
+              <li class="crumb"><a href="/en-US/docs/Web/API">Web API reference</a></li>
+            <li class="crumb">CSSRule</li>
+    </ol>
+  </nav>
+  
+</div></div></section>
+
+
+
+<section id="content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" 
+          data-current-revision="425523"
+          data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes."
+          data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title">
+            <h1 class="page-title">CSSRule</h1>
+                    </div>
+        <ul id="page-buttons">
+            <li class="page-history"><a href="/en-US/docs/Web/API/CSSRule$history"><i class="icon-book"></i>History</a></li>
+                                                                                  <li class="page-edit"><a href="/en-US/docs/Web/API/CSSRule$edit"><i class="icon-pencil"></i>Edit</a></li>
+                    </ul>
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                <div id="article-nav">
+          <div class="page-toc">
+            <h2>Table of Contents</h2>
+            <ol>
+              <code></code><code></code><code></code><code></code><li><a href="#Properties" rel="internal">Syntax</a><li><a href="#Properties_common_to_all_CSSRule_instances" rel="internal">Properties common to all CSSRule instances</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#CSSRule" rel="internal">Constants</a><ol><li><a href="#Type_constants" rel="internal">Type constants</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code></ol></li><li><a href="#Specification" rel="internal">Specification</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Browser_compatibility" rel="internal">Browser compatibility</a><li><a href="#See_also" rel="internal">See also</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code>
+            </ol>
+          </div>
+          <ul class="page-anchors">
+            <li class="anchor-tags">
+                              <i class="icon-tags"></i><a href="#page-tags">Tags</a>
+                          </li>
+            <li class="anchor-files">
+                              <i class="icon-paper-clip off"></i><span title="This document has no attachments">Files</span>
+                          </li>
+          </ul>
+        </div>
+                                <div>
+  <span class="breadcrumbs cssomRef_breadcrumbs">« <a href="/en-US/docs/Gecko_DOM_Reference">DOM Reference</a> « CSSOM</span></div>
+<p>An object implementing the <strong><code>CSSRule</code></strong> DOM interface represents a single CSS at-rule. References to a <code>CSSRule</code>-implementing object may be obtained by looking at a <a href="/en-US/docs/Web/API/CSSStyleSheet">CSS style sheet's</a> <a href="/en-US/docs/Web/API/CSSStyleSheet" title="/en-US/docs/Web/API/CSSStyleSheet"><code>cssRules</code></a> list.</p>
+<p>There are several kinds of rules. The <code>CSSRule</code> interface specifies the properties common to all rules, while properties unique to specific rule types are specified in the more specialized interfaces for those rules' respective types.</p>
+<h2 id="Properties" name="Properties">Syntax</h2>
+<p>The syntax is described using the <a class="external" href="http://dev.w3.org/2006/webapi/WebIDL/">WebIDL</a> format.</p>
+<pre>interface CSSRule {
+    const unsigned short STYLE_RULE = 1;
+    const unsigned short CHARSET_RULE = 2;
+    const unsigned short IMPORT_RULE = 3;
+    const unsigned short MEDIA_RULE = 4;
+    const unsigned short FONT_FACE_RULE = 5;
+    const unsigned short PAGE_RULE = 6;
+    const unsigned short KEYFRAMES_RULE = 7;
+    const unsigned short KEYFRAME_RULE = 8;
+    const unsigned short NAMESPACE_RULE = 10;
+    const unsigned short COUNTER_STYLE_RULE = 11;
+    const unsigned short SUPPORTS_RULE = 12;
+    const unsigned short DOCUMENT_RULE = 13;
+    const unsigned short FONT_FEATURE_VALUES_RULE = 14;
+    const unsigned short VIEWPORT_RULE = 15;
+    const unsigned short REGION_STYLE_RULE = 16;
+    readonly attribute unsigned short type;
+    attribute DOMString cssText;
+    readonly attribute CSSRule? parentRule;
+    readonly attribute CSSStyleSheet? parentStyleSheet;
+};</pre>
+<h2 id="Properties_common_to_all_CSSRule_instances">Properties common to all CSSRule instances</h2>
+<dl>
+  <dt id="cssText">
+    <a href="/en-US/docs/Web/API/CSSRule/cssText" title="/en-US/docs/Web/API/CSSRule/cssText"><code>cssText</code></a></dt>
+  <dd>
+    Represents the textual representation of the rule, e.g. <code>"h1,h2 { font-size: 16pt }"</code></dd>
+  <dt id="parentRule">
+    <a class="new" href="/en-US/docs/Web/API/cssRule/parentRule" title="/en-US/docs/Web/API/cssRule/parentRule"><code>parentRule</code></a> <span class="inlineIndicator readOnly readOnlyInline" title="This value may not be changed.">Read only </span></dt>
+  <dd>
+    Returns the containing rule, otherwise <code>null</code>. E.g. if this rule is a style rule inside an <a href="/en-US/docs/Web/CSS/@media"><code>@media</code></a> block, the parent rule would be that <a href="/en-US/docs/Web/API/CSSMediaRule" title="/en-US/docs/Web/API/CSSMediaRule"><code>CSSMediaRule</code></a>.</dd>
+  <dt id="parentStyleSheet">
+    <a href="/en-US/docs/Web/API/CSSRule/parentStyleSheet" title="/en-US/docs/Web/API/CSSRule/parentStyleSheet"><code>parentStyleSheet</code></a> <span class="inlineIndicator readOnly readOnlyInline" title="This value may not be changed.">Read only </span></dt>
+  <dd>
+    Returns the <a href="/en-US/docs/Web/API/CSSStyleSheet" title="/en-US/docs/Web/API/CSSStyleSheet"><code>CSSStyleSheet</code></a> object for the style sheet that contains this rule</dd>
+  <dt id="type">
+    <a class="new" href="/en-US/docs/DOM/cssRule/type"><code>type</code></a> <span class="inlineIndicator readOnly readOnlyInline" title="This value may not be changed.">Read only </span></dt>
+  <dd>
+    One of the <a href="#Type_constants">Type constants</a> indicating the type of CSS rule.</dd>
+</dl>
+<h2 id="CSSRule" name="CSSRule">Constants</h2>
+<h3 id="Type_constants">Type constants</h3>
+<p>The <code>CSSRule</code> interface specifies integer constants that can be used in conjunction with a <code>CSSRule</code>'s <a class="new" href="/en-US/docs/Web/API/cssRule/type" title="/en-US/docs/Web/API/cssRule/type"><code>type</code></a> property to discern the rule type (and therefore, which specialized interface it implements). The relationships between these constants and the interfaces are:</p>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <th>Type</th>
+      <th>Value</th>
+      <th>Rule-specific interface</th>
+    </tr>
+    <tr>
+      <td><code>CSSRule.STYLE_RULE</code></td>
+      <td style="text-align: center;"><code>1</code></td>
+      <td><a href="/en-US/docs/Web/API/CSSStyleRule" title="/en-US/docs/Web/API/CSSStyleRule"><code>CSSStyleRule</code></a></td>
+    </tr>
+    <tr>
+      <td><code>CSSRule.MEDIA_RULE</code></td>
+      <td style="text-align: center;"><code>4</code></td>
+      <td><a href="/en-US/docs/Web/API/CSSMediaRule" title="/en-US/docs/Web/API/CSSMediaRule"><code>CSSMediaRule</code></a></td>
+    </tr>
+    <tr>
+      <td><code>CSSRule.FONT_FACE_RULE</code></td>
+      <td style="text-align: center;"><code>5</code></td>
+      <td><a class="new" href="/en-US/docs/Web/API/CSSFontFaceRule" title="/en-US/docs/Web/API/CSSFontFaceRule"><code>CSSFontFaceRule</code></a></td>
+    </tr>
+    <tr>
+      <td><code>CSSRule.PAGE_RULE</code></td>
+      <td style="text-align: center;"><code>6</code></td>
+      <td><a href="/en-US/docs/Web/API/CSSPageRule" title="/en-US/docs/Web/API/CSSPageRule"><code>CSSPageRule</code></a></td>
+    </tr>
+    <tr>
+      <td><code>CSSRule.IMPORT_RULE</code></td>
+      <td style="text-align: center;"><code>3</code></td>
+      <td><a class="new" href="/en-US/docs/Web/API/CSSImportRule" title="/en-US/docs/Web/API/CSSImportRule"><code>CSSImportRule</code></a></td>
+    </tr>
+    <tr>
+      <td><code>CSSRule.CHARSET_RULE</code></td>
+      <td style="text-align: center;"><code>2</code></td>
+      <td><a class="new" href="/en-US/docs/Web/API/CSSCharsetRule" title="/en-US/docs/Web/API/CSSCharsetRule"><code>CSSCharsetRule</code></a> <span class="inlineIndicator obsolete obsoleteInline" title="">Obsolete</span></td>
+    </tr>
+    <tr>
+      <td><code>CSSRule.UNKNOWN_RULE</code></td>
+      <td style="text-align: center;"><code>0</code></td>
+      <td><a class="new" href="/en-US/docs/Web/API/CSSUnknownRule" title="/en-US/docs/Web/API/CSSUnknownRule"><code>CSSUnknownRule</code></a><span class="inlineIndicator obsolete obsoleteInline" title="">Obsolete</span></td>
+    </tr>
+    <tr>
+      <td><code>CSSRule.KEYFRAMES_RULE</code></td>
+      <td style="text-align: center;"><code>7</code></td>
+      <td><a href="/en-US/docs/Web/API/CSSKeyframesRule" title="/en-US/docs/Web/API/CSSKeyframesRule"><code>CSSKeyframesRule</code></a> [1] <span class="inlineIndicator experimental experimentalInline">Experimental</span></td>
+    </tr>
+    <tr>
+      <td><code>CSSRule.KEYFRAME_RULE</code></td>
+      <td style="text-align: center;"><code>8</code></td>
+      <td><a href="/en-US/docs/Web/API/CSSKeyframeRule" title="/en-US/docs/Web/API/CSSKeyframeRule"><code>CSSKeyframeRule</code></a> [1] <span class="inlineIndicator experimental experimentalInline">Experimental</span></td>
+    </tr>
+    <tr>
+      <td><em>Reserved for future use</em></td>
+      <td style="text-align: center;"><code>9</code></td>
+      <td>Should be used to define color profiles in the future</td>
+    </tr>
+    <tr>
+      <td><code>CSSRule.NAMESPACE_RULE</code></td>
+      <td style="text-align: center;"><code>10</code></td>
+      <td><a href="/en-US/docs/Web/API/CSSNamespaceRule" title="/en-US/docs/Web/API/CSSNamespaceRule"><code>CSSNamespaceRule</code></a> <span class="inlineIndicator experimental experimentalInline">Experimental</span></td>
+    </tr>
+    <tr>
+      <td><code>CSSRule.COUNTER_STYLE_RULE</code></td>
+      <td style="text-align: center;"><code>11</code></td>
+      <td><a class="new" href="/en-US/docs/Web/API/CSSCounterStyleRule" title="/en-US/docs/Web/API/CSSCounterStyleRule"><code>CSSCounterStyleRule</code></a> <span class="inlineIndicator experimental experimentalInline">Experimental</span></td>
+    </tr>
+    <tr>
+      <td><code>CSSRule.SUPPORTS_RULE</code></td>
+      <td style="text-align: center;"><code>12</code></td>
+      <td><a href="/en-US/docs/Web/API/CSSSupportsRule" title="/en-US/docs/Web/API/CSSSupportsRule"><code>CSSSupportsRule</code></a> <span class="inlineIndicator experimental experimentalInline">Experimental</span></td>
+    </tr>
+    <tr>
+      <td><code>CSSRule.DOCUMENT_RULE</code></td>
+      <td style="text-align: center;"><code>13</code></td>
+      <td><a class="new" href="/en-US/docs/Web/API/CSSDocumentRule" title="/en-US/docs/Web/API/CSSDocumentRule"><code>CSSDocumentRule</code></a> <span class="inlineIndicator experimental experimentalInline">Experimental</span></td>
+    </tr>
+    <tr>
+      <td><code>CSSRule.FONT_FEATURE_VALUES_RULE</code></td>
+      <td style="text-align: center;"><code>14</code></td>
+      <td><a class="new" href="/en-US/docs/Web/API/CSSFontFeatureValuesRule" title="/en-US/docs/Web/API/CSSFontFeatureValuesRule"><code>CSSFontFeatureValuesRule</code></a> <span class="inlineIndicator experimental experimentalInline">Experimental</span></td>
+    </tr>
+    <tr>
+      <td><code>CSSRule.VIEWPORT_RULE</code></td>
+      <td style="text-align: center;"><code>15</code></td>
+      <td><a class="new" href="/en-US/docs/Web/API/CSSViewportRule" title="/en-US/docs/Web/API/CSSViewportRule"><code>CSSViewportRule</code></a> <span class="inlineIndicator experimental experimentalInline">Experimental</span></td>
+    </tr>
+    <tr>
+      <td><code>CSSRule.REGION_STYLE_RULE</code></td>
+      <td style="text-align: center;"><code>16</code></td>
+      <td><a class="new" href="/en-US/docs/Web/API/CSSRegionStyleRule" title="/en-US/docs/Web/API/CSSRegionStyleRule"><code>CSSRegionStyleRule</code></a> <span class="inlineIndicator experimental experimentalInline">Experimental</span></td>
+    </tr>
+  </tbody>
+</table>
+<p>An up-to-date informal list of constants can be found on the <a class="external" href="http://wiki.csswg.org/spec/cssom-constants">CSSWG Wiki</a>.</p>
+<p>[1] On Gecko, before Firefox 19, the keyframe-related constants existed only in their prefixed version: <code>CSSRule.MOZ_KEYFRAMES_RULE</code> and <code>CSSRule.MOZ_KEYFRAME_RULE.</code> From Firefox 20 onwards, both versions are available. The prefixed version will be removed in the future.</p>
+<h2 id="Specification" name="Specification">Specification</h2>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th scope="col">Specification</th>
+      <th scope="col">Status</th>
+      <th scope="col">Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a class="external" href="http://dev.w3.org/csswg/cssom/#css-rules" lang="en" title="The definition of 'CSSRule' in that specification.">CSS Object Model (CSSOM)</a></td>
+      <td><span class="spec-WD">Working Draft</span></td>
+      <td>Obsoleted values <code>CHARSET_RULE</code> and <code>UNKNOWN_RULE</code>. Added value <code>NAMESPACE_RULE</code>.</td>
+    </tr>
+    <tr>
+      <td><a class="external" href="http://dev.w3.org/csswg/css3-conditional/#extentions-to-cssrule-interface" lang="en" title="The definition of 'CSSRule' in that specification.">CSS Conditional Rules Module Level 3</a></td>
+      <td><span class="spec-CR">Candidate Recommendation</span></td>
+      <td>Added values <code>SUPPORTS_RULE</code> (<code>DOCUMENT_RULE</code> has been pushed to CSS Conditional Rules Level 4),</td>
+    </tr>
+    <tr>
+      <td><a class="external" href="http://dev.w3.org/csswg/css-animations/#cssrule" lang="en" title="The definition of 'CSSRule' in that specification.">CSS Animations</a></td>
+      <td><span class="spec-WD">Working Draft</span></td>
+      <td>Added values <code>KEYFRAMES_RULE</code> and <code>KEYFRAME_RULE</code>.</td>
+    </tr>
+    <tr>
+      <td><a class="external" href="http://www.w3.org/TR/DOM-Level-2-Style/css.html#CSS-CSSRule" lang="en" title="The definition of 'CSSRule' in that specification.">Document Object Model (DOM) Level 2 Style Specification</a></td>
+      <td><span class="spec-REC">Recommendation</span></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Browser_compatibility">Browser compatibility</h2>
+<p>To get browser compatibility information about the different type constant value, please consult the compatibility table of the associated interface.</p>
+<div>
+  <div class="htab"> 
+    <a id="AutoCompatibilityTable" name="AutoCompatibilityTable"></a> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div></div>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari (WebKit)</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td>9</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Phone</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h2 id="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/Web/Guide/DOM/Using_dynamic_styling_information">Using dynamic styling information</a></li>
+  <li>CSS Object Model:  
+<a href="/en-US/docs/Web/API/CSSRule" title="/en-US/docs/Web/API/CSSRule"><code>CSSRule</code></a>,  
+<a href="/en-US/docs/Web/API/CSSStyleRule" title="/en-US/docs/Web/API/CSSStyleRule"><code>CSSStyleRule</code></a>,  
+<a href="/en-US/docs/Web/API/CSSMediaRule" title="/en-US/docs/Web/API/CSSMediaRule"><code>CSSMediaRule</code></a>,  
+<a href="/en-US/docs/Web/API/CSSPageRule" title="/en-US/docs/Web/API/CSSPageRule"><code>CSSPageRule</code></a>,  
+<a href="/en-US/docs/Web/API/CSSKeyframesRule" title="/en-US/docs/Web/API/CSSKeyframesRule"><code>CSSKeyframesRule</code></a>,  
+<a href="/en-US/docs/Web/API/CSSKeyframeRule" title="/en-US/docs/Web/API/CSSKeyframeRule"><code>CSSKeyframeRule</code></a>,  
+<a href="/en-US/docs/Web/API/CSSNamespaceRule" title="/en-US/docs/Web/API/CSSNamespaceRule"><code>CSSNamespaceRule</code></a>,  
+<a href="/en-US/docs/Web/API/CSSSupportsRule" title="/en-US/docs/Web/API/CSSSupportsRule"><code>CSSSupportsRule</code></a>,  
+<a href="/en-US/docs/Web/API/CSSGroupingRule" title="/en-US/docs/Web/API/CSSGroupingRule"><code>CSSGroupingRule</code></a>,  
+<a href="/en-US/docs/Web/API/CSSConditionRule" title="/en-US/docs/Web/API/CSSConditionRule"><code>CSSConditionRule</code></a></li>
+</ul>
+                  </div>
+    <section class="page-meta">
+      
+            <section id="page-tags">
+        <h2><i class="icon-tags"></i>Tags (2)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Stylesheets">Stylesheets</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/CSSOM">CSSOM</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/kitchin">kitchin</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/Brettz9">Brettz9</a>, <a href="/en-US/profiles/teoli">teoli</a>, <a href="/en-US/profiles/Ptak82">Ptak82</a>, <a href="/en-US/profiles/Ms2ger">Ms2ger</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br />
+          Last updated by:  
+          <a href="/en-US/profiles/ethertank">ethertank</a>, 
+          <time datetime="2013-06-06T18:17:04-07:00">Jun 6, 2013 6:17:04 PM</time>
+                      <br />
+            Last reviewed by:  
+            <a href="/en-US/profiles/ethertank">ethertank</a>, 
+            <time datetime="2013-06-06T18:17:04-07:00">Jun 6, 2013 6:17:04 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/API/CSSRule$edit">
+      <input type="hidden" name="form" id="form" value="rev" />
+      <input type="hidden" name="content" id="content" value="" />
+  </form>
+      </div>
+   </div>
+    </section>
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+<footer id="site-info" class="footer" role="contentinfo">
+<div class="wrap">
+    <div id="legal">
+      <img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-tiny.png" alt="" width="42" height="48">
+      <p id="copyright">&copy; 2005 - 2013 Mozilla Developer Network and individual contributors</p>
+      <p>
+      Content is available under <a href="/en-US/docs/Project:Copyrights">these licenses</a>      &bull; <a href="/en-US/docs/Project:About">About MDN</a>
+      &bull; <a href="//github.com/mozilla/kuma">Contribute to the code</a>
+      &bull; <a href="//www.mozilla.org/en-US/privacy">Privacy Policy</a>
+    </div>
+          <form class="languages go" method="get" action="/en-US/docs">
+      <label for="language">Other languages:</label>
+      <select id="language" class="wiki-l10n" name="next" dir="ltr">
+        <option value="/en-US/docs/Web/API/CSSRule" selected>
+          English (US)
+        </option>
+                  <option value="/ja/docs/Web/API/CSSRule">
+            日本語
+          </option>          <option value="/pl/docs/DOM/cssRule">
+            Polski
+          </option>      </select>
+      <noscript><button type="submit">Go</button></noscript>
+    </form>
+  </div>
+</footer>
+
+<script src="/en-US/jsi18n/build:5f4e39d"></script>
+  <script src="//mozorg.cdn.mozilla.net/en-US/tabzilla/tabzilla.js" async></script>
+  <script src="//www.google.com/jsapi" type="text/javascript"></script>
+  <script src="https://login.persona.org/include.js" type="text/javascript"></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/mdn-min.js?build=5f4e39d"></script>
+      <script src="https://developer.cdn.mozilla.net/media/js/wiki-min.js?build=5f4e39d"></script>
+  
+  <script type="text/javascript">
+    // Event tracking for the new menu
+    $(function() {
+      $('#nav-main').on('click', 'a', function(e) {
+        window._gaq && _gaq.push(['_trackEvent', 'Menu', 'Click', e.target.innerHTML, e.target.href]);
+      });
+    });
+  </script>
+        <!-- include syntax highlighting scripts -->
+  
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=5f4e39d" />
+
+  <script type="text/javascript">
+    MEDIA_URL = 'https://developer.cdn.mozilla.net/media/';
+  </script>
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/media/prism/prism.js" data-manual></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/syntax-prism-min.js?build=5f4e39d"></script>
+
+<script src="/en-US/waffles.js" type="text/javascript" async></script>
+</body>
+</html>

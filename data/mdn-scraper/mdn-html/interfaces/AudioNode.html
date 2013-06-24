@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+<head>
+      <script src="//cdn.optimizely.com/js/237572123.js"></script>
+  
+  <title>AudioNode - Web API reference | MDN</title>
+  
+  <meta charset="utf-8">
+  <meta name="robots" content="index, follow">
+  <link rel="home" href="/en-US/">
+  <link rel="copyright" href="#copyright">
+  <link rel="shortcut icon" href="https://developer.cdn.mozilla.net/media/img/favicon.ico">
+
+        <!--[if !IE 6]><!-->
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/mdn-min.css?build=5f4e39d" />
+      <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/wiki-min.css?build=5f4e39d" />
+    <!--<![endif]-->
+  <!--[if IE]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie.css"><![endif]-->
+  <!--[if lte IE 7]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie7.css"><![endif]-->
+  <!--[if lte IE 6]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie6.css"><![endif]-->
+  <link rel="stylesheet" type="text/css" href="https://developer.cdn.mozilla.net/media/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="print" href="https://developer.cdn.mozilla.net/media/css/mdn-print.css">
+  <link rel="stylesheet" href="https://mozorg.cdn.mozilla.net/media/css/tabzilla-min.css">
+  
+
+  <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network" />
+
+  
+    <link rel="stylesheet" media="print" href="https://developer.cdn.mozilla.net/media/css/wiki-print-min.css?build=5f4e39d" />
+          <link rel="stylesheet" type="text/css"
+            href="/en-US/docs/Template:CustomCSS?raw=1" />
+    
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script src="https://developer.cdn.mozilla.net/media/js/html5.js"></script>
+  <![endif]-->
+
+    <link rel="alternate" type="application/json" href="/en-US/docs/Web/API/AudioNode$json" />
+  <link rel="canonical" href="https://developer.mozilla.org/en-US/docs/Web/API/AudioNode" />
+
+  <meta property="og:title" content="AudioNode" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://developer.mozilla.org/media/img/mdn-logo-sm.png" />
+  <meta property="og:site_name" content="Mozilla Developer Network" />
+  <meta property="og:url" content="https://developer.mozilla.org/en-US/docs/Web/API/AudioNode" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:url" content="https://developer.mozilla.org/en-US/docs/Web/API/AudioNode" />
+  <meta name="twitter:title" content="AudioNode" />
+  <meta name="twitter:image" content="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" />
+  <meta name="twitter:site" content="@mozhacks" />
+  <meta name="twitter:creator" content="@mozhacks" />
+
+    <meta property="og:description" content="The AudioNode interface represents an audio-processing module, like an audio source (e.g. an HTML audio or video element), an audio destination, or an intermediate processing module (e.g. a filter like BiquadFilterNode, or a volume control like GainNode)."/>
+  <meta name="description" content="The AudioNode interface represents an audio-processing module, like an audio source (e.g. an HTML audio or video element), an audio destination, or an intermediate processing module (e.g. a filter like BiquadFilterNode, or a volume control like GainNode)." />
+  <meta name="twitter:description" content="The AudioNode interface represents an audio-processing module, like an audio source (e.g. an HTML audio or video element), an audio destination, or an intermediate processing module (e.g. a filter like BiquadFilterNode, or a volume control like GainNode)." />
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36116321-5']);
+  _gaq.push(['_trackPageview']);
+
+  (function(a, d) {
+    var ga = d.createElement(a); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == d.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = d.getElementsByTagName(a)[0]; s.parentNode.insertBefore(ga, s);
+  })('script', document);
+
+</script>
+</head>
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  <header id="masthead" class="minor new-menu">
+    <div class="wrap">
+      <ul id="nav-access">
+        <li><a href="#language">Select language</a></li>
+        <li><a href="#q">Skip to search</a></li>
+        <li><a href="#content">Skip to main content</a></li>
+      </ul>
+    
+      <div id="branding">
+                <div id="logo"><a href="/en-US/"><img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" alt="Mozilla Developer Network" title="Mozilla Developer Network" width="62" height="71"> Mozilla Developer Network</a></div>
+              </div>
+      
+              <nav id="nav">
+          <ul id="nav-main" role="menubar">
+            <li id="nav-main-docs" class="menu" rel="menuitem"><a href="#nav-sub-docs" class="toggle" aria-haspopup="true" aria-labelledby="nav-main-docs" title="Read Documentation">Read<br /><em>Docs</em></a>
+              <div id="nav-sub-docs" class="sub-menu" aria-hidden="true">
+                <ul>
+                  <li>
+                    <ul>
+
+                      <li><a href="/en-US/docs/Web/HTML?menu">HTML</a></li>
+                      <li><a href="/en-US/docs/Web/CSS?menu">CSS</a></li>
+                      <li><a href="/en-US/docs/Web/JavaScript?menu">JavaScript</a></li>
+                      <li><a href="/en-US/docs/Web/Guide/Graphics?menu">Graphics</a></li>
+                      <li><a href="/en-US/docs/Web/API?menu">APIs / DOM</a></li>
+                      <li><a href="/en-US/docs/Web/Apps?menu">Apps</a></li>
+                      <li><a href="/en-US/docs/tools?menu">Dev Tools</a></li>
+                      <li><a href="/en-US/docs/Web/MathML?menu">MathML</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <ul>
+                      <li><a href="/en-US/docs/Web/Tutorials?menu">Tutorials</a></li>
+                      <li><a href="/en-US/docs/Web/Reference?menu">References</a></li>
+                      <li><a href="/en-US/docs/Web/Guide?menu">Developer Guides</a></li>
+                      <li><a href="/en-US/demos/?menu">Demos</a></li>
+                      <li><br /><br /><a href="/en-US/docs?menu">...more docs</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li id="nav-main-apps" role="menuitem"><a href="https://marketplace.firefox.com/developers/">Make<br /><em>Apps</em></a></li>
+            <li id="nav-main-firefox" class="menu" role="menuitem"><a href="#nav-sub-firefox" class="firefox toggle" aria-haspopup="true" aria-labelledby="nav-main-firefox">Build & Use<br /><em>Firefox</em></a>
+              <ul id="nav-sub-firefox" class="sub-menu">
+                <li><a href="/en-US/docs/Mozilla/Firefox_OS?menu">Firefox OS</a></li>
+                <li><a href="/en-US/docs/Mozilla/Firefox?menu">Firefox Desktop</a></li>
+                <li><a href="/en-US/docs/Mozilla/Mobile?menu">Mobile</a></li>
+                <li><a href="/en-US/docs/Mozilla/Add-ons?menu">Add-ons</a></li>
+              </ul>
+            </li>
+            <li id="nav-main-demos" role="menuitem"><a href="/en-US/demos/?menu" class="demos">See & Submit<br /><em>Demos</em></a></li>
+            <li id="nav-main-community" class="menu" role="menuitem"><a href="#nav-sub-community" class="community toggle" aria-haspopup="true" aria-labelledby="nav-main-community">Get<br /><em>Involved</em></a>
+              <ul id="nav-sub-community" class="sub-menu">
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Join_the_community?menu">Join the Community</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing?menu">Contribute to MDN</a></li>
+                <li><a href="/en-US/events?menu">Events</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Follow_what_s_happening?menu">Tweets, Blogs, and More</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+          
+      <ul class="user-state signed-out">
+    <li class="user-signin menu">
+    <form class="browserid" action="/en-US/users/browserid_verify" method="POST">
+        <input id="next" name="next" type="hidden" value="/en-US/docs/Web/API/AudioNode"/>
+        <input required="required" type="hidden" name="assertion" id="id_assertion" />
+                        <a href="#" target="_blank" class="browserid-signin toggle" aria-haspopup="true" title="Sign in with Persona">Sign in</a>
+                <div class="browserid-info sub-menu" aria-hidden="true">
+                <h3>What's this?</h3> <p>MDN has switched to <a href="https://persona.org/" target="_blank" rel="external">Persona</a>, a safe and simple way to sign in with just your e-mail address. <a href="http://identity.mozilla.com/post/12950196039/deploying-browserid-at-mozilla" rel="external">Learn more about why Mozilla is using Persona</a>.</p> <p><strong>Returning members:</strong> sign in with Persona and you'll be connected to your MDN profile (all your information is still here).</p> <p><strong>New members:</strong> sign in with Persona first, then you'll be able to set up your new MDN profile.</p>          <p><a href="#" target="_blank" class="browserid-signin" title="Sign in with Persona">Sign in</a></p>
+        </div>
+              </form>
+    </li>
+  </ul>
+      
+      <form id="site-search" method="get" action="http://www.google.com/search"
+              data-url="/en-US/search">
+        <p>
+          <input type="search" role="search" placeholder="Search MDN" id="q" name="q" value="">
+          <noscript><button type="submit">Search</button></noscript>
+        </p>
+        <input type="hidden" name="sitesearch" value="developer.mozilla.org">
+                <div id="site-search-gg"></div>
+              </form>
+
+      <a href="//www.mozilla.org/" id="tabzilla">mozilla</a>
+    </div>
+  </header>
+
+    
+
+<!-- top toolbar -->
+<section id="nav-toolbar"><div><div class="wrap">
+  <!-- right floated navigation -->
+  <nav id="tool-menus" role="navigation">
+    <ul id="tools">
+      <li class="menu">
+        <a href="#page-tools" class="toggle">This page</a>
+        <ul id="page-tools" class="sub-menu">
+          <li class="page-print"> <a href="#" onclick="return window.print();"  title="Print page">Print this page</a></li>
+                      <li><a href="/en-US/docs/new?parent=65003">New sub-page</a></li>
+            <li><a href="/en-US/docs/new?clone=65003">Clone this page</a></li>
+                                      </ul>
+      </li>
+            <li class="menu">
+        <a href="#" class="toggle">Languages</a>
+        <ul id="translations">
+                      <li><a rel="internal" href="/zh-CN/docs/HTML/Canvas/Tutorial" title="Canvas教程">中文 (简体)</a></li>
+                    
+                      <li><a href="/en-US/docs/Web/API/AudioNode$locales">Add translation</a></li>
+                  </ul>
+      </li>
+          </ul>
+  </nav>
+  
+  <!-- left crumb navigation -->
+  <nav class="crumbs" role="navigation">
+    <ol>
+              <li class="crumb"><a href="/en-US/docs/Web">Web technology for developers</a></li>
+              <li class="crumb"><a href="/en-US/docs/Web/API">Web API reference</a></li>
+            <li class="crumb">AudioNode</li>
+    </ol>
+  </nav>
+  
+</div></div></section>
+
+
+
+<section id="content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" 
+          data-current-revision="434091"
+          data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes."
+          data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title">
+            <h1 class="page-title">AudioNode</h1>
+                    </div>
+        <ul id="page-buttons">
+            <li class="page-history"><a href="/en-US/docs/Web/API/AudioNode$history"><i class="icon-book"></i>History</a></li>
+                                                                                  <li class="page-edit"><a href="/en-US/docs/Web/API/AudioNode$edit"><i class="icon-pencil"></i>Edit</a></li>
+                    </ul>
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                <div id="article-nav">
+          <div class="page-toc">
+            <h2>Table of Contents</h2>
+            <ol>
+              <code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Properties" rel="internal">Properties</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Methods" rel="internal">Methods</a><code></code><code></code><code></code><code></code><li><a href="#Examples" rel="internal">Examples</a><li><a href="#Specifications" rel="internal">Specifications</a><li><a href="#Browser_compatibility" rel="internal">Browser compatibility</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#See_also" rel="internal">See also</a>
+            </ol>
+          </div>
+          <ul class="page-anchors">
+            <li class="anchor-tags">
+                              <i class="icon-tags"></i><a href="#page-tags">Tags</a>
+                          </li>
+            <li class="anchor-files">
+                              <i class="icon-paper-clip"></i><a href="#page-file">Files</a>
+                          </li>
+          </ul>
+        </div>
+                                <div>
+  « <a href="/en-US/docs/Web_Audio_API">Web Audio API</a> <div class="overheadIndicator translationInProgress translationInProgressHeader"> 
+    <p><strong>This is an experimental technology</strong><br>Because this technology's specification has not stabilized, check the <a href="#Browser_compatibility">compatibility table</a> for the proper prefixes to use in various browsers. Also note that the syntax and behavior of an experimental technology is subject to change in future versions of browsers as the spec changes.</p> 
+</div></div>
+<p><img alt="AudioNodes participating in an AudioContext create a audio routing graph." height="260" src="https://mdn.mozillademos.org/files/5081/WebAudioBasics.png" style="margin: 10px; float: left;" width="355">The <strong><code>AudioNode</code></strong><strong> </strong>interface represents an audio-processing module, like an <em>audio source</em> (e.g. an HTML <a href="/en-US/docs/Web/HTML/Element/audio"><code>&lt;audio&gt;</code></a> or <a href="/en-US/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code></a> element), an <em>audio destination</em>, or an <em>intermediate processing module</em> (e.g. a filter like <a href="/en-US/docs/Web/API/BiquadFilterNode" title="/en-US/docs/Web/API/BiquadFilterNode"><code>BiquadFilterNode</code></a>, or a volume control like <a href="/en-US/docs/Web/API/GainNode" title="/en-US/docs/Web/API/GainNode"><code>GainNode</code></a>).</p>
+<p>An <code>AudioNode</code> has inputs and outputs. Each of them have a given amount of <em>channels</em>.<em> </em>An <code>AudioNode</code> with zero input and exactly one output is called a <em>source node</em>.</p>
+<p>The processing varies from one <code>AudioNode</code> to another but, in general, a node reads its inputs, does some audio-related processing, and generates new values on its output.</p>
+<p>Different nodes can be linked together to build a <em>processing graph</em>. Such a graph is contained in an <a href="/en-US/docs/Web/API/AudioContext" title="/en-US/docs/Web/API/AudioContext"><code>AudioContext</code></a>. Each <code>AudioNode</code> participates in exactly one such context.</p>
+<p>An <code>AudioNode</code> can be target of events, therefore it implements the <a href="/en-US/docs/Web/API/EventTarget" title="/en-US/docs/Web/API/EventTarget"><code>EventTarget</code></a> interface.</p>
+<h2 id="Properties" style="">Properties</h2>
+<dl>
+  <dt>
+    <a class="new" href="/en-US/docs/Web/API/AudioNode.context" title="/en-US/docs/Web/API/AudioNode.context"><code>AudioNode.context</code></a> <span class="inlineIndicator readOnly readOnlyInline" title="This value may not be changed.">Read only </span></dt>
+  <dd>
+    Links to the associated <a href="/en-US/docs/Web/API/AudioContext" title="/en-US/docs/Web/API/AudioContext"><code>AudioContext</code></a>, that is the object representing the processing graph the node is participating in.</dd>
+</dl>
+<dl>
+  <dt>
+    <a class="new" href="/en-US/docs/Web/API/AudioNode.numberOfInputs" title="/en-US/docs/Web/API/AudioNode.numberOfInputs"><code>AudioNode.numberOfInputs</code></a> <span class="inlineIndicator readOnly readOnlyInline" title="This value may not be changed.">Read only </span></dt>
+  <dd>
+    Returns the amount of inputs feeding the node. Source nodes are defined as nodes having a <code>numberOfInputs</code> attributes with a value of <code>0</code>.</dd>
+</dl>
+<dl>
+  <dt>
+    <a class="new" href="/en-US/docs/Web/API/AudioNode.numberOfOutputs" title="/en-US/docs/Web/API/AudioNode.numberOfOutputs"><code>AudioNode.numberOfOutputs</code></a> <span class="inlineIndicator readOnly readOnlyInline" title="This value may not be changed.">Read only </span></dt>
+  <dd>
+    Returns the amount of outputs coming out of the node. Destination nodes, like <code>AudioDestinationNode</code>, have a value of <code>0</code> for this attribute.</dd>
+</dl>
+<dl>
+  <dt>
+    <a class="new" href="/en-US/docs/Web/API/AudioNode.channelCount" title="/en-US/docs/Web/API/AudioNode.channelCount"><code>AudioNode.channelCount</code></a></dt>
+  <dd>
+    Represents an integer used in determining how many channels outputs must contains. Its usage and precise definition depends of the value of <code>AudioNode.channelCountMode</code>: it is ignored if the value is <code>"max"</code>, used as a maximum value for <code>"clamped-max"</code>, or used as the effective value for <code>"explicit"</code>.</dd>
+</dl>
+<dl>
+  <dt>
+    <a class="new" href="/en-US/docs/Web/API/AudioNode.channelCountMode" title="/en-US/docs/Web/API/AudioNode.channelCountMode"><code>AudioNode.channelCountMode</code></a></dt>
+  <dd>
+    Represents an enumerated value describing the way channels must be matched between the inputs and the outputs. Possible values are:
+    <table class="standard-table">
+      <thead>
+        <tr>
+          <th scope="col">Value</th>
+          <th scope="col">Description</th>
+          <th scope="col">Used as default for the following <code>AudioNode</code> children</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>"max"</code></td>
+          <td>The number of channels is the maximum of the number of channels all connections. That implies that <code>channelCount</code> is ignored and only up-mixing happens</td>
+          <td><a href="/en-US/docs/Web/API/GainNode" title="/en-US/docs/Web/API/GainNode"><code>GainNode</code></a>, <a href="/en-US/docs/Web/API/DelayNode" title="/en-US/docs/Web/API/DelayNode"><code>DelayNode</code></a>, <a href="/en-US/docs/Web/API/ScriptProcessorNode" title="/en-US/docs/Web/API/ScriptProcessorNode"><code>ScriptProcessorNode</code></a>, <a href="/en-US/docs/Web/API/ChannelSplitterNode" title="/en-US/docs/Web/API/ChannelSplitterNode"><code>ChannelSplitterNode</code></a>, <a href="/en-US/docs/Web/API/ChannelMergerNode" title="/en-US/docs/Web/API/ChannelMergerNode"><code>ChannelMergerNode</code></a>, <a href="/en-US/docs/Web/API/BiquadFilterNode" title="/en-US/docs/Web/API/BiquadFilterNode"><code>BiquadFilterNode</code></a>, <a class="new" href="/en-US/docs/Web/API/WaveShaperNode" title="/en-US/docs/Web/API/WaveShaperNode"><code>WaveShaperNode</code></a></td>
+        </tr>
+        <tr>
+          <td><code>"clamped-max"</code></td>
+          <td>The number of channels is the maximum of the number of channels of all connections, <em>clamped</em> to the value of <code>channelCount</code>.</td>
+          <td><a href="/en-US/docs/Web/API/PannerNode" title="/en-US/docs/Web/API/PannerNode"><code>PannerNode</code></a>, <a class="new" href="/en-US/docs/Web/API/ConvolverNode" title="/en-US/docs/Web/API/ConvolverNode"><code>ConvolverNode</code></a></td>
+        </tr>
+        <tr>
+          <td><code>"explicit"</code></td>
+          <td>The number of channels is defined by the value of <code>channelCount</code>.</td>
+          <td><a class="new" href="/en-US/docs/Web/API/AudioDestinationNode" title="/en-US/docs/Web/API/AudioDestinationNode"><code>AudioDestinationNode</code></a>, <a href="/en-US/docs/Web/API/AnalyserNode" title="/en-US/docs/Web/API/AnalyserNode"><code>AnalyserNode</code></a>, <a href="/en-US/docs/Web/API/DynamicsCompressorNode" title="/en-US/docs/Web/API/DynamicsCompressorNode"><code>DynamicsCompressorNode</code></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </dd>
+  <dt>
+    <a class="new" href="/en-US/docs/Web/API/AudioNode.channelInterpretation" title="/en-US/docs/Web/API/AudioNode.channelInterpretation"><code>AudioNode.channelInterpretation</code></a></dt>
+  <dd>
+    Represents an enumerated value describing the meaning of the channels. This interpretation will define how the up-mixing and the down-mixing will happen.<br>
+    The possible values are <code>"speakers"</code> or <code>"discrete"</code>. In the case of <code>"speakers"</code>, the ordering of the channels have the following meaning, and the channels are often represented by a standard abbreviation:
+    <table class="standard-table">
+      <tbody>
+        <tr>
+          <td><em>Mono</em></td>
+          <td><code>0: M: mono</code></td>
+        </tr>
+        <tr>
+          <td><em>Stereo</em></td>
+          <td><code>0: L: left<br>
+            1: R: right</code></td>
+        </tr>
+        <tr>
+          <td><em>Quad</em></td>
+          <td><code>0: L:  left<br>
+            1: R:  right<br>
+            2: SL: surround left<br>
+            3: SR: surround right</code></td>
+        </tr>
+        <tr>
+          <td><em>5.1</em></td>
+          <td><code>0: L:   left<br>
+            1: R:   right<br>
+            2: C:   center<br>
+            3: LFE: subwoofer<br>
+            4: SL:  surround left<br>
+            5: SR:  surround right</code></td>
+        </tr>
+      </tbody>
+    </table>
+    When the amount of channels doesn't match between an input and an output, up- or down-mixing happens according the following rules:<br>
+    <table class="standard-table">
+      <thead>
+        <tr>
+          <th scope="row">Interpretation</th>
+          <th scope="col">Input channels</th>
+          <th scope="col">Output channels</th>
+          <th scope="col">Mixing rules</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th colspan="1" rowspan="13" scope="row"><code>speakers</code></th>
+          <td><code>1</code> <em>(Mono)</em></td>
+          <td><code>2</code> <em>(Stereo)</em></td>
+          <td><em>Up-mix from mono to stereo</em>.<br>
+            The <code>M</code> input channel is used for both output channels (<code>L</code> and <code>R</code>).<br>
+            <code>output.L = input.M<br>
+            output.R = input.M</code></td>
+        </tr>
+        <tr>
+          <td><code>1</code> <em>(Mono)</em></td>
+          <td><code>4</code> <em>(Quad)</em></td>
+          <td><em>Up-mix from mono to quad.</em><br>
+            The <code>M</code> input channel is used for non-surround output channels (<code>L</code> and <code>R</code>). Surround output channels (<code>SL</code> and <code>SR</code>) are silent.<br>
+            <code>output.L  = input.M<br>
+            output.R  = input.M<br>
+            output.SL = 0<br>
+            output.SR = 0</code></td>
+        </tr>
+        <tr>
+          <td><code>1</code> <em>(Mono)</em></td>
+          <td><code>6</code> <em>(5.1)</em></td>
+          <td><em>Up-mix from mono to 5.1.</em><br>
+            The <code>M</code> input channel is used for the center output channel (<code>C</code>). All the others (<code>L</code>, <code>R</code>, <code>LFE</code>, <code>SL</code>, and <code>SR</code>) are silent.<br>
+            <code>output.L   = 0<br>
+            output.R   = 0</code><br>
+            <code>output.C   = input.M<br>
+            output.LFE = 0<br>
+            output.SL  = 0<br>
+            output.SR  = 0</code></td>
+        </tr>
+        <tr>
+          <td><code>2</code> <em>(Stereo)</em></td>
+          <td><code>1</code> <em>(Mono)</em></td>
+          <td><em>Down-mix from stereo to mono</em>.<br>
+            Both input channels (<code>L</code> and <code>R</code>) are equally combined to produce the unique output channel (<code>M</code>).<br>
+            <code>output.M = 0.5 * (input.L + input.R)</code></td>
+        </tr>
+        <tr>
+          <td><code>2</code> <em>(Stereo)</em></td>
+          <td><code>4</code> <em>(Quad)</em></td>
+          <td><em>Up-mix from stereo to quad.</em><br>
+            The <code>L</code> and <code>R </code>input channels are used for their non-surround respective output channels (<code>L</code> and <code>R</code>). Surround output channels (<code>SL</code> and <code>SR</code>) are silent.<br>
+            <code>output.L  = input.L<br>
+            output.R  = input.R<br>
+            output.SL = 0<br>
+            output.SR = 0</code></td>
+        </tr>
+        <tr>
+          <td><code>2</code> <em>(Stereo)</em></td>
+          <td><code>6</code> <em>(5.1)</em></td>
+          <td><em>Up-mix from stereo to 5.1.</em><br>
+            The <code>L</code> and <code>R </code>input channels are used for their non-surround respective output channels (<code>L</code> and <code>R</code>). Surround output channels (<code>SL</code> and <code>SR</code>), as well as the center (<code>C</code>) and subwoofer (<code>LFE</code>) channels, are left silent.<br>
+            <code>output.L   = input.L<br>
+            output.R   = input.R<br>
+            output.C   = 0<br>
+            output.LFE = 0<br>
+            output.SL  = 0<br>
+            output.SR  = 0</code></td>
+        </tr>
+        <tr>
+          <td><code>4</code> <em>(Quad)</em></td>
+          <td><code>1</code> <em>(Mono)</em></td>
+          <td><em>Down-mix from quad to mono</em>.<br>
+            All four input channels (<code>L</code>, <code>R</code>, <code>SL</code>, and <code>SR</code>) are equally combined to produce the unique output channel (<code>M</code>).<br>
+            <code>output.M = 0.25 * (input.L + input.R + </code><code>input.SL + input.SR</code><code>)</code></td>
+        </tr>
+        <tr>
+          <td><code>4</code> <em>(Quad)</em></td>
+          <td><code>2</code> <em>(Stereo)</em></td>
+          <td><em>Down-mix from quad to mono</em>.<br>
+            Both left input channels (<code>L</code> and <code>SL</code>) are equally combined to produce the unique left output channel (<code>L</code>). And similarly, both right input channels (<code>R</code> and <code>SR</code>) are equally combined to produce the unique right output channel (<code>R</code>).<br>
+            <code>output.L = 0.5 * (input.L + input.SL</code><code>)</code><br>
+            <code>output.R = 0.5 * (input.R + input.SR</code><code>)</code></td>
+        </tr>
+        <tr>
+          <td><code>4</code> <em>(Quad)</em></td>
+          <td><code>6</code> <em>(5.1)</em></td>
+          <td><em>Up-mix from quad to 5.1.</em><br>
+            The <code>L</code>, <code>R</code>, <code>SL</code>, and <code>SR</code> input channels are used for their respective output channels (<code>L</code> and <code>R</code>). Center (<code>C</code>) and subwoofer (<code>LFE</code>) channels are left silent.<br>
+            <code>output.L   = input.L<br>
+            output.R   = input.R<br>
+            output.C   = 0<br>
+            output.LFE = 0<br>
+            output.SL  = input.SL<br>
+            output.SR  = input.SR</code></td>
+        </tr>
+        <tr>
+          <td><code>6</code> <em>(5.1)</em></td>
+          <td><code>1</code> <em>(Mono)</em></td>
+          <td><em>Down-mix from 5.1 to stereo.</em><br>
+            The left and right, both surround or not, and the central channels are all mixed together. The surround channels are slightly attenuated and the regular lateral channels are power-compensated to make them count as a single channel. The subwoofer (<code>LFE</code>) channel is lost.<br>
+            <code>output.M = 0.7071 * (input.L + input.R) + input.C + 0.5 * (input.SL + input.SR)</code></td>
+        </tr>
+        <tr>
+          <td><code>6</code> <em>(5.1)</em></td>
+          <td><code>2</code> <em>(Stereo)</em></td>
+          <td><em>Down-mix from 5.1 to stereo.</em><br>
+            The central (<code>C</code>) is summed with each lateral surround channels (<code>SL</code> or <code>SR</code>) and mixed to each lateral channel. As it is mixed in two channels, it is mixed at lower power, that is they are multiplied by <code>√2/2</code>. The subwoofer (<code>LFE</code>) channel is lost.<br>
+            <code>output.L   = input.L + 0.7071 * (input.C + input.SL)<br>
+            output.R   = input.R </code><code>+ 0.7071 * (input.C + input.SR)</code></td>
+        </tr>
+        <tr>
+          <td><code>6</code> <em>(5.1)</em></td>
+          <td><code>4</code> <em>(Quad)</em></td>
+          <td><em>Down-mix from 5.1 to quad.</em><br>
+            The central (<code>C</code>) is mixed with the lateral non-surround channels (<code>L</code> and <code>R</code>). As it is mixed in two channels, it is mixed at lower power, that is they are multiplied by <code>√2/2</code>. The surround channels are passed unchanged. The subwoofer (<code>LFE</code>) channel is lost.<br>
+            <code>output.L   = input.L + 0.7071 * input.C<br>
+            output.R   = input.R<br>
+            output.SL  = input.SL<br>
+            output.SR  = input.SR</code></td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1">Other</td>
+          <td>As these are non-standard channel layout, they are handled as if <code>channelInterpretation</code> was set to <code>discrete</code>.<br>
+            The specification explicitly allow the future definition of new speakers layout. This fallback is therefore not future proof as the behavior of the browsers for a specific amount of channels may change in the future.</td>
+        </tr>
+        <tr>
+          <th colspan="1" rowspan="2" scope="row"><code>discrete</code></th>
+          <td rowspan="1">any (<code>x</code>)</td>
+          <td rowspan="1">any (<code>y</code>) where <code>x&lt;y</code></td>
+          <td><em>Up-mix discrete channels.</em><br>
+            Fill each output channel with its input counterpart, that is the input channel with the same index. Channels with no corresponding input channels are left silent.</td>
+        </tr>
+        <tr>
+          <td rowspan="1">any (<code>x</code>)</td>
+          <td rowspan="1">any (<code>y</code>) where <code>x&gt;y</code></td>
+          <td><em>Down-mix discrete channels.</em><br>
+            Fill each output channel with its input counterpart, that is the input channel with the same index. Input channels with no corresponding output channels are dropped.</td>
+        </tr>
+      </tbody>
+    </table>
+  </dd>
+</dl>
+<h2 id="Methods">Methods</h2>
+<p><em>Also implements methods from the interface </em><a href="/en-US/docs/Web/API/EventTarget" title="/en-US/docs/Web/API/EventTarget"><code>EventTarget</code></a>.</p>
+<dl>
+  <dt>
+    <a class="new" href="/en-US/docs/Web/API/AudioNode.connect(AudioNode)" title="/en-US/docs/Web/API/AudioNode.connect(AudioNode)"><code>AudioNode.connect(AudioNode)</code></a></dt>
+  <dd>
+    Allows to connect one output of this node to one input of another node.</dd>
+  <dt>
+    <a class="new" href="/en-US/docs/Web/API/AudioNode.connect(AudioParam)" title="/en-US/docs/Web/API/AudioNode.connect(AudioParam)"><code>AudioNode.connect(AudioParam)</code></a></dt>
+  <dd>
+    Allows to connect one output of this node to one input of an audio parameter.</dd>
+  <dt>
+    <a class="new" href="/en-US/docs/Web/API/AudioNode.disconnect" title="/en-US/docs/Web/API/AudioNode.disconnect"><code>AudioNode.disconnect()</code></a></dt>
+  <dd>
+    Allows to disconnect this node from another one.</dd>
+</dl>
+<h2 id="Examples">Examples</h2>
+<p> </p>
+<h2 id="Specifications">Specifications</h2>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <th scope="col">Specification</th>
+      <th scope="col">Status</th>
+      <th scope="col">Comment</th>
+    </tr>
+    <tr>
+      <td><a class="external" href="https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/specification.html#AudioNode-section" lang="en" title="The definition of 'AudioNode' in that specification.">Web Audio API</a></td>
+      <td><span class="spec-WD">Working Draft</span></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Browser_compatibility">Browser compatibility</h2>
+<div>
+  <div class="htab"> 
+    <a id="AutoCompatibilityTable" name="AutoCompatibilityTable"></a> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div></div>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari (WebKit)</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span><span class="inlineIndicator prefixBox prefixBoxInline" title="prefix">webkit</span></td>
+        <td>Activated on Nightly only</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>channelCount</code> <code>channelCountMode</code></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span> (?)</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr>
+      <tr>
+        <td><code>connect</code><code>(AudioParam)</code></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td>Activated on Nightly only</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Phone</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td>Activated on Nightly only</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>channelCount</code><br>
+          <code>channelCountMode</code></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span> (?)</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr>
+      <tr>
+        <td><code>connect</code><code>(AudioParam)</code></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td>Activated on Nightly only</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h2 id="See_also">See also</h2>
+<ul>
+  <li>Using Web Audio</li>
+</ul>
+                  </div>
+    <section class="page-meta">
+      
+            <section id="page-tags">
+        <h2><i class="icon-tags"></i>Tags (2)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Web%20Audio%20API">Web Audio API</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/experimental">experimental</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+            
+<section id="page-attachments">
+  <h2><i class="icon-paper-clip"></i>Attachments <bdi>(<span id="page-attachments-count">1</span>)</bdi></h2>
+
+  
+  <p id="page-attachments-no-message" class="hidden">
+    This document has no attachments.
+  </p>
+
+  <script>
+    // This is a global, but has to be :/
+    MDN_ATTACHMENTS = [{"creatorUrl": "/en-US/profiles/teoli", "description": "AudioNodes participating in an AudioContext create a audio routing graph.", "creator": "teoli", "mime": "image/png", "date": "2013-04-08 02:44:06", "id": 5081, "size": 50448, "title": "AudioNode relationships in an AudioContext", "url": "https://mdn.mozillademos.org/files/5081/WebAudioBasics.png", "html": "<tr data-revision-id=\"5391\" data-attachment-id=\"5081\">\n  <td class=\"attachment-name-cell\">\n    <a href=\"https://mdn.mozillademos.org/files/5081/WebAudioBasics.png\" target=\"_blank\">AudioNode relationships in an AudioContext</a>\n      <div class=\"attachment-description\">AudioNodes participating in an AudioContext create a audio routing graph.</div>\n  </td>\n  <td>50448 bytes</td>\n  <td>2013-04-08 02:44:06</td>\n  <td><a href=\"/en-US/profiles/teoli\">teoli</a></td>\n</tr>", "revision": 5391}];
+  </script>
+  <table cellpadding="0" cellspacing="0" id="page-attachments-table" class="">
+    <thead>
+      <th>File</th>
+      <th>Size</th>
+      <th>Date</th>
+      <th>Attached by</th>
+    </thead>
+    <tbody>
+              <tr data-revision-id="5391" data-attachment-id="5081">
+  <td class="attachment-name-cell">
+    <a href="https://mdn.mozillademos.org/files/5081/WebAudioBasics.png" target="_blank">AudioNode relationships in an AudioContext</a>
+      <div class="attachment-description">AudioNodes participating in an AudioContext create a audio routing graph.</div>
+  </td>
+  <td>50448 bytes</td>
+  <td>2013-04-08 02:44:06</td>
+  <td><a href="/en-US/profiles/teoli">teoli</a></td>
+</tr>
+          </tbody>
+  </table>
+
+  </section>      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/teoli">teoli</a>
+                          <br />
+          Last updated by:  
+          <a href="/en-US/profiles/teoli">teoli</a>, 
+          <time datetime="2013-06-24T06:16:24-07:00">Jun 24, 2013 6:16:24 AM</time>
+                      <br />
+            Last reviewed by:  
+            <a href="/en-US/profiles/teoli">teoli</a>, 
+            <time datetime="2013-06-24T06:16:24-07:00">Jun 24, 2013 6:16:24 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/API/AudioNode$edit">
+      <input type="hidden" name="form" id="form" value="rev" />
+      <input type="hidden" name="content" id="content" value="" />
+  </form>
+      </div>
+   </div>
+    </section>
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+<footer id="site-info" class="footer" role="contentinfo">
+<div class="wrap">
+    <div id="legal">
+      <img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-tiny.png" alt="" width="42" height="48">
+      <p id="copyright">&copy; 2005 - 2013 Mozilla Developer Network and individual contributors</p>
+      <p>
+      Content is available under <a href="/en-US/docs/Project:Copyrights">these licenses</a>      &bull; <a href="/en-US/docs/Project:About">About MDN</a>
+      &bull; <a href="//github.com/mozilla/kuma">Contribute to the code</a>
+      &bull; <a href="//www.mozilla.org/en-US/privacy">Privacy Policy</a>
+    </div>
+          <form class="languages go" method="get" action="/en-US/docs">
+      <label for="language">Other languages:</label>
+      <select id="language" class="wiki-l10n" name="next" dir="ltr">
+        <option value="/en-US/docs/Web/API/AudioNode" selected>
+          English (US)
+        </option>
+                  <option value="/zh-CN/docs/HTML/Canvas/Tutorial">
+            中文 (简体)
+          </option>      </select>
+      <noscript><button type="submit">Go</button></noscript>
+    </form>
+  </div>
+</footer>
+
+<script src="/en-US/jsi18n/build:5f4e39d"></script>
+  <script src="//mozorg.cdn.mozilla.net/en-US/tabzilla/tabzilla.js" async></script>
+  <script src="//www.google.com/jsapi" type="text/javascript"></script>
+  <script src="https://login.persona.org/include.js" type="text/javascript"></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/mdn-min.js?build=5f4e39d"></script>
+      <script src="https://developer.cdn.mozilla.net/media/js/wiki-min.js?build=5f4e39d"></script>
+  
+  <script type="text/javascript">
+    // Event tracking for the new menu
+    $(function() {
+      $('#nav-main').on('click', 'a', function(e) {
+        window._gaq && _gaq.push(['_trackEvent', 'Menu', 'Click', e.target.innerHTML, e.target.href]);
+      });
+    });
+  </script>
+        <!-- include syntax highlighting scripts -->
+  
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=5f4e39d" />
+
+  <script type="text/javascript">
+    MEDIA_URL = 'https://developer.cdn.mozilla.net/media/';
+  </script>
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/media/prism/prism.js" data-manual></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/syntax-prism-min.js?build=5f4e39d"></script>
+
+<script src="/en-US/waffles.js" type="text/javascript" async></script>
+</body>
+</html>

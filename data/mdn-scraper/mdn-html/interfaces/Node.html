@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+<head>
+      <script src="//cdn.optimizely.com/js/237572123.js"></script>
+  
+  <title>Node - Web API reference | MDN</title>
+  
+  <meta charset="utf-8">
+  <meta name="robots" content="index, follow">
+  <link rel="home" href="/en-US/">
+  <link rel="copyright" href="#copyright">
+  <link rel="shortcut icon" href="https://developer.cdn.mozilla.net/media/img/favicon.ico">
+
+        <!--[if !IE 6]><!-->
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/mdn-min.css?build=5f4e39d" />
+      <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/wiki-min.css?build=5f4e39d" />
+    <!--<![endif]-->
+  <!--[if IE]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie.css"><![endif]-->
+  <!--[if lte IE 7]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie7.css"><![endif]-->
+  <!--[if lte IE 6]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie6.css"><![endif]-->
+  <link rel="stylesheet" type="text/css" href="https://developer.cdn.mozilla.net/media/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="print" href="https://developer.cdn.mozilla.net/media/css/mdn-print.css">
+  <link rel="stylesheet" href="https://mozorg.cdn.mozilla.net/media/css/tabzilla-min.css">
+  
+
+  <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network" />
+
+  
+    <link rel="stylesheet" media="print" href="https://developer.cdn.mozilla.net/media/css/wiki-print-min.css?build=5f4e39d" />
+          <link rel="stylesheet" type="text/css"
+            href="/en-US/docs/Template:CustomCSS?raw=1" />
+    
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script src="https://developer.cdn.mozilla.net/media/js/html5.js"></script>
+  <![endif]-->
+
+    <link rel="alternate" type="application/json" href="/en-US/docs/Web/API/Node$json" />
+  <link rel="canonical" href="https://developer.mozilla.org/en-US/docs/Web/API/Node" />
+
+  <meta property="og:title" content="Node" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://developer.mozilla.org/media/img/mdn-logo-sm.png" />
+  <meta property="og:site_name" content="Mozilla Developer Network" />
+  <meta property="og:url" content="https://developer.mozilla.org/en-US/docs/Web/API/Node" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:url" content="https://developer.mozilla.org/en-US/docs/Web/API/Node" />
+  <meta name="twitter:title" content="Node" />
+  <meta name="twitter:image" content="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" />
+  <meta name="twitter:site" content="@mozhacks" />
+  <meta name="twitter:creator" content="@mozhacks" />
+
+    <meta property="og:description" content="A Node is an interface from which a number of DOM types inherit, and allows these various types to be treated (or tested) similarly. The following all inherit this interface and its methods and properties (though they may return null in particular cases where not relevant; or throw an exception when adding children to a node type for which no children can exist): Document, Element, Attr, CharacterData (which Text, Comment, and CDATASection inherit), ProcessingInstruction, DocumentFragment, DocumentType, Notation, Entity, EntityReference"/>
+  <meta name="description" content="A Node is an interface from which a number of DOM types inherit, and allows these various types to be treated (or tested) similarly. The following all inherit this interface and its methods and properties (though they may return null in particular cases where not relevant; or throw an exception when adding children to a node type for which no children can exist): Document, Element, Attr, CharacterData (which Text, Comment, and CDATASection inherit), ProcessingInstruction, DocumentFragment, DocumentType, Notation, Entity, EntityReference" />
+  <meta name="twitter:description" content="A Node is an interface from which a number of DOM types inherit, and allows these various types to be treated (or tested) similarly. The following all inherit this interface and its methods and properties (though they may return null in particular cases where not relevant; or throw an exception when adding children to a node type for which no children can exist): Document, Element, Attr, CharacterData (which Text, Comment, and CDATASection inherit), ProcessingInstruction, DocumentFragment, DocumentType, Notation, Entity, EntityReference" />
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36116321-5']);
+  _gaq.push(['_trackPageview']);
+
+  (function(a, d) {
+    var ga = d.createElement(a); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == d.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = d.getElementsByTagName(a)[0]; s.parentNode.insertBefore(ga, s);
+  })('script', document);
+
+</script>
+</head>
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  <header id="masthead" class="minor new-menu">
+    <div class="wrap">
+      <ul id="nav-access">
+        <li><a href="#language">Select language</a></li>
+        <li><a href="#q">Skip to search</a></li>
+        <li><a href="#content">Skip to main content</a></li>
+      </ul>
+    
+      <div id="branding">
+                <div id="logo"><a href="/en-US/"><img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" alt="Mozilla Developer Network" title="Mozilla Developer Network" width="62" height="71"> Mozilla Developer Network</a></div>
+              </div>
+      
+              <nav id="nav">
+          <ul id="nav-main" role="menubar">
+            <li id="nav-main-docs" class="menu" rel="menuitem"><a href="#nav-sub-docs" class="toggle" aria-haspopup="true" aria-labelledby="nav-main-docs" title="Read Documentation">Read<br /><em>Docs</em></a>
+              <div id="nav-sub-docs" class="sub-menu" aria-hidden="true">
+                <ul>
+                  <li>
+                    <ul>
+
+                      <li><a href="/en-US/docs/Web/HTML?menu">HTML</a></li>
+                      <li><a href="/en-US/docs/Web/CSS?menu">CSS</a></li>
+                      <li><a href="/en-US/docs/Web/JavaScript?menu">JavaScript</a></li>
+                      <li><a href="/en-US/docs/Web/Guide/Graphics?menu">Graphics</a></li>
+                      <li><a href="/en-US/docs/Web/API?menu">APIs / DOM</a></li>
+                      <li><a href="/en-US/docs/Web/Apps?menu">Apps</a></li>
+                      <li><a href="/en-US/docs/tools?menu">Dev Tools</a></li>
+                      <li><a href="/en-US/docs/Web/MathML?menu">MathML</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <ul>
+                      <li><a href="/en-US/docs/Web/Tutorials?menu">Tutorials</a></li>
+                      <li><a href="/en-US/docs/Web/Reference?menu">References</a></li>
+                      <li><a href="/en-US/docs/Web/Guide?menu">Developer Guides</a></li>
+                      <li><a href="/en-US/demos/?menu">Demos</a></li>
+                      <li><br /><br /><a href="/en-US/docs?menu">...more docs</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li id="nav-main-apps" role="menuitem"><a href="https://marketplace.firefox.com/developers/">Make<br /><em>Apps</em></a></li>
+            <li id="nav-main-firefox" class="menu" role="menuitem"><a href="#nav-sub-firefox" class="firefox toggle" aria-haspopup="true" aria-labelledby="nav-main-firefox">Build & Use<br /><em>Firefox</em></a>
+              <ul id="nav-sub-firefox" class="sub-menu">
+                <li><a href="/en-US/docs/Mozilla/Firefox_OS?menu">Firefox OS</a></li>
+                <li><a href="/en-US/docs/Mozilla/Firefox?menu">Firefox Desktop</a></li>
+                <li><a href="/en-US/docs/Mozilla/Mobile?menu">Mobile</a></li>
+                <li><a href="/en-US/docs/Mozilla/Add-ons?menu">Add-ons</a></li>
+              </ul>
+            </li>
+            <li id="nav-main-demos" role="menuitem"><a href="/en-US/demos/?menu" class="demos">See & Submit<br /><em>Demos</em></a></li>
+            <li id="nav-main-community" class="menu" role="menuitem"><a href="#nav-sub-community" class="community toggle" aria-haspopup="true" aria-labelledby="nav-main-community">Get<br /><em>Involved</em></a>
+              <ul id="nav-sub-community" class="sub-menu">
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Join_the_community?menu">Join the Community</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing?menu">Contribute to MDN</a></li>
+                <li><a href="/en-US/events?menu">Events</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Follow_what_s_happening?menu">Tweets, Blogs, and More</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+          
+      <ul class="user-state signed-out">
+    <li class="user-signin menu">
+    <form class="browserid" action="/en-US/users/browserid_verify" method="POST">
+        <input id="next" name="next" type="hidden" value="/en-US/docs/Web/API/Node"/>
+        <input required="required" type="hidden" name="assertion" id="id_assertion" />
+                        <a href="#" target="_blank" class="browserid-signin toggle" aria-haspopup="true" title="Sign in with Persona">Sign in</a>
+                <div class="browserid-info sub-menu" aria-hidden="true">
+                <h3>What's this?</h3> <p>MDN has switched to <a href="https://persona.org/" target="_blank" rel="external">Persona</a>, a safe and simple way to sign in with just your e-mail address. <a href="http://identity.mozilla.com/post/12950196039/deploying-browserid-at-mozilla" rel="external">Learn more about why Mozilla is using Persona</a>.</p> <p><strong>Returning members:</strong> sign in with Persona and you'll be connected to your MDN profile (all your information is still here).</p> <p><strong>New members:</strong> sign in with Persona first, then you'll be able to set up your new MDN profile.</p>          <p><a href="#" target="_blank" class="browserid-signin" title="Sign in with Persona">Sign in</a></p>
+        </div>
+              </form>
+    </li>
+  </ul>
+      
+      <form id="site-search" method="get" action="http://www.google.com/search"
+              data-url="/en-US/search">
+        <p>
+          <input type="search" role="search" placeholder="Search MDN" id="q" name="q" value="">
+          <noscript><button type="submit">Search</button></noscript>
+        </p>
+        <input type="hidden" name="sitesearch" value="developer.mozilla.org">
+                <div id="site-search-gg"></div>
+              </form>
+
+      <a href="//www.mozilla.org/" id="tabzilla">mozilla</a>
+    </div>
+  </header>
+
+    
+
+<!-- top toolbar -->
+<section id="nav-toolbar"><div><div class="wrap">
+  <!-- right floated navigation -->
+  <nav id="tool-menus" role="navigation">
+    <ul id="tools">
+      <li class="menu">
+        <a href="#page-tools" class="toggle">This page</a>
+        <ul id="page-tools" class="sub-menu">
+          <li class="page-print"> <a href="#" onclick="return window.print();"  title="Print page">Print this page</a></li>
+                      <li><a href="/en-US/docs/new?parent=1801">New sub-page</a></li>
+            <li><a href="/en-US/docs/new?clone=1801">Clone this page</a></li>
+                                      </ul>
+      </li>
+            <li class="menu">
+        <a href="#" class="toggle">Languages</a>
+        <ul id="translations">
+                      <li><a rel="internal" href="/de/docs/DOM/Node" title="Node">Deutsch</a></li>
+                      <li><a rel="internal" href="/fr/docs/DOM/Node" title="Node">Français</a></li>
+                      <li><a rel="internal" href="/ja/docs/Web/API/Node" title="Node">日本語</a></li>
+                      <li><a rel="internal" href="/pt-BR/docs/Web/API/Node" title="Node">Português (do&amp;nbsp;Brasil)</a></li>
+                      <li><a rel="internal" href="/zh-CN/docs/DOM/Node" title="Node">中文 (简体)</a></li>
+                    
+                      <li><a href="/en-US/docs/Web/API/Node$locales">Add translation</a></li>
+                  </ul>
+      </li>
+          </ul>
+  </nav>
+  
+  <!-- left crumb navigation -->
+  <nav class="crumbs" role="navigation">
+    <ol>
+              <li class="crumb"><a href="/en-US/docs/Web">Web technology for developers</a></li>
+              <li class="crumb"><a href="/en-US/docs/Web/API">Web API reference</a></li>
+            <li class="crumb">Node</li>
+    </ol>
+  </nav>
+  
+</div></div></section>
+
+
+
+<section id="content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" 
+          data-current-revision="399569"
+          data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes."
+          data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title">
+            <h1 class="page-title">Node</h1>
+                    </div>
+        <ul id="page-buttons">
+            <li class="page-history"><a href="/en-US/docs/Web/API/Node$history"><i class="icon-book"></i>History</a></li>
+                                                                                  <li class="page-edit"><a href="/en-US/docs/Web/API/Node$edit"><i class="icon-pencil"></i>Edit</a></li>
+                    </ul>
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                <div id="article-nav">
+          <div class="page-toc">
+            <h2>Table of Contents</h2>
+            <ol>
+              <code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Properties" rel="internal">Properties</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Methods" rel="internal">Methods</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Constants" rel="internal">Constants</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Code_snippets" rel="internal">Code snippets</a><ol><li><a href="#Browse_all_child_nodes" rel="internal">Browse all child nodes</a><ol><li><a href="#Syntax" rel="internal">Syntax</a><li><a href="#Description" rel="internal">Description</a><code></code><code></code><code></code><code></code><li><a href="#Parameters" rel="internal">Parameters</a><code></code><code></code><code></code><code></code><li><a href="#Sample_usage" rel="internal">Sample usage</a><code></code></ol></li></ol></li><li><a href="#Specifications" rel="internal">Specifications</a>
+            </ol>
+          </div>
+          <ul class="page-anchors">
+            <li class="anchor-tags">
+                              <i class="icon-tags"></i><a href="#page-tags">Tags</a>
+                          </li>
+            <li class="anchor-files">
+                              <i class="icon-paper-clip off"></i><span title="This document has no attachments">Files</span>
+                          </li>
+          </ul>
+        </div>
+                                <div>
+  <span class="breadcrumbs domRef_breadcrumbs">« <a href="/en-US/docs/DOM/DOM_Reference">DOM Reference</a></span></div>
+<p>A <code>Node</code> is an interface from which a number of DOM types inherit, and allows these various types to be treated (or tested) similarly.<br>
+  The following all inherit this interface and its methods and properties (though they may return null in particular cases where not relevant; or throw an exception when adding children to a node type for which no children can exist): <a href="/en-US/docs/Web/API/Document" title="/en-US/docs/Web/API/Document"><code>Document</code></a>, <a href="/en-US/docs/Web/API/Element" title="/en-US/docs/Web/API/Element"><code>Element</code></a>, <a href="/en-US/docs/Web/API/Attr" title="/en-US/docs/Web/API/Attr"><code>Attr</code></a>, <a href="/en-US/docs/Web/API/CharacterData" title="/en-US/docs/Web/API/CharacterData"><code>CharacterData</code></a> (which <a href="/en-US/docs/Web/API/Text" title="/en-US/docs/Web/API/Text"><code>Text</code></a>, <a href="/en-US/docs/Web/API/Comment" title="/en-US/docs/Web/API/Comment"><code>Comment</code></a>, and <a href="/en-US/docs/Web/API/CDATASection" title="/en-US/docs/Web/API/CDATASection"><code>CDATASection</code></a> inherit), <a href="/en-US/docs/Web/API/ProcessingInstruction" title="/en-US/docs/Web/API/ProcessingInstruction"><code>ProcessingInstruction</code></a>, <a href="/en-US/docs/Web/API/DocumentFragment" title="/en-US/docs/Web/API/DocumentFragment"><code>DocumentFragment</code></a>, <a href="/en-US/docs/Web/API/DocumentType" title="/en-US/docs/Web/API/DocumentType"><code>DocumentType</code></a>, <a href="/en-US/docs/Web/API/Notation" title="/en-US/docs/Web/API/Notation"><code>Notation</code></a>, <a href="/en-US/docs/Web/API/Entity" title="/en-US/docs/Web/API/Entity"><code>Entity</code></a>, <a href="/en-US/docs/Web/API/EntityReference" title="/en-US/docs/Web/API/EntityReference"><code>EntityReference</code></a></p>
+<h2 id="Properties">Properties</h2>
+<ul>
+  <li><a href="/en-US/docs/Web/API/Node.attributes" title="/en-US/docs/Web/API/Node.attributes"><code>Node.attributes</code></a></li>
+  <li><a href="/en-US/docs/Web/API/Node.baseURI" title="/en-US/docs/Web/API/Node.baseURI"><code>Node.baseURI</code></a></li>
+  <li><a href="/en-US/docs/Web/API/Node.baseURIObject" title="/en-US/docs/Web/API/Node.baseURIObject"><code>Node.baseURIObject</code></a> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></li>
+  <li><a href="/en-US/docs/Web/API/Node.childNodes" title="/en-US/docs/Web/API/Node.childNodes"><code>Node.childNodes</code></a></li>
+  <li><a href="/en-US/docs/Web/API/Node.firstChild" title="/en-US/docs/Web/API/Node.firstChild"><code>Node.firstChild</code></a></li>
+  <li><a href="/en-US/docs/Web/API/Node.lastChild" title="/en-US/docs/Web/API/Node.lastChild"><code>Node.lastChild</code></a></li>
+  <li><a href="/en-US/docs/Web/API/Node.localName" title="/en-US/docs/Web/API/Node.localName"><code>Node.localName</code></a></li>
+  <li><a href="/en-US/docs/Web/API/Node.namespaceURI" title="/en-US/docs/Web/API/Node.namespaceURI"><code>Node.namespaceURI</code></a></li>
+  <li><a href="/en-US/docs/Web/API/Node.nextSibling" title="/en-US/docs/Web/API/Node.nextSibling"><code>Node.nextSibling</code></a></li>
+  <li><a href="/en-US/docs/Web/API/Node.nodeName" title="/en-US/docs/Web/API/Node.nodeName"><code>Node.nodeName</code></a></li>
+  <li><a href="/en-US/docs/Web/API/Node.nodePrincipal" title="/en-US/docs/Web/API/Node.nodePrincipal"><code>Node.nodePrincipal</code></a> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></li>
+  <li><a href="/en-US/docs/Web/API/Node.nodeType" title="/en-US/docs/Web/API/Node.nodeType"><code>Node.nodeType</code></a></li>
+  <li><a href="/en-US/docs/Web/API/Node.nodeValue" title="/en-US/docs/Web/API/Node.nodeValue"><code>Node.nodeValue</code></a></li>
+  <li><a href="/en-US/docs/Web/API/Node.ownerDocument" title="/en-US/docs/Web/API/Node.ownerDocument"><code>Node.ownerDocument</code></a></li>
+  <li><a href="/en-US/docs/Web/API/Node.parentNode" title="/en-US/docs/Web/API/Node.parentNode"><code>Node.parentNode</code></a></li>
+  <li><a href="/en-US/docs/Web/API/Node.parentElement" title="/en-US/docs/Web/API/Node.parentElement"><code>Node.parentElement</code></a></li>
+  <li><a href="/en-US/docs/Web/API/Node.prefix" title="/en-US/docs/Web/API/Node.prefix"><code>Node.prefix</code></a></li>
+  <li><a href="/en-US/docs/Web/API/Node.previousSibling" title="/en-US/docs/Web/API/Node.previousSibling"><code>Node.previousSibling</code></a></li>
+  <li><a href="/en-US/docs/Web/API/Node.textContent" title="/en-US/docs/Web/API/Node.textContent"><code>Node.textContent</code></a></li>
+</ul>
+<h2 id="Methods">Methods</h2>
+<ul>
+  <li><a href="/en-US/docs/Web/API/Node.appendChild" title="/en-US/docs/Web/API/Node.appendChild"><code>Node.appendChild</code></a></li>
+  <li><a href="/en-US/docs/Web/API/Node.cloneNode" title="/en-US/docs/Web/API/Node.cloneNode"><code>Node.cloneNode</code></a></li>
+  <li><a href="/en-US/docs/Web/API/Node.compareDocumentPosition" title="/en-US/docs/Web/API/Node.compareDocumentPosition"><code>Node.compareDocumentPosition</code></a></li>
+  <li><a href="/en-US/docs/Web/API/Node.contains" title="/en-US/docs/Web/API/Node.contains"><code>Node.contains</code></a></li>
+  <li><a class="new" href="/en-US/docs/Web/API/Node.getFeature" title="/en-US/docs/Web/API/Node.getFeature"><code>Node.getFeature</code></a> <span class="inlineIndicator obsolete obsoleteInline" title="(Firefox 7.0 / Thunderbird 7.0 / SeaMonkey 2.4)">Obsolete since Gecko 7.0</span></li>
+  <li><a href="/en-US/docs/Web/API/Node.getUserData" title="/en-US/docs/Web/API/Node.getUserData"><code>Node.getUserData</code></a> <span class="inlineIndicator obsolete obsoleteInline" title="(Firefox 22.0 / Thunderbird 22.0 / SeaMonkey 2.19)">Obsolete since Gecko 22.0</span></li>
+  <li><a href="/en-US/docs/Web/API/Node.hasAttributes" title="/en-US/docs/Web/API/Node.hasAttributes"><code>Node.hasAttributes</code></a> <span class="inlineIndicator obsolete obsoleteInline" title="(Firefox 22.0 / Thunderbird 22.0 / SeaMonkey 2.19)">Obsolete since Gecko 22.0</span></li>
+  <li><a href="/en-US/docs/Web/API/Node.hasChildNodes" title="/en-US/docs/Web/API/Node.hasChildNodes"><code>Node.hasChildNodes</code></a></li>
+  <li><a href="/en-US/docs/Web/API/Node.insertBefore" title="/en-US/docs/Web/API/Node.insertBefore"><code>Node.insertBefore</code></a></li>
+  <li><a href="/en-US/docs/Web/API/Node.isDefaultNamespace" title="/en-US/docs/Web/API/Node.isDefaultNamespace"><code>Node.isDefaultNamespace</code></a></li>
+  <li><a href="/en-US/docs/Web/API/Node.isEqualNode" title="/en-US/docs/Web/API/Node.isEqualNode"><code>Node.isEqualNode</code></a></li>
+  <li><a href="/en-US/docs/Web/API/Node.isSameNode" title="/en-US/docs/Web/API/Node.isSameNode"><code>Node.isSameNode</code></a> <span class="inlineIndicator deprecated deprecatedInline" title="(Firefox 9.0 / Thunderbird 9.0 / SeaMonkey 2.6)">Deprecated since Gecko 9.0</span> <span class="inlineIndicator obsolete obsoleteInline" title="(Firefox 10.0 / Thunderbird 10.0 / SeaMonkey 2.7)">Obsolete since Gecko 10.0</span></li>
+  <li><a href="/en-US/docs/Web/API/Node.isSupported" title="/en-US/docs/Web/API/Node.isSupported"><code>Node.isSupported</code></a> <span class="inlineIndicator obsolete obsoleteInline" title="(Firefox 22.0 / Thunderbird 22.0 / SeaMonkey 2.19)">Obsolete since Gecko 22.0</span></li>
+  <li><a href="/en-US/docs/Web/API/Node.lookupPrefix" title="/en-US/docs/Web/API/Node.lookupPrefix"><code>Node.lookupPrefix</code></a></li>
+  <li><a href="/en-US/docs/Web/API/Node.lookupNamespaceURI" title="/en-US/docs/Web/API/Node.lookupNamespaceURI"><code>Node.lookupNamespaceURI</code></a></li>
+  <li><a href="/en-US/docs/Web/API/Node.normalize" title="/en-US/docs/Web/API/Node.normalize"><code>Node.normalize</code></a></li>
+  <li><a href="/en-US/docs/Web/API/Node.removeChild" title="/en-US/docs/Web/API/Node.removeChild"><code>Node.removeChild</code></a></li>
+  <li><a href="/en-US/docs/Web/API/Node.replaceChild" title="/en-US/docs/Web/API/Node.replaceChild"><code>Node.replaceChild</code></a></li>
+  <li><a href="/en-US/docs/Web/API/Node.setUserData" title="/en-US/docs/Web/API/Node.setUserData"><code>Node.setUserData</code></a> <span class="inlineIndicator obsolete obsoleteInline" title="(Firefox 22.0 / Thunderbird 22.0 / SeaMonkey 2.19)">Obsolete since Gecko 22.0</span></li>
+</ul>
+<h2 id="Constants">Constants</h2>
+<p>See also <a href="/en-US/docs/Web/API/Node.nodeType" title="/en-US/docs/Web/API/Node.nodeType"><code>Node.nodeType</code></a></p>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+    </tr>
+    <tr>
+      <td><code>ELEMENT_NODE</code></td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><code>ATTRIBUTE_NODE</code></td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td><code>TEXT_NODE</code></td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td><code>DATA_SECTION_NODE</code></td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td><code>ENTITY_REFERENCE_NODE</code></td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td><code>ENTITY_NODE</code></td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td><code>PROCESSING_INSTRUCTION_NODE</code></td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td><code>COMMENT_NODE</code></td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td><code>DOCUMENT_NODE</code></td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td><code>DOCUMENT_TYPE_NODE</code></td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td><code>DOCUMENT_FRAGMENT_NODE</code></td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td><code>NOTATION_NODE</code></td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td><code>DOCUMENT_POSITION_DISCONNECTED</code></td>
+      <td>0x01</td>
+    </tr>
+    <tr>
+      <td><code>DOCUMENT_POSITION_PRECEDING</code></td>
+      <td>0x02</td>
+    </tr>
+    <tr>
+      <td><code>DOCUMENT_POSITION_FOLLOWING</code></td>
+      <td>0x04</td>
+    </tr>
+    <tr>
+      <td><code>DOCUMENT_POSITION_CONTAINS</code></td>
+      <td>0x08</td>
+    </tr>
+    <tr>
+      <td><code>DOCUMENT_POSITION_CONTAINED_BY</code></td>
+      <td>0x10</td>
+    </tr>
+    <tr>
+      <td><code>DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC</code></td>
+      <td>0x20</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Code_snippets">Code snippets</h2>
+<h3 id="Browse_all_child_nodes">Browse all child nodes</h3>
+<p>The following function recursively cycle all child nodes of a node and execute a callback function upon them (and upon the parent node itself).</p>
+<pre class="brush: js">function DOMComb (oParent, oCallback) {
+  if (oParent.hasChildNodes()) {
+    for (var oNode = oParent.firstChild; oNode; oNode = oNode.nextSibling) {
+      DOMComb(oNode, oCallback);
+    }
+  }
+  oCallback.call(oParent);
+}</pre>
+<h4 id="Syntax">Syntax</h4>
+<pre>DOMComb(parentNode, callbackFunction);</pre>
+<h4 id="Description">Description</h4>
+<p>Recursively cycle all child nodes of <code>parentNode</code> and <code>parentNode</code> itself and execute the <code>callbackFunction</code> upon them as <a href="/en-US/docs/JavaScript/Reference/Operators/this" title="en-US/docs/JavaScript/Reference/Operators/this"><code>this</code></a> objects.</p>
+<h4 id="Parameters">Parameters</h4>
+<dl>
+  <dt>
+    <code>parentNode</code></dt>
+  <dd>
+    The parent node (<code><strong>Node</strong> <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object" title="en-US/docs/JavaScript/Reference/Global_Objects/Object">Object</a></code>).</dd>
+  <dt>
+    <code>callbackFunction</code></dt>
+  <dd>
+    The callback function (<a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function" title="en-US/docs/JavaScript/Reference/Global_Objects/Function"><code>Function</code></a>).</dd>
+</dl>
+<h4 id="Sample_usage">Sample usage</h4>
+<p>The following example send to the <code>console.log</code> the text content of the body:</p>
+<pre class="brush: js">function printContent () {
+  if (this.nodeValue) { console.log(this.nodeValue); }
+}
+
+onload = function () {
+  DOMComb(document.body, printContent);
+};</pre>
+<h2 id="Specifications">Specifications</h2>
+<ul>
+  <li><a class="external" href="http://www.w3.org/TR/REC-DOM-Level-1/level-one-core.html#ID-1950641247">DOM Level 1 Core: Node interface</a></li>
+  <li><a class="external" href="http://www.w3.org/TR/DOM-Level-2-Core/core.html#ID-1950641247">DOM Level 2 Core: Node interface</a></li>
+  <li><a class="external" href="http://www.w3.org/TR/DOM-Level-3-Core/core.html#ID-1950641247">DOM Level 3 Core: Node interface</a></li>
+  <li><a class="external" href="http://dom.spec.whatwg.org/#interface-node" title="http://dom.spec.whatwg.org/#interface-node">DOM Standard: Node Interface</a></li>
+</ul>
+                  </div>
+    <section class="page-meta">
+      
+            <section id="page-tags">
+        <h2><i class="icon-tags"></i>Tags (5)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsContent">NeedsContent</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Gecko%20DOM%20Reference">Gecko DOM Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/DOM">DOM</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsMarkupWork">NeedsMarkupWork</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Gecko">Gecko</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Jresig">Jresig</a>, <a href="/en-US/profiles/Elchi3">Elchi3</a>, <a href="/en-US/profiles/ziyunfei">ziyunfei</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/trevorh">trevorh</a>, <a href="/en-US/profiles/Brettz9">Brettz9</a>, <a href="/en-US/profiles/fusionchess">fusionchess</a>, <a href="/en-US/profiles/teoli">teoli</a>, <a href="/en-US/profiles/George3">George3</a>, <a href="/en-US/profiles/ft1">ft1</a>, <a href="/en-US/profiles/Jesdisciple">Jesdisciple</a>, <a href="/en-US/profiles/paul.irish">paul.irish</a>
+                          <br />
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-13T12:10:49-07:00">May 13, 2013 12:10:49 PM</time>
+                      <br />
+            Last reviewed by:  
+            <a href="/en-US/profiles/ft1">ft1</a>, 
+            <time datetime="2013-05-07T06:06:56-07:00">May 7, 2013 6:06:56 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/API/Node$edit">
+      <input type="hidden" name="form" id="form" value="rev" />
+      <input type="hidden" name="content" id="content" value="" />
+  </form>
+      </div>
+   </div>
+    </section>
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+<footer id="site-info" class="footer" role="contentinfo">
+<div class="wrap">
+    <div id="legal">
+      <img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-tiny.png" alt="" width="42" height="48">
+      <p id="copyright">&copy; 2005 - 2013 Mozilla Developer Network and individual contributors</p>
+      <p>
+      Content is available under <a href="/en-US/docs/Project:Copyrights">these licenses</a>      &bull; <a href="/en-US/docs/Project:About">About MDN</a>
+      &bull; <a href="//github.com/mozilla/kuma">Contribute to the code</a>
+      &bull; <a href="//www.mozilla.org/en-US/privacy">Privacy Policy</a>
+    </div>
+          <form class="languages go" method="get" action="/en-US/docs">
+      <label for="language">Other languages:</label>
+      <select id="language" class="wiki-l10n" name="next" dir="ltr">
+        <option value="/en-US/docs/Web/API/Node" selected>
+          English (US)
+        </option>
+                  <option value="/de/docs/DOM/Node">
+            Deutsch
+          </option>          <option value="/fr/docs/DOM/Node">
+            Français
+          </option>          <option value="/ja/docs/Web/API/Node">
+            日本語
+          </option>          <option value="/pt-BR/docs/Web/API/Node">
+            Português (do&amp;nbsp;Brasil)
+          </option>          <option value="/zh-CN/docs/DOM/Node">
+            中文 (简体)
+          </option>      </select>
+      <noscript><button type="submit">Go</button></noscript>
+    </form>
+  </div>
+</footer>
+
+<script src="/en-US/jsi18n/build:5f4e39d"></script>
+  <script src="//mozorg.cdn.mozilla.net/en-US/tabzilla/tabzilla.js" async></script>
+  <script src="//www.google.com/jsapi" type="text/javascript"></script>
+  <script src="https://login.persona.org/include.js" type="text/javascript"></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/mdn-min.js?build=5f4e39d"></script>
+      <script src="https://developer.cdn.mozilla.net/media/js/wiki-min.js?build=5f4e39d"></script>
+  
+  <script type="text/javascript">
+    // Event tracking for the new menu
+    $(function() {
+      $('#nav-main').on('click', 'a', function(e) {
+        window._gaq && _gaq.push(['_trackEvent', 'Menu', 'Click', e.target.innerHTML, e.target.href]);
+      });
+    });
+  </script>
+        <!-- include syntax highlighting scripts -->
+  
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=5f4e39d" />
+
+  <script type="text/javascript">
+    MEDIA_URL = 'https://developer.cdn.mozilla.net/media/';
+  </script>
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/media/prism/prism.js" data-manual></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/syntax-prism-min.js?build=5f4e39d"></script>
+
+<script src="/en-US/waffles.js" type="text/javascript" async></script>
+</body>
+</html>

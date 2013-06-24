@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+<head>
+      <script src="//cdn.optimizely.com/js/237572123.js"></script>
+  
+  <title>Element - Web API reference | MDN</title>
+  
+  <meta charset="utf-8">
+  <meta name="robots" content="index, follow">
+  <link rel="home" href="/en-US/">
+  <link rel="copyright" href="#copyright">
+  <link rel="shortcut icon" href="https://developer.cdn.mozilla.net/media/img/favicon.ico">
+
+        <!--[if !IE 6]><!-->
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/mdn-min.css?build=5f4e39d" />
+      <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/wiki-min.css?build=5f4e39d" />
+    <!--<![endif]-->
+  <!--[if IE]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie.css"><![endif]-->
+  <!--[if lte IE 7]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie7.css"><![endif]-->
+  <!--[if lte IE 6]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie6.css"><![endif]-->
+  <link rel="stylesheet" type="text/css" href="https://developer.cdn.mozilla.net/media/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="print" href="https://developer.cdn.mozilla.net/media/css/mdn-print.css">
+  <link rel="stylesheet" href="https://mozorg.cdn.mozilla.net/media/css/tabzilla-min.css">
+  
+
+  <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network" />
+
+  
+    <link rel="stylesheet" media="print" href="https://developer.cdn.mozilla.net/media/css/wiki-print-min.css?build=5f4e39d" />
+          <link rel="stylesheet" type="text/css"
+            href="/en-US/docs/Template:CustomCSS?raw=1" />
+    
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script src="https://developer.cdn.mozilla.net/media/js/html5.js"></script>
+  <![endif]-->
+
+    <link rel="alternate" type="application/json" href="/en-US/docs/Web/API/element$json" />
+  <link rel="canonical" href="https://developer.mozilla.org/en-US/docs/Web/API/element" />
+
+  <meta property="og:title" content="Element" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://developer.mozilla.org/media/img/mdn-logo-sm.png" />
+  <meta property="og:site_name" content="Mozilla Developer Network" />
+  <meta property="og:url" content="https://developer.mozilla.org/en-US/docs/Web/API/element" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:url" content="https://developer.mozilla.org/en-US/docs/Web/API/element" />
+  <meta name="twitter:title" content="Element" />
+  <meta name="twitter:image" content="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" />
+  <meta name="twitter:site" content="@mozhacks" />
+  <meta name="twitter:creator" content="@mozhacks" />
+
+    <meta property="og:description" content="This chapter provides a brief reference for the general methods, properties, and events available to most HTML and XML elements in the Gecko DOM."/>
+  <meta name="description" content="This chapter provides a brief reference for the general methods, properties, and events available to most HTML and XML elements in the Gecko DOM." />
+  <meta name="twitter:description" content="This chapter provides a brief reference for the general methods, properties, and events available to most HTML and XML elements in the Gecko DOM." />
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36116321-5']);
+  _gaq.push(['_trackPageview']);
+
+  (function(a, d) {
+    var ga = d.createElement(a); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == d.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = d.getElementsByTagName(a)[0]; s.parentNode.insertBefore(ga, s);
+  })('script', document);
+
+</script>
+</head>
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  <header id="masthead" class="minor new-menu">
+    <div class="wrap">
+      <ul id="nav-access">
+        <li><a href="#language">Select language</a></li>
+        <li><a href="#q">Skip to search</a></li>
+        <li><a href="#content">Skip to main content</a></li>
+      </ul>
+    
+      <div id="branding">
+                <div id="logo"><a href="/en-US/"><img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" alt="Mozilla Developer Network" title="Mozilla Developer Network" width="62" height="71"> Mozilla Developer Network</a></div>
+              </div>
+      
+              <nav id="nav">
+          <ul id="nav-main" role="menubar">
+            <li id="nav-main-docs" class="menu" rel="menuitem"><a href="#nav-sub-docs" class="toggle" aria-haspopup="true" aria-labelledby="nav-main-docs" title="Read Documentation">Read<br /><em>Docs</em></a>
+              <div id="nav-sub-docs" class="sub-menu" aria-hidden="true">
+                <ul>
+                  <li>
+                    <ul>
+
+                      <li><a href="/en-US/docs/Web/HTML?menu">HTML</a></li>
+                      <li><a href="/en-US/docs/Web/CSS?menu">CSS</a></li>
+                      <li><a href="/en-US/docs/Web/JavaScript?menu">JavaScript</a></li>
+                      <li><a href="/en-US/docs/Web/Guide/Graphics?menu">Graphics</a></li>
+                      <li><a href="/en-US/docs/Web/API?menu">APIs / DOM</a></li>
+                      <li><a href="/en-US/docs/Web/Apps?menu">Apps</a></li>
+                      <li><a href="/en-US/docs/tools?menu">Dev Tools</a></li>
+                      <li><a href="/en-US/docs/Web/MathML?menu">MathML</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <ul>
+                      <li><a href="/en-US/docs/Web/Tutorials?menu">Tutorials</a></li>
+                      <li><a href="/en-US/docs/Web/Reference?menu">References</a></li>
+                      <li><a href="/en-US/docs/Web/Guide?menu">Developer Guides</a></li>
+                      <li><a href="/en-US/demos/?menu">Demos</a></li>
+                      <li><br /><br /><a href="/en-US/docs?menu">...more docs</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li id="nav-main-apps" role="menuitem"><a href="https://marketplace.firefox.com/developers/">Make<br /><em>Apps</em></a></li>
+            <li id="nav-main-firefox" class="menu" role="menuitem"><a href="#nav-sub-firefox" class="firefox toggle" aria-haspopup="true" aria-labelledby="nav-main-firefox">Build & Use<br /><em>Firefox</em></a>
+              <ul id="nav-sub-firefox" class="sub-menu">
+                <li><a href="/en-US/docs/Mozilla/Firefox_OS?menu">Firefox OS</a></li>
+                <li><a href="/en-US/docs/Mozilla/Firefox?menu">Firefox Desktop</a></li>
+                <li><a href="/en-US/docs/Mozilla/Mobile?menu">Mobile</a></li>
+                <li><a href="/en-US/docs/Mozilla/Add-ons?menu">Add-ons</a></li>
+              </ul>
+            </li>
+            <li id="nav-main-demos" role="menuitem"><a href="/en-US/demos/?menu" class="demos">See & Submit<br /><em>Demos</em></a></li>
+            <li id="nav-main-community" class="menu" role="menuitem"><a href="#nav-sub-community" class="community toggle" aria-haspopup="true" aria-labelledby="nav-main-community">Get<br /><em>Involved</em></a>
+              <ul id="nav-sub-community" class="sub-menu">
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Join_the_community?menu">Join the Community</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing?menu">Contribute to MDN</a></li>
+                <li><a href="/en-US/events?menu">Events</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Follow_what_s_happening?menu">Tweets, Blogs, and More</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+          
+      <ul class="user-state signed-out">
+    <li class="user-signin menu">
+    <form class="browserid" action="/en-US/users/browserid_verify" method="POST">
+        <input id="next" name="next" type="hidden" value="/en-US/docs/Web/API/element"/>
+        <input required="required" type="hidden" name="assertion" id="id_assertion" />
+                        <a href="#" target="_blank" class="browserid-signin toggle" aria-haspopup="true" title="Sign in with Persona">Sign in</a>
+                <div class="browserid-info sub-menu" aria-hidden="true">
+                <h3>What's this?</h3> <p>MDN has switched to <a href="https://persona.org/" target="_blank" rel="external">Persona</a>, a safe and simple way to sign in with just your e-mail address. <a href="http://identity.mozilla.com/post/12950196039/deploying-browserid-at-mozilla" rel="external">Learn more about why Mozilla is using Persona</a>.</p> <p><strong>Returning members:</strong> sign in with Persona and you'll be connected to your MDN profile (all your information is still here).</p> <p><strong>New members:</strong> sign in with Persona first, then you'll be able to set up your new MDN profile.</p>          <p><a href="#" target="_blank" class="browserid-signin" title="Sign in with Persona">Sign in</a></p>
+        </div>
+              </form>
+    </li>
+  </ul>
+      
+      <form id="site-search" method="get" action="http://www.google.com/search"
+              data-url="/en-US/search">
+        <p>
+          <input type="search" role="search" placeholder="Search MDN" id="q" name="q" value="">
+          <noscript><button type="submit">Search</button></noscript>
+        </p>
+        <input type="hidden" name="sitesearch" value="developer.mozilla.org">
+                <div id="site-search-gg"></div>
+              </form>
+
+      <a href="//www.mozilla.org/" id="tabzilla">mozilla</a>
+    </div>
+  </header>
+
+    
+
+<!-- top toolbar -->
+<section id="nav-toolbar"><div><div class="wrap">
+  <!-- right floated navigation -->
+  <nav id="tool-menus" role="navigation">
+    <ul id="tools">
+      <li class="menu">
+        <a href="#page-tools" class="toggle">This page</a>
+        <ul id="page-tools" class="sub-menu">
+          <li class="page-print"> <a href="#" onclick="return window.print();"  title="Print page">Print this page</a></li>
+                      <li><a href="/en-US/docs/new?parent=405">New sub-page</a></li>
+            <li><a href="/en-US/docs/new?clone=405">Clone this page</a></li>
+                                      </ul>
+      </li>
+            <li class="menu">
+        <a href="#" class="toggle">Languages</a>
+        <ul id="translations">
+                      <li><a rel="internal" href="/de/docs/DOM/element" title="element">Deutsch</a></li>
+                      <li><a rel="internal" href="/es/docs/DOM/element" title="element">Español</a></li>
+                      <li><a rel="internal" href="/fr/docs/DOM/element" title="element">Français</a></li>
+                      <li><a rel="internal" href="/ja/docs/Web/API/Element" title="element">日本語</a></li>
+                      <li><a rel="internal" href="/pl/docs/DOM/element" title="element">Polski</a></li>
+                      <li><a rel="internal" href="/pt-PT/docs/DOM/element" title="element">Português (Europeu)</a></li>
+                      <li><a rel="internal" href="/ru/docs/DOM/element" title="element">Русский</a></li>
+                      <li><a rel="internal" href="/zh-CN/docs/DOM/element" title="element">中文 (简体)</a></li>
+                    
+                      <li><a href="/en-US/docs/Web/API/element$locales">Add translation</a></li>
+                  </ul>
+      </li>
+          </ul>
+  </nav>
+  
+  <!-- left crumb navigation -->
+  <nav class="crumbs" role="navigation">
+    <ol>
+              <li class="crumb"><a href="/en-US/docs/Web">Web technology for developers</a></li>
+              <li class="crumb"><a href="/en-US/docs/Web/API">Web API reference</a></li>
+            <li class="crumb">Element</li>
+    </ol>
+  </nav>
+  
+</div></div></section>
+
+
+
+<section id="content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" 
+          data-current-revision="405685"
+          data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes."
+          data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title">
+            <h1 class="page-title">Element</h1>
+                    </div>
+        <ul id="page-buttons">
+            <li class="page-history"><a href="/en-US/docs/Web/API/element$history"><i class="icon-book"></i>History</a></li>
+                                                                                  <li class="page-edit"><a href="/en-US/docs/Web/API/element$edit"><i class="icon-pencil"></i>Edit</a></li>
+                    </ul>
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                <div id="article-nav">
+          <div class="page-toc">
+            <h2>Table of Contents</h2>
+            <ol>
+              <code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><ol><li><a href="#Properties" rel="internal">Properties</a><code><code></code></code><code><code></code></code><code><code></code></code><code></code><code><code></code></code><code></code><code></code><code></code><code><code></code></code><code></code><code><code></code></code><code></code><code><code></code></code><code></code><code></code><code><code></code></code><code></code><code><code></code></code><code></code><code><code></code></code><code></code><code><code></code></code><code></code><code><code></code></code><code></code><code></code><code></code><code></code><code></code><code><code></code></code><code></code><code><code></code></code><code></code><code><code></code></code><code></code><code></code><code></code><code><code></code></code><code></code><code><code></code></code><code></code><code></code><code></code><code><code></code></code><code></code><code><code></code></code><code></code><code><code></code></code><code></code><code></code><code></code><code><code></code></code><code></code><code><code></code></code><code></code><code><code></code></code><code></code><code></code><code></code><code><code></code></code><code></code><code><code></code></code><code></code><code></code><code></code><code><code></code></code><code></code><code><code></code></code><code><code></code></code><code><code></code></code><code></code><code></code><code><code></code></code><code></code><code></code><code><code></code></code><code></code><code><code></code></code><code></code><code></code><code><code></code></code><code><code></code></code><code><code></code></code><code></code><code></code><code><code></code></code><code></code><code><code></code></code><code></code><code><code></code></code><code></code><code><code></code></code><code><code></code></code><code></code><code></code><code><code></code></code><code><code></code></code><code></code><code></code><code><code></code></code><code></code><code><code></code></code><code></code><code></code><code></code><code></code><code></code><code></code><code><code></code></code><code></code><code><code></code></code><code></code><code><code></code></code><code></code><code><code></code></code><code></code><code></code><code><code></code></code><code><code></code></code><code><code></code></code><code></code><code><code></code></code><code></code><code><code></code></code><code></code><code><code></code></code><code></code><li><a href="#Methods" rel="internal">Methods</a><code><code></code></code><code></code><code><code></code><code></code></code><code></code><code><code></code></code><code><code></code></code><code><code></code></code><code></code><code><code></code></code><code><code></code></code><code></code><code><code></code><code></code></code><code><code></code></code><code><code></code></code><code><code></code></code><code><code></code></code><code></code><code><code></code></code><code></code><code></code><code></code><code></code><code><code></code></code><code><code></code></code><code></code><code><code></code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code><code></code></code><code><code></code></code><code><code></code></code><code><code></code></code><code><code></code><code></code><code></code></code><code></code><code><code></code></code><code></code><code></code><code><code></code></code><code><code></code></code><code><code></code></code><code><code></code></code><code></code><code></code><code></code><code></code><code></code><code></code><code><code></code></code><code></code><code><code></code></code><code><code></code></code><code></code><code><code></code></code><code></code><code><code></code></code><code><code></code></code><code><code></code><code></code></code><code><code></code><code></code></code><code></code><code><code></code></code><code></code><code><code></code><code></code><code></code></code><code></code><code><code></code></code><code><code></code></code><code><code></code></code><code><code></code><code></code></code><code><code></code><code></code></code><code><code></code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Event_Handlers" rel="internal">Event handlers</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Other_Events" rel="internal">Other Events</a><code></code><code></code><code></code><code></code><li><a href="#Constants" rel="internal">Constants</a><code></code></ol></li>
+            </ol>
+          </div>
+          <ul class="page-anchors">
+            <li class="anchor-tags">
+                              <i class="icon-tags"></i><a href="#page-tags">Tags</a>
+                          </li>
+            <li class="anchor-files">
+                              <i class="icon-paper-clip off"></i><span title="This document has no attachments">Files</span>
+                          </li>
+          </ul>
+        </div>
+                                <p><span class="breadcrumbs domRef_breadcrumbs">« <a href="/en-US/docs/DOM/DOM_Reference">DOM Reference</a></span></p>
+<p>This chapter provides a brief reference for the general methods, properties, and events available to most HTML and XML elements in the Gecko DOM.</p>
+<p>Various W3C specifications apply to elements:</p>
+<ul>
+  <li><a class="external" href="http://www.w3.org/TR/DOM-Level-2-Core/">DOM Core Specification</a>—describes the core interfaces shared by most DOM objects in HTML and XML documents</li>
+  <li><a class="external" href="http://www.w3.org/TR/DOM-Level-2-HTML/">DOM HTML Specification</a>—describes interfaces for objects in HTML and XHTML documents that build on the core specification</li>
+  <li><a class="external" href="http://www.w3.org/TR/DOM-Level-2-Events/">DOM Events Specification</a>—describes events shared by most DOM objects, building on the DOM Core and <a class="external" href="http://www.w3.org/TR/DOM-Level-2-Views/">Views</a> specifications</li>
+  <li><a class="external" href="http://www.w3.org/TR/ElementTraversal/" title="http://www.w3.org/TR/ElementTraversal/">Element Traversal Specification</a>—describes the new attributes that allow traversal of elements in the DOM tree <span class="inlineIndicator standardNote standardNoteInline">New in <a href="https://developer.mozilla.org/en-US/docs/Firefox_3.5_for_developers">Firefox 3.5</a></span></li>
+</ul>
+<p>The articles listed here span the above and include links to the appropriate W3C DOM specification.</p>
+<p>While these interfaces are generally shared by most HTML and XML elements, there are more specialized interfaces for particular objects listed in the DOM HTML Specification. Note, however, that these HTML interfaces are "only for [HTML 4.01] and [XHTML 1.0] documents and are not guaranteed to work with any future version of XHTML." The HTML 5 draft does state it aims for backwards compatibility with these HTML interfaces but says of them that "some features that were formerly deprecated, poorly supported, rarely used or considered unnecessary have been removed." One can avoid the potential conflict by moving entirely to DOM XML attribute methods such as <code>getAttribute()</code>.</p>
+<p><a href="/en-US/docs/Web/API/HTMLHtmlElement" title="/en-US/docs/Web/API/HTMLHtmlElement"><code>Html</code></a>, <a href="/en-US/docs/Web/API/HTMLHeadElement" title="/en-US/docs/Web/API/HTMLHeadElement"><code>Head</code></a>, <a href="/en-US/docs/Web/API/HTMLLinkElement" title="/en-US/docs/Web/API/HTMLLinkElement"><code>Link</code></a>, <a href="/en-US/docs/Web/API/HTMLTitleElement" title="/en-US/docs/Web/API/HTMLTitleElement"><code>Title</code></a>, <a href="/en-US/docs/Web/API/HTMLMetaElement" title="/en-US/docs/Web/API/HTMLMetaElement"><code>Meta</code></a>, <a href="/en-US/docs/Web/API/HTMLBaseElement" title="/en-US/docs/Web/API/HTMLBaseElement"><code>Base</code></a>, <a href="/en-US/docs/Web/API/HTMLIsIndexElement" title="/en-US/docs/Web/API/HTMLIsIndexElement"><code>IsIndex</code></a>, <a href="/en-US/docs/Web/API/HTMLStyleElement" title="/en-US/docs/Web/API/HTMLStyleElement"><code>Style</code></a>, <a href="/en-US/docs/Web/API/HTMLBodyElement" title="/en-US/docs/Web/API/HTMLBodyElement"><code>Body</code></a>, <a href="/en-US/docs/Web/API/HTMLFormElement" title="/en-US/docs/Web/API/HTMLFormElement"><code>Form</code></a>, <a href="/en-US/docs/Web/API/HTMLSelectElement" title="/en-US/docs/Web/API/HTMLSelectElement"><code>Select</code></a>, <a href="/en-US/docs/Web/API/HTMLOptGroupElement" title="/en-US/docs/Web/API/HTMLOptGroupElement"><code>OptGroup</code></a>, <a href="/en/HTML/Element/HTMLOptionElement" title="en/HTML/Element/HTMLOptionElement">Option</a>, <a href="/en-US/docs/Web/API/HTMLInputElement" title="/en-US/docs/Web/API/HTMLInputElement"><code>Input</code></a>, <a href="/en-US/docs/Web/API/HTMLTextAreaElement" title="/en-US/docs/Web/API/HTMLTextAreaElement"><code>TextArea</code></a>, <a href="/en-US/docs/Web/API/HTMLButtonElement" title="/en-US/docs/Web/API/HTMLButtonElement"><code>Button</code></a>, <a href="/en-US/docs/Web/API/HTMLLabelElement" title="/en-US/docs/Web/API/HTMLLabelElement"><code>Label</code></a>, <a href="/en-US/docs/Web/API/HTMLFieldSetElement" title="/en-US/docs/Web/API/HTMLFieldSetElement"><code>FieldSet</code></a>, <a href="/en-US/docs/Web/API/HTMLLegendElement" title="/en-US/docs/Web/API/HTMLLegendElement"><code>Legend</code></a>, <a href="/en-US/docs/Web/API/HTMLUListElement" title="/en-US/docs/Web/API/HTMLUListElement"><code>UList</code></a>, <a class="new" href="/en-US/docs/Web/API/OList" title="/en-US/docs/Web/API/OList"><code>OList</code></a>, <a class="new" href="/en-US/docs/Web/API/DList" title="/en-US/docs/Web/API/DList"><code>DList</code></a>, <a class="new" href="/en-US/docs/Web/API/Directory" title="/en-US/docs/Web/API/Directory"><code>Directory</code></a>, <a class="new" href="/en-US/docs/Web/API/Menu" title="/en-US/docs/Web/API/Menu"><code>Menu</code></a>, <a class="new" href="/en-US/docs/Web/API/LI" title="/en-US/docs/Web/API/LI"><code>LI</code></a>, <a class="new" href="/en-US/docs/Web/API/Div" title="/en-US/docs/Web/API/Div"><code>Div</code></a>, <a class="new" href="/en-US/docs/Web/API/Paragraph" title="/en-US/docs/Web/API/Paragraph"><code>Paragraph</code></a>, <a class="new" href="/en-US/docs/Web/API/Heading" title="/en-US/docs/Web/API/Heading"><code>Heading</code></a>, <a class="new" href="/en-US/docs/Web/API/Quote" title="/en-US/docs/Web/API/Quote"><code>Quote</code></a>, <a class="new" href="/en-US/docs/Web/API/Pre" title="/en-US/docs/Web/API/Pre"><code>Pre</code></a>, <a class="new" href="/en-US/docs/Web/API/BR" title="/en-US/docs/Web/API/BR"><code>BR</code></a>, <a class="new" href="/en-US/docs/Web/API/BaseFont" title="/en-US/docs/Web/API/BaseFont"><code>BaseFont</code></a>, <a class="new" href="/en-US/docs/Web/API/Font" title="/en-US/docs/Web/API/Font"><code>Font</code></a>, <a class="new" href="/en-US/docs/Web/API/HR" title="/en-US/docs/Web/API/HR"><code>HR</code></a>, <a class="new" href="/en-US/docs/Web/API/Mod" title="/en-US/docs/Web/API/Mod"><code>Mod</code></a>, <a href="/en-US/docs/Web/API/HTMLAnchorElement" title="/en-US/docs/Web/API/HTMLAnchorElement"><code>Anchor</code></a>, <a href="/en-US/docs/Web/API/Image" title="/en-US/docs/Web/API/Image"><code>Image</code></a>, <a href="/en-US/docs/Web/API/HTMLObjectElement" title="/en-US/docs/Web/API/HTMLObjectElement"><code>Object</code></a>, <a class="new" href="/en-US/docs/Web/API/Param" title="/en-US/docs/Web/API/Param"><code>Param</code></a>, <a class="new" href="/en-US/docs/Web/API/Applet" title="/en-US/docs/Web/API/Applet"><code>Applet</code></a>, <a class="new" href="/en-US/docs/Web/API/Map" title="/en-US/docs/Web/API/Map"><code>Map</code></a>, <a class="new" href="/en-US/docs/Web/API/Area" title="/en-US/docs/Web/API/Area"><code>Area</code></a>, <a class="new" href="/en-US/docs/Web/API/Script" title="/en-US/docs/Web/API/Script"><code>Script</code></a>, <a href="/en-US/docs/Web/API/HTMLTableElement" title="/en-US/docs/Web/API/HTMLTableElement"><code>Table</code></a>, <a class="new" href="/en-US/docs/Web/API/TableCaption" title="/en-US/docs/Web/API/TableCaption"><code>TableCaption</code></a>, <a class="new" href="/en-US/docs/Web/API/TableCol" title="/en-US/docs/Web/API/TableCol"><code>TableCol</code></a>, <a class="new" href="/en-US/docs/Web/API/TableSection" title="/en-US/docs/Web/API/TableSection"><code>TableSection</code></a>, <a href="/en-US/docs/Web/API/HTMLTableRowElement" title="/en-US/docs/Web/API/HTMLTableRowElement"><code>TableRow</code></a>, <a class="new" href="/en-US/docs/Web/API/TableCell" title="/en-US/docs/Web/API/TableCell"><code>TableCell</code></a>, <a class="new" href="/en-US/docs/Web/API/FrameSet" title="/en-US/docs/Web/API/FrameSet"><code>FrameSet</code></a>, <a class="new" href="/en-US/docs/Web/API/Frame" title="/en-US/docs/Web/API/Frame"><code>Frame</code></a>, <a href="/en-US/docs/Web/API/HTMLIFrameElement" title="/en-US/docs/Web/API/HTMLIFrameElement"><code>IFrame</code></a></p>
+<h3 id="Properties" name="Properties">Properties</h3>
+<table class="fullwidth-table">
+  <tbody>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Availability</th>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/Node.attributes" title="/en-US/docs/Web/API/Node.attributes"><code>attributes</code></a></code></td>
+      <td>All attributes associated with an element.</td>
+      <td><code><a href="/en-US/docs/Web/API/NamedNodeMap" title="/en-US/docs/Web/API/NamedNodeMap"><code>NamedNodeMap</code></a></code></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/Node.baseURI" title="/en-US/docs/Web/API/Node.baseURI"><code>baseURI</code></a></code></td>
+      <td>Base URI as a string</td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">String</a></code></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a>, <a href="/en/XUL" title="en/XUL">XUL</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/Node.baseURIObject" title="/en-US/docs/Web/API/Node.baseURIObject"><code>baseURIObject</code></a></code> <span class="inlineIndicator standardNote standardNoteInline">New in <a href="https://developer.mozilla.org/en-US/docs/Firefox_3_for_developers">Firefox 3</a></span> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></td>
+      <td>(Not available to web content.) The read-only <code><a href="https://developer.mozilla.org/en-US/docs/XPCOM_Interface_Reference/nsIURI">nsIURI</a></code> object representing the base URI for the element.</td>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/XPCOM_Interface_Reference/nsIURI">nsIURI</a></code></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a> (with UniversalXPConnect privileges)</small></td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/Web/API/Element.childElementCount" title="/en-US/docs/Web/API/Element.childElementCount"><code>childElementCount</code></a> <span class="inlineIndicator standardNote standardNoteInline">New in <a href="https://developer.mozilla.org/en-US/docs/Firefox_3.5_for_developers">Firefox 3.5</a></span></td>
+      <td>The number of child nodes that are elements.</td>
+      <td><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/Number" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Number">Number</a></td>
+      <td>
+        <p><small><a href="/en/HTML" title="en/HTML">HTML</a>, <a href="/en/XUL" title="en/XUL">XUL</a></small></p>
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/Node.childNodes" title="/en-US/docs/Web/API/Node.childNodes"><code>childNodes</code></a></code></td>
+      <td>All child nodes of an element. A live <code><a class="new" href="https://developer.mozilla.org/en-US/docs/XPCOM_Interface_Reference/nsIDOMNodeList">nsIDOMNodeList</a></code> of the current child elements.</td>
+      <td><code><a href="/en-US/docs/Web/API/NodeList" title="/en-US/docs/Web/API/NodeList"><code>NodeList</code></a></code></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/Web/API/Element.children" title="/en-US/docs/Web/API/Element.children"><code>children</code></a> <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 3)">Requires Gecko 1.9</span></td>
+      <td>All child nodes of an element as a collection.</td>
+      <td><code><a href="/en-US/docs/Web/API/HTMLCollection" title="/en-US/docs/Web/API/HTMLCollection"><code>HTMLCollection</code></a></code></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a>, <a href="/en/XUL" title="en/XUL">XUL</a></small></td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/Web/API/element.classList" title="/en-US/docs/Web/API/element.classList"><code>classList</code></a> <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 3.6 / Thunderbird 3.1 / Fennec 1.0)">Requires Gecko 1.9.2</span></td>
+      <td>Token list of class attribute</td>
+      <td><a href="/en-US/docs/Web/API/DOMTokenList" title="/en-US/docs/Web/API/DOMTokenList"><code>DOMTokenList</code></a></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.className" title="/en-US/docs/Web/API/element.className"><code>className</code></a></code></td>
+      <td>Gets/sets the class of the element.</td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">String</a></code></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a>, <a href="/en/XUL" title="en/XUL">XUL</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.clientHeight" title="/en-US/docs/Web/API/element.clientHeight"><code>clientHeight</code></a></code></td>
+      <td>The inner height of an element.</td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/Number" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Number">Number</a></code></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.clientLeft" title="/en-US/docs/Web/API/element.clientLeft"><code>clientLeft</code></a></code></td>
+      <td>The width of the left border of an element.</td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/Number" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Number">Number</a></code></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.clientTop" title="/en-US/docs/Web/API/element.clientTop"><code>clientTop</code></a></code></td>
+      <td>The width of the top border of an element.</td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/Number" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Number">Number</a></code></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.clientWidth" title="/en-US/docs/Web/API/element.clientWidth"><code>clientWidth</code></a></code></td>
+      <td>The inner width of an element.</td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/Number" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Number">Number</a></code></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a></small></td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/Web/API/Element.contentEditable" title="/en-US/docs/Web/API/Element.contentEditable"><code>contentEditable</code></a> <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 3)">Requires Gecko 1.9</span></td>
+      <td>Gets/sets whether or not the element is editable.</td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">String</a></code></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a>, <a href="/en/XUL" title="en/XUL">XUL</a></small></td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/Web/API/element.dataset" title="/en-US/docs/Web/API/element.dataset"><code>dataset</code></a></td>
+      <td>Allows access to read and write custom data attributes on the element.</td>
+      <td><a href="/en-US/docs/Web/API/DOMStringMap" title="/en-US/docs/Web/API/DOMStringMap"><code>DOMStringMap</code></a></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.dir" title="/en-US/docs/Web/API/element.dir"><code>dir</code></a></code></td>
+      <td>Gets/sets the directionality of the element.</td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">String</a></code></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a>, <a href="/en/XUL" title="en/XUL">XUL</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/Node.firstChild" title="/en-US/docs/Web/API/Node.firstChild"><code>firstChild</code></a></code></td>
+      <td>The first direct child node of an element, or <code>null</code> if this element has no child nodes.</td>
+      <td><code><a href="/en-US/docs/Web/API/Node" title="/en-US/docs/Web/API/Node"><code>Node</code></a></code></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/Web/API/Element.firstElementChild" title="/en-US/docs/Web/API/Element.firstElementChild"><code>firstElementChild</code></a> <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 3)">Requires Gecko 1.9</span></td>
+      <td>The first direct child element of an element, or <code>null</code> if the element has no child elements.</td>
+      <td><a href="/en-US/docs/Web/API/Element" title="/en-US/docs/Web/API/Element"><code>Element</code></a></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a>, <a href="/en/XUL" title="en/XUL">XUL</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.id" title="/en-US/docs/Web/API/element.id"><code>id</code></a></code></td>
+      <td>Gets/sets the id of the element.</td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">String</a></code></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a>, <a href="/en/XUL" title="en/XUL">XUL</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.innerHTML" title="/en-US/docs/Web/API/element.innerHTML"><code>innerHTML</code></a></code></td>
+      <td>Gets/sets the markup of the element's content.</td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">String</a></code></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a></small></td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/Web/API/Element.isContentEditable" title="/en-US/docs/Web/API/Element.isContentEditable"><code>isContentEditable</code></a> <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 4 / Thunderbird 3.3 / SeaMonkey 2.1)">Requires Gecko 2</span></td>
+      <td>Indicates whether or not the content of the element can be edited. Read only.</td>
+      <td><a href="/en/JavaScript/Reference/Global_Objects/Boolean" title="en/Core JavaScript 1.5 Reference/Global Objects/Boolean"><code>Boolean</code></a></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a>, <a href="/en/XUL" title="en/XUL">XUL</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.lang" title="/en-US/docs/Web/API/element.lang"><code>lang</code></a></code></td>
+      <td>Gets/sets the language of an element's attributes, text, and element contents.</td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">String</a></code></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/Node.lastChild" title="/en-US/docs/Web/API/Node.lastChild"><code>lastChild</code></a></code></td>
+      <td>The last direct child node of an element, or <code>null</code> if this element has no child nodes.</td>
+      <td><code><a href="/en-US/docs/Web/API/Node" title="/en-US/docs/Web/API/Node"><code>Node</code></a></code></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/Web/API/Element.lastElementChild" title="/en-US/docs/Web/API/Element.lastElementChild"><code>lastElementChild</code></a> <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 3)">Requires Gecko 1.9</span></td>
+      <td>The last direct child element of an element, or <code>null</code> if the element has no child elements.</td>
+      <td><a href="/en-US/docs/Web/API/Element" title="/en-US/docs/Web/API/Element"><code>Element</code></a></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a>, <a href="/en/XUL" title="en/XUL">XUL</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/Node.localName" title="/en-US/docs/Web/API/Node.localName"><code>localName</code></a></code></td>
+      <td>The local part of the qualified name of an element. In Firefox 3.5 and earlier, the property upper-cases the local name for HTML elements (but not XHTML elements). In later versions, this does not happen, so the property is in lower case for both HTML and XHTML. <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 3.6 / Thunderbird 3.1 / Fennec 1.0)">Requires Gecko 1.9.2</span></td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">String</a></code></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Availability</th>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.name" title="/en-US/docs/Web/API/element.name"><code>name</code></a></code></td>
+      <td>Gets/sets the name attribute of an element.</td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">String</a></code></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/Node.namespaceURI" title="/en-US/docs/Web/API/Node.namespaceURI"><code>namespaceURI</code></a></code></td>
+      <td>The namespace URI of this node, or <code>null</code> if it is no namespace. In Firefox 3.5 and earlier, HTML elements are in no namespace. In later versions, HTML elements are in the <code><a class="external linkification-ext" href="http://www.w3.org/1999/xhtml" title="Linkification: http://www.w3.org/1999/xhtml">http://www.w3.org/1999/xhtml</a></code> namespace in both HTML and XML trees. <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 3.6 / Thunderbird 3.1 / Fennec 1.0)">Requires Gecko 1.9.2</span></td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">String</a></code></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/Node.nextSibling" title="/en-US/docs/Web/API/Node.nextSibling"><code>nextSibling</code></a></code></td>
+      <td>The node immediately following the given one in the tree, or <code>null</code> if there is no sibling node.</td>
+      <td><code><a href="/en-US/docs/Web/API/Node" title="/en-US/docs/Web/API/Node"><code>Node</code></a></code></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/Web/API/Element.nextElementSibling" title="/en-US/docs/Web/API/Element.nextElementSibling"><code>nextElementSibling</code></a> <span class="inlineIndicator standardNote standardNoteInline">New in <a href="https://developer.mozilla.org/en-US/docs/Firefox_3.5_for_developers">Firefox 3.5</a></span></td>
+      <td>The element immediately following the given one in the tree, or <code>null</code> if there's no sibling node.</td>
+      <td><a href="/en-US/docs/Web/API/Element" title="/en-US/docs/Web/API/Element"><code>Element</code></a></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a>, <a href="/en/XUL" title="en/XUL">XUL</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/Node.nodeName" title="/en-US/docs/Web/API/Node.nodeName"><code>nodeName</code></a></code></td>
+      <td>The name of the node.</td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">String</a></code></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/Node.nodePrincipal" title="/en-US/docs/Web/API/Node.nodePrincipal"><code>nodePrincipal</code></a> </code><span class="inlineIndicator standardNote standardNoteInline">New in <a href="https://developer.mozilla.org/en-US/docs/Firefox_3_for_developers">Firefox 3</a></span></td>
+      <td>The node's principal.</td>
+      <td><code><code><a href="https://developer.mozilla.org/en-US/docs/XPCOM_Interface_Reference/nsIPrincipal">nsIPrincipal</a></code></code></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a> (with UniversalXPConnect privileges)</small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/Node.nodeType" title="/en-US/docs/Web/API/Node.nodeType"><code>nodeType</code></a></code></td>
+      <td>A number representing the type of the node. Is always equal to <code>1</code> for DOM elements.</td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/Number" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Number">Number</a></code></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/Node.nodeValue" title="/en-US/docs/Web/API/Node.nodeValue"><code>nodeValue</code></a></code></td>
+      <td>The value of the node. Is always equal to <code>null</code> for DOM elements.</td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">String</a></code></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.offsetHeight" title="/en-US/docs/Web/API/element.offsetHeight"><code>offsetHeight</code></a></code></td>
+      <td>The height of an element, relative to the layout.</td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/Number" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Number">Number</a></code></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.offsetLeft" title="/en-US/docs/Web/API/element.offsetLeft"><code>offsetLeft</code></a></code></td>
+      <td>The distance from this element's left border to its <code>offsetParent</code>'s left border.</td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/Number" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Number">Number</a></code></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.offsetParent" title="/en-US/docs/Web/API/element.offsetParent"><code>offsetParent</code></a></code></td>
+      <td>The element from which all offset calculations are currently computed.</td>
+      <td><code><a href="/en-US/docs/Web/API/Element" title="/en-US/docs/Web/API/Element"><code>Element</code></a></code></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.offsetTop" title="/en-US/docs/Web/API/element.offsetTop"><code>offsetTop</code></a></code></td>
+      <td>The distance from this element's top border to its <code>offsetParent</code>'s top border.</td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/Number" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Number">Number</a></code></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.offsetWidth" title="/en-US/docs/Web/API/element.offsetWidth"><code>offsetWidth</code></a></code></td>
+      <td>The width of an element, relative to the layout.</td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/Number" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Number">Number</a></code></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.outerHTML" title="/en-US/docs/Web/API/element.outerHTML"><code>outerHTML</code></a></code><br>
+        <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 11 / Thunderbird 11 / SeaMonkey 2.8)">Requires Gecko 11</span></td>
+      <td>Gets the markup of the element including its content. When used as a setter, replaces the element with nodes parsed from the given string.</td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">String</a></code></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/Node.ownerDocument" title="/en-US/docs/Web/API/Node.ownerDocument"><code>ownerDocument</code></a></code></td>
+      <td>The document that this node is in, or <code>null</code> if the node is not inside of one.</td>
+      <td><code><a href="/en-US/docs/Web/API/Document" title="/en-US/docs/Web/API/Document"><code>Document</code></a></code></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Availability</th>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/Node.parentNode" title="/en-US/docs/Web/API/Node.parentNode"><code>parentNode</code></a></code></td>
+      <td>The parent element of this node, or <code>null</code> if the node is not inside of a <a href="/en-US/docs/Web/API/document" title="/en-US/docs/Web/API/document"><code>DOM Document</code></a>.</td>
+      <td><code><a href="/en-US/docs/Web/API/Node" title="/en-US/docs/Web/API/Node"><code>Node</code></a></code></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/Node.prefix" title="/en-US/docs/Web/API/Node.prefix"><code>prefix</code></a></code></td>
+      <td>The namespace prefix of the node, or <code>null</code> if no prefix is specified.</td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">String</a></code></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/Node.previousSibling" title="/en-US/docs/Web/API/Node.previousSibling"><code>previousSibling</code></a></code></td>
+      <td>The node immediately preceding the given one in the tree, or <code>null</code> if there is no sibling node.</td>
+      <td><code><a href="/en-US/docs/Web/API/Node" title="/en-US/docs/Web/API/Node"><code>Node</code></a></code></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/Web/API/Element.previousElementSibling" title="/en-US/docs/Web/API/Element.previousElementSibling"><code>previousElementSibling</code></a> <span class="inlineIndicator standardNote standardNoteInline">New in <a href="https://developer.mozilla.org/en-US/docs/Firefox_3.5_for_developers">Firefox 3.5</a></span></td>
+      <td>The element immediately preceding the given one in the tree, or <code>null</code> if there is no sibling element.</td>
+      <td><a href="/en-US/docs/Web/API/Element" title="/en-US/docs/Web/API/Element"><code>Element</code></a></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a>, <a href="/en/XUL" title="en/XUL">XUL</a></small></td>
+    </tr>
+    <tr>
+      <td><a class="new" href="/en-US/docs/Web/API/element.schemaTypeInfo" title="/en-US/docs/Web/API/element.schemaTypeInfo"><code>schemaTypeInfo</code></a></td>
+      <td>Returns TypeInfo regarding schema information for the element (also available on <a href="/en-US/docs/Web/API/Attr" title="/en-US/docs/Web/API/Attr"><code>Attr</code></a>).</td>
+      <td><a href="/en-US/docs/Web/API/TypeInfo" title="/en-US/docs/Web/API/TypeInfo"><code>TypeInfo</code></a></td>
+      <td>Not supported</td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.scrollHeight" title="/en-US/docs/Web/API/element.scrollHeight"><code>scrollHeight</code></a></code></td>
+      <td>The scroll view height of an element.</td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/Number" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Number">Number</a></code></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.scrollLeft" title="/en-US/docs/Web/API/element.scrollLeft"><code>scrollLeft</code></a></code></td>
+      <td>Gets/sets the left scroll offset of an element.</td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/Number" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Number">Number</a></code></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.scrollTop" title="/en-US/docs/Web/API/element.scrollTop"><code>scrollTop</code></a></code></td>
+      <td>Gets/sets the top scroll offset of an element.</td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/Number" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Number">Number</a></code></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.scrollWidth" title="/en-US/docs/Web/API/element.scrollWidth"><code>scrollWidth</code></a></code></td>
+      <td>The scroll view width of an element.</td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/Number" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Number">Number</a></code></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a class="internal" href="/en/XUL/Attribute/spellcheck" title="En/XUL/Attribute/Spellcheck">spellcheck</a></code></td>
+      <td>Controls <a href="/en/HTML/Controlling_spell_checking_in_HTML_forms" title="en/Controlling_spell_checking_in_HTML_forms">spell-checking</a> (present on all HTML elements)</td>
+      <td><a href="/en/JavaScript/Reference/Global_Objects/Boolean" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Boolean">Boolean</a></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.style" title="/en-US/docs/Web/API/element.style"><code>style</code></a></code></td>
+      <td>An object representing the declarations of an element's style attributes.</td>
+      <td><code><a href="/en-US/docs/Web/API/CSSStyleDeclaration" title="/en-US/docs/Web/API/CSSStyleDeclaration"><code>CSSStyleDeclaration</code></a></code></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a>, <a href="/en/XUL" title="en/XUL">XUL</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.tabIndex" title="/en-US/docs/Web/API/element.tabIndex"><code>tabIndex</code></a></code></td>
+      <td>Gets/sets the position of the element in the tabbing order.</td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/Number" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Number">Number</a></code></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.tagName" title="/en-US/docs/Web/API/element.tagName"><code>tagName</code></a></code></td>
+      <td>The name of the tag for the given element.</td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">String</a></code></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/Node.textContent" title="/en-US/docs/Web/API/Node.textContent"><code>textContent</code></a></code></td>
+      <td>Gets/sets the textual contents of an element and all its descendants.</td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">String</a></code></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.title" title="/en-US/docs/Web/API/element.title"><code>title</code></a></code></td>
+      <td>A string that appears in a popup box when mouse is over the element.</td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">String</a></code></td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a></small></td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="Methods" name="Methods">Methods</h3>
+<table class="fullwidth-table">
+  <tbody>
+    <tr>
+      <th>Name &amp; Description</th>
+      <th>Return</th>
+      <th>Availability</th>
+    </tr>
+    <tr>
+      <td><code><a class="new" href="/en-US/docs/Web/API/element.addEventListener" title="/en-US/docs/Web/API/element.addEventListener"><code>addEventListener</code></a>( <a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">type</a>, <a href="/en/JavaScript/Reference/Global_Objects/Function" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Function">listener</a>, <a href="/en/JavaScript/Reference/Global_Objects/Boolean" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Boolean">useCapture</a> )</code><br>
+        Register an event handler to a specific event type on the element.</td>
+      <td>-</td>
+      <td><small><a href="/en-US/docs/Web/API/event" title="/en-US/docs/Web/API/event"><code>All</code></a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/Node.appendChild" title="/en-US/docs/Web/API/Node.appendChild"><code>appendChild</code></a>( <a href="/en-US/docs/Web/API/Node" title="/en-US/docs/Web/API/Node"><code>appendedNode</code></a> )</code><br>
+        Insert a node as the last child node of this element.</td>
+      <td><a href="/en-US/docs/Web/API/Node" title="/en-US/docs/Web/API/Node"><code>Node</code></a></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.blur" title="/en-US/docs/Web/API/element.blur"><code>blur</code></a>()</code><br>
+        Removes keyboard focus from the current element.</td>
+      <td>-</td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a>, <a href="/en/XUL" title="en/XUL">XUL</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.click" title="/en-US/docs/Web/API/element.click"><code>click</code></a>()</code><br>
+        Simulates a click on the current element.</td>
+      <td>-</td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a>, <a href="/en/XUL" title="en/XUL">XUL</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/Node.cloneNode" title="/en-US/docs/Web/API/Node.cloneNode"><code>cloneNode</code></a>( <a href="/en/JavaScript/Reference/Global_Objects/Boolean" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Boolean">deep</a> )</code><br>
+        Clone a node, and optionally, all of its contents.</td>
+      <td><a href="/en-US/docs/Web/API/Node" title="/en-US/docs/Web/API/Node"><code>Node</code></a></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/Node.compareDocumentPosition" title="/en-US/docs/Web/API/Node.compareDocumentPosition"><code>compareDocumentPosition</code></a></code> ( <code><a href="/en-US/docs/Web/API/Node" title="/en-US/docs/Web/API/Node"><code>otherNode</code></a></code> )</td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/Number" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Number">Number</a></code></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a class="new" href="/en-US/docs/Web/API/element.dispatchEvent" title="/en-US/docs/Web/API/element.dispatchEvent"><code>dispatchEvent</code></a>( <a href="/en-US/docs/Web/API/event" title="/en-US/docs/Web/API/event"><code>event</code></a> )</code><br>
+        Dispatch an event to this node in the DOM.</td>
+      <td><a href="/en/JavaScript/Reference/Global_Objects/Boolean" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Boolean">Boolean</a></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.focus" title="/en-US/docs/Web/API/element.focus"><code>focus</code></a>()</code><br>
+        Gives keyboard focus to the current element.</td>
+      <td>-</td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a>, <a href="/en/XUL" title="en/XUL">XUL</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.getAttribute" title="/en-US/docs/Web/API/element.getAttribute"><code>getAttribute</code></a>( <a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">name</a> )</code><br>
+        Retrieve the value of the named attribute from the current node.</td>
+      <td><a href="/en/JavaScript/Reference/Global_Objects/Object" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Object">Object</a></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.getAttributeNS" title="/en-US/docs/Web/API/element.getAttributeNS"><code>getAttributeNS</code></a>( <a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">namespace</a>, <a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">name</a> )</code><br>
+        Retrieve the value of the attribute with the specified name and namespace, from the current node.</td>
+      <td><a href="/en/JavaScript/Reference/Global_Objects/Object" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Object">Object</a></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.getAttributeNode" title="/en-US/docs/Web/API/element.getAttributeNode"><code>getAttributeNode</code></a>( <a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">name</a> )</code><br>
+        Retrieve the node representation of the named attribute from the current node.</td>
+      <td><a href="/en-US/docs/Web/API/Attr" title="/en-US/docs/Web/API/Attr"><code>Attr</code></a></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.getAttributeNodeNS" title="/en-US/docs/Web/API/element.getAttributeNodeNS"><code>getAttributeNodeNS</code></a>( <a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">namespace</a>, <a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">name</a> )</code><br>
+        Retrieve the node representation of the attribute with the specified name and namespace, from the current node.</td>
+      <td><a href="/en-US/docs/Web/API/Attr" title="/en-US/docs/Web/API/Attr"><code>Attr</code></a></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/Web/API/element.getBoundingClientRect" title="/en-US/docs/Web/API/element.getBoundingClientRect"><code>getBoundingClientRect</code></a> ( )</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>
+        <p><a href="/en-US/docs/Web/API/element.getClientRects" title="/en-US/docs/Web/API/element.getClientRects"><code>getClientRects</code></a> ( )<br>
+          Returns a collection of rectangles that indicate the bounding rectangles for each line of text in a client.</p>
+      </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <th>Name &amp; Description</th>
+      <th>Return</th>
+      <th>Availability</th>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/Web/API/Element.getElementsByClassName" title="/en-US/docs/Web/API/Element.getElementsByClassName"><code>getElementsByClassName</code></a>( )</td>
+      <td><code><a href="/en-US/docs/Web/API/NodeList" title="/en-US/docs/Web/API/NodeList"><code>NodeList</code></a></code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.getElementsByTagName" title="/en-US/docs/Web/API/element.getElementsByTagName"><code>getElementsByTagName</code></a>( <a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">name</a> )</code><br>
+        Retrieve a set of all descendant elements, of a particular tag name, from the current element.</td>
+      <td><a href="/en-US/docs/Web/API/NodeList" title="/en-US/docs/Web/API/NodeList"><code>NodeList</code></a></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.getElementsByTagNameNS" title="/en-US/docs/Web/API/element.getElementsByTagNameNS"><code>getElementsByTagNameNS</code></a>( <a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">namespace</a>, <a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">name</a> )</code><br>
+        Retrieve a set of all descendant elements, of a particular tag name and namespace, from the current element.</td>
+      <td><a href="/en-US/docs/Web/API/NodeList" title="/en-US/docs/Web/API/NodeList"><code>NodeList</code></a></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><a class="new" href="/en-US/docs/Web/API/Node.getFeature" title="/en-US/docs/Web/API/Node.getFeature"><code>getFeature</code></a> ( <code>feature</code>, <code>version</code> )</td>
+      <td><a href="/en/JavaScript/Reference/Global_Objects/Object" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Object">Object</a></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/Web/API/Node.getUserData" title="/en-US/docs/Web/API/Node.getUserData"><code>getUserData</code></a> ( <code>key</code> )</td>
+      <td><a href="/en-US/docs/Web/API/DOMUserData" title="/en-US/docs/Web/API/DOMUserData"><code>DOMUserData</code></a></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.hasAttribute" title="/en-US/docs/Web/API/element.hasAttribute"><code>hasAttribute</code></a>( <a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">name</a> )</code><br>
+        Check if the element has the specified attribute, or not.</td>
+      <td><a href="/en/JavaScript/Reference/Global_Objects/Boolean" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Boolean">Boolean</a></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.hasAttributeNS" title="/en-US/docs/Web/API/element.hasAttributeNS"><code>hasAttributeNS</code></a>( <a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">namespace</a>, <a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">name</a> )</code><br>
+        Check if the element has the specified attribute, in the specified namespace, or not.</td>
+      <td><a href="/en/JavaScript/Reference/Global_Objects/Boolean" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Boolean">Boolean</a></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/Node.hasAttributes" title="/en-US/docs/Web/API/Node.hasAttributes"><code>hasAttributes</code></a>()</code><br>
+        Check if the element has any attributes, or not.</td>
+      <td><a href="/en/JavaScript/Reference/Global_Objects/Boolean" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Boolean">Boolean</a></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/Node.hasChildNodes" title="/en-US/docs/Web/API/Node.hasChildNodes"><code>hasChildNodes</code></a>()</code><br>
+        Check if the element has any child nodes, or not.</td>
+      <td><a href="/en/JavaScript/Reference/Global_Objects/Boolean" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Boolean">Boolean</a></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/Node.insertBefore" title="/en-US/docs/Web/API/Node.insertBefore"><code>insertBefore</code></a>( <a href="/en-US/docs/Web/API/Node" title="/en-US/docs/Web/API/Node"><code>insertedNode</code></a>, <a href="/en-US/docs/Web/API/Node" title="/en-US/docs/Web/API/Node"><code>adjacentNode</code></a> )</code><br>
+        Inserts the first node before the second, child, Node in the DOM.</td>
+      <td><a href="/en-US/docs/Web/API/Node" title="/en-US/docs/Web/API/Node"><code>Node</code></a></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/Node.isDefaultNamespace" title="/en-US/docs/Web/API/Node.isDefaultNamespace"><code>isDefaultNamespace</code></a></code> ( <code>namespaceURI</code> )</td>
+      <td><a href="/en/JavaScript/Reference/Global_Objects/Boolean" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Boolean">Boolean</a></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/Web/API/Node.isEqualNode" title="/en-US/docs/Web/API/Node.isEqualNode"><code>isEqualNode</code></a> ( <code><a href="/en-US/docs/Web/API/Node" title="/en-US/docs/Web/API/Node"><code>nodeArg</code></a></code> )</td>
+      <td><a href="/en/JavaScript/Reference/Global_Objects/Boolean" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Boolean">Boolean</a></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/Node.isSameNode" title="/en-US/docs/Web/API/Node.isSameNode"><code>isSameNode</code></a></code> ( <code><a href="/en-US/docs/Web/API/Node" title="/en-US/docs/Web/API/Node"><code>otherNode</code></a></code> ) </td>
+      <td><a href="/en/JavaScript/Reference/Global_Objects/Boolean" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Boolean">Boolean</a></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/Node.isSupported" title="/en-US/docs/Web/API/Node.isSupported"><code>isSupported</code></a> ( feature, version )</code></td>
+      <td><a href="/en/JavaScript/Reference/Global_Objects/Boolean" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Boolean">Boolean</a></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/Web/API/Node.lookupNamespaceURI" title="/en-US/docs/Web/API/Node.lookupNamespaceURI"><code>lookupNamespaceURI</code></a> ( <code>prefix</code> )</td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">String</a></code></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/Web/API/Node.lookupPrefix" title="/en-US/docs/Web/API/Node.lookupPrefix"><code>lookupPrefix</code></a> ( <code>namespaceURI</code> )</td>
+      <td><code><a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">String</a></code></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/Element.mozMatchesSelector" title="/en-US/docs/Web/API/Element.mozMatchesSelector"><code>mozMatchesSelector</code></a>( selector )</code><br>
+        Returns whether or not the element would be selected by the specified selector string.</td>
+      <td><a href="/en/JavaScript/Reference/Global_Objects/Boolean" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Boolean">Boolean</a></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/Web/API/Element.mozRequestFullScreen" title="/en-US/docs/Web/API/Element.mozRequestFullScreen"><code>mozRequestFullScreen</code></a>( ) <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span><br>
+        Asynchronously asks the browser to make the element full-screen.</td>
+      <td>-</td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/Node.normalize" title="/en-US/docs/Web/API/Node.normalize"><code>normalize</code></a>()</code><br>
+        Clean up all the text nodes under this element (merge adjacent, remove empty).</td>
+      <td>-</td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/Element.querySelector" title="/en-US/docs/Web/API/Element.querySelector"><code>querySelector</code></a>( selectors[, nsresolver] )</code> <span class="inlineIndicator standardNote standardNoteInline">New in <a href="https://developer.mozilla.org/en-US/docs/Firefox_3.5_for_developers">Firefox 3.5</a></span></td>
+      <td><a href="/en-US/docs/Web/API/Node" title="/en-US/docs/Web/API/Node"><code>Node</code></a></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/Element.querySelectorAll" title="/en-US/docs/Web/API/Element.querySelectorAll"><code>querySelectorAll</code></a>( selectors[, nsresolver] )</code><span class="inlineIndicator standardNote standardNoteInline">New in <a href="https://developer.mozilla.org/en-US/docs/Firefox_3.5_for_developers">Firefox 3.5</a></span></td>
+      <td><a href="/en-US/docs/Web/API/NodeList" title="/en-US/docs/Web/API/NodeList"><code>NodeList</code></a></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.removeAttribute" title="/en-US/docs/Web/API/element.removeAttribute"><code>removeAttribute</code></a>( <a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">name</a> )</code><br>
+        Remove the named attribute from the current node.</td>
+      <td>-</td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.removeAttributeNS" title="/en-US/docs/Web/API/element.removeAttributeNS"><code>removeAttributeNS</code></a>( <a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">namespace</a>, <a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">name</a> )</code><br>
+        Remove the attribute with the specified name and namespace, from the current node.</td>
+      <td>-</td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <th>Name &amp; Description</th>
+      <th>Return</th>
+      <th>Availability</th>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.removeAttributeNode" title="/en-US/docs/Web/API/element.removeAttributeNode"><code>removeAttributeNode</code></a>( <a href="/en-US/docs/Web/API/Attr" title="/en-US/docs/Web/API/Attr"><code>attrNode</code></a> )</code><br>
+        Remove the node representation of the named attribute from the current node.</td>
+      <td>-</td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/Node.removeChild" title="/en-US/docs/Web/API/Node.removeChild"><code>removeChild</code></a>( <a href="/en-US/docs/Web/API/Node" title="/en-US/docs/Web/API/Node"><code>removedNode</code></a> )</code><br>
+        Removes a child node from the current element.</td>
+      <td><a href="/en-US/docs/Web/API/Node" title="/en-US/docs/Web/API/Node"><code>Node</code></a></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a class="new" href="/en-US/docs/Web/API/element.removeEventListener" title="/en-US/docs/Web/API/element.removeEventListener"><code>removeEventListener</code></a>( <a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">type</a>, <a href="/en/JavaScript/Reference/Global_Objects/Function" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Function">handler</a>, <a href="/en/JavaScript/Reference/Global_Objects/Boolean" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Boolean">useCapture</a> )</code><br>
+        Removes an event listener from the element.</td>
+      <td>-</td>
+      <td><small><a href="/en-US/docs/Web/API/event" title="/en-US/docs/Web/API/event"><code>All</code></a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/Node.replaceChild" title="/en-US/docs/Web/API/Node.replaceChild"><code>replaceChild</code></a>( <a href="/en-US/docs/Web/API/Node" title="/en-US/docs/Web/API/Node"><code>insertedNode</code></a>, <a href="/en-US/docs/Web/API/Node" title="/en-US/docs/Web/API/Node"><code>replacedNode</code></a> )</code><br>
+        Replaces one child node in the current element with another.</td>
+      <td><a href="/en-US/docs/Web/API/Node" title="/en-US/docs/Web/API/Node"><code>Node</code></a></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.scrollIntoView" title="/en-US/docs/Web/API/element.scrollIntoView"><code>scrollIntoView</code></a>( <a href="/en/JavaScript/Reference/Global_Objects/Boolean" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Boolean">alignWithTop</a> )</code><br>
+        Scrolls the page until the element gets into the view.</td>
+      <td>-</td>
+      <td><small><a href="/en/HTML" title="en/HTML">HTML</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.setAttribute" title="/en-US/docs/Web/API/element.setAttribute"><code>setAttribute</code></a>( <a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">name</a>, <a href="/en/JavaScript/Reference/Global_Objects/Object" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Object">value</a> )</code><br>
+        Set the value of the named attribute from the current node.</td>
+      <td>-</td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.setAttributeNS" title="/en-US/docs/Web/API/element.setAttributeNS"><code>setAttributeNS</code></a>( <a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">namespace</a>, <a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">name</a>, <a href="/en/JavaScript/Reference/Global_Objects/Object" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Object">value</a> )</code><br>
+        Set the value of the attribute with the specified name and namespace, from the current node.</td>
+      <td>-</td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.setAttributeNode" title="/en-US/docs/Web/API/element.setAttributeNode"><code>setAttributeNode</code></a>( <a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">name</a>, <a href="/en-US/docs/Web/API/Attr" title="/en-US/docs/Web/API/Attr"><code>attrNode</code></a> )</code><br>
+        Set the node representation of the named attribute from the current node.</td>
+      <td>-</td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.setAttributeNodeNS" title="/en-US/docs/Web/API/element.setAttributeNodeNS"><code>setAttributeNodeNS</code></a>( <a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">namespace</a>, <a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String">name</a>, <a href="/en-US/docs/Web/API/Attr" title="/en-US/docs/Web/API/Attr"><code>attrNode</code></a> )</code><br>
+        Set the node representation of the attribute with the specified name and namespace, from the current node.</td>
+      <td>-</td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en-US/docs/Web/API/element.setCapture" title="/en-US/docs/Web/API/element.setCapture"><code>setCapture</code></a>( retargetToElement )</code><br>
+        Sets up mouse event capture, redirecting all mouse events to this element.</td>
+      <td>-</td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td>
+        <p><a class="new" href="/en-US/docs/Web/API/element.setIdAttribute" title="/en-US/docs/Web/API/element.setIdAttribute"><code>setIdAttribute</code></a> (<code>name</code>, <code>isIdBoolean</code>)<br>
+          Sets the attribute to be treated as an ID type attribute.</p>
+      </td>
+      <td>-</td>
+      <td>Not supported</td>
+    </tr>
+    <tr>
+      <td><a class="new" href="/en-US/docs/Web/API/element.setIdAttributeNS" title="/en-US/docs/Web/API/element.setIdAttributeNS"><code>setIdAttributeNS</code></a> ( <code>namespaceURI</code>, <code>localName</code>, <code>isIdBoolean</code> )<br>
+        Sets the attribute to be treated as an ID type attribute.</td>
+      <td>-</td>
+      <td>Not supported</td>
+    </tr>
+    <tr>
+      <td><a class="new" href="/en-US/docs/Web/API/element.setIdAttributeNode" title="/en-US/docs/Web/API/element.setIdAttributeNode"><code>setIdAttributeNode</code></a> ( <code>idAttr</code>, <code>isIdBoolean</code> )<br>
+        Sets the attribute to be treated as an ID type attribute.</td>
+      <td>-</td>
+      <td>Not supported</td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/Web/API/Node.setUserData" title="/en-US/docs/Web/API/Node.setUserData"><code>setUserData</code></a> ( <code>key</code>, <a href="/en-US/docs/Web/API/DOMUserData" title="/en-US/docs/Web/API/DOMUserData"><code>data</code></a>, <code>handler</code> )</td>
+      <td><a href="/en-US/docs/Web/API/DOMUserData" title="/en-US/docs/Web/API/DOMUserData"><code>DOMUserData</code></a></td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+    <tr>
+      <td><a href="/en-US/docs/Web/API/Element.insertAdjacentHTML" title="/en-US/docs/Web/API/Element.insertAdjacentHTML"><code>insertAdjacentHTML</code></a> ( <a href="/en-US/docs/Web/API/DOMString" title="/en-US/docs/Web/API/DOMString"><code>position</code></a>, <a href="/en-US/docs/Web/API/DOMString" title="/en-US/docs/Web/API/DOMString"><code>text</code></a> )<br>
+        Parses the text as HTML or XML and inserts the resulting nodes into the tree in the position given.</td>
+      <td>-</td>
+      <td><small><a href="/en/DOM" title="en/DOM">All</a></small></td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="Event_Handlers" name="Event_Handlers">Event handlers</h3>
+<p>These are properties that correspond to the HTML 'on' event attributes.</p>
+<p>Unlike the corresponding attributes, the values of these properties are functions (or any other object implementing the <a class="external" href="http://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-EventListener">EventListener</a> interface) rather than a string. In fact, assigning an event attribute in HTML creates a wrapper function around the specified code. For example, given the following HTML:</p>
+<pre>&lt;div onclick="foo();"&gt;click me!&lt;/div&gt;
+</pre>
+<p>If <code>element</code> is a reference to this <code>div</code>, the value of <code>element.onclick</code> is effectively:</p>
+<pre>function onclick(event) {
+   foo();
+}
+</pre>
+<p>Note how the <a href="/en-US/docs/Web/API/event" title="/en-US/docs/Web/API/event"><code>event</code></a> object is passed as parameter <code>event</code> to this wrapper function.</p>
+<div class="geckoVersionNote" style="">
+  <p></p><div class="geckoVersionHeading"> 
+Gecko 9.0 note 
+<div style="font-size: 9px; line-height: 1; font-style: italic;">(Firefox 9.0 / Thunderbird 9.0 / SeaMonkey 2.6)</div> 
+</div><p></p>
+  <p>Starting in Gecko 9.0 (Firefox 9.0 / Thunderbird 9.0 / SeaMonkey 2.6), you can now use the syntax <code>if ("onabort" in element)</code> to determine whether or not a given event handler property exists. This is because event handler interfaces have been updated to be proper web IDL interfaces. See <a href="/en/DOM/DOM_event_handlers" title="en/DOM/DOM event handlers">DOM event handlers</a> for details.</p>
+</div>
+<dl>
+  <dt>
+    <a href="/en-US/docs/Web/API/element.onafterscriptexecute" title="/en-US/docs/Web/API/element.onafterscriptexecute"><code>element.onafterscriptexecute</code></a> <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 4 / Thunderbird 3.3 / SeaMonkey 2.1)">Requires Gecko 2.0</span> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></dt>
+  <dd>
+    The event handling code for the <code>afterscriptexecute</code> event; this is used only for <a href="/en-US/docs/Web/HTML/Element/script"><code>&lt;script&gt;</code></a> elements.</dd>
+  <dt>
+    <a href="/en-US/docs/Web/API/element.onbeforescriptexecute" title="/en-US/docs/Web/API/element.onbeforescriptexecute"><code>element.onbeforescriptexecute</code></a> <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 4 / Thunderbird 3.3 / SeaMonkey 2.1)">Requires Gecko 2.0</span> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></dt>
+  <dd>
+    The event handling code for the <code>beforescriptexecute</code> event; this is used only for <a href="/en-US/docs/Web/HTML/Element/script"><code>&lt;script&gt;</code></a> elements.</dd>
+  <dt>
+    <a href="/en-US/docs/Web/API/element.oncopy" title="/en-US/docs/Web/API/element.oncopy"><code>oncopy</code></a> <span class="inlineIndicator standardNote standardNoteInline">New in <a href="https://developer.mozilla.org/en-US/docs/Firefox_3_for_developers">Firefox 3</a></span></dt>
+  <dd>
+    Returns the event handling code for the copy event.</dd>
+</dl>
+<dl>
+  <dt>
+    <a href="/en-US/docs/Web/API/element.oncut" title="/en-US/docs/Web/API/element.oncut"><code>oncut</code></a> <span class="inlineIndicator standardNote standardNoteInline">New in <a href="https://developer.mozilla.org/en-US/docs/Firefox_3_for_developers">Firefox 3</a></span></dt>
+  <dd>
+    Returns the event handling code for the cut event.</dd>
+</dl>
+<dl>
+  <dt>
+    <a href="/en-US/docs/Web/API/element.onpaste" title="/en-US/docs/Web/API/element.onpaste"><code>onpaste</code></a> <span class="inlineIndicator standardNote standardNoteInline">New in <a href="https://developer.mozilla.org/en-US/docs/Firefox_3_for_developers">Firefox 3</a></span></dt>
+  <dd>
+    Returns the event handling code for the paste event.</dd>
+</dl>
+<dl>
+  <dt>
+    <a class="new" href="/en-US/docs/Web/API/element.onbeforeunload" title="/en-US/docs/Web/API/element.onbeforeunload"><code>onbeforeunload</code></a></dt>
+  <dd>
+    Returns the event handling code for the beforeunload event.</dd>
+</dl>
+<dl>
+  <dt>
+    <a href="/en-US/docs/Web/API/element.onblur" title="/en-US/docs/Web/API/element.onblur"><code>onblur</code></a></dt>
+  <dd>
+    Returns the event handling code for the blur event.</dd>
+</dl>
+<dl>
+  <dt>
+    <a href="/en-US/docs/Web/API/element.onchange" title="/en-US/docs/Web/API/element.onchange"><code>onchange</code></a></dt>
+  <dd>
+    Returns the event handling code for the change event.</dd>
+</dl>
+<dl>
+  <dt>
+    <a href="/en-US/docs/Web/API/element.onclick" title="/en-US/docs/Web/API/element.onclick"><code>onclick</code></a></dt>
+  <dd>
+    Returns the event handling code for the click event.</dd>
+</dl>
+<dl>
+  <dt>
+    <a class="new" href="/en-US/docs/Web/API/element.oncontextmenu" title="/en-US/docs/Web/API/element.oncontextmenu"><code>oncontextmenu</code></a></dt>
+  <dd>
+    Returns the event handling code for the contextmenu event.</dd>
+</dl>
+<dl>
+  <dt>
+    <a href="/en-US/docs/Web/API/element.ondblclick" title="/en-US/docs/Web/API/element.ondblclick"><code>ondblclick</code></a></dt>
+  <dd>
+    Returns the event handling code for the dblclick event.</dd>
+</dl>
+<dl>
+  <dt>
+    <a href="/en-US/docs/Web/API/element.onfocus" title="/en-US/docs/Web/API/element.onfocus"><code>onfocus</code></a></dt>
+  <dd>
+    Returns the event handling code for the focus event.</dd>
+</dl>
+<dl>
+  <dt>
+    <a href="/en-US/docs/Web/API/element.onkeydown" title="/en-US/docs/Web/API/element.onkeydown"><code>onkeydown</code></a></dt>
+  <dd>
+    Returns the event handling code for the keydown event.</dd>
+</dl>
+<dl>
+  <dt>
+    <a href="/en-US/docs/Web/API/element.onkeypress" title="/en-US/docs/Web/API/element.onkeypress"><code>onkeypress</code></a></dt>
+  <dd>
+    Returns the event handling code for the keypress event.</dd>
+</dl>
+<dl>
+  <dt>
+    <a href="/en-US/docs/Web/API/element.onkeyup" title="/en-US/docs/Web/API/element.onkeyup"><code>onkeyup</code></a></dt>
+  <dd>
+    Returns the event handling code for the keyup event.</dd>
+</dl>
+<dl>
+  <dt>
+    <a href="/en-US/docs/Web/API/element.onmousedown" title="/en-US/docs/Web/API/element.onmousedown"><code>onmousedown</code></a></dt>
+  <dd>
+    Returns the event handling code for the mousedown event.</dd>
+</dl>
+<dl>
+  <dt>
+    <a href="/en-US/docs/Web/API/element.onmousemove" title="/en-US/docs/Web/API/element.onmousemove"><code>onmousemove</code></a></dt>
+  <dd>
+    Returns the event handling code for the mousemove event.</dd>
+</dl>
+<dl>
+  <dt>
+    <a href="/en-US/docs/Web/API/element.onmouseout" title="/en-US/docs/Web/API/element.onmouseout"><code>onmouseout</code></a></dt>
+  <dd>
+    Returns the event handling code for the mouseout event.</dd>
+</dl>
+<dl>
+  <dt>
+    <a href="/en-US/docs/Web/API/element.onmouseover" title="/en-US/docs/Web/API/element.onmouseover"><code>onmouseover</code></a></dt>
+  <dd>
+    Returns the event handling code for the mouseover event.</dd>
+</dl>
+<dl>
+  <dt>
+    <a href="/en-US/docs/Web/API/element.onmouseup" title="/en-US/docs/Web/API/element.onmouseup"><code>onmouseup</code></a></dt>
+  <dd>
+    Returns the event handling code for the mouseup event.</dd>
+</dl>
+<dl>
+  <dt>
+    <a href="/en-US/docs/Web/API/element.onresize" title="/en-US/docs/Web/API/element.onresize"><code>onresize</code></a></dt>
+  <dd>
+    Returns the event handling code for the resize event.</dd>
+</dl>
+<dl>
+  <dt>
+    <a href="/en-US/docs/Web/API/element.onscroll" title="/en-US/docs/Web/API/element.onscroll"><code>onscroll</code></a></dt>
+  <dd>
+    Returns the event handling code for the scroll event.</dd>
+  <dt>
+    <a href="/en-US/docs/Web/API/element.onwheel" title="/en-US/docs/Web/API/element.onwheel"><code>onwheel</code></a> <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 17.0 / Thunderbird 17.0 / SeaMonkey 2.14)">Requires Gecko 17.0</span> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></dt>
+  <dd>
+    Returns the event handling code for the <code><a href="https://developer.mozilla.org/en-US/docs/DOM/DOM_event_reference/wheel">wheel</a></code> event.</dd>
+</dl>
+<h3 id="Other_Events" name="Other_Events">Other Events</h3>
+<p>There are also other <a href="/en/DOM/DOM_event_reference" title="en/DOM_Events">DOM Events</a> like <code>DOMSubtreeModified</code>, <code>DOMAttrModified</code> etc. as well as <a href="/en/Gecko-Specific_DOM_Events" title="en/Gecko-Specific_DOM_Events">Gecko-Specific DOM Events</a> like <code>DOMContentLoaded</code>, <code>DOMTitleChanged</code> etc.</p>
+<h3 id="Constants">Constants</h3>
+<p>See <a href="/en-US/docs/Web/API/Node" title="/en-US/docs/Web/API/Node"><code>Node</code></a> for those constants which Element inherits.</p>
+<p></p>
+                  </div>
+    <section class="page-meta">
+      
+            <section id="page-tags">
+        <h2><i class="icon-tags"></i>Tags (4)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Gecko%20DOM%20Reference">Gecko DOM Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/DOM">DOM</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsMarkupWork">NeedsMarkupWork</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Gecko">Gecko</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Takenbot">Takenbot</a>, <a href="/en-US/profiles/Taken">Taken</a>, <a href="/en-US/profiles/J%C3%BCrgen%20Jeka">Jürgen Jeka</a>, <a href="/en-US/profiles/MarkFinkle">MarkFinkle</a>, <a href="/en-US/profiles/Jay%20I.">Jay I.</a>, <a href="/en-US/profiles/Jabez">Jabez</a>, <a href="/en-US/profiles/Hao2lian">Hao2lian</a>, <a href="/en-US/profiles/RobG">RobG</a>, <a href="/en-US/profiles/Niczar">Niczar</a>, <a href="/en-US/profiles/Andreas%20Wuest">Andreas Wuest</a>, <a href="/en-US/profiles/Dewang">Dewang</a>, <a href="/en-US/profiles/Djc8080">Djc8080</a>, <a href="/en-US/profiles/RodMcGuire">RodMcGuire</a>, <a href="/en-US/profiles/%EA%B6%8C%EC%A7%80%EC%9B%85">권지웅</a>, <a href="/en-US/profiles/Mckoss">Mckoss</a>, <a href="/en-US/profiles/Codigo13">Codigo13</a>, <a href="/en-US/profiles/TomC">TomC</a>, <a href="/en-US/profiles/Jresig">Jresig</a>, <a href="/en-US/profiles/Tmetro">Tmetro</a>, <a href="/en-US/profiles/Fguisset">Fguisset</a>, <a href="/en-US/profiles/Markus%20Prokott">Markus Prokott</a>, <a href="/en-US/profiles/Brettz9">Brettz9</a>, <a href="/en-US/profiles/Masayuki">Masayuki</a>, <a href="/en-US/profiles/George3">George3</a>, <a href="/en-US/profiles/GT">GT</a>, <a href="/en-US/profiles/Potappo">Potappo</a>, <a href="/en-US/profiles/Crash">Crash</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Elchi3">Elchi3</a>, <a href="/en-US/profiles/ziyunfei">ziyunfei</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/trevorh">trevorh</a>, <a href="/en-US/profiles/teoli">teoli</a>, <a href="/en-US/profiles/Ptak82">Ptak82</a>, <a href="/en-US/profiles/DBaron">DBaron</a>, <a href="/en-US/profiles/Hipokrit">Hipokrit</a>, <a href="/en-US/profiles/Marcoos">Marcoos</a>, <a href="/en-US/profiles/Hsivonen">Hsivonen</a>, <a href="/en-US/profiles/JesseW">JesseW</a>, <a href="/en-US/profiles/CN">CN</a>, <a href="/en-US/profiles/tshinnic">tshinnic</a>, <a href="/en-US/profiles/Callek">Callek</a>, <a href="/en-US/profiles/BijuGC">BijuGC</a>, <a href="/en-US/profiles/BenoitL">BenoitL</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br />
+          Last updated by:  
+          <a href="/en-US/profiles/teoli">teoli</a>, 
+          <time datetime="2013-05-17T00:27:53-07:00">May 17, 2013 12:27:53 AM</time>
+                      <br />
+            Last reviewed by:  
+            <a href="/en-US/profiles/teoli">teoli</a>, 
+            <time datetime="2013-05-17T00:27:53-07:00">May 17, 2013 12:27:53 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/API/element$edit">
+      <input type="hidden" name="form" id="form" value="rev" />
+      <input type="hidden" name="content" id="content" value="" />
+  </form>
+      </div>
+   </div>
+    </section>
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+<footer id="site-info" class="footer" role="contentinfo">
+<div class="wrap">
+    <div id="legal">
+      <img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-tiny.png" alt="" width="42" height="48">
+      <p id="copyright">&copy; 2005 - 2013 Mozilla Developer Network and individual contributors</p>
+      <p>
+      Content is available under <a href="/en-US/docs/Project:Copyrights">these licenses</a>      &bull; <a href="/en-US/docs/Project:About">About MDN</a>
+      &bull; <a href="//github.com/mozilla/kuma">Contribute to the code</a>
+      &bull; <a href="//www.mozilla.org/en-US/privacy">Privacy Policy</a>
+    </div>
+          <form class="languages go" method="get" action="/en-US/docs">
+      <label for="language">Other languages:</label>
+      <select id="language" class="wiki-l10n" name="next" dir="ltr">
+        <option value="/en-US/docs/Web/API/element" selected>
+          English (US)
+        </option>
+                  <option value="/de/docs/DOM/element">
+            Deutsch
+          </option>          <option value="/es/docs/DOM/element">
+            Español
+          </option>          <option value="/fr/docs/DOM/element">
+            Français
+          </option>          <option value="/ja/docs/Web/API/Element">
+            日本語
+          </option>          <option value="/pl/docs/DOM/element">
+            Polski
+          </option>          <option value="/pt-PT/docs/DOM/element">
+            Português (Europeu)
+          </option>          <option value="/ru/docs/DOM/element">
+            Русский
+          </option>          <option value="/zh-CN/docs/DOM/element">
+            中文 (简体)
+          </option>      </select>
+      <noscript><button type="submit">Go</button></noscript>
+    </form>
+  </div>
+</footer>
+
+<script src="/en-US/jsi18n/build:5f4e39d"></script>
+  <script src="//mozorg.cdn.mozilla.net/en-US/tabzilla/tabzilla.js" async></script>
+  <script src="//www.google.com/jsapi" type="text/javascript"></script>
+  <script src="https://login.persona.org/include.js" type="text/javascript"></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/mdn-min.js?build=5f4e39d"></script>
+      <script src="https://developer.cdn.mozilla.net/media/js/wiki-min.js?build=5f4e39d"></script>
+  
+  <script type="text/javascript">
+    // Event tracking for the new menu
+    $(function() {
+      $('#nav-main').on('click', 'a', function(e) {
+        window._gaq && _gaq.push(['_trackEvent', 'Menu', 'Click', e.target.innerHTML, e.target.href]);
+      });
+    });
+  </script>
+        <!-- include syntax highlighting scripts -->
+  
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=5f4e39d" />
+
+  <script type="text/javascript">
+    MEDIA_URL = 'https://developer.cdn.mozilla.net/media/';
+  </script>
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/media/prism/prism.js" data-manual></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/syntax-prism-min.js?build=5f4e39d"></script>
+
+<script src="/en-US/waffles.js" type="text/javascript" async></script>
+</body>
+</html>

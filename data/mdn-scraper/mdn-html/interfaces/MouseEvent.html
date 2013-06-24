@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+<head>
+      <script src="//cdn.optimizely.com/js/237572123.js"></script>
+  
+  <title>MouseEvent - Web API reference | MDN</title>
+  
+  <meta charset="utf-8">
+  <meta name="robots" content="index, follow">
+  <link rel="home" href="/en-US/">
+  <link rel="copyright" href="#copyright">
+  <link rel="shortcut icon" href="https://developer.cdn.mozilla.net/media/img/favicon.ico">
+
+        <!--[if !IE 6]><!-->
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/mdn-min.css?build=5f4e39d" />
+      <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/wiki-min.css?build=5f4e39d" />
+    <!--<![endif]-->
+  <!--[if IE]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie.css"><![endif]-->
+  <!--[if lte IE 7]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie7.css"><![endif]-->
+  <!--[if lte IE 6]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie6.css"><![endif]-->
+  <link rel="stylesheet" type="text/css" href="https://developer.cdn.mozilla.net/media/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="print" href="https://developer.cdn.mozilla.net/media/css/mdn-print.css">
+  <link rel="stylesheet" href="https://mozorg.cdn.mozilla.net/media/css/tabzilla-min.css">
+  
+
+  <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network" />
+
+  
+    <link rel="stylesheet" media="print" href="https://developer.cdn.mozilla.net/media/css/wiki-print-min.css?build=5f4e39d" />
+          <link rel="stylesheet" type="text/css"
+            href="/en-US/docs/Template:CustomCSS?raw=1" />
+    
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script src="https://developer.cdn.mozilla.net/media/js/html5.js"></script>
+  <![endif]-->
+
+    <link rel="alternate" type="application/json" href="/en-US/docs/Web/API/MouseEvent$json" />
+  <link rel="canonical" href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent" />
+
+  <meta property="og:title" content="MouseEvent" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://developer.mozilla.org/media/img/mdn-logo-sm.png" />
+  <meta property="og:site_name" content="Mozilla Developer Network" />
+  <meta property="og:url" content="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:url" content="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent" />
+  <meta name="twitter:title" content="MouseEvent" />
+  <meta name="twitter:image" content="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" />
+  <meta name="twitter:site" content="@mozhacks" />
+  <meta name="twitter:creator" content="@mozhacks" />
+
+    <meta property="og:description" content="The DOM MouseEvent interface represents events that occur due to the user interacting with a pointing device (such as a mouse)."/>
+  <meta name="description" content="The DOM MouseEvent interface represents events that occur due to the user interacting with a pointing device (such as a mouse)." />
+  <meta name="twitter:description" content="The DOM MouseEvent interface represents events that occur due to the user interacting with a pointing device (such as a mouse)." />
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36116321-5']);
+  _gaq.push(['_trackPageview']);
+
+  (function(a, d) {
+    var ga = d.createElement(a); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == d.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = d.getElementsByTagName(a)[0]; s.parentNode.insertBefore(ga, s);
+  })('script', document);
+
+</script>
+</head>
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  <header id="masthead" class="minor new-menu">
+    <div class="wrap">
+      <ul id="nav-access">
+        <li><a href="#language">Select language</a></li>
+        <li><a href="#q">Skip to search</a></li>
+        <li><a href="#content">Skip to main content</a></li>
+      </ul>
+    
+      <div id="branding">
+                <div id="logo"><a href="/en-US/"><img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" alt="Mozilla Developer Network" title="Mozilla Developer Network" width="62" height="71"> Mozilla Developer Network</a></div>
+              </div>
+      
+              <nav id="nav">
+          <ul id="nav-main" role="menubar">
+            <li id="nav-main-docs" class="menu" rel="menuitem"><a href="#nav-sub-docs" class="toggle" aria-haspopup="true" aria-labelledby="nav-main-docs" title="Read Documentation">Read<br /><em>Docs</em></a>
+              <div id="nav-sub-docs" class="sub-menu" aria-hidden="true">
+                <ul>
+                  <li>
+                    <ul>
+
+                      <li><a href="/en-US/docs/Web/HTML?menu">HTML</a></li>
+                      <li><a href="/en-US/docs/Web/CSS?menu">CSS</a></li>
+                      <li><a href="/en-US/docs/Web/JavaScript?menu">JavaScript</a></li>
+                      <li><a href="/en-US/docs/Web/Guide/Graphics?menu">Graphics</a></li>
+                      <li><a href="/en-US/docs/Web/API?menu">APIs / DOM</a></li>
+                      <li><a href="/en-US/docs/Web/Apps?menu">Apps</a></li>
+                      <li><a href="/en-US/docs/tools?menu">Dev Tools</a></li>
+                      <li><a href="/en-US/docs/Web/MathML?menu">MathML</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <ul>
+                      <li><a href="/en-US/docs/Web/Tutorials?menu">Tutorials</a></li>
+                      <li><a href="/en-US/docs/Web/Reference?menu">References</a></li>
+                      <li><a href="/en-US/docs/Web/Guide?menu">Developer Guides</a></li>
+                      <li><a href="/en-US/demos/?menu">Demos</a></li>
+                      <li><br /><br /><a href="/en-US/docs?menu">...more docs</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li id="nav-main-apps" role="menuitem"><a href="https://marketplace.firefox.com/developers/">Make<br /><em>Apps</em></a></li>
+            <li id="nav-main-firefox" class="menu" role="menuitem"><a href="#nav-sub-firefox" class="firefox toggle" aria-haspopup="true" aria-labelledby="nav-main-firefox">Build & Use<br /><em>Firefox</em></a>
+              <ul id="nav-sub-firefox" class="sub-menu">
+                <li><a href="/en-US/docs/Mozilla/Firefox_OS?menu">Firefox OS</a></li>
+                <li><a href="/en-US/docs/Mozilla/Firefox?menu">Firefox Desktop</a></li>
+                <li><a href="/en-US/docs/Mozilla/Mobile?menu">Mobile</a></li>
+                <li><a href="/en-US/docs/Mozilla/Add-ons?menu">Add-ons</a></li>
+              </ul>
+            </li>
+            <li id="nav-main-demos" role="menuitem"><a href="/en-US/demos/?menu" class="demos">See & Submit<br /><em>Demos</em></a></li>
+            <li id="nav-main-community" class="menu" role="menuitem"><a href="#nav-sub-community" class="community toggle" aria-haspopup="true" aria-labelledby="nav-main-community">Get<br /><em>Involved</em></a>
+              <ul id="nav-sub-community" class="sub-menu">
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Join_the_community?menu">Join the Community</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing?menu">Contribute to MDN</a></li>
+                <li><a href="/en-US/events?menu">Events</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Follow_what_s_happening?menu">Tweets, Blogs, and More</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+          
+      <ul class="user-state signed-out">
+    <li class="user-signin menu">
+    <form class="browserid" action="/en-US/users/browserid_verify" method="POST">
+        <input id="next" name="next" type="hidden" value="/en-US/docs/Web/API/MouseEvent"/>
+        <input required="required" type="hidden" name="assertion" id="id_assertion" />
+                        <a href="#" target="_blank" class="browserid-signin toggle" aria-haspopup="true" title="Sign in with Persona">Sign in</a>
+                <div class="browserid-info sub-menu" aria-hidden="true">
+                <h3>What's this?</h3> <p>MDN has switched to <a href="https://persona.org/" target="_blank" rel="external">Persona</a>, a safe and simple way to sign in with just your e-mail address. <a href="http://identity.mozilla.com/post/12950196039/deploying-browserid-at-mozilla" rel="external">Learn more about why Mozilla is using Persona</a>.</p> <p><strong>Returning members:</strong> sign in with Persona and you'll be connected to your MDN profile (all your information is still here).</p> <p><strong>New members:</strong> sign in with Persona first, then you'll be able to set up your new MDN profile.</p>          <p><a href="#" target="_blank" class="browserid-signin" title="Sign in with Persona">Sign in</a></p>
+        </div>
+              </form>
+    </li>
+  </ul>
+      
+      <form id="site-search" method="get" action="http://www.google.com/search"
+              data-url="/en-US/search">
+        <p>
+          <input type="search" role="search" placeholder="Search MDN" id="q" name="q" value="">
+          <noscript><button type="submit">Search</button></noscript>
+        </p>
+        <input type="hidden" name="sitesearch" value="developer.mozilla.org">
+                <div id="site-search-gg"></div>
+              </form>
+
+      <a href="//www.mozilla.org/" id="tabzilla">mozilla</a>
+    </div>
+  </header>
+
+    
+
+<!-- top toolbar -->
+<section id="nav-toolbar"><div><div class="wrap">
+  <!-- right floated navigation -->
+  <nav id="tool-menus" role="navigation">
+    <ul id="tools">
+      <li class="menu">
+        <a href="#page-tools" class="toggle">This page</a>
+        <ul id="page-tools" class="sub-menu">
+          <li class="page-print"> <a href="#" onclick="return window.print();"  title="Print page">Print this page</a></li>
+                      <li><a href="/en-US/docs/new?parent=737">New sub-page</a></li>
+            <li><a href="/en-US/docs/new?clone=737">Clone this page</a></li>
+                                      </ul>
+      </li>
+            <li class="menu">
+        <a href="#" class="toggle">Languages</a>
+        <ul id="translations">
+                    
+                      <li><a href="/en-US/docs/Web/API/MouseEvent$locales">Add translation</a></li>
+                  </ul>
+      </li>
+          </ul>
+  </nav>
+  
+  <!-- left crumb navigation -->
+  <nav class="crumbs" role="navigation">
+    <ol>
+              <li class="crumb"><a href="/en-US/docs/Web">Web technology for developers</a></li>
+              <li class="crumb"><a href="/en-US/docs/Web/API">Web API reference</a></li>
+            <li class="crumb">MouseEvent</li>
+    </ol>
+  </nav>
+  
+</div></div></section>
+
+
+
+<section id="content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" 
+          data-current-revision="409165"
+          data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes."
+          data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title">
+            <h1 class="page-title">MouseEvent</h1>
+                    </div>
+        <ul id="page-buttons">
+            <li class="page-history"><a href="/en-US/docs/Web/API/MouseEvent$history"><i class="icon-book"></i>History</a></li>
+                                                                                  <li class="page-edit"><a href="/en-US/docs/Web/API/MouseEvent$edit"><i class="icon-pencil"></i>Edit</a></li>
+                    </ul>
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                <div id="article-nav">
+          <div class="page-toc">
+            <h2>Table of Contents</h2>
+            <ol>
+              <code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Method_overview" rel="internal">Method overview</a><code></code><li><a href="#Properties" rel="internal">Properties</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Methods" rel="internal">Methods</a><ol><li><a href="#getModifierState()" rel="internal">getModifierState()</a><code></code></ol></li><li><a href="#Constants" rel="internal">Constants</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Specification" rel="internal">Specification</a>
+            </ol>
+          </div>
+          <ul class="page-anchors">
+            <li class="anchor-tags">
+                              <i class="icon-tags"></i><a href="#page-tags">Tags</a>
+                          </li>
+            <li class="anchor-files">
+                              <i class="icon-paper-clip off"></i><span title="This document has no attachments">Files</span>
+                          </li>
+          </ul>
+        </div>
+                                <p>The DOM <code>MouseEvent</code> interface represents events that occur due to the user interacting with a pointing device (such as a mouse).</p>
+<p>Common events using this interface include <code><a href="/en-US/docs/Web/Reference/Events/click" title="/en-US/docs/Web/Reference/Events/click">click</a></code>, <code><a href="/en-US/docs/Web/Reference/Events/dblclick" title="/en-US/docs/Web/Reference/Events/dblclick">dblclick</a></code>, <code><a href="/en-US/docs/Web/Reference/Events/mouseup" title="/en-US/docs/Web/Reference/Events/mouseup">mouseup</a></code>, <code><a href="/en-US/docs/Web/Reference/Events/mousedown" title="/en-US/docs/Web/Reference/Events/mousedown">mousedown</a></code>. The list of all events using this interface is provided in the <a href="/en-US/docs/Web/Reference/Events" title="/en-US/docs/Web/Reference/Events">Events reference</a>.</p>
+<p><code>MouseEvent</code> derives from <a href="/en-US/docs/Web/API/UIEvent" title="/en-US/docs/Web/API/UIEvent"><code>UIEvent</code></a>, which in turn derives from <a href="/en-US/docs/Web/API/Event" title="/en-US/docs/Web/API/Event"><code>Event</code></a>.</p>
+<h2 id="Method_overview">Method overview</h2>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td><code>boolean <a href="#getModifierState()">getModifierState</a>(in DOMString keyArg);</code></td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Properties">Properties</h2>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td class="header">Property</td>
+      <td class="header">Type</td>
+      <td class="header">Description</td>
+    </tr>
+    <tr>
+      <td><code>screenX</code></td>
+      <td><code>long</code></td>
+      <td>The X coordinate of the mouse pointer in global (screen) coordinates. <strong>Read only.</strong></td>
+    </tr>
+    <tr>
+      <td><code>screenY</code></td>
+      <td><code>long</code></td>
+      <td>The Y coordinate of the mouse pointer in global (screen) coordinates. <strong>Read only.</strong></td>
+    </tr>
+    <tr>
+      <td><code>clientX</code></td>
+      <td><code>long</code></td>
+      <td>The X coordinate of the mouse pointer in local (DOM content) coordinates. <strong>Read only.</strong></td>
+    </tr>
+    <tr>
+      <td><code>clientY</code></td>
+      <td><code>long</code></td>
+      <td>The Y coordinate of the mouse pointer in local (DOM content) coordinates. <strong>Read only.</strong></td>
+    </tr>
+    <tr>
+      <td><code>ctrlKey</code></td>
+      <td><code>boolean</code></td>
+      <td><code>true</code> if the control key was down when the mouse event was fired. <strong>Read only.</strong></td>
+    </tr>
+    <tr>
+      <td><code>shiftKey</code></td>
+      <td><code>boolean</code></td>
+      <td><code>true</code> if the shift key was down when the mouse event was fired. <strong>Read only.</strong></td>
+    </tr>
+    <tr>
+      <td><code>altKey</code></td>
+      <td><code>boolean</code></td>
+      <td><code>true</code> if the alt key was down when the mouse event was fired. <strong>Read only.</strong></td>
+    </tr>
+    <tr>
+      <td><code>metaKey</code></td>
+      <td><code>boolean</code></td>
+      <td><code>true</code> if the meta key was down when the mouse event was fired. <strong>Read only.</strong></td>
+    </tr>
+    <tr>
+      <td><code>button</code></td>
+      <td><code>unsigned short</code></td>
+      <td>The button number that was pressed when the mouse event was fired. <strong>Read only.</strong>
+        <p>Left button=0, middle button=1 (if present), right button=2. For mice configured for left handed use in which the button actions are reversed the values are instead read from right to left.</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code>buttons</code>  </td>
+      <td><code>unsigned short</code></td>
+      <td>
+        <p>The buttons being pressed when the mouse event was fired. <strong>Read only.</strong></p>
+        <p>Left button=1, Right button=2, Middle (wheel) button=4, 4th button (typically, "Browser Back" button)=8, 5th button (typically, "Browser Forward" button)=16. If two or more buttons are pressed, returns the logical sum of the values. E.g., if Left button and Right button are pressed, returns 3 (=1 | 2).</p>
+        <div class="note">
+          <p>Gecko supports this attribute on Windows, Linux (GTK) and Mac.</p>
+          <ul>
+            <li>On Windows, if user installed a mouse driver and its utility software which can customize button actions (e.g., IntelliPoint and SetPoint), the Middle (wheel) button, 4th button and 5th button may not be set actually even when they're pressed.</li>
+            <li>On Linux (GTK), 4th button and 5th button are not supported. And also, <code>mouseup</code> event always have the releasing button information in this attribute value.</li>
+            <li>On Mac OS X 10.5, buttons attribute always returns 0 because there is no platform API for implementing this feature.</li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><code>relatedTarget</code></td>
+      <td><a href="/en-US/docs/Web/API/EventTarget" title="/en-US/docs/Web/API/EventTarget"><code>EventTarget</code></a></td>
+      <td>
+        <p>The secondary target for the event, if there is one. <strong>Read only.</strong></p>
+        <p>For <code><a href="/en-US/docs/Web/Reference/Events/mouseenter" title="/en-US/docs/Web/Reference/Events/mouseenter">mouseenter</a></code>/<code><a href="/en-US/docs/Web/Reference/Events/mouseleave" title="/en-US/docs/Web/Reference/Events/mouseleave">mouseleave</a></code>, <code><a href="/en-US/docs/Web/Reference/Events/mouseover" title="/en-US/docs/Web/Reference/Events/mouseover">mouseover</a></code>/<code><a href="/en-US/docs/Web/Reference/Events/mouseout" title="/en-US/docs/Web/Reference/Events/mouseout">mouseout</a></code> events an event's <code>relatedTarget</code> equals the <a href="/en-US/docs/Web/API/Event#target" title="/en-US/docs/Web/API/Event#target"><code>Event.target</code></a> of the complementary event. For example, the <code>relatedTarget</code> for <code>mouseleave</code> is the <code>target</code> for the corresponding <code>mouseenter</code> event.</p>
+        <p>For events with no secondary target, <code>relatedTarget</code> returns <code>null</code>.</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code>mozPressure</code>  </td>
+      <td><code>float</code></td>
+      <td>The amount of pressure applied to a touch or tablet device when generating the event; this value ranges between 0.0 (minimum pressure) and 1.0 (maximum pressure). <strong>Read only.</strong></td>
+    </tr>
+    <tr>
+      <td id="mozInputSource"><code>mozInputSource</code>  </td>
+      <td><code>unsigned short</code></td>
+      <td>
+        <p>The type of device that generated the event (one of the <code>MOZ_SOURCE_*</code> constants listed <a href="#Constants">below</a>). <strong>Read only.</strong></p>
+        <p>This lets you, for example, determine whether a mouse event was generated by an actual mouse or by a touch event (which might affect the degree of accuracy with which you interpret the coordinates associated with the event).</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Methods">Methods</h2>
+<h3 id="getModifierState()">getModifierState()</h3>
+<p>Returns the current state of the specified modifier key. See the <a href="/en-US/docs/Web/API/KeyboardEvent#getModifierState()" title="/en-US/docs/Web/API/KeyboardEvent#getModifierState()"><code>KeyboardEvent.getModifierState()</code></a> documentation for details.  </p>
+<pre>boolean getModifierState(
+  in DOMString keyArg
+);
+</pre>
+<h2 id="Constants">Constants</h2>
+<p></p><div class="overheadIndicator nonStandard nonStandardHeader"> 
+      <p>Non-standard</p> 
+      </div><p></p>
+<p>The possible values for <a href="#mozInputSource"><code>MouseEvent.mozInputSource</code></a> are listed in the following table. They are available as properties on the <code>MouseEvent</code> interface (e.g. <code>MouseEvent.MOZ_SOURCE_UNKNOWN</code>).</p>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <th>Constant name</th>
+      <th>Value</th>
+      <th>Desription</th>
+    </tr>
+    <tr>
+      <td><code>MOZ_SOURCE_UNKNOWN</code></td>
+      <td>0</td>
+      <td>The input device is unknown.</td>
+    </tr>
+    <tr>
+      <td><code>MOZ_SOURCE_MOUSE</code></td>
+      <td>1</td>
+      <td>The event was generated by a mouse (or mouse-like device).</td>
+    </tr>
+    <tr>
+      <td><code>MOZ_SOURCE_PEN</code></td>
+      <td>2</td>
+      <td>The event was generated by a pen on a tablet.</td>
+    </tr>
+    <tr>
+      <td><code>MOZ_SOURCE_ERASER</code></td>
+      <td>3</td>
+      <td>The event was generated by an eraser on a tablet.</td>
+    </tr>
+    <tr>
+      <td><code>MOZ_SOURCE_CURSOR</code></td>
+      <td>4</td>
+      <td>The event was generated by a cursor.</td>
+    </tr>
+    <tr>
+      <td><code>MOZ_SOURCE_TOUCH</code></td>
+      <td>5</td>
+      <td>The event was generated on a touch interface.</td>
+    </tr>
+    <tr>
+      <td><code>MOZ_SOURCE_KEYBOARD</code></td>
+      <td>6</td>
+      <td>The event was generated by a keyboard.</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Specification">Specification</h2>
+<ul>
+  <li><a class="external" href="http://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-MouseEvent" title="http://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-MouseEvent">DOM Level 2: MouseEvent</a></li>
+  <li>
+    <p><a class="external" href="http://www.w3.org/TR/DOM-Level-3-Events/#events-MouseEvent" title="http://www.w3.org/TR/DOM-Level-3-Events/#events-MouseEvent">DOM 3 Events: MouseEvent</a></p>
+  </li>
+</ul>
+                  </div>
+    <section class="page-meta">
+      
+            <section id="page-tags">
+        <h2><i class="icon-tags"></i>Tags (4)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsContent">NeedsContent</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Gecko%20DOM%20Reference">Gecko DOM Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/DOM">DOM</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/events">events</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/andrewla">andrewla</a>, <a href="/en-US/profiles/dbruant">dbruant</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/Masayuki">Masayuki</a>, <a href="/en-US/profiles/MatrixFrog">MatrixFrog</a>
+                          <br />
+          Last updated by:  
+          <a href="/en-US/profiles/Nickolay">Nickolay</a>, 
+          <time datetime="2013-05-18T19:51:04-07:00">May 18, 2013 7:51:04 PM</time>
+                      <br />
+            Last reviewed by:  
+            <a href="/en-US/profiles/Nickolay">Nickolay</a>, 
+            <time datetime="2013-05-18T19:51:04-07:00">May 18, 2013 7:51:04 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/API/MouseEvent$edit">
+      <input type="hidden" name="form" id="form" value="rev" />
+      <input type="hidden" name="content" id="content" value="" />
+  </form>
+      </div>
+   </div>
+    </section>
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+<footer id="site-info" class="footer" role="contentinfo">
+<div class="wrap">
+    <div id="legal">
+      <img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-tiny.png" alt="" width="42" height="48">
+      <p id="copyright">&copy; 2005 - 2013 Mozilla Developer Network and individual contributors</p>
+      <p>
+      Content is available under <a href="/en-US/docs/Project:Copyrights">these licenses</a>      &bull; <a href="/en-US/docs/Project:About">About MDN</a>
+      &bull; <a href="//github.com/mozilla/kuma">Contribute to the code</a>
+      &bull; <a href="//www.mozilla.org/en-US/privacy">Privacy Policy</a>
+    </div>
+          <form class="languages go" method="get" action="/en-US/docs">
+      <label for="language">Other languages:</label>
+      <select id="language" class="wiki-l10n" name="next" dir="ltr">
+        <option value="/en-US/docs/Web/API/MouseEvent" selected>
+          English (US)
+        </option>
+              </select>
+      <noscript><button type="submit">Go</button></noscript>
+    </form>
+  </div>
+</footer>
+
+<script src="/en-US/jsi18n/build:5f4e39d"></script>
+  <script src="//mozorg.cdn.mozilla.net/en-US/tabzilla/tabzilla.js" async></script>
+  <script src="//www.google.com/jsapi" type="text/javascript"></script>
+  <script src="https://login.persona.org/include.js" type="text/javascript"></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/mdn-min.js?build=5f4e39d"></script>
+      <script src="https://developer.cdn.mozilla.net/media/js/wiki-min.js?build=5f4e39d"></script>
+  
+  <script type="text/javascript">
+    // Event tracking for the new menu
+    $(function() {
+      $('#nav-main').on('click', 'a', function(e) {
+        window._gaq && _gaq.push(['_trackEvent', 'Menu', 'Click', e.target.innerHTML, e.target.href]);
+      });
+    });
+  </script>
+        <!-- include syntax highlighting scripts -->
+  
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=5f4e39d" />
+
+  <script type="text/javascript">
+    MEDIA_URL = 'https://developer.cdn.mozilla.net/media/';
+  </script>
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/media/prism/prism.js" data-manual></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/syntax-prism-min.js?build=5f4e39d"></script>
+
+<script src="/en-US/waffles.js" type="text/javascript" async></script>
+</body>
+</html>

@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+<head>
+      <script src="//cdn.optimizely.com/js/237572123.js"></script>
+  
+  <title>IDBIndex - Web API reference | MDN</title>
+  
+  <meta charset="utf-8">
+  <meta name="robots" content="index, follow">
+  <link rel="home" href="/en-US/">
+  <link rel="copyright" href="#copyright">
+  <link rel="shortcut icon" href="https://developer.cdn.mozilla.net/media/img/favicon.ico">
+
+        <!--[if !IE 6]><!-->
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/mdn-min.css?build=5f4e39d" />
+      <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/wiki-min.css?build=5f4e39d" />
+    <!--<![endif]-->
+  <!--[if IE]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie.css"><![endif]-->
+  <!--[if lte IE 7]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie7.css"><![endif]-->
+  <!--[if lte IE 6]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie6.css"><![endif]-->
+  <link rel="stylesheet" type="text/css" href="https://developer.cdn.mozilla.net/media/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="print" href="https://developer.cdn.mozilla.net/media/css/mdn-print.css">
+  <link rel="stylesheet" href="https://mozorg.cdn.mozilla.net/media/css/tabzilla-min.css">
+  
+
+  <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network" />
+
+  
+    <link rel="stylesheet" media="print" href="https://developer.cdn.mozilla.net/media/css/wiki-print-min.css?build=5f4e39d" />
+          <link rel="stylesheet" type="text/css"
+            href="/en-US/docs/Template:CustomCSS?raw=1" />
+    
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script src="https://developer.cdn.mozilla.net/media/js/html5.js"></script>
+  <![endif]-->
+
+    <link rel="alternate" type="application/json" href="/en-US/docs/Web/API/IDBIndex$json" />
+  <link rel="canonical" href="https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex" />
+
+  <meta property="og:title" content="IDBIndex" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://developer.mozilla.org/media/img/mdn-logo-sm.png" />
+  <meta property="og:site_name" content="Mozilla Developer Network" />
+  <meta property="og:url" content="https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:url" content="https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex" />
+  <meta name="twitter:title" content="IDBIndex" />
+  <meta name="twitter:image" content="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" />
+  <meta name="twitter:site" content="@mozhacks" />
+  <meta name="twitter:creator" content="@mozhacks" />
+
+    <meta property="og:description" content="The IDBIndex interface of the IndexedDB API provides asynchronous access to an index in a database. An index is a kind of object store for looking up records in another object store, called the referenced object store. You use this interface to retrieve data."/>
+  <meta name="description" content="The IDBIndex interface of the IndexedDB API provides asynchronous access to an index in a database. An index is a kind of object store for looking up records in another object store, called the referenced object store. You use this interface to retrieve data." />
+  <meta name="twitter:description" content="The IDBIndex interface of the IndexedDB API provides asynchronous access to an index in a database. An index is a kind of object store for looking up records in another object store, called the referenced object store. You use this interface to retrieve data." />
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36116321-5']);
+  _gaq.push(['_trackPageview']);
+
+  (function(a, d) {
+    var ga = d.createElement(a); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == d.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = d.getElementsByTagName(a)[0]; s.parentNode.insertBefore(ga, s);
+  })('script', document);
+
+</script>
+</head>
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  <header id="masthead" class="minor new-menu">
+    <div class="wrap">
+      <ul id="nav-access">
+        <li><a href="#language">Select language</a></li>
+        <li><a href="#q">Skip to search</a></li>
+        <li><a href="#content">Skip to main content</a></li>
+      </ul>
+    
+      <div id="branding">
+                <div id="logo"><a href="/en-US/"><img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" alt="Mozilla Developer Network" title="Mozilla Developer Network" width="62" height="71"> Mozilla Developer Network</a></div>
+              </div>
+      
+              <nav id="nav">
+          <ul id="nav-main" role="menubar">
+            <li id="nav-main-docs" class="menu" rel="menuitem"><a href="#nav-sub-docs" class="toggle" aria-haspopup="true" aria-labelledby="nav-main-docs" title="Read Documentation">Read<br /><em>Docs</em></a>
+              <div id="nav-sub-docs" class="sub-menu" aria-hidden="true">
+                <ul>
+                  <li>
+                    <ul>
+
+                      <li><a href="/en-US/docs/Web/HTML?menu">HTML</a></li>
+                      <li><a href="/en-US/docs/Web/CSS?menu">CSS</a></li>
+                      <li><a href="/en-US/docs/Web/JavaScript?menu">JavaScript</a></li>
+                      <li><a href="/en-US/docs/Web/Guide/Graphics?menu">Graphics</a></li>
+                      <li><a href="/en-US/docs/Web/API?menu">APIs / DOM</a></li>
+                      <li><a href="/en-US/docs/Web/Apps?menu">Apps</a></li>
+                      <li><a href="/en-US/docs/tools?menu">Dev Tools</a></li>
+                      <li><a href="/en-US/docs/Web/MathML?menu">MathML</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <ul>
+                      <li><a href="/en-US/docs/Web/Tutorials?menu">Tutorials</a></li>
+                      <li><a href="/en-US/docs/Web/Reference?menu">References</a></li>
+                      <li><a href="/en-US/docs/Web/Guide?menu">Developer Guides</a></li>
+                      <li><a href="/en-US/demos/?menu">Demos</a></li>
+                      <li><br /><br /><a href="/en-US/docs?menu">...more docs</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li id="nav-main-apps" role="menuitem"><a href="https://marketplace.firefox.com/developers/">Make<br /><em>Apps</em></a></li>
+            <li id="nav-main-firefox" class="menu" role="menuitem"><a href="#nav-sub-firefox" class="firefox toggle" aria-haspopup="true" aria-labelledby="nav-main-firefox">Build & Use<br /><em>Firefox</em></a>
+              <ul id="nav-sub-firefox" class="sub-menu">
+                <li><a href="/en-US/docs/Mozilla/Firefox_OS?menu">Firefox OS</a></li>
+                <li><a href="/en-US/docs/Mozilla/Firefox?menu">Firefox Desktop</a></li>
+                <li><a href="/en-US/docs/Mozilla/Mobile?menu">Mobile</a></li>
+                <li><a href="/en-US/docs/Mozilla/Add-ons?menu">Add-ons</a></li>
+              </ul>
+            </li>
+            <li id="nav-main-demos" role="menuitem"><a href="/en-US/demos/?menu" class="demos">See & Submit<br /><em>Demos</em></a></li>
+            <li id="nav-main-community" class="menu" role="menuitem"><a href="#nav-sub-community" class="community toggle" aria-haspopup="true" aria-labelledby="nav-main-community">Get<br /><em>Involved</em></a>
+              <ul id="nav-sub-community" class="sub-menu">
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Join_the_community?menu">Join the Community</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing?menu">Contribute to MDN</a></li>
+                <li><a href="/en-US/events?menu">Events</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Follow_what_s_happening?menu">Tweets, Blogs, and More</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+          
+      <ul class="user-state signed-out">
+    <li class="user-signin menu">
+    <form class="browserid" action="/en-US/users/browserid_verify" method="POST">
+        <input id="next" name="next" type="hidden" value="/en-US/docs/Web/API/IDBIndex"/>
+        <input required="required" type="hidden" name="assertion" id="id_assertion" />
+                        <a href="#" target="_blank" class="browserid-signin toggle" aria-haspopup="true" title="Sign in with Persona">Sign in</a>
+                <div class="browserid-info sub-menu" aria-hidden="true">
+                <h3>What's this?</h3> <p>MDN has switched to <a href="https://persona.org/" target="_blank" rel="external">Persona</a>, a safe and simple way to sign in with just your e-mail address. <a href="http://identity.mozilla.com/post/12950196039/deploying-browserid-at-mozilla" rel="external">Learn more about why Mozilla is using Persona</a>.</p> <p><strong>Returning members:</strong> sign in with Persona and you'll be connected to your MDN profile (all your information is still here).</p> <p><strong>New members:</strong> sign in with Persona first, then you'll be able to set up your new MDN profile.</p>          <p><a href="#" target="_blank" class="browserid-signin" title="Sign in with Persona">Sign in</a></p>
+        </div>
+              </form>
+    </li>
+  </ul>
+      
+      <form id="site-search" method="get" action="http://www.google.com/search"
+              data-url="/en-US/search">
+        <p>
+          <input type="search" role="search" placeholder="Search MDN" id="q" name="q" value="">
+          <noscript><button type="submit">Search</button></noscript>
+        </p>
+        <input type="hidden" name="sitesearch" value="developer.mozilla.org">
+                <div id="site-search-gg"></div>
+              </form>
+
+      <a href="//www.mozilla.org/" id="tabzilla">mozilla</a>
+    </div>
+  </header>
+
+    
+
+<!-- top toolbar -->
+<section id="nav-toolbar"><div><div class="wrap">
+  <!-- right floated navigation -->
+  <nav id="tool-menus" role="navigation">
+    <ul id="tools">
+      <li class="menu">
+        <a href="#page-tools" class="toggle">This page</a>
+        <ul id="page-tools" class="sub-menu">
+          <li class="page-print"> <a href="#" onclick="return window.print();"  title="Print page">Print this page</a></li>
+                      <li><a href="/en-US/docs/new?parent=641">New sub-page</a></li>
+            <li><a href="/en-US/docs/new?clone=641">Clone this page</a></li>
+                                      </ul>
+      </li>
+            <li class="menu">
+        <a href="#" class="toggle">Languages</a>
+        <ul id="translations">
+                    
+                      <li><a href="/en-US/docs/Web/API/IDBIndex$locales">Add translation</a></li>
+                  </ul>
+      </li>
+          </ul>
+  </nav>
+  
+  <!-- left crumb navigation -->
+  <nav class="crumbs" role="navigation">
+    <ol>
+              <li class="crumb"><a href="/en-US/docs/Web">Web technology for developers</a></li>
+              <li class="crumb"><a href="/en-US/docs/Web/API">Web API reference</a></li>
+            <li class="crumb">IDBIndex</li>
+    </ol>
+  </nav>
+  
+</div></div></section>
+
+
+
+<section id="content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" 
+          data-current-revision="415139"
+          data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes."
+          data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title">
+            <h1 class="page-title">IDBIndex</h1>
+                    </div>
+        <ul id="page-buttons">
+            <li class="page-history"><a href="/en-US/docs/Web/API/IDBIndex$history"><i class="icon-book"></i>History</a></li>
+                                                                                  <li class="page-edit"><a href="/en-US/docs/Web/API/IDBIndex$edit"><i class="icon-pencil"></i>Edit</a></li>
+                    </ul>
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                <div id="article-nav">
+          <div class="page-toc">
+            <h2>Table of Contents</h2>
+            <ol>
+              <code></code><li><a href="#Basic_concepts" rel="internal">Basic concepts</a><ol><li><a href="#Example" rel="internal">Example</a><code></code><code></code><code></code></ol></li><li><a href="#Method_overview" rel="internal">Method overview</a><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Attributes" rel="internal">Attributes</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Methods" rel="internal">Methods</a><ol><li><a href="#get" rel="internal">get()</a><code></code><code></code><code></code><code></code><code style="font-size: 14px;"></code><li><a href="#getKey" rel="internal">getKey()</a><code></code><code></code><code></code><code style="font-size: 14px;"></code><li><a href="#count" rel="internal">count()</a><code></code><code></code><code style="font-size: 14px;"></code><li><a href="#openCursor()" rel="internal">openCursor()</a><code></code><code></code><code></code><code></code><code style="font-size: 14px;"></code><li><a href="#openKeyCursor()" rel="internal">openKeyCursor()</a><code></code><code></code><code style="font-size: 14px; color: rgb(51, 51, 51);"></code><code style="font-size: 14px; color: rgb(51, 51, 51);"></code><code></code><code style="font-size: 14px;"></code><code style="font-size: 14px;"></code></ol></li><li><a href="#Browser_Compatibility" rel="internal">Browser compatibility</a><code></code><code></code>
+            </ol>
+          </div>
+          <ul class="page-anchors">
+            <li class="anchor-tags">
+                              <i class="icon-tags"></i><a href="#page-tags">Tags</a>
+                          </li>
+            <li class="anchor-files">
+                              <i class="icon-paper-clip off"></i><span title="This document has no attachments">Files</span>
+                          </li>
+          </ul>
+        </div>
+                                <p>The <code>IDBIndex</code> interface of the <a href="/en/IndexedDB" title="en/IndexedDB">IndexedDB API</a> provides asynchronous access to an <a href="/en/IndexedDB/Basic_Concepts_Behind_IndexedDB#gloss_index" title="en/IndexedDB/Basic_Concepts_Behind_IndexedDB#gloss_index">index</a> in a database. An index is a kind of object store for looking up records in another object store, called the <em>referenced object store</em>. You use this interface to retrieve data.</p>
+<p>Inherits from: <a href="/en/DOM/EventTarget" title="en/DOM/EventTarget">EventTarget</a></p>
+<h2 id="Basic_concepts">Basic concepts</h2>
+<p>You can retrieve records in an object store either through their keys or by using an index. An index lets you look up records in an object store using properties of the values in the object stores records.</p>
+<p>The index is a persistent key-value storage where the value part of its records is the key part of a record in the referenced object store. The records in an index are automatically populated whenever records in the referenced object store are inserted, updated, or deleted. Each record in an index can point to only one record in its referenced object store, but several indexes can reference the same object store. When the object store changes, all indexes that refers to the object store are automatically updated.</p>
+<p>The records in an index are always sorted according to the records key. However, unlike object stores, a given index can contain multiple records with the same key. Such records are further sorted according to primary key in the referenced object store.</p>
+<p>You can grab a set of keys within a range. To learn more, see <a href="/en/IndexedDB/IDBKeyRange" title="en/IndexedDB/IDBKeyRange">IDBKeyrange</a>.</p>
+<h3 id="Example">Example</h3>
+<p>The following is an example based on the HTML5Rocks article on <a class="external" href="http://www.html5rocks.com/en/tutorials/indexeddb/todo/#toc-step4">IndexedDB</a>. For Chrome, use the <code>webkit</code> prefix. For example, <code>IDBKeyRange</code> would be <code>webkitIDBKeyRange</code>.</p>
+<pre class="brush: js">  // Taking care of the browser-specific prefixes.
+if ('webkitIndexedDB' in window) {
+   window.indexedDB = window.webkitIndexedDB;
+   window.IDBTransaction = window.webkitIDBTransaction;
+   window.IDBKeyRange = window.webkitIDBKeyRange;
+} else if ('mozIndexedDB' in window) {
+   window.indexedDB = window.mozIndexedDB;
+}
+
+...
+  
+html5rocks.indexedDB.getAllTodoItems = function() {
+  var todos = document.getElementById("todoItems");
+  todos.innerHTML = "";
+  
+  // Start a transaction.
+  var db = html5rocks.indexedDB.db;
+  // Open an object store called "todo" 
+  // in "readwrite" mode. 
+  var trans = db.transaction(["todo"], IDBTransaction.readwrite, 0);
+  var store = trans.objectStore("todo");
+
+  // We select the range of data we want to make queries over 
+  // In this case, we get everything. 
+  // To see how you set ranges, see <a href="/en/IndexedDB/IDBKeyRange" title="en/IndexedDB/IDBKeyRange">IDBKeyRange</a>.
+  var keyRange = IDBKeyRange.lowerBound(0);
+  // We open a cursor and attach events.
+  var cursorRequest = store.openCursor(keyRange);
+
+  cursorRequest.onsuccess = function(e) {
+    var result = e.target.result;
+    if(!!result == false)
+      return;
+
+    renderTodo(result.value);
+    // The success event handler is fired once for each entry.
+    // So call "continue" on your result object.
+    // This lets you iterate across the data
+
+    result.continue();
+  };
+
+  cursorRequest.onerror = html5rocks.indexedDB.onerror;
+};</pre>
+<h2 id="Method_overview">Method overview</h2>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td><code><a href="/en/IndexedDB/IDBRequest" title="en/IndexedDB/IDBRequest">IDBRequest</a> <a href="/en/IndexedDB/IDBIndex#get" title="en/IndexedDB/IDBIndex#get">get</a> (in any key) raises (<a href="/En/DOM/DOMException" title="en/DOM/DOMException">DOMException</a>); </code></td>
+    </tr>
+    <tr>
+      <td><code><span id="1296243661891S" style="display: none;"> </span><a href="/en/IndexedDB/IDBRequest" title="en/IndexedDB/IDBRequest">IDBRequest</a><span id="1296243661325E" style="display: none;"> </span> <a href="/en/IndexedDB/IDBIndex#getKey" title="en/IndexedDB/IDBIndex#getKey">getKey</a> (in any key) raises (<a href="/En/DOM/DOMException" title="en/DOM/DOMException">DOMException</a>); </code></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en/IndexedDB/IDBRequest" title="en/IndexedDB/IDBRequest">IDBRequest</a><span id="1296243661325E2" style="display: none;"> </span> <a href="/en/IndexedDB/IDBIndex#count" title="en/IndexedDB/IDBIndex#count">count</a> (in optional any key) raises (<a href="/En/DOM/DOMException" title="en/DOM/DOMException">DOMException</a>); </code></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en/IndexedDB/IDBRequest" title="en/IndexedDB/IDBRequest">IDBRequest</a> <a href="/en/IndexedDB/IDBIndex#openCursor" title="en/IndexedDB/IDBIndex#openCursor">openCursor</a> (in <a class="external" href="http://www.w3.org/TR/WebIDL/#idl-any" title="en/IndexedDB/IDBKeyRange">any</a> <a class="external" href="http://www.w3.org/TR/WebIDL/#idl-nullable-type">?</a> range, in optional unsigned short direction) raises (<a href="/En/DOM/DOMException" title="en/DOM/DOMException">DOMException</a>); </code></td>
+    </tr>
+    <tr>
+      <td><code><a href="/en/IndexedDB/IDBRequest" title="en/IndexedDB/IDBRequest">IDBRequest</a></code><code> <a href="/en/IndexedDB/IDBIndex#openKeyCursor" title="en/IndexedDB/IDBIndex#openKeyCursor">openKeyCursor</a> (in <a class="external" href="http://www.w3.org/TR/WebIDL/#idl-any" title="en/IndexedDB/IDBKeyRange">any</a> <a class="external" href="http://www.w3.org/TR/WebIDL/#idl-nullable-type">?</a> range, in optional unsigned short direction) raises(<a href="/En/DOM/DOMException" title="en/DOM/DOMException">DOMException</a>); </code></td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Attributes">Attributes</h2>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th scope="col">Attribute</th>
+      <th scope="col">Type</th>
+      <th scope="col">Description</th>
+    </tr>
+    <tr>
+      <td><code><a id="attr_name">name</a></code></td>
+      <td><code>readonly DOMString </code></td>
+      <td>The name of this index.</td>
+    </tr>
+    <tr>
+      <td><code><a id="attr_name">objectStore</a></code></td>
+      <td><code>readonly IDBObjectStore </code></td>
+      <td>The name of the object store referenced by this index.</td>
+    </tr>
+    <tr>
+      <td><code><a id="attr_keyPath">keyPath</a></code></td>
+      <td><code>readonly DOMString </code></td>
+      <td>The <a href="/en/IndexedDB#gloss_key_path" title="en/IndexedDB#gloss key path">key path</a> of this index. If null, this index is not <a href="/en/IndexedDB/Index#gloss_auto-populated" title="en/IndexedDB/Index#gloss auto-populated">auto-populated</a>.</td>
+    </tr>
+    <tr>
+      <td><a><code>multiEntry</code></a></td>
+      <td><code>readonly boolean</code></td>
+      <td>
+        <p>Affects how the index behaves when the result of evaluating the index's key path yields an array. If true, there is one record in the index for each item in an array of keys. If false, then there is one record for each key that is an array.</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code><a id="attr_unique">unique</a></code></td>
+      <td><code>readonly boolean </code></td>
+      <td>If true, this index does not allow duplicate values for a key.</td>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2 id="Methods">Methods</h2>
+<h3 id="get" name="get">get()</h3>
+<p>Returns an <a href="/en/IndexedDB/IDBRequest" title="https://developer.mozilla.org/en/IndexedDB/IDBRequest">IDBRequest</a> object, and, in a separate thread, finds either:</p>
+<ul>
+  <li>The value in the referenced object store that corresponds to the given key.</li>
+  <li>The first corresponding value, if <code>key</code> is a key range.</li>
+</ul>
+<p>If a value is successfully found, then a structured clone of it is created and set as the <code><a href="/en/IndexedDB/IDBRequest#attr_result" title="en/IndexedDB/IDBRequest#attr result">result</a></code> of the request object.</p>
+<pre><a href="/en/IndexedDB/IDBRequest" style="font-family: 'Courier New', 'Andale Mono', monospace; line-height: normal;" title="en/IndexedDB/IDBRequest">IDBRequest</a><span style="font-family: 'Courier New', 'Andale Mono', monospace; line-height: normal;"> </span><a href="/en/IndexedDB/IDBIndex#get" style="font-family: 'Courier New', 'Andale Mono', monospace; line-height: normal;" title="en/IndexedDB/IDBIndex#get">get</a><span style="font-family: 'Courier New', 'Andale Mono', monospace; line-height: normal;"> (in any key) raises (</span><a href="/En/DOM/DOMException" style="font-family: 'Courier New', 'Andale Mono', monospace; line-height: normal;" title="en/DOM/DOMException">DOMException</a><span style="font-family: 'Courier New', 'Andale Mono', monospace; line-height: normal;">);</span></pre>
+<p></p><div class="note"><strong>Note:</strong> This method produces the same result for: a) a record that doesn't exist in the database and b) a record that has an undefined value. To tell these situations apart, call the <code>openCursor()</code> method with the same key. That method provides a cursor if the record exists, and no cursor if it does not.</div><p></p>
+<h5 id="Parameters">Parameters</h5>
+<dl>
+  <dt>
+    key</dt>
+  <dd>
+    The key or key range that identifies the record to be retrieved.</dd>
+</dl>
+<h5 id="Returns">Returns</h5>
+<dl>
+  <dt>
+    <code><a href="../../../../en/IndexedDB/IDBRequest">IDBRequest</a></code></dt>
+</dl>
+<dl>
+  <dd>
+    A request object on which subsequent events related to this operation are fired.</dd>
+</dl>
+<h5 id="Exceptions">Exceptions</h5>
+<p>This method may raise a <a href="/en-US/docs/DOM/DOMException" title="/en-US/docs/DOM/DOMException">DOMException</a> with a <a href="/en-US/docs/DOM/DOMError" title="/en-US/docs/DOM/DOMError">DOMError</a> of the following types:</p>
+<table class="standard-table" style="font-size: 14px;">
+  <thead>
+    <tr>
+      <th scope="col">Exception</th>
+      <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><font face="Courier New, Andale Mono, monospace"><span style="line-height: normal;">TransactionInactiveError</span></font></td>
+      <td>This IDBIndex's transaction is inactive.</td>
+    </tr>
+    <tr>
+      <td><font face="Courier New, Andale Mono, monospace"><span style="line-height: normal;">DataError</span></font></td>
+      <td>
+        <p>The key or key range provided contains an invalid key.</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code style="font-size: 14px;">InvalidStateError</code></td>
+      <td>The IDBIndex has been deleted or removed.</td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="getKey" name="getKey">getKey()</h3>
+<p>Returns an <a href="/en/IndexedDB/IDBRequest" title="https://developer.mozilla.org/en/IndexedDB/IDBRequest">IDBRequest</a> object, and, in a separate thread, finds either:</p>
+<ul>
+  <li>The given key</li>
+  <li>The primary key, if <code>key</code> is a key range.</li>
+</ul>
+<p>If a key is successfully found it is set as the <code><a href="/en/IndexedDB/IDBRequest#attr_result" title="en/IndexedDB/IDBRequest#attr result">result</a></code> of the request object.</p>
+<pre><a href="/en/IndexedDB/IDBRequest" style="font-family: 'Courier New', 'Andale Mono', monospace; line-height: normal;" title="en/IndexedDB/IDBRequest">IDBRequest</a><span style="font-family: 'Courier New', 'Andale Mono', monospace; line-height: normal;"> </span><a href="/en/IndexedDB/IDBIndex#getKey" style="font-family: 'Courier New', 'Andale Mono', monospace; line-height: normal;" title="en/IndexedDB/IDBIndex#getKey">getKey</a><span style="font-family: 'Courier New', 'Andale Mono', monospace; line-height: normal;"> (in any key) raises (</span><a href="/En/DOM/DOMException" style="font-family: 'Courier New', 'Andale Mono', monospace; line-height: normal;" title="en/DOM/DOMException">DOMException</a><span style="font-family: 'Courier New', 'Andale Mono', monospace; line-height: normal;">);</span></pre>
+<h5 id="Parameters">Parameters</h5>
+<dl>
+  <dt>
+    key</dt>
+  <dd>
+    The key or key range that identifies a record to be retrieved.</dd>
+</dl>
+<h5 id="Returns">Returns</h5>
+<dl>
+  <dt>
+    <code><a href="../../../../en/IndexedDB/IDBRequest">IDBRequest</a></code></dt>
+</dl>
+<dl>
+  <dd>
+    A request object on which subsequent events related to this operation are fired.</dd>
+</dl>
+<h5 id="Exceptions">Exceptions</h5>
+<p>This method may raise a <a href="/en-US/docs/DOM/DOMException" title="/en-US/docs/DOM/DOMException">DOMException</a> with a <a href="/en-US/docs/DOM/DOMError" title="/en-US/docs/DOM/DOMError">DOMError</a> of the following types:</p>
+<table class="standard-table" style="font-size: 14px;">
+  <thead>
+    <tr>
+      <th scope="col">Exception</th>
+      <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><font face="Courier New, Andale Mono, monospace"><span style="line-height: normal;">TransactionInactiveError</span></font></td>
+      <td>This IDBIndex's transaction is inactive.</td>
+    </tr>
+    <tr>
+      <td><font face="Courier New, Andale Mono, monospace"><span style="line-height: normal;">DataError</span></font></td>
+      <td>
+        <p>The key or key range provided contains an invalid key.</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code style="font-size: 14px;">InvalidStateError</code></td>
+      <td>The IDBIndex has been deleted or removed.</td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="count" name="count">count()</h3>
+<p>Returns an <a href="/en/IndexedDB/IDBRequest" title="https://developer.mozilla.org/en/IndexedDB/IDBRequest">IDBRequest</a> object, and in a separate thread, returns the number of records within a key range. For example, if you want to see how many records are between keys 1000 and 2000 in an object store, you can write the following: <code> var req = store.count(<a href="/en/IndexedDB/IDBKeyRange" title="en/IndexedDB/IDBKeyRange">IDBKeyRange</a>.bound(1000, 2000));</code></p>
+<pre><a href="/en/IndexedDB/IDBRequest" style="font-family: 'Courier New', 'Andale Mono', monospace; line-height: normal;" title="en/IndexedDB/IDBRequest">IDBRequest</a><span style="font-family: 'Courier New', 'Andale Mono', monospace; line-height: normal;"> </span><a href="/en/IndexedDB/IDBIndex#count" style="font-family: 'Courier New', 'Andale Mono', monospace; line-height: normal;" title="en/IndexedDB/IDBIndex#count">count</a><span style="font-family: 'Courier New', 'Andale Mono', monospace; line-height: normal;"> (in optional any key) raises (</span><a href="/En/DOM/DOMException" style="font-family: 'Courier New', 'Andale Mono', monospace; line-height: normal;" title="en/DOM/DOMException">DOMException</a><span style="font-family: 'Courier New', 'Andale Mono', monospace; line-height: normal;">);</span></pre>
+<h5 id="Parameters">Parameters</h5>
+<dl>
+  <dt>
+    key</dt>
+  <dd>
+    The key or key range that identifies the record to be counted.</dd>
+</dl>
+<h5 id="Returns">Returns</h5>
+<dl>
+  <dt>
+    <code><a href="../../../../en/IndexedDB/IDBRequest">IDBRequest</a></code></dt>
+</dl>
+<dl>
+  <dd>
+    A request object on which subsequent events related to this operation are fired.</dd>
+</dl>
+<h5 id="Exceptions">Exceptions</h5>
+<p>This method may raise a <a href="/en-US/docs/DOM/DOMException" title="/en-US/docs/DOM/DOMException">DOMException</a> with a <a href="/en-US/docs/DOM/DOMError" title="/en-US/docs/DOM/DOMError">DOMError</a> of the following types:</p>
+<table class="standard-table" style="font-size: 14px;">
+  <thead>
+    <tr>
+      <th scope="col">Exception</th>
+      <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><font face="Courier New, Andale Mono, monospace"><span style="line-height: normal;">TransactionInactiveError</span></font></td>
+      <td>This IDBIndex's transaction is inactive.</td>
+    </tr>
+    <tr>
+      <td><font face="Courier New, Andale Mono, monospace"><span style="line-height: normal;">DataError</span></font></td>
+      <td>
+        <p>The key or key range provided contains an invalid key.</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code style="font-size: 14px;">InvalidStateError</code></td>
+      <td>The IDBIndex has been deleted or removed.</td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="openCursor()">openCursor()</h3>
+<p>Returns an <a href="/en/IndexedDB/IDBRequest" title="en/IndexedDB/IDBRequest">IDBRequest</a> object, and, in a separate thread, creates a <a href="/en/IndexedDB#gloss_cursor" title="en/IndexedDB#gloss cursor">cursor</a> over the specified key range. The method sets the position of the cursor to the appropriate record, based on the specified direction.</p>
+<ul>
+  <li>If the key range is not specified or is null, then the range includes all the records.</li>
+  <li>If at least one record matches the key range, then a <a href="/en/IndexedDB/IDBSuccessEvent" title="en/IndexedDB/IDBSuccessEvent">success event</a> is fired on the result object, with its <code>result</code> set to the new <a href="/en/IndexedDB/IDBCursor" title="en/IndexedDB/IDBCursor">IDBCursor</a> object; the <code><a href="/en/IndexedDB/IDBCursor#attr_value" title="en/IndexedDB/IDBCursor#attr value">value</a></code> of the cursor object is set to a structured clone of the referenced value.</li>
+  <li>If no records match the key range, then then an error event is fired on the request object.</li>
+</ul>
+<pre><a href="/en/IndexedDB/IDBRequest" style="font-family: 'Courier New', 'Andale Mono', monospace; line-height: normal;" title="en/IndexedDB/IDBRequest">IDBRequest</a><span style="font-family: 'Courier New', 'Andale Mono', monospace; line-height: normal;"> </span><a href="/en/IndexedDB/IDBIndex#openCursor" style="font-family: 'Courier New', 'Andale Mono', monospace; line-height: normal;" title="en/IndexedDB/IDBIndex#openCursor">openCursor</a><span style="font-family: 'Courier New', 'Andale Mono', monospace; line-height: normal;"> (in </span><a class="external" href="http://www.w3.org/TR/WebIDL/#idl-any" style="font-family: 'Courier New', 'Andale Mono', monospace; line-height: normal;" title="en/IndexedDB/IDBKeyRange">any</a><span style="font-family: 'Courier New', 'Andale Mono', monospace; line-height: normal;"> </span><a class="external" href="http://www.w3.org/TR/WebIDL/#idl-nullable-type" style="font-family: 'Courier New', 'Andale Mono', monospace; line-height: normal;">?</a><span style="font-family: 'Courier New', 'Andale Mono', monospace; line-height: normal;"> range, in optional unsigned short direction) raises (</span><a href="/En/DOM/DOMException" style="font-family: 'Courier New', 'Andale Mono', monospace; line-height: normal;" title="en/DOM/DOMException">DOMException</a><span style="font-family: 'Courier New', 'Andale Mono', monospace; line-height: normal;">);</span></pre>
+<h5 id="Parameters">Parameters</h5>
+<dl>
+  <dt>
+    range</dt>
+  <dd>
+    <em>Optional.</em> The key range to use as the cursor's range.</dd>
+  <dt>
+    direction</dt>
+  <dd>
+    <em>Optional.</em> The cursor's <a href="/en/IndexedDB/IDBCursor#Constants" title="en/indexedDB#gloss direction">direction</a>. See <a href="/en/IndexedDB/IDBCursor#Constants" title="en/IndexedDB/IDBCursor#Constants">IDBCursor Constants</a> for possible values.</dd>
+</dl>
+<h5 id="Returns">Returns</h5>
+<dl>
+  <dt>
+    <code><a href="../../../../en/IndexedDB/IDBRequest">IDBRequest</a></code></dt>
+</dl>
+<dl>
+  <dd>
+    A request object on which subsequent events related to this operation are fired.</dd>
+</dl>
+<h5 id="Exceptions">Exceptions</h5>
+<p> </p>
+<p>This method may raise a <a href="/en-US/docs/DOM/DOMException" title="/en-US/docs/DOM/DOMException">DOMException</a> with a <a href="/en-US/docs/DOM/DOMError" title="/en-US/docs/DOM/DOMError">DOMError</a> of the following types:</p>
+<table class="standard-table" style="font-size: 14px;">
+  <thead>
+    <tr>
+      <th scope="col">Exception</th>
+      <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><font face="Courier New, Andale Mono, monospace"><span style="line-height: normal;">TransactionInactiveError</span></font></td>
+      <td>This IDBIndex's transaction is inactive.</td>
+    </tr>
+    <tr>
+      <td><code>TypeError</code></td>
+      <td>The value for the direction parameter is invalid.</td>
+    </tr>
+    <tr>
+      <td><font face="Courier New, Andale Mono, monospace"><span style="line-height: normal;">DataError</span></font></td>
+      <td>
+        <p>The key or key range provided contains an invalid key.</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code style="font-size: 14px;">InvalidStateError</code></td>
+      <td>The IDBIndex has been deleted or removed.</td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="openKeyCursor()">openKeyCursor()</h3>
+<p>Returns an <a href="/en/IndexedDB/IDBRequest" title="en/IndexedDB/IDBRequest">IDBRequest</a> object, and, in a separate thread, creates a cursor over the specified key range, as arranged by this index. The method sets the position of the cursor to the appropriate key, based on the specified direction.</p>
+<ul>
+  <li>If the key range is not specified or is null, then the range includes all the keys.</li>
+  <li>If at least one key matches the key range, then a success event is fired on the result object, with its <code>result</code> set to the new <a href="/en/IndexedDB/IDBCursor" title="en/IndexedDB/IDBCursor">IDBCursor</a> object; the <code><a href="/en/IndexedDB/IDBCursor#attr_value" title="en/IndexedDB/IDBCursor#attr value">value</a></code> of the cursor object is set to the value of the found record.</li>
+  <li>If no keys ranges match the key range specified, then then an error event is fired on the request object.</li>
+</ul>
+<pre><code style="font-size: 14px; color: rgb(51, 51, 51);"><a href="/en/IndexedDB/IDBRequest" title="en/IndexedDB/IDBRequest">IDBRequest</a></code><code style="font-size: 14px; color: rgb(51, 51, 51);"> <a href="/en/IndexedDB/IDBIndex#openKeyCursor" title="en/IndexedDB/IDBIndex#openKeyCursor">openKeyCursor</a> (in <a class="external" href="http://www.w3.org/TR/WebIDL/#idl-any" title="en/IndexedDB/IDBKeyRange">any</a> <a class="external" href="http://www.w3.org/TR/WebIDL/#idl-nullable-type">?</a> range, in optional unsigned short direction) raises(<a href="/En/DOM/DOMException" title="en/DOM/DOMException">DOMException</a>);</code></pre>
+<h5 id="Parameters">Parameters</h5>
+<dl>
+  <dt>
+    range</dt>
+  <dd>
+    <em>Optional.</em> The key range to use as the cursor's range.</dd>
+  <dt>
+    direction</dt>
+  <dd>
+    <em>Optional.</em> The cursor's required direction. See <a href="/en/IndexedDB/IDBCursor#Constants" title="en/IndexedDB/IDBCursor#Constants">IDBCursor Constants</a> for possible values.</dd>
+</dl>
+<h5 id="Returns">Returns</h5>
+<dl>
+  <dt>
+    <code><a href="../../../../en/IndexedDB/IDBRequest">IDBRequest</a></code></dt>
+</dl>
+<dl>
+  <dd>
+    A request object on which subsequent events related to this operation are fired.</dd>
+</dl>
+<h5 id="Exceptions">Exceptions</h5>
+<p> </p>
+<p>This method may raise a <a href="/en-US/docs/DOM/DOMException" title="/en-US/docs/DOM/DOMException">DOMException</a> with a <a href="/en-US/docs/DOM/DOMError" title="/en-US/docs/DOM/DOMError">DOMError</a> of the following types:</p>
+<table class="standard-table" style="font-size: 14px;">
+  <thead>
+    <tr>
+      <th scope="col">Exception</th>
+      <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><font face="Courier New, Andale Mono, monospace"><span style="line-height: normal;">TransactionInactiveError</span></font></td>
+      <td>This IDBIndex's transaction is inactive.</td>
+    </tr>
+    <tr>
+      <td><code style="font-size: 14px;">TypeError</code></td>
+      <td>The value for the direction parameter is invalid.</td>
+    </tr>
+    <tr>
+      <td><font face="Courier New, Andale Mono, monospace"><span style="line-height: normal;">DataError</span></font></td>
+      <td>
+        <p>The key or key range provided contains an invalid key.</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code style="font-size: 14px;">InvalidStateError</code></td>
+      <td>The IDBIndex has been deleted or removed.</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Browser_Compatibility" name="Browser_Compatibility">Browser compatibility</h2>
+<p></p><div class="htab"> 
+    <a></a> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div><p></p>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari (WebKit)</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td>12<span class="prefixBox" title="prefix">-webkit</span> </td>
+        <td>4.0 (2.0)</td>
+        <td><span style="color: rgb(255, 0, 0);" title="Not supported.">--</span></td>
+        <td><span style="color: rgb(255, 0, 0);" title="Not supported.">--</span></td>
+        <td><span style="color: rgb(255, 0, 0);" title="Not supported.">--</span></td>
+      </tr>
+      <tr>
+        <td><code>count()</code></td>
+        <td><span style="color: rgb(255, 0, 0);" title="Not supported.">--</span></td>
+        <td>10.0 (10.0)</td>
+        <td><span style="color: rgb(255, 0, 0);" title="Not supported.">--</span></td>
+        <td><span style="color: rgb(255, 0, 0);" title="Not supported.">--</span></td>
+        <td><span style="color: rgb(255, 0, 0);" title="Not supported.">--</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Phone</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: rgb(255, 0, 0);" title="Not supported.">--</span></td>
+        <td>4.0 (2.0)</td>
+        <td><span style="color: rgb(255, 0, 0);" title="Not supported.">--</span></td>
+        <td><span style="color: rgb(255, 0, 0);" title="Not supported.">--</span></td>
+        <td><span style="color: rgb(255, 0, 0);" title="Not supported.">--</span></td>
+      </tr>
+      <tr>
+        <td><code>count()</code></td>
+        <td><span style="color: rgb(255, 0, 0);" title="Not supported.">--</span></td>
+        <td>10.0 (10.0)</td>
+        <td><span style="color: rgb(255, 0, 0);" title="Not supported.">--</span></td>
+        <td><span style="color: rgb(255, 0, 0);" title="Not supported.">--</span></td>
+        <td><span style="color: rgb(255, 0, 0);" title="Not supported.">--</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p> </p>
+                  </div>
+    <section class="page-meta">
+      
+            <section id="page-tags">
+        <h2><i class="icon-tags"></i>Tags (2)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/indexeddb">indexeddb</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/offline">offline</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/marcello.nuccio">marcello.nuccio</a>, <a href="/en-US/profiles/scottrowe">scottrowe</a>, <a href="/en-US/profiles/jswisher">jswisher</a>, <a href="/en-US/profiles/grendel">grendel</a>, <a href="/en-US/profiles/teoli">teoli</a>
+                          <br />
+          Last updated by:  
+          <a href="/en-US/profiles/teoli">teoli</a>, 
+          <time datetime="2013-05-25T07:15:31-07:00">May 25, 2013 7:15:31 AM</time>
+                      <br />
+            Last reviewed by:  
+            <a href="/en-US/profiles/scottrowe">scottrowe</a>, 
+            <time datetime="2012-08-24T15:31:56-07:00">Aug 24, 2012 3:31:56 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/API/IDBIndex$edit">
+      <input type="hidden" name="form" id="form" value="rev" />
+      <input type="hidden" name="content" id="content" value="" />
+  </form>
+      </div>
+   </div>
+    </section>
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+<footer id="site-info" class="footer" role="contentinfo">
+<div class="wrap">
+    <div id="legal">
+      <img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-tiny.png" alt="" width="42" height="48">
+      <p id="copyright">&copy; 2005 - 2013 Mozilla Developer Network and individual contributors</p>
+      <p>
+      Content is available under <a href="/en-US/docs/Project:Copyrights">these licenses</a>      &bull; <a href="/en-US/docs/Project:About">About MDN</a>
+      &bull; <a href="//github.com/mozilla/kuma">Contribute to the code</a>
+      &bull; <a href="//www.mozilla.org/en-US/privacy">Privacy Policy</a>
+    </div>
+          <form class="languages go" method="get" action="/en-US/docs">
+      <label for="language">Other languages:</label>
+      <select id="language" class="wiki-l10n" name="next" dir="ltr">
+        <option value="/en-US/docs/Web/API/IDBIndex" selected>
+          English (US)
+        </option>
+              </select>
+      <noscript><button type="submit">Go</button></noscript>
+    </form>
+  </div>
+</footer>
+
+<script src="/en-US/jsi18n/build:5f4e39d"></script>
+  <script src="//mozorg.cdn.mozilla.net/en-US/tabzilla/tabzilla.js" async></script>
+  <script src="//www.google.com/jsapi" type="text/javascript"></script>
+  <script src="https://login.persona.org/include.js" type="text/javascript"></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/mdn-min.js?build=5f4e39d"></script>
+      <script src="https://developer.cdn.mozilla.net/media/js/wiki-min.js?build=5f4e39d"></script>
+  
+  <script type="text/javascript">
+    // Event tracking for the new menu
+    $(function() {
+      $('#nav-main').on('click', 'a', function(e) {
+        window._gaq && _gaq.push(['_trackEvent', 'Menu', 'Click', e.target.innerHTML, e.target.href]);
+      });
+    });
+  </script>
+        <!-- include syntax highlighting scripts -->
+  
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=5f4e39d" />
+
+  <script type="text/javascript">
+    MEDIA_URL = 'https://developer.cdn.mozilla.net/media/';
+  </script>
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/media/prism/prism.js" data-manual></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/syntax-prism-min.js?build=5f4e39d"></script>
+
+<script src="/en-US/waffles.js" type="text/javascript" async></script>
+</body>
+</html>

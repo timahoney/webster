@@ -1,0 +1,3062 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+<head>
+      <script src="//cdn.optimizely.com/js/237572123.js"></script>
+  
+  <title>CanvasRenderingContext2D - Web API reference | MDN</title>
+  
+  <meta charset="utf-8">
+  <meta name="robots" content="index, follow">
+  <link rel="home" href="/en-US/">
+  <link rel="copyright" href="#copyright">
+  <link rel="shortcut icon" href="https://developer.cdn.mozilla.net/media/img/favicon.ico">
+
+        <!--[if !IE 6]><!-->
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/mdn-min.css?build=5f4e39d" />
+      <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/wiki-min.css?build=5f4e39d" />
+    <!--<![endif]-->
+  <!--[if IE]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie.css"><![endif]-->
+  <!--[if lte IE 7]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie7.css"><![endif]-->
+  <!--[if lte IE 6]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie6.css"><![endif]-->
+  <link rel="stylesheet" type="text/css" href="https://developer.cdn.mozilla.net/media/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="print" href="https://developer.cdn.mozilla.net/media/css/mdn-print.css">
+  <link rel="stylesheet" href="https://mozorg.cdn.mozilla.net/media/css/tabzilla-min.css">
+  
+
+  <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network" />
+
+  
+    <link rel="stylesheet" media="print" href="https://developer.cdn.mozilla.net/media/css/wiki-print-min.css?build=5f4e39d" />
+          <link rel="stylesheet" type="text/css"
+            href="/en-US/docs/Template:CustomCSS?raw=1" />
+    
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script src="https://developer.cdn.mozilla.net/media/js/html5.js"></script>
+  <![endif]-->
+
+    <link rel="alternate" type="application/json" href="/en-US/docs/Web/API/CanvasRenderingContext2D$json" />
+  <link rel="canonical" href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D" />
+
+  <meta property="og:title" content="CanvasRenderingContext2D" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://developer.mozilla.org/media/img/mdn-logo-sm.png" />
+  <meta property="og:site_name" content="Mozilla Developer Network" />
+  <meta property="og:url" content="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:url" content="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D" />
+  <meta name="twitter:title" content="CanvasRenderingContext2D" />
+  <meta name="twitter:image" content="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" />
+  <meta name="twitter:site" content="@mozhacks" />
+  <meta name="twitter:creator" content="@mozhacks" />
+
+    <meta property="og:description" content="The 2D rendering context for the drawing surface of a canvas element. To get this object, call getContext() on a canvas, supplying &#34;2d&#34; as the argument:"/>
+  <meta name="description" content="The 2D rendering context for the drawing surface of a canvas element. To get this object, call getContext() on a canvas, supplying &#34;2d&#34; as the argument:" />
+  <meta name="twitter:description" content="The 2D rendering context for the drawing surface of a canvas element. To get this object, call getContext() on a canvas, supplying &#34;2d&#34; as the argument:" />
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36116321-5']);
+  _gaq.push(['_trackPageview']);
+
+  (function(a, d) {
+    var ga = d.createElement(a); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == d.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = d.getElementsByTagName(a)[0]; s.parentNode.insertBefore(ga, s);
+  })('script', document);
+
+</script>
+</head>
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  <header id="masthead" class="minor new-menu">
+    <div class="wrap">
+      <ul id="nav-access">
+        <li><a href="#language">Select language</a></li>
+        <li><a href="#q">Skip to search</a></li>
+        <li><a href="#content">Skip to main content</a></li>
+      </ul>
+    
+      <div id="branding">
+                <div id="logo"><a href="/en-US/"><img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" alt="Mozilla Developer Network" title="Mozilla Developer Network" width="62" height="71"> Mozilla Developer Network</a></div>
+              </div>
+      
+              <nav id="nav">
+          <ul id="nav-main" role="menubar">
+            <li id="nav-main-docs" class="menu" rel="menuitem"><a href="#nav-sub-docs" class="toggle" aria-haspopup="true" aria-labelledby="nav-main-docs" title="Read Documentation">Read<br /><em>Docs</em></a>
+              <div id="nav-sub-docs" class="sub-menu" aria-hidden="true">
+                <ul>
+                  <li>
+                    <ul>
+
+                      <li><a href="/en-US/docs/Web/HTML?menu">HTML</a></li>
+                      <li><a href="/en-US/docs/Web/CSS?menu">CSS</a></li>
+                      <li><a href="/en-US/docs/Web/JavaScript?menu">JavaScript</a></li>
+                      <li><a href="/en-US/docs/Web/Guide/Graphics?menu">Graphics</a></li>
+                      <li><a href="/en-US/docs/Web/API?menu">APIs / DOM</a></li>
+                      <li><a href="/en-US/docs/Web/Apps?menu">Apps</a></li>
+                      <li><a href="/en-US/docs/tools?menu">Dev Tools</a></li>
+                      <li><a href="/en-US/docs/Web/MathML?menu">MathML</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <ul>
+                      <li><a href="/en-US/docs/Web/Tutorials?menu">Tutorials</a></li>
+                      <li><a href="/en-US/docs/Web/Reference?menu">References</a></li>
+                      <li><a href="/en-US/docs/Web/Guide?menu">Developer Guides</a></li>
+                      <li><a href="/en-US/demos/?menu">Demos</a></li>
+                      <li><br /><br /><a href="/en-US/docs?menu">...more docs</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li id="nav-main-apps" role="menuitem"><a href="https://marketplace.firefox.com/developers/">Make<br /><em>Apps</em></a></li>
+            <li id="nav-main-firefox" class="menu" role="menuitem"><a href="#nav-sub-firefox" class="firefox toggle" aria-haspopup="true" aria-labelledby="nav-main-firefox">Build & Use<br /><em>Firefox</em></a>
+              <ul id="nav-sub-firefox" class="sub-menu">
+                <li><a href="/en-US/docs/Mozilla/Firefox_OS?menu">Firefox OS</a></li>
+                <li><a href="/en-US/docs/Mozilla/Firefox?menu">Firefox Desktop</a></li>
+                <li><a href="/en-US/docs/Mozilla/Mobile?menu">Mobile</a></li>
+                <li><a href="/en-US/docs/Mozilla/Add-ons?menu">Add-ons</a></li>
+              </ul>
+            </li>
+            <li id="nav-main-demos" role="menuitem"><a href="/en-US/demos/?menu" class="demos">See & Submit<br /><em>Demos</em></a></li>
+            <li id="nav-main-community" class="menu" role="menuitem"><a href="#nav-sub-community" class="community toggle" aria-haspopup="true" aria-labelledby="nav-main-community">Get<br /><em>Involved</em></a>
+              <ul id="nav-sub-community" class="sub-menu">
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Join_the_community?menu">Join the Community</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing?menu">Contribute to MDN</a></li>
+                <li><a href="/en-US/events?menu">Events</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Follow_what_s_happening?menu">Tweets, Blogs, and More</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+          
+      <ul class="user-state signed-out">
+    <li class="user-signin menu">
+    <form class="browserid" action="/en-US/users/browserid_verify" method="POST">
+        <input id="next" name="next" type="hidden" value="/en-US/docs/Web/API/CanvasRenderingContext2D"/>
+        <input required="required" type="hidden" name="assertion" id="id_assertion" />
+                        <a href="#" target="_blank" class="browserid-signin toggle" aria-haspopup="true" title="Sign in with Persona">Sign in</a>
+                <div class="browserid-info sub-menu" aria-hidden="true">
+                <h3>What's this?</h3> <p>MDN has switched to <a href="https://persona.org/" target="_blank" rel="external">Persona</a>, a safe and simple way to sign in with just your e-mail address. <a href="http://identity.mozilla.com/post/12950196039/deploying-browserid-at-mozilla" rel="external">Learn more about why Mozilla is using Persona</a>.</p> <p><strong>Returning members:</strong> sign in with Persona and you'll be connected to your MDN profile (all your information is still here).</p> <p><strong>New members:</strong> sign in with Persona first, then you'll be able to set up your new MDN profile.</p>          <p><a href="#" target="_blank" class="browserid-signin" title="Sign in with Persona">Sign in</a></p>
+        </div>
+              </form>
+    </li>
+  </ul>
+      
+      <form id="site-search" method="get" action="http://www.google.com/search"
+              data-url="/en-US/search">
+        <p>
+          <input type="search" role="search" placeholder="Search MDN" id="q" name="q" value="">
+          <noscript><button type="submit">Search</button></noscript>
+        </p>
+        <input type="hidden" name="sitesearch" value="developer.mozilla.org">
+                <div id="site-search-gg"></div>
+              </form>
+
+      <a href="//www.mozilla.org/" id="tabzilla">mozilla</a>
+    </div>
+  </header>
+
+    
+
+<!-- top toolbar -->
+<section id="nav-toolbar"><div><div class="wrap">
+  <!-- right floated navigation -->
+  <nav id="tool-menus" role="navigation">
+    <ul id="tools">
+      <li class="menu">
+        <a href="#page-tools" class="toggle">This page</a>
+        <ul id="page-tools" class="sub-menu">
+          <li class="page-print"> <a href="#" onclick="return window.print();"  title="Print page">Print this page</a></li>
+                      <li><a href="/en-US/docs/new?parent=1054">New sub-page</a></li>
+            <li><a href="/en-US/docs/new?clone=1054">Clone this page</a></li>
+                                      </ul>
+      </li>
+            <li class="menu">
+        <a href="#" class="toggle">Languages</a>
+        <ul id="translations">
+                    
+                      <li><a href="/en-US/docs/Web/API/CanvasRenderingContext2D$locales">Add translation</a></li>
+                  </ul>
+      </li>
+          </ul>
+  </nav>
+  
+  <!-- left crumb navigation -->
+  <nav class="crumbs" role="navigation">
+    <ol>
+              <li class="crumb"><a href="/en-US/docs/Web">Web technology for developers</a></li>
+              <li class="crumb"><a href="/en-US/docs/Web/API">Web API reference</a></li>
+            <li class="crumb">CanvasRenderingContext2D</li>
+    </ol>
+  </nav>
+  
+</div></div></section>
+
+
+
+<section id="content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" 
+          data-current-revision="433143"
+          data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes."
+          data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title">
+            <h1 class="page-title">CanvasRenderingContext2D</h1>
+                    </div>
+        <ul id="page-buttons">
+            <li class="page-history"><a href="/en-US/docs/Web/API/CanvasRenderingContext2D$history"><i class="icon-book"></i>History</a></li>
+                                                                                  <li class="page-edit"><a href="/en-US/docs/Web/API/CanvasRenderingContext2D$edit"><i class="icon-pencil"></i>Edit</a></li>
+                    </ul>
+
+        
+               </header>
+
+           
+                                <div class="warning review-editorial"><p>This article is in need of an editorial review.</p></div>
+                    
+            
+      <div id="wikiArticle" class="page-content boxed">
+                <div id="article-nav">
+          <div class="page-toc">
+            <h2>Table of Contents</h2>
+            <ol>
+              <code></code><code></code><code></code><li><a href="#Method_overview" rel="internal">Method overview</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><ol><li><a href="#Gecko-specific_Method_overview" rel="internal">Gecko-specific Method overview</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#WebKit-specific_Method_overview" rel="internal">WebKit-specific Method overview</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code></ol></li><li><a href="#Attributes" rel="internal">Attributes</a><code></code><code><code></code></code><code></code><code><code></code></code><code></code><code></code><code><code></code></code><code></code><code></code><code></code><code></code><code></code><code><code></code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code><code></code></code><code></code><code></code><code></code><code></code><code></code><code></code><code><code></code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code><code></code></code><code></code><code></code><code></code><code></code><code></code><code><code></code></code><code></code><code></code><code><code></code></code><code></code><code></code><code></code><code></code><code></code><code></code><code><code></code></code><code></code><code></code><code></code><code></code><code></code><code></code><ol><li><a href="#Gecko-specific_attributes" rel="internal">Gecko-specific attributes</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code><code></code></code><code></code><code></code><code></code><code></code><code></code><code><code></code></code><code></code><li><a href="#WebKit-specific_attributes" rel="internal">WebKit-specific attributes</a><code></code><code></code><code></code><code></code></ol></li><li><a href="#Constants" rel="internal">Constants</a><ol><li><a href="#Gecko-specific_constants" rel="internal">Gecko-specific constants</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code></ol></li><li><a href="#Methods" rel="internal">Methods</a><ol><li><a href="#arc()" rel="internal">arc()</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#arcTo()" rel="internal">arcTo()</a><code></code><code></code><code></code><code></code><code></code><li><a href="#beginPath()" rel="internal">beginPath()</a><li><a href="#bezierCurveTo()" rel="internal">bezierCurveTo()</a><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#clearRect()" rel="internal">clearRect()</a><code></code><code></code><code></code><code></code><li><a href="#clip()" rel="internal">clip()</a><code></code><li><a href="#closePath()" rel="internal">closePath()</a><li><a href="#createImageData()" rel="internal">createImageData()</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#createLinearGradient()" rel="internal">createLinearGradient()</a><code></code><code></code><code></code><code></code><code></code><li><a href="#createPattern()" rel="internal">createPattern()</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#createRadialGradient()" rel="internal">createRadialGradient()</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#drawCustomFocusRing()" rel="internal">drawCustomFocusRing()</a><code></code><code></code><li><a href="#drawImage()" rel="internal">drawImage()</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#drawSystemFocusRing()" rel="internal">drawSystemFocusRing()</a><code></code><li><a href="#fill()" rel="internal">fill()</a><li><a href="#fillRect()" rel="internal">fillRect()</a><code></code><code></code><code></code><code></code><li><a href="#fillText()" rel="internal">fillText()</a><code></code><code></code><code></code><code></code><li><a href="#getImageData()" rel="internal">getImageData()</a><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#getLineDash()" rel="internal">getLineDash()</a><li><a href="#isPointInPath()" rel="internal">isPointInPath()</a><code></code><code></code><code></code><code></code><li><a href="#isPointInStroke()" rel="internal">isPointInStroke()</a><code></code><code></code><code></code><code></code><li><a href="#lineTo()" rel="internal">lineTo()</a><code></code><code></code><code></code><li><a href="#measureText()" rel="internal">measureText()</a><code></code><code></code><li><a href="#moveTo()" rel="internal">moveTo()</a><code></code><code></code><li><a href="#putImageData()" rel="internal">putImageData()</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#quadraticCurveTo()" rel="internal">quadraticCurveTo()</a><code></code><code></code><code></code><code></code><li><a href="#rect()" rel="internal">rect()</a><code></code><code></code><code></code><code></code><li><a href="#restore()" rel="internal">restore()</a><li><a href="#rotate()" rel="internal">rotate()</a><code></code><li><a href="#save()" rel="internal">save()</a><li><a href="#scale()" rel="internal">scale()</a><code></code><code></code><li><a href="#scrollPathIntoView()" rel="internal">scrollPathIntoView()</a><li><a href="#setLineDash()" rel="internal">setLineDash()</a><code></code><li><a href="#setTransform()" rel="internal">setTransform()</a><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#stroke()" rel="internal">stroke()</a><li><a href="#strokeRect()" rel="internal">strokeRect()</a><code></code><code></code><code></code><code></code><li><a href="#strokeText()" rel="internal">strokeText()</a><code></code><code></code><code></code><code></code><li><a href="#transform()" rel="internal">transform()</a><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#translate()" rel="internal">translate()</a><code></code><code></code></ol></li><li><a href="#Gecko-specific_methods" rel="internal">Gecko-specific methods</a><ol><li><a href="#asyncDrawXULElement()" rel="internal">asyncDrawXULElement()</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#drawWindow()" rel="internal">drawWindow()</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#getFillStyle_multi" rel="internal">getFillStyle_multi</a><code></code><code></code><code></code><li><a href="#getImageData_explicit" rel="internal">getImageData_explicit</a><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#getStrokeStyle_multi" rel="internal">getStrokeStyle_multi</a><code></code><code></code><code></code><li><a href="#mozDrawText()" rel="internal">mozDrawText()</a><code></code><li><a href="#mozMeasureText()" rel="internal">mozMeasureText()</a><code></code><li><a href="#mozPathText()" rel="internal">mozPathText()</a><code></code><li><a href="#mozTextAlongPath()" rel="internal">mozTextAlongPath()</a><code></code><code></code><li><a href="#setFillStyle_multi" rel="internal">setFillStyle_multi</a><code></code><code></code><li><a href="#setStrokeStyle_multi" rel="internal">setStrokeStyle_multi</a><code></code><code></code></ol></li><li><a href="#WebKit-specific_methods" rel="internal">WebKit-specific methods</a><ol><li><a href="#clearShadow()" rel="internal">clearShadow()</a><li><a href="#drawImageFromRect()" rel="internal">drawImageFromRect()</a><li><a href="#setAlpha()" rel="internal">setAlpha()</a><li><a href="#setCompositeOperation()" rel="internal">setCompositeOperation()</a><li><a href="#setLineWidth()" rel="internal">setLineWidth()</a><li><a href="#setLineCap()" rel="internal">setLineCap()</a><li><a href="#setLineJoin()" rel="internal">setLineJoin()</a><li><a href="#setMiterLimit()" rel="internal">setMiterLimit()</a><li><a href="#setStrokeColor()" rel="internal">setStrokeColor()</a><li><a href="#setFillColor()" rel="internal">setFillColor()</a><li><a href="#setShadow()" rel="internal">setShadow()</a></ol></li><li><a href="#Browser_compatibility" rel="internal">Browser compatibility</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Notes" rel="internal">Notes</a><ol><li><a href="#Gecko" rel="internal">Gecko</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code></ol></li><li><a href="#Specification" rel="internal">Specification</a>
+            </ol>
+          </div>
+          <ul class="page-anchors">
+            <li class="anchor-tags">
+                              <i class="icon-tags"></i><a href="#page-tags">Tags</a>
+                          </li>
+            <li class="anchor-files">
+                              <i class="icon-paper-clip"></i><a href="#page-file">Files</a>
+                          </li>
+          </ul>
+        </div>
+                                <p>The 2D rendering context for the drawing surface of a <a href="/en-US/docs/Web/HTML/Element/canvas"><code>&lt;canvas&gt;</code></a> element. To get this object, call <code>getContext()</code> on a <code>&lt;canvas&gt;</code>, supplying "2d" as the argument:</p>
+<pre>var canvas = document.getElementById('tutorial');
+var ctx = canvas.getContext('2d');
+</pre>
+<p>Once you have the 2D rendering context for a canvas, you can draw within it. For example:</p>
+<pre>ctx.fillStyle = "rgb(200,0,0)";  
+ctx.fillRect(10, 10, 55, 50);  
+</pre>
+<p>See the <a href="/en/Canvas_tutorial" title="Canvas tutorial">Canvas tutorial</a> for more information, examples, and resources.</p>
+<h2 id="Method_overview">Method overview</h2>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td><code>void <a href="#arc()">arc</a>(in float x, in float y, in float radius, in float startAngle, in float endAngle, in boolean anticlockwise <span class="inlineIndicator optional optionalInline">Optional</span>);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#arcTo()">arcTo</a>(in float x1, in float y1, in float x2, in float y2, in float radius);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#beginPath()">beginPath</a>();</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#bezierCurveTo()">bezierCurveTo</a>(in float cp1x, in float cp1y, in float cp2x, in float cp2y, in float x, in float y);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#clearRect()">clearRect</a>(in float x, in float y, in float width, in float height);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#clip()">clip</a>();</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#closePath()">closePath</a>();</code></td>
+    </tr>
+    <tr>
+      <td><code>ImageData <a href="#createImageData()">createImageData</a>(in float width, in float height);</code><br>
+        <code>ImageData <a href="#createImageData()">createImageData</a>(Imagedata imagedata);</code></td>
+    </tr>
+    <tr>
+      <td><code>nsIDOMCanvasGradient <a href="#createLinearGradient()">createLinearGradient</a>(in float x0, in float y0, in float x1, in float y1);</code></td>
+    </tr>
+    <tr>
+      <td><code>nsIDOMCanvasPattern <a href="#createPattern()">createPattern</a>(in nsIDOMHTMLElement image, in DOMString repetition);</code></td>
+    </tr>
+    <tr>
+      <td><code>nsIDOMCanvasGradient <a href="#createRadialGradient()">createRadialGradient</a>(in float x0, in float y0, in float r0, in float x1, in float y1, in float r1);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#drawImage()">drawImage</a>(in nsIDOMElement image, in float a1, in float a2, in float a3 <span class="inlineIndicator optional optionalInline">Optional</span>, in float a4 <span class="inlineIndicator optional optionalInline">Optional</span>, in float a5 <span class="inlineIndicator optional optionalInline">Optional</span>, in float a6 <span class="inlineIndicator optional optionalInline">Optional</span>, in float a7 <span class="inlineIndicator optional optionalInline">Optional</span>, in float a8 <span class="inlineIndicator optional optionalInline">Optional</span>);</code></td>
+    </tr>
+    <tr>
+      <td><code>boolean <a href="#drawCustomFocusRing()">drawCustomFocusRing</a>(Element element);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#drawSystemFocusRing()">drawSystemFocusRing</a>(Element element);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#fill()">fill</a>();</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#fillRect()">fillRect</a>(in float x, in float y, in float width, in float height);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#fillText()">fillText</a>(in DOMString text, in float x, in float y, in float maxWidth <span class="inlineIndicator optional optionalInline">Optional</span>);</code></td>
+    </tr>
+    <tr>
+      <td><code>ImageData <a href="#getImageData()">getImageData</a>(in float x, in float y, in float width, in float height);</code></td>
+    </tr>
+    <tr>
+      <td><code>sequence &lt;unrestricted double&gt; <a href="#getLineDash()">getLineDash</a>()</code></td>
+    </tr>
+    <tr>
+      <td><code>boolean <a href="#isPointInPath()">isPointInPath</a>(in float x, in float y);</code></td>
+    </tr>
+    <tr>
+      <td><code>boolean <a href="#isPointInStroke()">isPointInStroke</a>(in float x, in float y);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#lineTo()">lineTo</a>(in float x, in float y);</code></td>
+    </tr>
+    <tr>
+      <td><code>nsIDOMTextMetrics <a href="#measureText()">measureText</a>(in DOMString text);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#moveTo()">moveTo</a>(in float x, in float y);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#putImageData()">putImageData</a>(in ImageData imagedata, in float dx, double dy, in float dirtyX <span class="inlineIndicator optional optionalInline">Optional</span>, in float dirtyY <span class="inlineIndicator optional optionalInline">Optional</span>, in float dirtyWidth <span class="inlineIndicator optional optionalInline">Optional</span>, in float dirtyHeight <span class="inlineIndicator optional optionalInline">Optional</span>);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#quadraticCurveTo()">quadraticCurveTo</a>(in float cpx, in float cpy, in float x, in float y);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#rect()">rect</a>(in float x, in float y, in float width, in float height);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#restore()">restore</a>();</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#rotate()">rotate</a>(in float angle);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#save()">save</a>();</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#scale()">scale</a>(in float x, in float y);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#scrollPathIntoView()">scrollPathIntoView</a>();</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#setLineDash()">setLineDash</a>(in sequence &lt;unrestricted double&gt; segments);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#setTransform()">setTransform</a>(in float m11, in float m12, in float m21, in float m22, in float dx, in float dy);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#stroke()">stroke</a>();</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#strokeRect()">strokeRect</a>(in float x, in float y, in float w, in float h);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#strokeText()">strokeText</a>(in DOMString text, in float x, in float y, in float maxWidth <span class="inlineIndicator optional optionalInline">Optional</span>);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#transform()">transform</a>(in float m11, in float m12, in float m21, in float m22, in float dx, in float dy);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#translate()">translate</a>(in float x, in float y);</code></td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="Gecko-specific_Method_overview">Gecko-specific Method overview</h3>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td><code>void <a href="#asyncDrawXULElement()">asyncDrawXULElement</a>(in nsIDOMXULElement elem, in float x, in float y, in float w, in float h, in DOMString bgColor, in unsigned long flags <span class="inlineIndicator optional optionalInline">Optional</span>);</code> <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 4 / Thunderbird 3.3 / SeaMonkey 2.1)">Requires Gecko 2.0</span></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#drawWindow()">drawWindow</a>(in nsIDOMWindow window, in float x, in float y, in float w, in float h, in DOMString bgColor, in unsigned long flags <span class="inlineIndicator optional optionalInline">Optional</span>);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#getFillStyle_multi()">getFillStyle_multi</a>(out DOMString str, out nsISupports iface, out long type);</code> <span class="inlineIndicator noscript noscriptInline" title="This method may only be called from C++; don't use it from JavaScript.">Native code only!</span> <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 4 / Thunderbird 3.3 / SeaMonkey 2.1)">Requires Gecko 2.0</span></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#getImageData_explicit()">getImageData_explicit</a>(in long x, in long y, in unsigned long width, in unsigned long height, [array, size_is(dataLen)] in octet dataPtr, in unsigned long dataLen);</code> <span class="inlineIndicator noscript noscriptInline" title="This method may only be called from C++; don't use it from JavaScript.">Native code only!</span> <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 4 / Thunderbird 3.3 / SeaMonkey 2.1)">Requires Gecko 2.0</span></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#getStrokeStyle_multi()">getStrokeStyle_multi</a>(out DOMString str, out nsISupports iface, out long type);</code> <span class="inlineIndicator noscript noscriptInline" title="This method may only be called from C++; don't use it from JavaScript.">Native code only!</span> <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 4 / Thunderbird 3.3 / SeaMonkey 2.1)">Requires Gecko 2.0</span></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#mozDrawText()">mozDrawText</a>(in DOMString textToDraw);</code> <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 3)">Requires Gecko 1.9</span> (unimplemented since Gecko 7.0)</td>
+    </tr>
+    <tr>
+      <td><code>float <a href="#mozMeasureText()">mozMeasureText</a>(in DOMString textToMeasure);</code> <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 3)">Requires Gecko 1.9</span> (unimplemented since Gecko 7.0)</td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#mozPathText()">mozPathText</a>(in DOMString textToPath);</code> <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 3)">Requires Gecko 1.9</span> (unimplemented since Gecko 7.0)</td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#mozTextAlongPath()">mozTextAlongPath</a>(in DOMString textToDraw, in boolean stroke);</code> <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 3)">Requires Gecko 1.9</span> (unimplemented since Gecko 7.0)</td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#putImageData_explicit()">putImageData_explicit</a>(in long x, in long y, in unsigned long width, in unsigned long height, [array, size_is(dataLen)] in octet dataPtr, in unsigned long dataLen, in boolean hasDirtyRect, in long dirtyX, in long dirtyY, in long dirtyWidth, in long dirtyHeight);</code> <span class="inlineIndicator noscript noscriptInline" title="This method may only be called from C++; don't use it from JavaScript.">Native code only!</span> <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 4 / Thunderbird 3.3 / SeaMonkey 2.1)">Requires Gecko 2.0</span></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#setFillStyle_multi()">setFillStyle_multi</a>(in DOMString str, in nsISupports iface);</code> <span class="inlineIndicator noscript noscriptInline" title="This method may only be called from C++; don't use it from JavaScript.">Native code only!</span> <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 4 / Thunderbird 3.3 / SeaMonkey 2.1)">Requires Gecko 2.0</span></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#setStrokeStyle_multi()">setStrokeStyle_multi</a>(in DOMString str, in nsISupports iface);</code> <span class="inlineIndicator noscript noscriptInline" title="This method may only be called from C++; don't use it from JavaScript.">Native code only!</span> <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 4 / Thunderbird 3.3 / SeaMonkey 2.1)">Requires Gecko 2.0</span></td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="WebKit-specific_Method_overview">WebKit-specific Method overview</h3>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td><code>void <a href="#clearShadow()">clearShadow</a>();</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#drawImageFromRect()">drawImageFromRect</a>(in HTMLImageElement image, in float sx <span class="inlineIndicator optional optionalInline">Optional</span>, in float sy <span class="inlineIndicator optional optionalInline">Optional</span>, in float sw <span class="inlineIndicator optional optionalInline">Optional</span>, in float sh <span class="inlineIndicator optional optionalInline">Optional</span>, in float dx <span class="inlineIndicator optional optionalInline">Optional</span>, in float dy <span class="inlineIndicator optional optionalInline">Optional</span>, in float dw <span class="inlineIndicator optional optionalInline">Optional</span>, in float dh <span class="inlineIndicator optional optionalInline">Optional</span>, in DOMString compositeOperation <span class="inlineIndicator optional optionalInline">Optional</span>);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#setAlpha()">setAlpha</a>();</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#setCompositeOperation()">setCompositeOperation</a>(in DOMString compositeOperation);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#setLineWidth()">setLineWidth</a>(in float width);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#setLineCap()">setLineCap</a>(in DOMString cap);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#setLineJoin()">setLineJoin</a>(in DOMString join);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#setMiterLimit()">setMiterLimit</a>(in float limit);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#setStrokeColor()">setStrokeColor</a>(in DOMString color, in float alpha <span class="inlineIndicator optional optionalInline">Optional</span>);</code><br>
+        <code>void <a href="#setStrokeColor()">setStrokeColor</a>(in float grayLevel, in float alpha <span class="inlineIndicator optional optionalInline">Optional</span>);</code><br>
+        <code>void <a href="#setStrokeColor()">setStrokeColor</a>(in float r, in float g, in float b, in float a);</code><br>
+        <code>void <a href="#setStrokeColor()">setStrokeColor</a>(in float c, in float m, in float y, in float k, in float a);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#setFillColor()">setFillColor</a>(in DOMString color, in float alpha <span class="inlineIndicator optional optionalInline">Optional</span>);</code><br>
+        <code>void <a href="#setFillColor()">setFillColor</a>(in float grayLevel, in float alpha <span class="inlineIndicator optional optionalInline">Optional</span>);</code><br>
+        <code>void <a href="#setFillColor()">setFillColor</a>(in float r, in float g, in float b, in float a);</code><br>
+        <code>void <a href="#setFillColor()">setFillColor</a>(in float c, in float m, in float y, in float k, in float a);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#setShadow()">setShadow</a>(in float width, in float height, in float blur, in DOMString color <span class="inlineIndicator optional optionalInline">Optional</span>, in float alpha <span class="inlineIndicator optional optionalInline">Optional</span>);</code><br>
+        <code>void <a href="#setShadow()">setShadow</a>(in float width, in float height, in float blur, in float grayLevel, in float alpha <span class="inlineIndicator optional optionalInline">Optional</span>);</code><br>
+        <code>void <a href="#setShadow()">setShadow</a>(in float width, in float height, in float blur, in float r, in float g, in float b, in float a);</code><br>
+        <code>void <a href="#setShadow()">setShadow</a>(in float width, in float height, in float blur, in float c, in float m, in float y, in float k, in float a);</code></td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Attributes">Attributes</h2>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td class="header">Attribute</td>
+      <td class="header">Type</td>
+      <td class="header">Description</td>
+    </tr>
+    <tr>
+      <td><code>canvas</code></td>
+      <td><code><code><a class="external" href="http://developer.mozilla.org/en-US/docs/XPCOM_Interface_Reference/nsIDOMHTMLCanvasElement">nsIDOMHTMLCanvasElement</a></code></code></td>
+      <td>Back-reference to the canvas element for which this context was created. <strong>Read only.</strong></td>
+    </tr>
+    <tr>
+      <td><code>fillStyle</code></td>
+      <td><code><code><a class="external" href="http://developer.mozilla.org/en-US/docs/XPCOM_Interface_Reference/nsIVariant">nsIVariant</a></code></code></td>
+      <td>Color or style to use inside shapes. Default <code>#000</code> (black).</td>
+    </tr>
+    <tr>
+      <td><code>font</code></td>
+      <td><code><a href="/en-US/docs/Web/API/DOMString" title="/en-US/docs/Web/API/DOMString"><code>DOMString</code></a></code></td>
+      <td>Default value <code>10px sans-serif</code>.</td>
+    </tr>
+    <tr>
+      <td><code>globalAlpha</code></td>
+      <td><code><a href="/en/float" title="en/float">float</a></code></td>
+      <td>Alpha value that is applied to shapes and images before they are composited onto the canvas. Default <code>1.0</code> (opaque).</td>
+    </tr>
+    <tr>
+      <td><code>globalCompositeOperation</code></td>
+      <td><code><a href="/en-US/docs/Web/API/DOMString" title="/en-US/docs/Web/API/DOMString"><code>DOMString</code></a></code></td>
+      <td>With <code>globalAlpha</code> applied this sets how shapes and images are drawn onto the existing bitmap. Possible values:
+        <ul>
+          <li><code>source-atop</code></li>
+          <li><code>source-in</code></li>
+          <li><code>source-out</code></li>
+          <li><code>source-over</code> (default)</li>
+          <li><code>destination-atop</code></li>
+          <li><code>destination-in</code></li>
+          <li><code>destination-out</code></li>
+          <li><code>destination-over</code></li>
+          <li><code>lighter</code></li>
+          <li><code>darker</code></li>
+          <li><code>copy</code></li>
+          <li><code>xor</code></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><code>lineCap</code></td>
+      <td><code><a href="/en-US/docs/Web/API/DOMString" title="/en-US/docs/Web/API/DOMString"><code>DOMString</code></a></code></td>
+      <td>Type of endings on the end of lines. Possible values: <code>butt</code> (default), <code>round</code>, <code>square</code></td>
+    </tr>
+    <tr>
+      <td><code>lineDashOffset</code></td>
+      <td><code><a href="/en/float" title="en/float">float</a></code></td>
+      <td>Specifies where to start a dasharray on a line.</td>
+    </tr>
+    <tr>
+      <td><code>lineJoin</code></td>
+      <td><code><a href="/en-US/docs/Web/API/DOMString" title="/en-US/docs/Web/API/DOMString"><code>DOMString</code></a></code></td>
+      <td>Defines the type of corners where two lines meet. Possible values: <code>round</code>, <code>bevel</code>, <code>miter</code> (default)</td>
+    </tr>
+    <tr>
+      <td><code>lineWidth</code></td>
+      <td><code><a href="/en/float" title="en/float">float</a></code></td>
+      <td>Width of lines. Default <code>1.0</code></td>
+    </tr>
+    <tr>
+      <td><code>miterLimit</code></td>
+      <td><code><a href="/en/float" title="en/float">float</a></code></td>
+      <td>Default <code>10</code>.</td>
+    </tr>
+    <tr>
+      <td><code>shadowBlur</code></td>
+      <td><code><a href="/en/float" title="en/float">float</a></code></td>
+      <td>Specifies the blurring effect. Default <code>0</code></td>
+    </tr>
+    <tr>
+      <td><code>shadowColor</code></td>
+      <td><code><a href="/en-US/docs/Web/API/DOMString" title="/en-US/docs/Web/API/DOMString"><code>DOMString</code></a></code></td>
+      <td>Color of the shadow. Default fully-transparent black.</td>
+    </tr>
+    <tr>
+      <td><code>shadowOffsetX</code></td>
+      <td><code><a href="/en/float" title="en/float">float</a></code></td>
+      <td>Horizontal distance the shadow will be offset. Default 0.</td>
+    </tr>
+    <tr>
+      <td><code>shadowOffsetY</code></td>
+      <td><code><a href="/en/float" title="en/float">float</a></code></td>
+      <td>Vertical distance the shadow will be offset. Default 0.</td>
+    </tr>
+    <tr>
+      <td><code>strokeStyle</code></td>
+      <td><code><code><a class="external" href="http://developer.mozilla.org/en-US/docs/XPCOM_Interface_Reference/nsIVariant">nsIVariant</a></code></code></td>
+      <td>Color or style to use for the lines around shapes. Default <code>#000</code> (black).</td>
+    </tr>
+    <tr>
+      <td><code>textAlign</code></td>
+      <td><code><a href="/en-US/docs/Web/API/DOMString" title="/en-US/docs/Web/API/DOMString"><code>DOMString</code></a></code></td>
+      <td>Possible values: <code>start</code> (default), <code>end</code>, <code>left</code>, <code>right</code> or <code>center</code>.</td>
+    </tr>
+    <tr>
+      <td><code>textBaseLine</code></td>
+      <td><code><a href="/en-US/docs/Web/API/DOMString" title="/en-US/docs/Web/API/DOMString"><code>DOMString</code></a></code></td>
+      <td>Possible values: <code>top</code>, <code>hanging</code>, <code>middle</code>, <code>alphabetic</code> (default), <code>ideographic</code>, <code>bottom</code></td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="Gecko-specific_attributes">Gecko-specific attributes</h3>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td class="header">Attribute</td>
+      <td class="header">Type</td>
+      <td class="header">Description</td>
+    </tr>
+    <tr>
+      <td><code>mozCurrentTransform</code></td>
+      <td><code>jsval</code></td>
+      <td>Sets or gets the current transformation matrix. <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 7.0 / Thunderbird 7.0 / SeaMonkey 2.4)">Requires Gecko 7.0</span></td>
+    </tr>
+    <tr>
+      <td><code>mozCurrentTransformInverse</code></td>
+      <td><code>jsval</code></td>
+      <td>Set or gets the current inversed transformation matrix. <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 7.0 / Thunderbird 7.0 / SeaMonkey 2.4)">Requires Gecko 7.0</span></td>
+    </tr>
+    <tr>
+      <td><code>mozDash</code></td>
+      <td><code>array of float</code></td>
+      <td>An array which specifies the lengths of alternating dashes and gaps. <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 7.0 / Thunderbird 7.0 / SeaMonkey 2.4)">Requires Gecko 7.0</span> (see <a class="external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=740284" rel="external" title="">bug 740284</a> for implementing the HTML5 spec version / unprefixing)</td>
+    </tr>
+    <tr>
+      <td><code>mozDashOffset</code></td>
+      <td><code><a href="/en/float" title="en/float">float</a></code></td>
+      <td>Specifies where to start a dasharray on a line. <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 7.0 / Thunderbird 7.0 / SeaMonkey 2.4)">Requires Gecko 7.0</span> (see <a class="external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=740284" rel="external" title="">bug 740284</a> for implementing the HTML5 spec version / unprefixing)</td>
+    </tr>
+    <tr>
+      <td><code>mozFillRule</code></td>
+      <td><code><a href="/en-US/docs/Web/API/DOMString" title="/en-US/docs/Web/API/DOMString"><code>DOMString</code></a></code></td>
+      <td>The <a class="external" href="http://cairographics.org/manual/cairo-cairo-t.html#cairo-fill-rule-t" title="http://cairographics.org/manual/cairo-cairo-t.html#cairo-fill-rule-t">fill rule</a> to use. This must be one of <code>evenodd</code> or <code>nonzero</code> (default).</td>
+    </tr>
+    <tr>
+      <td><code>mozImageSmoothingEnabled</code></td>
+      <td><code><a href="/en/boolean" title="en/boolean">boolean</a></code></td>
+      <td>Image smoothing mode; if disabled, images will not be smoothed if scaled. <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 3.6 / Thunderbird 3.1 / Fennec 1.0)">Requires Gecko 1.9.2</span></td>
+    </tr>
+    <tr>
+      <td><code>mozTextStyle</code></td>
+      <td><code><a href="/en-US/docs/Web/API/DOMString" title="/en-US/docs/Web/API/DOMString"><code>DOMString</code></a></code></td>
+      <td><span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 3)">Requires Gecko 1.9</span> <span class="inlineIndicator deprecated deprecatedInline" title="">Deprecated</span> Deprecated in favor of the HTML5 <code>font</code> attribute described above.</td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="WebKit-specific_attributes">WebKit-specific attributes</h3>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td class="header">Attribute</td>
+      <td class="header">Type</td>
+      <td class="header">Description</td>
+    </tr>
+    <tr>
+      <td><code>webkitLineDash</code></td>
+      <td><code>array of float</code></td>
+      <td>An array which specifies the lengths of alternating dashes and gaps. (expected to be unprefixed / updated to HTML5 spec as per <a class="external" href="https://bugs.webkit.org/show_bug.cgi?id=80674" rel="external" title="">WebKit bug 80674</a>)</td>
+    </tr>
+    <tr>
+      <td><code>webkitLineDashOffset</code></td>
+      <td><code><a href="/en/float" title="en/float">float</a></code></td>
+      <td>Specifies where to start a dasharray on a line. (expected to be unprefixed / updated to HTML5 spec as per <a class="external" href="https://bugs.webkit.org/show_bug.cgi?id=80674" rel="external" title="">WebKit bug 80674</a>)</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Constants">Constants</h2>
+<h3 id="Gecko-specific_constants">Gecko-specific constants</h3>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td class="header">Constant</td>
+      <td class="header">Value</td>
+      <td class="header">Description</td>
+    </tr>
+    <tr>
+      <td><code>DRAWWINDOW_DRAW_CARET</code></td>
+      <td><code>0x01</code></td>
+      <td>Show the caret if appropriate when drawing. <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 3.5 / Thunderbird 3.0 / SeaMonkey 2.0)">Requires Gecko 1.9.1</span></td>
+    </tr>
+    <tr>
+      <td><code>DRAWWINDOW_DO_NOT_FLUSH</code></td>
+      <td><code>0x02</code></td>
+      <td>Do not flush pending layout notifications that could otherwise be batched up. <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 3.5 / Thunderbird 3.0 / SeaMonkey 2.0)">Requires Gecko 1.9.1</span></td>
+    </tr>
+    <tr>
+      <td><code>DRAWWINDOW_DRAW_VIEW</code></td>
+      <td><code>0x04</code></td>
+      <td>Draw scrollbars and scroll the viewport if they are present. <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 3.6 / Thunderbird 3.1 / Fennec 1.0)">Requires Gecko 1.9.2</span></td>
+    </tr>
+    <tr>
+      <td><code>DRAWWINDOW_USE_WIDGET_LAYERS</code></td>
+      <td><code>0x08</code></td>
+      <td>Use the widget layer manager if available. This means hardware acceleration may be used, but it might actually be slower or lower quality than normal. It will however more accurately reflect the pixels rendered to the screen. <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 4 / Thunderbird 3.3 / SeaMonkey 2.1)">Requires Gecko 2.0</span></td>
+    </tr>
+    <tr>
+      <td><code>DRAWWINDOW_ASYNC_DECODE_IMAGES</code></td>
+      <td><code>0x10</code></td>
+      <td>Do not synchronously decode images - draw what we have. <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 4 / Thunderbird 3.3 / SeaMonkey 2.1)">Requires Gecko 2.0</span></td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Methods">Methods</h2>
+<h3 id="arc()">arc()</h3>
+<p>Adds an arc to the path which it center is at <em>(x, y)</em> position with radius<em> r</em> starting at <em>startAngle</em> and ending at <em>endAngle</em> going in the given direction by <em>anticlockwise</em> (defaulting to clockwise).</p>
+<pre class="eval">void arc(
+  in float x,
+  in float y,
+  in float radius,
+  in float startAngle,
+  in float endAngle,
+  in boolean anticlockwise [optional]
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>x</code></dt>
+  <dd>
+    The x axis of the coordinate for the arc's center</dd>
+  <dt>
+    <code>y</code></dt>
+  <dd>
+    The y axis of the coordinate for the arc's center.</dd>
+  <dt>
+    <code>radius</code></dt>
+  <dd>
+    The arc's radius</dd>
+  <dt>
+    <code>startAngle</code></dt>
+  <dd>
+    The starting point, measured from the x axis , from which it will be drawed expressed as radians.</dd>
+  <dt>
+    <code>endAngle</code></dt>
+  <dd>
+    The end arc's angle to which it will be drawed expressed as radians.</dd>
+  <dt>
+    <code>anticlockwise</code> <span class="inlineIndicator optional optionalInline">Optional from Gecko 2.0</span></dt>
+  <dd>
+    When <code>true</code> draws the arc anticlockwise, otherwise in a clockwise direction.</dd>
+</dl>
+<h3 id="arcTo()">arcTo()</h3>
+<p>Adds an arc with the given control points and radius, connected to the previous point by a straight line.</p>
+<pre class="eval">void arcTo(
+  in float x1,
+  in float y1,
+  in float x2,
+  in float y2,
+  in float radius
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>x1</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>y1</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>x2</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>y2</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>radius</code></dt>
+  <dd>
+    The arc's radius.</dd>
+</dl>
+<h3 id="beginPath()">beginPath()</h3>
+<p>Starts a new path by resetting the list of sub-paths. Call this method when you want to create a new path.</p>
+<pre class="eval">void beginPath();
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<p>None.</p>
+<h3 id="bezierCurveTo()">bezierCurveTo()</h3>
+<pre class="eval">void bezierCurveTo(
+  in float cp1x,
+  in float cp1y,
+  in float cp2x,
+  in float cp2y,
+  in float x,
+  in float y
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>cp1x</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>cp1y</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>cp2x</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>cp2y</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>x</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>y</code></dt>
+  <dd>
+     </dd>
+</dl>
+<h3 id="clearRect()">clearRect()</h3>
+<p>Clears the rectangle defined by it starting point at <em>(x, y)</em> and has a <em>w</em> width and a <em>h</em> height.</p>
+<pre class="eval">void clearRect(
+  in float x,
+  in float y,
+  in float width,
+  in float height
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>x</code></dt>
+  <dd>
+    The x axis of the coordinate for the rectangle starting point.</dd>
+  <dt>
+    <code>y</code></dt>
+  <dd>
+    The y axis of the coordinate for the rectangle starting point.</dd>
+  <dt>
+    <code>width</code></dt>
+  <dd>
+    The rectangle's width.</dd>
+  <dt>
+    <code>height</code></dt>
+  <dd>
+    The rectangle's height.</dd>
+</dl>
+<h3 id="clip()">clip()</h3>
+<p>Creates a clipping path from the current sub-paths. Everything drawn after <code>clip()</code> is called appears inside the clipping path only. For an example, see <a href="/en/Canvas_tutorial/Compositing#Clipping_paths" title="Clipping paths">Clipping paths</a> in the Canvas tutorial.</p>
+<pre class="eval">void clip();
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<p>None.</p>
+<h3 id="closePath()">closePath()</h3>
+<p>Tries to draw a straight line from the current point to the start. If the shape has already been closed or has only one point, this function does nothing.</p>
+<pre class="eval">void closePath();
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<p>None.</p>
+<h3 id="createImageData()">createImageData()</h3>
+<p>Creates a new, blank <a href="/en-US/docs/Web/API/ImageData" title="/en-US/docs/Web/API/ImageData"><code>ImageData</code></a> object with the specified dimensions. All of the pixels in the new object are transparent black.</p>
+<pre class="eval">ImageData createImageData(
+  in float width,
+  in float height
+);
+ImageData createImageData(
+  ImageData imagedata
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>width</code></dt>
+  <dd>
+    The width to give the new <a href="/en-US/docs/Web/API/ImageData" title="/en-US/docs/Web/API/ImageData"><code>ImageData</code></a> object.</dd>
+  <dt>
+    <code>height</code></dt>
+  <dd>
+    The height to give the new <a href="/en-US/docs/Web/API/ImageData" title="/en-US/docs/Web/API/ImageData"><code>ImageData</code></a> object.</dd>
+  <dt>
+    <code>imagedata</code></dt>
+  <dd>
+    An existing <a href="/en-US/docs/Web/API/ImageData" title="/en-US/docs/Web/API/ImageData"><code>ImageData</code></a> object from which to copy the width and height. The image itself is <strong>not</strong> copied.</dd>
+</dl>
+<h6 id="Return_value">Return value</h6>
+<p>A new <a href="/en-US/docs/Web/API/ImageData" title="/en-US/docs/Web/API/ImageData"><code>ImageData</code></a> object with the specified width and height. The new object is filled with transparent black pixels.</p>
+<h3 id="createLinearGradient()">createLinearGradient()</h3>
+<pre class="eval">nsIDOMCanvasGradient createLinearGradient(
+  in float x0,
+  in float y0,
+  in float x1,
+  in float y1
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>x0</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>y0</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>x1</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>y1</code></dt>
+  <dd>
+     </dd>
+</dl>
+<h6 id="Return_value">Return value</h6>
+<p><code>nsIDOMCanvasGradient</code></p>
+<h3 id="createPattern()">createPattern()</h3>
+<pre class="eval">nsIDOMCanvasPattern createPattern(
+  in nsIDOMHTMLElement image,
+  in DOMString repetition
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>image</code></dt>
+  <dd>
+    A DOM <a href="/en-US/docs/Web/API/element" title="/en-US/docs/Web/API/element"><code>element</code></a> to use as the source image for the pattern. This can be any element, although typically you'll use an <a href="/en-US/docs/Web/API/Image" title="/en-US/docs/Web/API/Image"><code>Image</code></a> or <a href="/en-US/docs/Web/HTML/Element/canvas"><code>&lt;canvas&gt;</code></a>.</dd>
+  <dt>
+    <code>repetition</code></dt>
+  <dd>
+    ?</dd>
+</dl>
+<h6 id="Return_value">Return value</h6>
+<p>A new DOM canvas pattern object for use in pattern-based operations.</p>
+<h6 id="Exceptions_thrown">Exceptions thrown</h6>
+<dl>
+  <dt>
+    <code>NS_ERROR_DOM_INVALID_STATE_ERR</code> <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 10.0 / Thunderbird 10.0 / SeaMonkey 2.7)">Requires Gecko 10.0</span></dt>
+  <dd>
+    The specified <a href="/en-US/docs/Web/HTML/Element/canvas"><code>&lt;canvas&gt;</code></a> element for the <code>image</code> parameter is zero-sized (that is, one or both of its dimensions are 0 pixels).</dd>
+</dl>
+<h3 id="createRadialGradient()">createRadialGradient()</h3>
+<pre class="eval">nsIDOMCanvasGradient createRadialGradient(
+  in float x0,
+  in float y0,
+  in float r0,
+  in float x1,
+  in float y1,
+  in float r1
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>x0</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>y0</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>r0</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>x1</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>y1</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>r1</code></dt>
+  <dd>
+     </dd>
+</dl>
+<h6 id="Return_value">Return value</h6>
+<p><code>nsIDOMCanvasGradient</code></p>
+<h3 id="drawCustomFocusRing()">drawCustomFocusRing()</h3>
+<pre class="eval">boolean drawCustomFocusRing(Element element);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>element</code></dt>
+  <dd>
+     </dd>
+</dl>
+<h6 id="Return_value">Return value</h6>
+<p><code>boolean</code></p>
+<h3 id="drawImage()">drawImage()</h3>
+<p>Draws the specified image. This method is available in multiple formats, providing a great deal of flexibility in its use.</p>
+<pre class="eval">void drawImage(
+  in nsIDOMElement image,
+  in float dx,
+  in float dy
+);
+
+void drawImage(
+  in nsIDOMElement image,
+  in float dx,
+  in float dy,
+  in float dw,
+  in float dh
+);
+
+void drawImage(
+  in nsIDOMElement image,
+  in float sx,
+  in float sy,
+  in float sw,
+  in float sh,
+  in float dx, 
+  in float dy,
+  in float dw,
+  in float dh
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>image</code></dt>
+  <dd>
+    An element to draw into the context; the specification permits any image element (that is, <a href="/en-US/docs/Web/HTML/Element/img"><code>&lt;img&gt;</code></a>, <a href="/en-US/docs/Web/HTML/Element/canvas"><code>&lt;canvas&gt;</code></a>, and <a href="/en-US/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code></a>). Some browsers, including Firefox, let you use any arbitrary element.</dd>
+  <dt>
+    <code>dx</code></dt>
+  <dd>
+    The X coordinate in the destination canvas at which to place the top-left corner of the source <code>image</code>.</dd>
+  <dt>
+    <code>dy</code></dt>
+  <dd>
+    The Y coordinate in the destination canvas at which to place the top-left corner of the source <code>image</code>.</dd>
+  <dt>
+    <code>dw</code></dt>
+  <dd>
+    The width to draw the <code>image</code> in the destination canvas. This allows scaling of the drawn image. If not specified, the image is not scaled in width when drawn.</dd>
+  <dt>
+    <code>dh</code></dt>
+  <dd>
+    The height to draw the <code>image</code> in the destination canvas. This allows scaling of the drawn image. If not specified, the image is not scaled in height when drawn.</dd>
+  <dt>
+    <code>sx</code></dt>
+  <dd>
+    The X coordinate of the top left corner of the sub-rectangle of the source image to draw into the destination context.</dd>
+  <dt>
+    <code>sy</code></dt>
+  <dd>
+    The Y coordinate of the top left corner of the sub-rectangle of the source image to draw into the destination context.</dd>
+  <dt>
+    <code>sw</code></dt>
+  <dd>
+    The width of the sub-rectangle of the source image to draw into the destination context. If not specified, the entire rectangle from the coordinates specified by <code>sx</code> and <code>sy</code> to the bottom-right corner of the image is used. If you specify a negative value, the image is flipped horizontally when drawn.</dd>
+  <dt>
+    <code>sh</code></dt>
+  <dd>
+    The height of the sub-rectangle of the source image to draw into the destination context. If you specify a negative value, the image is flipped vertically when drawn.</dd>
+</dl>
+<p>The diagram below illustrates the meanings of the various parameters.</p>
+<p><img alt="drawImage.png" class="internal default" src="/@api/deki/files/5494/=drawImage.png"></p>
+<h6 id="Exceptions_thrown">Exceptions thrown</h6>
+<dl>
+  <dt>
+    <code>INDEX_SIZE_ERR</code></dt>
+  <dd>
+    If the canvas or source rectangle width or height is zero.</dd>
+  <dt>
+    <code>INVALID_STATE_ERR</code></dt>
+  <dd>
+    The image has no image data.</dd>
+  <dt>
+    <code>TYPE_MISMATCH_ERR</code></dt>
+  <dd>
+    The specified source element isn't supported. This is not thrown by Firefox, since any element may be used as a source image.</dd>
+</dl>
+<h6 id="Compatibility_notes">Compatibility notes</h6>
+<ul>
+  <li>Prior to Gecko 7.0 (Firefox 7.0 / Thunderbird 7.0 / SeaMonkey 2.4), Firefox threw an exception if any of the coordinate values was non-finite or zero. As per the specification, this no longer happens.</li>
+  <li>Support for flipping the image by using negative values for <code>sw</code> and <code>sh</code> was added in Gecko 5.0 (Firefox 5.0 / Thunderbird 5.0 / SeaMonkey 2.2).</li>
+  <li>Gecko 9.0 (Firefox 9.0 / Thunderbird 9.0 / SeaMonkey 2.6) now correctly supports CORS for drawing images across domains without <a href="/en/CORS_Enabled_Image#What_is_a_.22tainted.22_canvas.3F" title="en/CORS_Enabled_Image#What_is_a_.22tainted.22_canvas.3F">tainting the canvas</a>.</li>
+  <li>Gecko 11.0 (Firefox 11.0 / Thunderbird 11.0 / SeaMonkey 2.8) now allows SVG-as-an-image to be drawn into a canvas without <a href="/en/CORS_Enabled_Image#What_is_a_.22tainted.22_canvas.3F" title="en/CORS_Enabled_Image#What_is_a_.22tainted.22_canvas.3F">tainting the canvas</a>.</li>
+</ul>
+<h3 id="drawSystemFocusRing()">drawSystemFocusRing()</h3>
+<pre class="eval">void drawSystemFocusRing(Element element);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>element</code></dt>
+  <dd>
+     </dd>
+</dl>
+<h3 id="fill()">fill()</h3>
+<p>Fills the subpaths with the current fill style.</p>
+<pre class="eval">void fill();
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<p>None.</p>
+<h3 id="fillRect()">fillRect()</h3>
+<p>Draws a filled rectangle at <em>(x, y) </em>position whose size is determined by <em>width</em> and <em>height</em>.</p>
+<pre class="eval">void fillRect(
+  in float x,
+  in float y,
+  in float width,
+  in float height
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>x</code></dt>
+  <dd>
+    The x axis of the coordinate for the rectangle starting point.</dd>
+  <dt>
+    <code>y</code></dt>
+  <dd>
+    The y axis of the coordinate for the rectangle starting point.</dd>
+  <dt>
+    <code>width</code></dt>
+  <dd>
+    The rectangle's width.</dd>
+  <dt>
+    <code>height</code></dt>
+  <dd>
+    The rectangle's height.</dd>
+</dl>
+<h3 id="fillText()">fillText()</h3>
+<pre class="eval">void fillText(
+  in DOMString text,
+  in float x,
+  in float y,
+  in float maxWidth [optional]
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>text</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>x</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>y</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>maxWidth</code> <span class="inlineIndicator optional optionalInline">Optional</span></dt>
+  <dd>
+     </dd>
+</dl>
+<h3 id="getImageData()">getImageData()</h3>
+<p>Returns an <code><a class="external" href="http://dev.w3.org/html5/2dcontext/Overview.html#imagedata">ImageData</a></code> object representing the underlying pixel data for the area of the canvas denoted by the rectangle which starts at <em>(sx, sy)</em> and has a <em>sw</em> width and <em>sh</em> height.</p>
+<pre class="eval">void getImageData(   
+  in double sx, 
+  in double sy, 
+  in double sw, 
+  in double sh
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>sx</code></dt>
+  <dd>
+    The x axis of the coordinate for the rectangle startpoint from which the ImageData will be extracted.</dd>
+  <dt>
+    <code>sy</code></dt>
+  <dd>
+    The x axis of the coordinate for the rectangle endpoint from which the ImageData will be extracted.</dd>
+  <dt>
+    <code>sw</code></dt>
+  <dd>
+    The width of the rectangle from which the ImageData will be extracted.</dd>
+  <dt>
+    <code>sh</code></dt>
+  <dd>
+    The height of the rectangle from which the ImageData will be extracted.</dd>
+</dl>
+<h6 id="Return_value">Return value</h6>
+<p>Returns an <code><a class="external" href="http://www.w3.org/TR/2011/WD-2dcontext-20110405/#imagedata">ImageData</a></code> object containing the image data for the given rectangle of the canvas.</p>
+<h3 id="getLineDash()">getLineDash()</h3>
+<p>Returns an dash list array containing an even number of non-negative numbers.</p>
+<pre class="eval">sequence getLineDash(   
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<p>None.</p>
+<h6 id="Return_value">Return value</h6>
+<p>Returns an dash list array containing an even number of non-negative numbers.</p>
+<h3 id="isPointInPath()">isPointInPath()</h3>
+<p>Reports whether or not the specified point is contained in the current path.</p>
+<pre class="eval">boolean isPointInPath(
+  in float x,
+  in float y
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>x</code></dt>
+  <dd>
+    The X coordinate of the point to check.</dd>
+  <dt>
+    <code>y</code></dt>
+  <dd>
+    The Y coordinate of the point to check.</dd>
+</dl>
+<h6 id="Return_value">Return value</h6>
+<p><code>true</code> if the specified point is contained in the current path; otherwise <code>false</code>.</p>
+<h6 id="Compatibility_notes">Compatibility notes</h6>
+<ul>
+  <li>Prior to Gecko 7.0 (Firefox 7.0 / Thunderbird 7.0 / SeaMonkey 2.4), this method incorrectly failed to multiply the specified point's coordinates by the current transformation matrix before comparing it to the path. Now this method works correctly even if the context is rotated, scaled, or otherwise transformed.</li>
+</ul>
+<h3 id="isPointInStroke()">isPointInStroke()</h3>
+<p>Reports whether or not the specified point is inside the area contained by the stroking of a path.</p>
+<pre class="eval">boolean isPointInStroke(
+  in float x,
+  in float y
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>x</code></dt>
+  <dd>
+    The X coordinate of the point to check.</dd>
+  <dt>
+    <code>y</code></dt>
+  <dd>
+    The Y coordinate of the point to check.</dd>
+</dl>
+<h6 id="Return_value">Return value</h6>
+<p><code>true</code> if the point is inside the area contained by the stroking of a path; otherwise <code>false</code>.</p>
+<h3 id="lineTo()">lineTo()</h3>
+<p>Connects the last point in the subpath to the <code>x, y</code> coordinates with a straight line.</p>
+<pre class="eval">void lineTo(
+  in float x,
+  in float y
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>x</code></dt>
+  <dd>
+    The x axis of the coordinate for the end of the line.</dd>
+  <dt>
+    <code>y</code></dt>
+  <dd>
+    The y axis of the coordinate for the end of the line.</dd>
+</dl>
+<h3 id="measureText()">measureText()</h3>
+<pre class="eval">nsIDOMTextMetrics measureText(
+  in DOMString text
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>text</code></dt>
+  <dd>
+     </dd>
+</dl>
+<h6 id="Return_value">Return value</h6>
+<p><code>nsIDOMTextMetrics</code></p>
+<h3 id="moveTo()">moveTo()</h3>
+<p>Moves the starting point of a new subpath to the <strong>(x, y)</strong> coordinates.</p>
+<pre class="eval">void moveTo(
+  in float x,
+  in float y
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>x</code></dt>
+  <dd>
+    The x axis of the point.</dd>
+  <dt>
+    <code>y</code></dt>
+  <dd>
+    The y axis of the point.</dd>
+</dl>
+<h3 id="putImageData()">putImageData()</h3>
+<pre class="eval">void putImageData(
+  in long x,
+  in long y,
+  in unsigned long width,
+  in unsigned long height,
+  [array, size_is(dataLen)] in octet dataPtr,
+  in unsigned long dataLen,
+  in boolean hasDirtyRect,
+  in long dirtyX, [optional]
+  in long dirtyY, [optional]
+  in long dirtyWidth, [optional]
+  in long dirtyHeight [optional]
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>x</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>y</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>width</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>height</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>dataPtr</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>dataLen</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>hasDirtyRect</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>dirtyX</code> <span class="inlineIndicator optional optionalInline">Optional</span></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>dirtyY</code> <span class="inlineIndicator optional optionalInline">Optional</span></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>dirtyWidth</code> <span class="inlineIndicator optional optionalInline">Optional</span></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>dirtyHeight</code> <span class="inlineIndicator optional optionalInline">Optional</span></dt>
+  <dd>
+     </dd>
+</dl>
+<h6 id="Compatibility_notes">Compatibility notes</h6>
+<ul>
+  <li>Starting in Gecko 10.0 (Firefox 10.0 / Thunderbird 10.0 / SeaMonkey 2.7), non-finite values to any of these parameters causes the call to putImageData() to be silently ignored, rather than throwing an exception.</li>
+</ul>
+<h3 id="quadraticCurveTo()">quadraticCurveTo()</h3>
+<pre class="eval">void quadraticCurveTo(
+  in float cpx,
+  in float cpy,
+  in float x,
+  in float y
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>cpx</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>cpy</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>x</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>y</code></dt>
+  <dd>
+     </dd>
+</dl>
+<h3 id="rect()">rect()</h3>
+<pre class="eval">void rect(
+  in float x,
+  in float y,
+  in float w,
+  in float h
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>x</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>y</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>w</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>h</code></dt>
+  <dd>
+     </dd>
+</dl>
+<h3 id="restore()">restore()</h3>
+<p>Restores the drawing style state to the last element on the 'state stack' saved by save()</p>
+<pre class="eval">void restore();
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<p>None.</p>
+<h3 id="rotate()">rotate()</h3>
+<pre class="eval">void rotate(
+  in float angle
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>angle</code></dt>
+  <dd>
+     </dd>
+</dl>
+<h3 id="save()">save()</h3>
+<p>Saves the current drawing style state using a stack so you can revert any change you make to it using restore().</p>
+<pre class="eval">void save();
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<p>None.</p>
+<h3 id="scale()">scale()</h3>
+<pre class="eval">void scale(
+  in float x,
+  in float y
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>x</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>y</code></dt>
+  <dd>
+     </dd>
+</dl>
+<h3 id="scrollPathIntoView()">scrollPathIntoView()</h3>
+<pre class="eval">void scrollPathIntoView();
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<p>None.</p>
+<h3 id="setLineDash()">setLineDash()</h3>
+<pre class="eval">void setLineDash(
+  sequence segments
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>segments</code></dt>
+  <dd>
+    An even number of non-negative numbers specifying a dash list.</dd>
+</dl>
+<h3 id="setTransform()">setTransform()</h3>
+<pre class="eval">void setTransform(
+  in float m11,
+  in float m12,
+  in float m21,
+  in float m22,
+  in float dx,
+  in float dy
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>m11</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>m12</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>m21</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>m22</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>dx</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>dy</code></dt>
+  <dd>
+     </dd>
+</dl>
+<h3 id="stroke()">stroke()</h3>
+<p>Strokes the subpaths with the current stroke style.</p>
+<pre class="eval">void stroke();
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<p>None.</p>
+<h3 id="strokeRect()">strokeRect()</h3>
+<p>Paints a rectangle which it starting point is at <em>(x, y)</em> and has a<em> w</em> width and a <em>h</em> height onto the canvas, using the current stroke style.</p>
+<pre class="eval">void strokeRect(
+  in float x,
+  in float y,
+  in float w,
+  in float h
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>x</code></dt>
+  <dd>
+    The x axis for the starting point of the rectangle.</dd>
+  <dt>
+    <code>y</code></dt>
+  <dd>
+    The y axis for the starting point of the rectangle.</dd>
+  <dt>
+    <code>w</code></dt>
+  <dd>
+    The rectangle's width.</dd>
+  <dt>
+    <code>h</code></dt>
+  <dd>
+    The rectangle's height.</dd>
+</dl>
+<h3 id="strokeText()">strokeText()</h3>
+<pre class="eval">void strokeText(
+  in DOMString text,
+  in float x,
+  in float y,
+  in float maxWidth [optional]
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>text</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>x</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>y</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>maxWidth</code> <span class="inlineIndicator optional optionalInline">Optional</span></dt>
+  <dd>
+     </dd>
+</dl>
+<h3 id="transform()">transform()</h3>
+<pre class="eval">void transform(
+  in float m11,
+  in float m12,
+  in float m21,
+  in float m22,
+  in float dx,
+  in float dy
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>m11</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>m12</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>m21</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>m22</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>dx</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>dy</code></dt>
+  <dd>
+     </dd>
+</dl>
+<h3 id="translate()">translate()</h3>
+<p>Moves the origin point of the context to (x, y).</p>
+<pre class="eval">void translate(
+  in float x,
+  in float y
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>x</code></dt>
+  <dd>
+    The x axis for the point to be considered as the origin.</dd>
+  <dt>
+    <code>y</code></dt>
+  <dd>
+    The x axis for the point to be considered as the origin.</dd>
+</dl>
+<h2 id="Gecko-specific_methods">Gecko-specific methods</h2>
+<p></p><div> 
+    <span class="indicatorInHeadline standardNote standardNoteMethod">Requires Gecko 2.0 (Firefox 4 / Thunderbird 3.3 / SeaMonkey 2.1)</span> 
+    <h3 id="asyncDrawXULElement()" name="asyncDrawXULElement()">asyncDrawXULElement()</h3> 
+</div><p></p>
+<pre class="eval">void asyncDrawXULElement(
+  in nsIDOMXULElement elem,
+  in float x,
+  in float y,
+  in float w,
+  in float h,
+  in DOMString bgColor,
+  in unsigned long flags [optional]
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>elem</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>x</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>y</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>w</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>h</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>bgColor</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>flags</code> <span class="inlineIndicator optional optionalInline">Optional</span></dt>
+  <dd>
+     </dd>
+</dl>
+<h3 id="drawWindow()">drawWindow()</h3>
+<p>This API cannot currently be used by Web content. It is chrome only.</p>
+<p>Renders a region of a window into the <code>canvas</code>. The contents of the window's viewport are rendered, ignoring viewport clipping and scrolling.</p>
+<p>Of course, the rendering obeys the current <code><a class="external" href="http://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D#scale()">scale()</a></code>, <code><a class="external" href="http://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D#transform()">transform()</a></code> and <code>globalAlpha</code> values.</p>
+<p>Hints: -- If 'rgba(0,0,0,0)' is used for the background color, the drawing will be transparent wherever the window is transparent. -- Top-level browsed documents are usually not transparent because the user's background-color preference is applied, but IFRAMEs are transparent if the page doesn't set a background. -- If an opaque color is used for the background color, rendering will be faster because we won't have to compute the window's transparency.</p>
+<pre class="eval">void drawWindow(
+  in nsIDOMWindow window,
+  in float x,
+  in float y,
+  in float w,
+  in float h,
+  in DOMString bgColor,
+  in unsigned long flags [optional]
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>window</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>x</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>y</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>w</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>h</code></dt>
+  <dd>
+    Specify the area of the window to render, in CSS pixels.</dd>
+  <dt>
+    <code>bgColor</code></dt>
+  <dd>
+    The canvas is filled with this color before we render the window into it. This color may be transparent/translucent. It is given as a CSS color string (for example, rgb() or rgba()).</dd>
+  <dt>
+    <code>flags</code> <span class="inlineIndicator optional optionalInline">Optional</span> <span class="inlineIndicator geckoMinVer standardNote standardNoteInline" title="(Firefox 3.5 / Thunderbird 3.0 / SeaMonkey 2.0)">Requires Gecko 1.9.1</span></dt>
+  <dd>
+    Used to better control the <code>drawWindow</code> call. Flags can be ORed together.</dd>
+</dl>
+<p></p><div><span class="indicatorInHeadline noscript noscriptMethod" title="This method may only be called from C++; don't use it from JavaScript.">Native code only!</span><h3 id="getFillStyle_multi">getFillStyle_multi</h3></div><p></p>
+<p>Introduced in Gecko 2.0 (Firefox 4 / Thunderbird 3.3 / SeaMonkey 2.1).</p>
+<pre class="eval">void getFillStyle_multi(
+  out DOMString str,
+  out nsISupports iface,
+  out long type
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>str</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>iface</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>type</code></dt>
+  <dd>
+     </dd>
+</dl>
+<p></p><div><span class="indicatorInHeadline noscript noscriptMethod" title="This method may only be called from C++; don't use it from JavaScript.">Native code only!</span><h3 id="getImageData_explicit">getImageData_explicit</h3></div><p></p>
+<p>Introduced in Gecko 2.0 (Firefox 4 / Thunderbird 3.3 / SeaMonkey 2.1).</p>
+<pre class="eval">void getImageData_explicit(
+  in long x,
+  in long y,
+  in unsigned long width,
+  in unsigned long height,
+  [array, size_is(dataLen)] in octet dataPtr,
+  in unsigned long dataLen
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>x</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>y</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>width</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>height</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>dataPtr</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>dataLen</code></dt>
+  <dd>
+     </dd>
+</dl>
+<p></p><div><span class="indicatorInHeadline noscript noscriptMethod" title="This method may only be called from C++; don't use it from JavaScript.">Native code only!</span><h3 id="getStrokeStyle_multi">getStrokeStyle_multi</h3></div><p></p>
+<p>Introduced in Gecko 2.0 (Firefox 4 / Thunderbird 3.3 / SeaMonkey 2.1).</p>
+<pre class="eval">void getStrokeStyle_multi(
+  out DOMString str,
+  out nsISupports iface,
+  out long type
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>str</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>iface</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>type</code></dt>
+  <dd>
+     </dd>
+</dl>
+<p></p><div> 
+      <span class="indicatorInHeadline unimplemented unimplementedMethod">Unimplemented</span> 
+      <h3 id="mozDrawText()">mozDrawText()</h3> 
+      </div><p></p>
+<p>This method was introduced in Gecko 1.9 and is unimplemented starting with Gecko 7.0.</p>
+<pre class="eval">void mozDrawText(
+  in DOMString textToDraw
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>textToDraw</code></dt>
+  <dd>
+     </dd>
+</dl>
+<p></p><div> 
+      <span class="indicatorInHeadline unimplemented unimplementedMethod">Unimplemented</span> 
+      <h3 id="mozMeasureText()">mozMeasureText()</h3> 
+      </div><p></p>
+<p>This method was introduced in Gecko 1.9 and is unimplemented starting with Gecko 7.0.</p>
+<pre class="eval">float mozMeasureText(
+  in DOMString textToMeasure
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>textToMeasure</code></dt>
+  <dd>
+     </dd>
+</dl>
+<h6 id="Return_value">Return value</h6>
+<p> </p>
+<p></p><div> 
+      <span class="indicatorInHeadline unimplemented unimplementedMethod">Unimplemented</span> 
+      <h3 id="mozPathText()">mozPathText()</h3> 
+      </div><p></p>
+<p>This method was introduced in Gecko 1.9 and is unimplemented starting with Gecko 7.0.</p>
+<pre class="eval">void mozPathText(
+  in DOMString textToPath
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>textToPath</code></dt>
+  <dd>
+     </dd>
+</dl>
+<p></p><div> 
+      <span class="indicatorInHeadline unimplemented unimplementedMethod">Unimplemented</span> 
+      <h3 id="mozTextAlongPath()">mozTextAlongPath()</h3> 
+      </div><p></p>
+<p>This method was introduced in Gecko 1.9 and is unimplemented starting with Gecko 7.0.</p>
+<pre class="eval">void mozTextAlongPath(
+  in DOMString textToDraw,
+  in boolean stroke
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>textToDraw</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>stroke</code></dt>
+  <dd>
+     </dd>
+</dl>
+<p></p><div><span class="indicatorInHeadline noscript noscriptMethod" title="This method may only be called from C++; don't use it from JavaScript.">Native code only!</span><h3 id="setFillStyle_multi">setFillStyle_multi</h3></div><p></p>
+<p>Introduced in Gecko 2.0 (Firefox 4 / Thunderbird 3.3 / SeaMonkey 2.1).</p>
+<pre class="eval">void setFillStyle_multi(
+  in DOMString str,
+  in nsISupports iface
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>str</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>iface</code></dt>
+  <dd>
+     </dd>
+</dl>
+<p></p><div><span class="indicatorInHeadline noscript noscriptMethod" title="This method may only be called from C++; don't use it from JavaScript.">Native code only!</span><h3 id="setStrokeStyle_multi">setStrokeStyle_multi</h3></div><p></p>
+<p>Introduced in Gecko 2.0 (Firefox 4 / Thunderbird 3.3 / SeaMonkey 2.1).</p>
+<pre class="eval">void setStrokeStyle_multi(
+  in DOMString str,
+  in nsISupports iface
+);
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<dl>
+  <dt>
+    <code>str</code></dt>
+  <dd>
+     </dd>
+  <dt>
+    <code>iface</code></dt>
+  <dd>
+     </dd>
+</dl>
+<h2 id="WebKit-specific_methods">WebKit-specific methods</h2>
+<h3 id="clearShadow()">clearShadow()</h3>
+<pre class="eval">void clearShadow();
+</pre>
+<h6 id="Parameters">Parameters</h6>
+<p>None.</p>
+<h3 id="drawImageFromRect()">drawImageFromRect()</h3>
+<pre class="eval">void drawImageFromRect(
+  in HTMLImageElement image,
+  in [Optional] float sx,
+  in [Optional] float sy,
+  in [Optional] float sw,
+  in [Optional] float sh,
+  in [Optional] float dx, 
+  in [Optional] float dy,
+  in [Optional] float dw,
+  in [Optional] float dh,
+  in [Optional] DOMString compositeOperation
+);
+</pre>
+<h3 id="setAlpha()">setAlpha()</h3>
+<pre class="eval">void setAlpha(
+  in float alpha
+);
+</pre>
+<h3 id="setCompositeOperation()">setCompositeOperation()</h3>
+<pre class="eval">void setCompositeOperation(
+  in DOMString compositeOperation
+);
+</pre>
+<h3 id="setLineWidth()">setLineWidth()</h3>
+<pre class="eval">void setLineWidth(
+  in float width
+);
+</pre>
+<h3 id="setLineCap()">setLineCap()</h3>
+<pre class="eval">void setLineCap(
+  in DOMString cap
+);
+</pre>
+<h3 id="setLineJoin()">setLineJoin()</h3>
+<pre class="eval">void setLineJoin(
+  in DOMString join
+);
+</pre>
+<h3 id="setMiterLimit()">setMiterLimit()</h3>
+<pre class="eval">void setMiterLimit(
+  in float limit
+);
+</pre>
+<h3 id="setStrokeColor()">setStrokeColor()</h3>
+<pre class="eval">void setStrokeColor(in DOMString color, in [Optional] float alpha);
+void setStrokeColor(in float grayLevel, in [Optional] float alpha);
+void setStrokeColor(in float r, in float g, in float b, in float a);
+void setStrokeColor(in float c, in float m, in float y, in float k, in float a);
+</pre>
+<h3 id="setFillColor()">setFillColor()</h3>
+<pre class="eval">void setFillColor(in DOMString color, in [Optional] float alpha);
+void setFillColor(in float grayLevel, in [Optional] float alpha);
+void setFillColor(in float r, in float g, in float b, in float a);
+void setFillColor(in float c, in float m, in float y, in float k, in float a);
+</pre>
+<h3 id="setShadow()">setShadow()</h3>
+<pre class="eval">void setShadow(in float width, in float height, in float blur, in [Optional] DOMString color, in [Optional] float alpha);
+void setShadow(in float width, in float height, in float blur, in float grayLevel, in [Optional] float alpha);
+void setShadow(in float width, in float height, in float blur, in float r, in float g, in float b, in float a);
+void setShadow(in float width, in float height, in float blur, in float c, in float m, in float y, in float k, in float a);
+</pre>
+<h2 id="Browser_compatibility">Browser compatibility</h2>
+<p></p><div class="htab"> 
+    <a id="AutoCompatibilityTable" name="AutoCompatibilityTable"></a> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div><p></p>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari (WebKit)</th>
+      </tr>
+      <tr>
+        <td colspan="6" style="text-align: center; background: #eee;">Methods</td>
+      </tr>
+      <tr>
+        <td><code>arc()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>arcTo()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>beginPath()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>bezierCurveTo()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>clearRect()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>clip()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>closePath()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>createImageData()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td>3.5 (1.9.1)</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>createLinearGradient()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>createPattern()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>createRadialGradient()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>drawImage()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>drawCustomFocusRing()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span class="inlineIndicator unimplemented unimplementedInline">Unimplemented (see <a class="external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=540456" rel="external" title="">bug 540456</a>)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>drawSystemFocusRing()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span class="inlineIndicator unimplemented unimplementedInline">Unimplemented (see <a class="external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=540456" rel="external" title="">bug 540456</a>)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>fill()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>fillRect()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>fillText()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td>3.5 (1.9.1)</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>getImageData()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>isPointInPath()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td>
+          <table class="compat-table">
+            <tbody>
+              <tr>
+                <td><code>isPointInStroke()</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td>19.0 (19.0)</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>lineTo()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>measureText()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td>3.5 (1.9.1)</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>moveTo()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>putImageData()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>quadraticCurveTo()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>rect()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>restore()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>rotate()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>save()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>scale()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>scrollPathIntoView()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>setTransform()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td>3.0 (1.9.0)</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>stroke()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>strokeRect()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>strokeText()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td>3.5 (1.9.1)</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>transform()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td>3.0 (1.9.0)</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>translate()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td colspan="6" style="text-align: center; background: #eee;">Attributes</td>
+      </tr>
+      <tr>
+        <td><code>canvas</code></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+      <tr>
+        <td><code>fillstyle</code></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+      <tr>
+        <td><code>font</code></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+      <tr>
+        <td><code>globalAlpha</code></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+      <tr>
+        <td><code>globalCompositeOperation</code></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+      <tr>
+        <td><code>lineCap</code></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+      <tr>
+        <td><code>lineJoin</code></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+      <tr>
+        <td><code>lineWidth</code></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+      <tr>
+        <td><code>miterLimit</code></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+      <tr>
+        <td><code>shadowBlur</code></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+      <tr>
+        <td><code>shadowColor</code></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+      <tr>
+        <td><code>shadowOffsetX</code></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+      <tr>
+        <td><code>shadowOffsetY</code></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+      <tr>
+        <td><code>strokeStyle</code></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+      <tr>
+        <td><code>textAlign</code></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+      <tr>
+        <td><code>textBaseLine</code></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Phone</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td colspan="6" style="text-align: center; background: #eee;">Methods</td>
+      </tr>
+      <tr>
+        <td><code>arc()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>arcTo()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>beginPath()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>bezierCurveTo()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>clearRect()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>clip()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>closePath()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>createImageData()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>createLinearGradient()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>createPattern()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>createRadialGradient()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>drawImage()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>drawCustomFocusRing()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>drawSystemFocusRing()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>fill()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>fillRect()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>fillText()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>getImageData()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>isPointInPath()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>isPointInStroke()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>lineTo()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>measureText()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>moveTo()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>putImageData()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>quadraticCurveTo()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>rect()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>restore()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>rotate()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>save()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>scale()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>scrollPathIntoView()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>setTransform()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>stroke()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>strokeRect()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>strokeText()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>transform()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>translate()</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td colspan="6" style="text-align: center; background: #eee;">Attributes</td>
+      </tr>
+      <tr>
+        <td><code>canvas</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>fillstyle</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>font</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>globalAlpha</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>globalCompositeOperation</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>lineCap</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>lineJoin</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>lineWidth</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>miterLimit</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>shadowBlur</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>shadowColor</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>shadowOffsetX</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>shadowOffsetY</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>strokeStyle</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>textAlign</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+      <tr>
+        <td><code>textBaseLine</code></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h2 id="Notes">Notes</h2>
+<h3 id="Gecko">Gecko</h3>
+<p></p><div style="border: solid #ddd 2px; margin-right: 262px; margin-bottom: 12px;"> 
+<div style="background: #eee; padding: 2px;"><code><a class="external" href="http://mxr.mozilla.org/mozilla-central/source/dom/interfaces/canvas/nsIDOMCanvasRenderingContext2D.idl" rel="custom">dom/interfaces/canvas/nsIDOMCanvasRenderingContext2D.idl</a></code><span style="text-align: right; float: right;"><a href="en-US/docs/Interfaces/About_Scriptable_Interfaces" style="color: #00cc00; font-weight: 700;">Scriptable</a></span></div> 
+<span style="padding: 4px 2px;"> 
+ 
+<i>Please add a summary to this article.</i> 
+</span> 
+ 
+  <div style="height: 42px; position: relative; padding: 2px; width: auto;"> 
+ 
+  <div style="top: 22px; font-size: 11px; position: absolute;">1.0</div> 
+   
+  <div style="top: 22px; font-size: 11px; position: absolute; left: 0px; text-align: right; float: right; width: 100%;">22.0</div> 
+   
+  <div style="height: 8px; top: 16px; background: #dd0000; left: 0px; position: absolute; width: 15.384615384615385%;"></div> 
+   
+<div style="height: 8px; top: 16px; left: 15.384615384615385%; background: #00dd00; position: absolute; width: 84.61538461538461%;" title="Introduced in Gecko 1.8 (Firefox 1.5 / Thunderbird 1.5 / SeaMonkey 1.0)"></div> 
+ 
+<div style="top: 0px; font-size: 11px; position: absolute; left: 15.384615384615385%;">Introduced</div> 
+<div style="top: 22px; font-size: 11px; position: absolute; left: 15.384615384615385%;">Gecko 1.8</div> 
+ 
+    <div style="height: 8px; top: 16px; left: 41.80769230769231%; background: #eeee00; position: absolute; width: 1%; border-radius: 4px; -webkit-border-radius: 4px;" title="Last changed in Gecko 7.0 (Firefox 7.0 / Thunderbird 7.0 / SeaMonkey 2.4)"></div> 
+     
+</div> 
+ 
+<div style="background: #eee; padding: 2px;"> 
+Inherits from: <code><a class="external" href="http://developer.mozilla.org/en-US/docs/XPCOM_Interface_Reference/nsISupports">nsISupports</a></code> 
+<span style="text-align: right; float: right;">Last changed in Gecko 7.0 (Firefox 7.0 / Thunderbird 7.0 / SeaMonkey 2.4)</span></div> 
+</div><p></p>
+<div class="geckoVersionNote">
+  <p></p><div class="geckoVersionHeading"> 
+Gecko 2.0 note 
+<div style="font-size: 9px; line-height: 1; font-style: italic;">(Firefox 4 / Thunderbird 3.3 / SeaMonkey 2.1)</div> 
+</div><p></p>
+  <p>Starting in Gecko 2.0 (Firefox 4 / Thunderbird 3.3 / SeaMonkey 2.1), the following corrections were made to various behaviors, in order to improve compliance with the HTML5 specification:</p>
+  <ul>
+    <li>Specifying a negative radius when calling <code>arc()</code> now correctly throws an <code>INDEX_SIZE_ERR</code> exception.</li>
+    <li>Specifying non-finite values when calling <code>createLinearGradient()</code> and <code>createRadialGradient()</code> now throws <code>NOT_SUPPORTED_ERR</code> instead of <code>SYNTAX_ERR</code>.</li>
+    <li>Setting <code>miterLimit</code> to a negative value no longer throws an exception; instead, it properly ignores non-positive values.</li>
+    <li>Setting <code>lineWidth</code> to a negative value no longer throws an exception; instead, it properly ignores non-positive values.</li>
+  </ul>
+</div>
+<div class="geckoVersionNote">
+  <p></p><div class="geckoVersionHeading"> 
+Gecko 5.0 note 
+<div style="font-size: 9px; line-height: 1; font-style: italic;">(Firefox 5.0 / Thunderbird 5.0 / SeaMonkey 2.2)</div> 
+</div><p></p>
+  <p>Starting in Gecko 5.0 (Firefox 5.0 / Thunderbird 5.0 / SeaMonkey 2.2), the following corrections were made to various behaviors, in order to improve compliance with the HTML5 specification:</p>
+  <ul>
+    <li><code>getImageData()</code> now correctly accepts rectangles that extend beyond the bounds of the canvas; pixels outside the canvas are returned as transparent black.</li>
+    <li><code>drawImage()</code> and <code>createImageData()</code> now handle negative arguments in accordance with the specification, by flipping the rectangle around the appropriate axis.</li>
+    <li>Specifying non-finite values when calling <code>createImageData()</code> now properly throws a <code>NOT_SUPPORTED_ERR</code> exception.</li>
+    <li><code>createImageData()</code> and <code>getImageData()</code> now correctly return at least one pixel's worth of image data if a rectangle smaller than one pixel is specified.</li>
+    <li>Specifying a negative radius when calling <code>createRadialGradient()</code> now correctly throws <code>INDEX_SIZE_ERR</code>.</li>
+    <li>Specifying a <code>null</code> or <code>undefined</code> image when calling <code>createPattern()</code> or <code>drawImage()</code> now correctly throws a <code>TYPE_MISMATCH_ERR</code> exception.</li>
+    <li>Specifying invalid values for <code>globalAlpha</code> no longer throws a <code>SYNTAX_ERR</code> exception; these are now correctly silently ignored.</li>
+    <li>Specifying invalid values when calling <code>translate()</code>, <code>transform()</code>, <code>rect()</code>, <code>clearRect()</code>, <code>fillRect()</code>, <code>strokeRect()</code>, <code>lineTo()</code>, <code>moveTo()</code>, <code>quadraticCurveTo()</code>, or <code>arc()</code> no longer throws an exception; these calls are now correctly silently ignored.</li>
+    <li>Setting the value of <code>shadowOffsetX</code>, <code>shadowOffsetY</code>, or <code>shadowBlur</code> to an invalid value is now silently ignored.</li>
+    <li>Setting the value of <code>rotate</code> or <code>scale</code> to an invalid value is now silently ignored.</li>
+  </ul>
+</div>
+<h2 id="Specification">Specification</h2>
+<ul>
+  <li><a class="external" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#canvasrenderingcontext2d" rel="freelink">http://www.whatwg.org/specs/web-apps...eringcontext2d</a></li>
+</ul>
+                  </div>
+    <section class="page-meta">
+      
+            <section id="page-tags">
+        <h2><i class="icon-tags"></i>Tags (9)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Canvas">Canvas</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/API">API</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsContent">NeedsContent</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsCompatTable">NeedsCompatTable</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Graphics">Graphics</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/HTML">HTML</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Fixit">Fixit</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/DOM">DOM</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Games">Games</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+            
+<section id="page-attachments">
+  <h2><i class="icon-paper-clip"></i>Attachments <bdi>(<span id="page-attachments-count">1</span>)</bdi></h2>
+
+  
+  <p id="page-attachments-no-message" class="hidden">
+    This document has no attachments.
+  </p>
+
+  <script>
+    // This is a global, but has to be :/
+    MDN_ATTACHMENTS = [{"creatorUrl": "/en-US/profiles/Sheppy", "description": "", "creator": "Sheppy", "mime": "image/png", "date": "2011-08-04 20:40:06", "id": 3357, "size": 16906, "title": "drawImage.png", "url": "https://mdn.mozillademos.org/files/3357/drawImage.png", "html": "<tr data-revision-id=\"3630\" data-attachment-id=\"3357\">\n  <td class=\"attachment-name-cell\">\n    <a href=\"https://mdn.mozillademos.org/files/3357/drawImage.png\" target=\"_blank\">drawImage.png</a>\n      <div class=\"attachment-description\"></div>\n  </td>\n  <td>16906 bytes</td>\n  <td>2011-08-04 20:40:06</td>\n  <td><a href=\"/en-US/profiles/Sheppy\">Sheppy</a></td>\n</tr>", "revision": 3630}];
+  </script>
+  <table cellpadding="0" cellspacing="0" id="page-attachments-table" class="">
+    <thead>
+      <th>File</th>
+      <th>Size</th>
+      <th>Date</th>
+      <th>Attached by</th>
+    </thead>
+    <tbody>
+              <tr data-revision-id="3630" data-attachment-id="3357">
+  <td class="attachment-name-cell">
+    <a href="https://mdn.mozillademos.org/files/3357/drawImage.png" target="_blank">drawImage.png</a>
+      <div class="attachment-description"></div>
+  </td>
+  <td>16906 bytes</td>
+  <td>2011-08-04 20:40:06</td>
+  <td><a href="/en-US/profiles/Sheppy">Sheppy</a></td>
+</tr>
+          </tbody>
+  </table>
+
+  </section>      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/kathyw">kathyw</a>, <a href="/en-US/profiles/Elchi3">Elchi3</a>, <a href="/en-US/profiles/Jeremie">Jeremie</a>, <a href="/en-US/profiles/Manuel_Strehl">Manuel_Strehl</a>, <a href="/en-US/profiles/trevorh">trevorh</a>, <a href="/en-US/profiles/Brettz9">Brettz9</a>, <a href="/en-US/profiles/adion">adion</a>, <a href="/en-US/profiles/Ms2ger">Ms2ger</a>, <a href="/en-US/profiles/tehsis">tehsis</a>, <a href="/en-US/profiles/chapko">chapko</a>, <a href="/en-US/profiles/Jonathan_Watt">Jonathan_Watt</a>
+                          <br />
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-06-22T13:37:16-07:00">Jun 22, 2013 1:37:16 PM</time>
+                      <br />
+            Last reviewed by:  
+            <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+            <time datetime="2013-06-22T13:37:16-07:00">Jun 22, 2013 1:37:16 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/API/CanvasRenderingContext2D$edit">
+      <input type="hidden" name="form" id="form" value="rev" />
+      <input type="hidden" name="content" id="content" value="" />
+  </form>
+      </div>
+   </div>
+    </section>
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+<footer id="site-info" class="footer" role="contentinfo">
+<div class="wrap">
+    <div id="legal">
+      <img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-tiny.png" alt="" width="42" height="48">
+      <p id="copyright">&copy; 2005 - 2013 Mozilla Developer Network and individual contributors</p>
+      <p>
+      Content is available under <a href="/en-US/docs/Project:Copyrights">these licenses</a>      &bull; <a href="/en-US/docs/Project:About">About MDN</a>
+      &bull; <a href="//github.com/mozilla/kuma">Contribute to the code</a>
+      &bull; <a href="//www.mozilla.org/en-US/privacy">Privacy Policy</a>
+    </div>
+          <form class="languages go" method="get" action="/en-US/docs">
+      <label for="language">Other languages:</label>
+      <select id="language" class="wiki-l10n" name="next" dir="ltr">
+        <option value="/en-US/docs/Web/API/CanvasRenderingContext2D" selected>
+          English (US)
+        </option>
+              </select>
+      <noscript><button type="submit">Go</button></noscript>
+    </form>
+  </div>
+</footer>
+
+<script src="/en-US/jsi18n/build:5f4e39d"></script>
+  <script src="//mozorg.cdn.mozilla.net/en-US/tabzilla/tabzilla.js" async></script>
+  <script src="//www.google.com/jsapi" type="text/javascript"></script>
+  <script src="https://login.persona.org/include.js" type="text/javascript"></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/mdn-min.js?build=5f4e39d"></script>
+      <script src="https://developer.cdn.mozilla.net/media/js/wiki-min.js?build=5f4e39d"></script>
+  
+  <script type="text/javascript">
+    // Event tracking for the new menu
+    $(function() {
+      $('#nav-main').on('click', 'a', function(e) {
+        window._gaq && _gaq.push(['_trackEvent', 'Menu', 'Click', e.target.innerHTML, e.target.href]);
+      });
+    });
+  </script>
+        <!-- include syntax highlighting scripts -->
+  
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=5f4e39d" />
+
+  <script type="text/javascript">
+    MEDIA_URL = 'https://developer.cdn.mozilla.net/media/';
+  </script>
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/media/prism/prism.js" data-manual></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/syntax-prism-min.js?build=5f4e39d"></script>
+
+<script src="/en-US/waffles.js" type="text/javascript" async></script>
+</body>
+</html>

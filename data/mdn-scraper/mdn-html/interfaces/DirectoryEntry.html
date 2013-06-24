@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+<head>
+      <script src="//cdn.optimizely.com/js/237572123.js"></script>
+  
+  <title>DirectoryEntry - Web API reference | MDN</title>
+  
+  <meta charset="utf-8">
+  <meta name="robots" content="index, follow">
+  <link rel="home" href="/en-US/">
+  <link rel="copyright" href="#copyright">
+  <link rel="shortcut icon" href="https://developer.cdn.mozilla.net/media/img/favicon.ico">
+
+        <!--[if !IE 6]><!-->
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/mdn-min.css?build=5f4e39d" />
+      <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/wiki-min.css?build=5f4e39d" />
+    <!--<![endif]-->
+  <!--[if IE]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie.css"><![endif]-->
+  <!--[if lte IE 7]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie7.css"><![endif]-->
+  <!--[if lte IE 6]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/mdn-ie6.css"><![endif]-->
+  <link rel="stylesheet" type="text/css" href="https://developer.cdn.mozilla.net/media/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="print" href="https://developer.cdn.mozilla.net/media/css/mdn-print.css">
+  <link rel="stylesheet" href="https://mozorg.cdn.mozilla.net/media/css/tabzilla-min.css">
+  
+
+  <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network" />
+
+  
+    <link rel="stylesheet" media="print" href="https://developer.cdn.mozilla.net/media/css/wiki-print-min.css?build=5f4e39d" />
+          <link rel="stylesheet" type="text/css"
+            href="/en-US/docs/Template:CustomCSS?raw=1" />
+    
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script src="https://developer.cdn.mozilla.net/media/js/html5.js"></script>
+  <![endif]-->
+
+    <link rel="alternate" type="application/json" href="/en-US/docs/Web/API/DirectoryEntry$json" />
+  <link rel="canonical" href="https://developer.mozilla.org/en-US/docs/Web/API/DirectoryEntry" />
+
+  <meta property="og:title" content="DirectoryEntry" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://developer.mozilla.org/media/img/mdn-logo-sm.png" />
+  <meta property="og:site_name" content="Mozilla Developer Network" />
+  <meta property="og:url" content="https://developer.mozilla.org/en-US/docs/Web/API/DirectoryEntry" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:url" content="https://developer.mozilla.org/en-US/docs/Web/API/DirectoryEntry" />
+  <meta name="twitter:title" content="DirectoryEntry" />
+  <meta name="twitter:image" content="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" />
+  <meta name="twitter:site" content="@mozhacks" />
+  <meta name="twitter:creator" content="@mozhacks" />
+
+    <meta property="og:description" content="The DirectoryEntry interface of the FileSystem API represents a directory in a file system. It includes methods for creating, reading, looking up, and recursively removing files in a directory."/>
+  <meta name="description" content="The DirectoryEntry interface of the FileSystem API represents a directory in a file system. It includes methods for creating, reading, looking up, and recursively removing files in a directory." />
+  <meta name="twitter:description" content="The DirectoryEntry interface of the FileSystem API represents a directory in a file system. It includes methods for creating, reading, looking up, and recursively removing files in a directory." />
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36116321-5']);
+  _gaq.push(['_trackPageview']);
+
+  (function(a, d) {
+    var ga = d.createElement(a); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == d.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = d.getElementsByTagName(a)[0]; s.parentNode.insertBefore(ga, s);
+  })('script', document);
+
+</script>
+</head>
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  <header id="masthead" class="minor new-menu">
+    <div class="wrap">
+      <ul id="nav-access">
+        <li><a href="#language">Select language</a></li>
+        <li><a href="#q">Skip to search</a></li>
+        <li><a href="#content">Skip to main content</a></li>
+      </ul>
+    
+      <div id="branding">
+                <div id="logo"><a href="/en-US/"><img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" alt="Mozilla Developer Network" title="Mozilla Developer Network" width="62" height="71"> Mozilla Developer Network</a></div>
+              </div>
+      
+              <nav id="nav">
+          <ul id="nav-main" role="menubar">
+            <li id="nav-main-docs" class="menu" rel="menuitem"><a href="#nav-sub-docs" class="toggle" aria-haspopup="true" aria-labelledby="nav-main-docs" title="Read Documentation">Read<br /><em>Docs</em></a>
+              <div id="nav-sub-docs" class="sub-menu" aria-hidden="true">
+                <ul>
+                  <li>
+                    <ul>
+
+                      <li><a href="/en-US/docs/Web/HTML?menu">HTML</a></li>
+                      <li><a href="/en-US/docs/Web/CSS?menu">CSS</a></li>
+                      <li><a href="/en-US/docs/Web/JavaScript?menu">JavaScript</a></li>
+                      <li><a href="/en-US/docs/Web/Guide/Graphics?menu">Graphics</a></li>
+                      <li><a href="/en-US/docs/Web/API?menu">APIs / DOM</a></li>
+                      <li><a href="/en-US/docs/Web/Apps?menu">Apps</a></li>
+                      <li><a href="/en-US/docs/tools?menu">Dev Tools</a></li>
+                      <li><a href="/en-US/docs/Web/MathML?menu">MathML</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <ul>
+                      <li><a href="/en-US/docs/Web/Tutorials?menu">Tutorials</a></li>
+                      <li><a href="/en-US/docs/Web/Reference?menu">References</a></li>
+                      <li><a href="/en-US/docs/Web/Guide?menu">Developer Guides</a></li>
+                      <li><a href="/en-US/demos/?menu">Demos</a></li>
+                      <li><br /><br /><a href="/en-US/docs?menu">...more docs</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li id="nav-main-apps" role="menuitem"><a href="https://marketplace.firefox.com/developers/">Make<br /><em>Apps</em></a></li>
+            <li id="nav-main-firefox" class="menu" role="menuitem"><a href="#nav-sub-firefox" class="firefox toggle" aria-haspopup="true" aria-labelledby="nav-main-firefox">Build & Use<br /><em>Firefox</em></a>
+              <ul id="nav-sub-firefox" class="sub-menu">
+                <li><a href="/en-US/docs/Mozilla/Firefox_OS?menu">Firefox OS</a></li>
+                <li><a href="/en-US/docs/Mozilla/Firefox?menu">Firefox Desktop</a></li>
+                <li><a href="/en-US/docs/Mozilla/Mobile?menu">Mobile</a></li>
+                <li><a href="/en-US/docs/Mozilla/Add-ons?menu">Add-ons</a></li>
+              </ul>
+            </li>
+            <li id="nav-main-demos" role="menuitem"><a href="/en-US/demos/?menu" class="demos">See & Submit<br /><em>Demos</em></a></li>
+            <li id="nav-main-community" class="menu" role="menuitem"><a href="#nav-sub-community" class="community toggle" aria-haspopup="true" aria-labelledby="nav-main-community">Get<br /><em>Involved</em></a>
+              <ul id="nav-sub-community" class="sub-menu">
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Join_the_community?menu">Join the Community</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing?menu">Contribute to MDN</a></li>
+                <li><a href="/en-US/events?menu">Events</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Follow_what_s_happening?menu">Tweets, Blogs, and More</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+          
+      <ul class="user-state signed-out">
+    <li class="user-signin menu">
+    <form class="browserid" action="/en-US/users/browserid_verify" method="POST">
+        <input id="next" name="next" type="hidden" value="/en-US/docs/Web/API/DirectoryEntry"/>
+        <input required="required" type="hidden" name="assertion" id="id_assertion" />
+                        <a href="#" target="_blank" class="browserid-signin toggle" aria-haspopup="true" title="Sign in with Persona">Sign in</a>
+                <div class="browserid-info sub-menu" aria-hidden="true">
+                <h3>What's this?</h3> <p>MDN has switched to <a href="https://persona.org/" target="_blank" rel="external">Persona</a>, a safe and simple way to sign in with just your e-mail address. <a href="http://identity.mozilla.com/post/12950196039/deploying-browserid-at-mozilla" rel="external">Learn more about why Mozilla is using Persona</a>.</p> <p><strong>Returning members:</strong> sign in with Persona and you'll be connected to your MDN profile (all your information is still here).</p> <p><strong>New members:</strong> sign in with Persona first, then you'll be able to set up your new MDN profile.</p>          <p><a href="#" target="_blank" class="browserid-signin" title="Sign in with Persona">Sign in</a></p>
+        </div>
+              </form>
+    </li>
+  </ul>
+      
+      <form id="site-search" method="get" action="http://www.google.com/search"
+              data-url="/en-US/search">
+        <p>
+          <input type="search" role="search" placeholder="Search MDN" id="q" name="q" value="">
+          <noscript><button type="submit">Search</button></noscript>
+        </p>
+        <input type="hidden" name="sitesearch" value="developer.mozilla.org">
+                <div id="site-search-gg"></div>
+              </form>
+
+      <a href="//www.mozilla.org/" id="tabzilla">mozilla</a>
+    </div>
+  </header>
+
+    
+
+<!-- top toolbar -->
+<section id="nav-toolbar"><div><div class="wrap">
+  <!-- right floated navigation -->
+  <nav id="tool-menus" role="navigation">
+    <ul id="tools">
+      <li class="menu">
+        <a href="#page-tools" class="toggle">This page</a>
+        <ul id="page-tools" class="sub-menu">
+          <li class="page-print"> <a href="#" onclick="return window.print();"  title="Print page">Print this page</a></li>
+                      <li><a href="/en-US/docs/new?parent=3021">New sub-page</a></li>
+            <li><a href="/en-US/docs/new?clone=3021">Clone this page</a></li>
+                                      </ul>
+      </li>
+            <li class="menu">
+        <a href="#" class="toggle">Languages</a>
+        <ul id="translations">
+                    
+                      <li><a href="/en-US/docs/Web/API/DirectoryEntry$locales">Add translation</a></li>
+                  </ul>
+      </li>
+          </ul>
+  </nav>
+  
+  <!-- left crumb navigation -->
+  <nav class="crumbs" role="navigation">
+    <ol>
+              <li class="crumb"><a href="/en-US/docs/Web">Web technology for developers</a></li>
+              <li class="crumb"><a href="/en-US/docs/Web/API">Web API reference</a></li>
+            <li class="crumb">DirectoryEntry</li>
+    </ol>
+  </nav>
+  
+</div></div></section>
+
+
+
+<section id="content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" 
+          data-current-revision="430673"
+          data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes."
+          data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title">
+            <h1 class="page-title">DirectoryEntry</h1>
+                    </div>
+        <ul id="page-buttons">
+            <li class="page-history"><a href="/en-US/docs/Web/API/DirectoryEntry$history"><i class="icon-book"></i>History</a></li>
+                                                                                  <li class="page-edit"><a href="/en-US/docs/Web/API/DirectoryEntry$edit"><i class="icon-pencil"></i>Edit</a></li>
+                    </ul>
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                <div id="article-nav">
+          <div class="page-toc">
+            <h2>Table of Contents</h2>
+            <ol>
+              <code></code><li><a href="#About_this_document" rel="internal">About this document</a><li><a href="#basic_concepts" rel="internal">Basic concepts</a><code></code><ol><li><ol><li><a href="#example" rel="internal">Example</a></ol></li></ol></li><li><a href="#Method_overview" rel="internal">Method overview</a><code></code><code></code><code></code><code></code><li><a href="#Methods" rel="internal">Methods</a><ol><li><a href="#createReader" rel="internal">createReader()</a><code></code><code></code><li><a href="#getFile" rel="internal">getFile()</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#getDirectory" rel="internal">getDirectory()</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#removeRecursively" rel="internal">removeRecursively()</a><code></code></ol></li><li><a href="#Browser_Compatibility" rel="internal">Browser compatibility</a><li><a href="#See_also" rel="internal">See also</a>
+            </ol>
+          </div>
+          <ul class="page-anchors">
+            <li class="anchor-tags">
+                              <i class="icon-tags"></i><a href="#page-tags">Tags</a>
+                          </li>
+            <li class="anchor-files">
+                              <i class="icon-paper-clip off"></i><span title="This document has no attachments">Files</span>
+                          </li>
+          </ul>
+        </div>
+                                <p></p><div class="overheadIndicator nonStandard nonStandardHeader"> 
+      <p>Non-standard</p> 
+      </div><p></p>
+<p>The <code>DirectoryEntry</code> interface of the <a href="/en/DOM/File_API/File_System_API" title="en/DOM/File_API/File_System_API">FileSystem API</a> represents a directory in a file system. It includes methods for creating, reading, looking up, and recursively removing files in a directory.</p>
+<h2 id="About_this_document">About this document</h2>
+<p>This document was last updated on March 2, 2012 and follows the <a class="external" href="http://www.w3.org/TR/file-system-api/">W3C Specifications (Working Draft)</a> drafted on April 19, 2011.</p>
+<p>This specification is pretty much abandoned, having failed to reach any substantial traction.</p>
+<h2 id="basic_concepts" name="basic_concepts">Basic concepts</h2>
+<p>You can create a new directory by calling <code>DirectoryEntry.getDirectory()</code>. If you want to create subdirectories, you have to create each child directory in sequence. If you try to create a directory using a full path that includes parent directories that do not exist yet, you get an error. So create the hierarchy by recursively adding a new path after creating the parent directory.</p>
+<h4 id="example" name="example">Example</h4>
+<p>In the following code snippet, we create a directory called "Documents."</p>
+<pre class="brush: js">// Taking care of the browser-specific prefixes.
+window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem; 
+window.directoryEntry = window.directoryEntry || window.webkitDirectoryEntry;
+
+...
+
+function onFs(fs){
+  fs.root.getDirectory('Documents', {create:true}, function(directoryEntry){
+    //directoryEntry.isFile === false
+    //directoryEntry.isDirectory === true
+    //directoryEntry.name === 'Documents'
+    //directoryEntry.fullPath === '/Documents'
+    
+    }, onError);
+
+  }
+
+// Opening a file system with temporary storage
+window.requestFileSystem(TEMPORARY, 1024*1024 /*1MB*/, onFS, onError</pre>
+<h2 id="Method_overview">Method overview</h2>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td><code>DirectoryReader <a href="#createReader" title="#createReader">createReader</a> ();</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#getFile" title="#getFile">getFile</a> (in DOMString <em>path</em>, in optional Flags <em>options</em>, in optional <a class="external" href="http://www.w3.org/TR/file-system-api/#idl-def-EntryCallback">EntryCallback</a> <em>successCallback</em>, in optional <a class="external" href="http://www.w3.org/TR/file-system-api/#idl-def-ErrorCallback">ErrorCallback</a> <em>errorCallback</em>);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#getDirectory" title="#getDirectory">getDirectory</a> (in DOMString path, in optional Flags <em>options</em>, in optional EntryCallback <em>successCallback</em>, in optional ErrorCallback <em>errorCallback</em>);</code></td>
+    </tr>
+    <tr>
+      <td><code>void <a href="#removeRecursively" title="#removeRecursively">removeRecursively</a> (in Void Callback <em>successCallback</em>, in optional ErrorCallback <em>errorCallback</em>); </code></td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Methods">Methods</h2>
+<h3 id="createReader" name="createReader">createReader()</h3>
+<p>Creates a new <code>DirectoryReader</code> to read entries from this directory. </p>
+<pre>DirectoryReader createReader ();</pre>
+<h5 id="Returns">Returns</h5>
+<dl>
+  <dt>
+    <code>DirectoryReader</code></dt>
+</dl>
+<h3 id="getFile" name="getFile">getFile()</h3>
+<p>Depending on how you've set the <code>options</code> parameter, the method either creates a file or looks up an existing file.</p>
+<pre>void getFile (
+  in DOMString <em>path</em>, in optional Flags <em>options</em>, in optional EntryCallback <em>successCallback</em>, in optional ErrorCallback <em>errorCallback</em>
+);</pre>
+<h5 id="Parameter">Parameter</h5>
+<dl>
+  <dt>
+    path</dt>
+  <dd>
+    Either an absolute path or a relative path from the directory to the file to be looked up or created. You cannot create a file whose immediate parent does not exist. Create the parent directory first.</dd>
+  <dt>
+    options</dt>
+  <dd>
+    An object literal describing the behavior of the method. If the file does not exist, it is created.</dd>
+</dl>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th scope="col">Object literal</th>
+      <th scope="col">Condition</th>
+      <th scope="col">Result</th>
+    </tr>
+    <tr>
+      <td><code>create: true</code><br>
+        <code>exclusive: true</code></td>
+      <td>Path already exists</td>
+      <td>An error is thrown.</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>create: true</code><br>
+        <code>exclusive: false</code></td>
+      <td>Path doesn't exist and no other error occurs</td>
+      <td>A file is created. If a file already exists, no error is thrown.</td>
+    </tr>
+    <tr>
+      <td><code>create: false</code><br>
+        (<code>exclusive</code> is ignored)</td>
+      <td>Path exists</td>
+      <td>The file is returned.</td>
+    </tr>
+    <tr>
+      <td><code>create: false</code><br>
+        (<code>exclusive</code> is ignored)</td>
+      <td>Path doesn't exist</td>
+      <td>An error is thrown.</td>
+    </tr>
+    <tr>
+      <td><code>create: false</code><br>
+        (<code>exclusive</code> is ignored)</td>
+      <td>Path exists, but is a directory</td>
+      <td>An error is thrown.</td>
+    </tr>
+  </tbody>
+</table>
+<dl>
+  <dt>
+    successCallback</dt>
+  <dd>
+    A callback that is called to return the file selected or created.</dd>
+  <dt>
+    errorCallback</dt>
+  <dd>
+    A callback that is called when errors happen.</dd>
+</dl>
+<h5 id="Returns">Returns</h5>
+<dl>
+  <dt>
+    <code>void</code></dt>
+</dl>
+<h3 id="getDirectory" name="getDirectory">getDirectory()</h3>
+<p>Creates or looks up a directory. The methods are similar to <code>getFile()</code> with DirectoryEntry being passed in the success callback.</p>
+<pre>void getDirectory (
+  in DOMString <em>path</em>, in optional Flags <em>options</em>, in optional EntryCallback <em>successCallback</em>, in optional ErrorCallback <em>errorCallback</em>
+);</pre>
+<h5 id="Parameter">Parameter</h5>
+<dl>
+  <dt>
+    path</dt>
+  <dd>
+    Either an absolute path or a relative path from the <code>DirectoryEntry</code> to the directory to be looked up or created. It is an error to attempt to create a file whose immediate parent does not yet exist.</dd>
+  <dt>
+    options</dt>
+  <dd>
+    An object literal describing the behavior of the method if the directory does not exist.</dd>
+</dl>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th scope="col">Object literal</th>
+      <th scope="col">Condition</th>
+      <th scope="col">Result</th>
+    </tr>
+    <tr>
+      <td><code>create: true</code><br>
+        <code>exclusive: true</code></td>
+      <td>Path already exists</td>
+      <td>An error is thrown.</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>create: true</code><br>
+        <code>exclusive: false</code></td>
+      <td>Path doesn't exist and no other error occurs</td>
+      <td>A directory is created and return a corresponding <code>DirectoryEntry</code>. If a directory already exists, no error is thrown.</td>
+    </tr>
+    <tr>
+      <td><code>create: false</code><br>
+        (<code>exclusive</code> is ignored)</td>
+      <td>Path exists</td>
+      <td>The directory corresponding to the path is returned.</td>
+    </tr>
+    <tr>
+      <td><code>create: false</code><br>
+        (<code>exclusive</code> is ignored)</td>
+      <td>Path doesn't exist</td>
+      <td>An error is thrown.</td>
+    </tr>
+    <tr>
+      <td><code>create: false</code><br>
+        (<code>exclusive</code> is ignored)</td>
+      <td>Path exists, but is a file</td>
+      <td>An error is thrown.</td>
+    </tr>
+  </tbody>
+</table>
+<dl>
+  <dt>
+    successCallback</dt>
+  <dd>
+    A callback that is called to return the directory selected or created.</dd>
+  <dt>
+    errorCallback</dt>
+  <dd>
+    A callback that is called when errors happen.</dd>
+</dl>
+<h5 id="Returns">Returns</h5>
+<p><code>void</code></p>
+<h3 id="removeRecursively" name="removeRecursively">removeRecursively()</h3>
+<p>Deletes a directory and all of its contents. You cannot delete the root directory of a file system.</p>
+<p>If you delete a directory that contains a file that cannot be removed or if an error occurs while the deletion is in progress, some of the contents might not be deleted. Catch these cases with error callbacks and retry the deletion.</p>
+<pre>DOMString removeRecursively (
+  <em>in </em>VoidCallback successCallback, optional ErrorCallback errorCallback
+);</pre>
+<h5 id="Parameter">Parameter</h5>
+<dl>
+  <dt>
+    successCallback</dt>
+  <dd>
+    A callback that is called when the deletion succeeds.</dd>
+  <dt>
+    errorCallback</dt>
+  <dd>
+    A callback that is called when errors happen.</dd>
+</dl>
+<h5 id="Returns">Returns</h5>
+<dl>
+  <dt>
+    <code>void</code></dt>
+</dl>
+<h2 id="Browser_Compatibility" name="Browser_Compatibility">Browser compatibility</h2>
+<p></p><div class="htab"> 
+    <a id="AutoCompatibilityTable" name="AutoCompatibilityTable"></a> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div><p></p>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari (WebKit)</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td>13<span class="inlineIndicator prefixBox prefixBoxInline" title="prefix">webkit</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Android</th>
+        <th>Chrome for Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Phone</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td>0.16<span class="inlineIndicator prefixBox prefixBoxInline" title="prefix">webkit</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h2 id="See_also">See also</h2>
+<p>Specification: <a class="external" href="http://dev.w3.org/2009/dap/file-system/pub/FileSystem/">File API: Directories and System Specification</a><span style="color: #fff; background: #e66e33; display: inline-block; font-size: x-small; margin-left: 6px; white-space: nowrap; padding: 2px 5px;" title="Working Draft">WD</span></p>
+<p>Reference: <a href="/en/DOM/File_API/File_System_API" title="en/DOM/File_API/File_System_API">File System API</a></p>
+<p>Introduction: <a href="/en/DOM/File_APIs/Filesystem/Basic_Concepts_About_the_Filesystem_API" title="en/DOM/File_APIs/Filesystem/Basic_Concepts_About_the_Filesystem_API">Basic Concepts About the File System API</a></p>
+                  </div>
+    <section class="page-meta">
+      
+            <section id="page-tags">
+        <h2><i class="icon-tags"></i>Tags (5)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/File%20System%20API">File System API</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/filesystem">filesystem</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/offline">offline</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Non-standard">Non-standard</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/File%20API">File API</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/gilesburdett">gilesburdett</a>, <a href="/en-US/profiles/grendel">grendel</a>, <a href="/en-US/profiles/teoli">teoli</a>
+                          <br />
+          Last updated by:  
+          <a href="/en-US/profiles/gilesburdett">gilesburdett</a>, 
+          <time datetime="2013-06-17T07:21:46-07:00">Jun 17, 2013 7:21:46 AM</time>
+                      <br />
+            Last reviewed by:  
+            <a href="/en-US/profiles/gilesburdett">gilesburdett</a>, 
+            <time datetime="2013-06-17T07:21:46-07:00">Jun 17, 2013 7:21:46 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/API/DirectoryEntry$edit">
+      <input type="hidden" name="form" id="form" value="rev" />
+      <input type="hidden" name="content" id="content" value="" />
+  </form>
+      </div>
+   </div>
+    </section>
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+<footer id="site-info" class="footer" role="contentinfo">
+<div class="wrap">
+    <div id="legal">
+      <img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-tiny.png" alt="" width="42" height="48">
+      <p id="copyright">&copy; 2005 - 2013 Mozilla Developer Network and individual contributors</p>
+      <p>
+      Content is available under <a href="/en-US/docs/Project:Copyrights">these licenses</a>      &bull; <a href="/en-US/docs/Project:About">About MDN</a>
+      &bull; <a href="//github.com/mozilla/kuma">Contribute to the code</a>
+      &bull; <a href="//www.mozilla.org/en-US/privacy">Privacy Policy</a>
+    </div>
+          <form class="languages go" method="get" action="/en-US/docs">
+      <label for="language">Other languages:</label>
+      <select id="language" class="wiki-l10n" name="next" dir="ltr">
+        <option value="/en-US/docs/Web/API/DirectoryEntry" selected>
+          English (US)
+        </option>
+              </select>
+      <noscript><button type="submit">Go</button></noscript>
+    </form>
+  </div>
+</footer>
+
+<script src="/en-US/jsi18n/build:5f4e39d"></script>
+  <script src="//mozorg.cdn.mozilla.net/en-US/tabzilla/tabzilla.js" async></script>
+  <script src="//www.google.com/jsapi" type="text/javascript"></script>
+  <script src="https://login.persona.org/include.js" type="text/javascript"></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/mdn-min.js?build=5f4e39d"></script>
+      <script src="https://developer.cdn.mozilla.net/media/js/wiki-min.js?build=5f4e39d"></script>
+  
+  <script type="text/javascript">
+    // Event tracking for the new menu
+    $(function() {
+      $('#nav-main').on('click', 'a', function(e) {
+        window._gaq && _gaq.push(['_trackEvent', 'Menu', 'Click', e.target.innerHTML, e.target.href]);
+      });
+    });
+  </script>
+        <!-- include syntax highlighting scripts -->
+  
+  <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=5f4e39d" />
+
+  <script type="text/javascript">
+    MEDIA_URL = 'https://developer.cdn.mozilla.net/media/';
+  </script>
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/media/prism/prism.js" data-manual></script>
+  <script src="https://developer.cdn.mozilla.net/media/js/syntax-prism-min.js?build=5f4e39d"></script>
+
+<script src="/en-US/waffles.js" type="text/javascript" async></script>
+</body>
+</html>
